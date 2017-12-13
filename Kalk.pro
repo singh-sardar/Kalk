@@ -28,7 +28,8 @@ SOURCES += \
         kalk.cpp
 
 HEADERS += \
-        kalk.h
+        kalk.h \
+    vettoregenerico.h
 
 FORMS += \
         kalk.ui
