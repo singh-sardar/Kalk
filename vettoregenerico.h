@@ -18,7 +18,7 @@ public:
     VettoreGenerico();
     VettoreGenerico(vector<T>);
     //NON CARICARE NEL MASTER IL FILE USER. CARICA SOLO IL RESTO
-    //testo di test
+
     //QUANDO SI IMPLEMENTANO I METODI STARE ATTENTI A DECIDERE SE PASSARE PER REF CONST
     //SVILUPPANDO COMMENTARE ADEGUAMENTE IL CODICE
     void aggiungiElemento(T);//aggiunge l' elemento T
