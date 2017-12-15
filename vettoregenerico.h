@@ -4,7 +4,6 @@
 #include <string>
 #include <algorithm>
 
-
 using std::vector;
 using std::string;
 using std::find;
@@ -16,47 +15,52 @@ class VettoreGenerico
 {
 private:
     vector<T> vettore;
-    int size;
 
 public:
     VettoreGenerico();
     VettoreGenerico(vector<T>);
 
 
-
-    virtual void aggiungiElemento(const T&);//aggiunge l' elemento T in coda
-    T popBackElemento(); //rimuove un elemento in coda dal vettore e lo ritorna per valore
-    bool cerca(const T&);//ritorna true se un elemento è presente nel vettore
-    bool rimuoviElemento(const T&); // rimuove l' elemento T
-
-/*
-    virtual string toString()const;
-    int getSize()const;
-    virtual VettoreGenerico operator+(const VettoreGenerico&);
-    virtual VettoreGenerico operator-(const VettoreGenerico&);
-    virtual VettoreGenerico operator*(const VettoreGenerico&);
-    virtual VettoreGenerico operator/(const VettoreGenerico&);
-    VettoreGenerico& operator[](int);
-    virtual bool operator ==(const VettoreGenerico&)const;
-    virtual bool operator !=(const VettoreGenerico&)const;
-*/
-
+    T& operator [](int)const;
+    virtual void aggiungiElemento(const T&);
+    T popBackElemento();
+    bool cerca(const T&);
+    bool rimuoviElemento(const T&);
+    int getSize() const;
+    virtual VettoreGenerico<T> operator+(const VettoreGenerico<T>&)const;
+    virtual VettoreGenerico<T> operator-(const VettoreGenerico<T>&)const;
+    virtual bool operator ==(const VettoreGenerico<T>&)const;
+    virtual bool operator !=(const VettoreGenerico<T>&)const;
     virtual ~VettoreGenerico();
+    /*TODO:
+     * DECIDERE SE IMPLEMENTARE LE SEGUENTI FUNZIONI
+         toString();
+         operator*(const VettoreGenerico&);
+         operator/(const VettoreGenerico&);
+
+     */
 };
 
+//#P
+//ritorna l' elemento i
+template <class T>
+T& VettoreGenerico<T>::operator [](int i)const{
+   return vettore[i];
+}
 
+//#H
 template <class T>
 VettoreGenerico<T>::~VettoreGenerico(){}
 
 //#H
 //costruttore senza parametri
 template <class T>
-VettoreGenerico<T>::VettoreGenerico():size(vettore.size()){}
+VettoreGenerico<T>::VettoreGenerico(){}
 
 //#H
 //costruttore con un parametro di tipo vector<T>
 template <class T>//costruttore a un parametro di tipo vector<T>
-VettoreGenerico<T>::VettoreGenerico(vector<T> v):vettore(v),size(v.size()){}
+VettoreGenerico<T>::VettoreGenerico(vector<T> v):vettore(v){}
 
 //#H
 //Aggiunge un elemento di tipo T in coda
@@ -95,7 +99,60 @@ bool VettoreGenerico<T>::rimuoviElemento(const T& element){
     }
 }
 
+//#H
+//somma 2 vettori e ritorna un terzo vettore che contiene la somma elemento per elemento. se i due vettori hanno lunghezza differente ritorna un vettore vuoto
+template <class T>
+VettoreGenerico<T> VettoreGenerico<T>::operator+(const VettoreGenerico<T>& vG)const{
+    VettoreGenerico<T> aux;
+    if(vettore.size()==vG.getSize()){
+        for(int i = 0; i < vettore.size();i++){
+            aux.aggiungiElemento((vettore[i]+vG.vettore[i]));
+        }
+    }
+    return aux;
+}
 
+//#H
+//sottrae 2 vettori e ritorna un terzo vettore che contiene la differenza elemento per elemento. se i due vettori hanno lunghezza differente ritorna un vettore vuoto
+template <class T>
+VettoreGenerico<T> VettoreGenerico<T>::operator-(const VettoreGenerico<T>& vG)const{
+    VettoreGenerico<T> aux;
+    if(vettore.size()==vG.getSize()){
+        for(int i = 0; i < vettore.size();i++){
+            aux.aggiungiElemento((vettore[i]-vG.vettore[i]));
+        }
+    }
+    return aux;
+}
+
+//#P
+//getSize()
+template<class T>
+int VettoreGenerico<T>::getSize() const{
+    return vettore.size();
+}
+
+//#P
+//operator ==
+template <class T>
+bool VettoreGenerico<T>::operator==(const VettoreGenerico<T>& vG) const{
+    if(vettore.size() != vG.getSize()){
+        return false;
+    }
+    bool diverso = true;
+    for(int i=0; i < vettore.size()&& diverso; ++i){
+        if(vettore[i] != vG.vettore[i])
+            diverso = false;
+    }
+    return diverso;
+}
+
+//#P
+//operator !=
+template <class T>
+bool VettoreGenerico<T>::operator !=(const VettoreGenerico<T>& vG) const{
+    return !(*this==vG);
+}
 
 
 #endif // VETTOREGENERICO_H
