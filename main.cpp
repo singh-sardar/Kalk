@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     v=v+v1;
     v=v-v1;
     l->setText(s);
-
+    l->setText("dododod");
 
     l->setFont(QFont("Times",20));
     l->adjustSize();
