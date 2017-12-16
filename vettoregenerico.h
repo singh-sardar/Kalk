@@ -21,7 +21,8 @@ public:
     VettoreGenerico(vector<T>);
 
 
-    T& operator [](int)const;
+    const T& operator [](int)const;
+    T& operator [](int);
     virtual void aggiungiElemento(const T&);
     T popBackElemento();
     bool cerca(const T&);
@@ -41,12 +42,7 @@ public:
      */
 };
 
-//#P
-//ritorna l' elemento i
-template <class T>
-T& VettoreGenerico<T>::operator [](int i)const{
-   return vettore[i];
-}
+
 
 //#H
 template <class T>
@@ -140,8 +136,8 @@ bool VettoreGenerico<T>::operator==(const VettoreGenerico<T>& vG) const{
         return false;
     }
     bool diverso = true;
-    for(int i=0; i < vettore.size()&& diverso; ++i){
-        if(vettore[i] != vG.vettore[i])
+    for(unsigned int i=0; i < vettore.size()&& diverso; ++i){
+        if(vettore[i] != vG[i])
             diverso = false;
     }
     return diverso;
@@ -154,5 +150,19 @@ bool VettoreGenerico<T>::operator !=(const VettoreGenerico<T>& vG) const{
     return !(*this==vG);
 }
 
+
+//#P
+//ritorna l' elemento i const
+template <class T>
+const T& VettoreGenerico<T>::operator [](int i)const{
+   return vettore[i];
+}
+
+//#H
+//ritorna l' elemento i
+template <class T>
+ T& VettoreGenerico<T>::operator [](int i){
+   return vettore[i];
+}
 
 #endif // VETTOREGENERICO_H
