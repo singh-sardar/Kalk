@@ -27,7 +27,7 @@ public:
     T popBackElemento();
     bool cerca(const T&);
     bool rimuoviElemento(const T&);
-    int getSize() const;
+    unsigned int getSize() const;
     virtual VettoreGenerico<T> operator+(const VettoreGenerico<T>&)const;
     virtual VettoreGenerico<T> operator-(const VettoreGenerico<T>&)const;
     virtual bool operator ==(const VettoreGenerico<T>&)const;
@@ -101,7 +101,7 @@ template <class T>
 VettoreGenerico<T> VettoreGenerico<T>::operator+(const VettoreGenerico<T>& vG)const{
     VettoreGenerico<T> aux;
     if(vettore.size()==vG.getSize()){
-        for(int i = 0; i < vettore.size();i++){
+        for(unsigned int i = 0; i < vettore.size();i++){
             aux.aggiungiElemento((vettore[i]+vG.vettore[i]));
         }
     }
@@ -114,7 +114,7 @@ template <class T>
 VettoreGenerico<T> VettoreGenerico<T>::operator-(const VettoreGenerico<T>& vG)const{
     VettoreGenerico<T> aux;
     if(vettore.size()==vG.getSize()){
-        for(int i = 0; i < vettore.size();i++){
+        for(unsigned int i = 0; i < vettore.size();i++){
             aux.aggiungiElemento((vettore[i]-vG.vettore[i]));
         }
     }
@@ -124,7 +124,7 @@ VettoreGenerico<T> VettoreGenerico<T>::operator-(const VettoreGenerico<T>& vG)co
 //#P
 //getSize()
 template<class T>
-int VettoreGenerico<T>::getSize() const{
+unsigned int VettoreGenerico<T>::getSize() const{
     return vettore.size();
 }
 
