@@ -16,17 +16,17 @@ class VettoreGenerico
 private:
     vector<T> vettore;
 
+protected:
+    virtual void aggiungiElemento(const T&);
+    T popBackElemento();
+    bool rimuoviElemento(const T&);
+    bool cerca(const T&);
+
 public:
     VettoreGenerico();
     VettoreGenerico(vector<T>);
-
-
     const T& operator [](int)const;
     T& operator [](int);
-    virtual void aggiungiElemento(const T&);
-    T popBackElemento();
-    bool cerca(const T&);
-    bool rimuoviElemento(const T&);
     unsigned int getSize() const;
     virtual VettoreGenerico<T> operator+(const VettoreGenerico<T>&)const;
     virtual VettoreGenerico<T> operator-(const VettoreGenerico<T>&)const;
@@ -161,7 +161,7 @@ const T& VettoreGenerico<T>::operator [](int i)const{
 //#H
 //ritorna l' elemento i
 template <class T>
- T& VettoreGenerico<T>::operator [](int i){
+T& VettoreGenerico<T>::operator [](int i){
    return vettore[i];
 }
 
