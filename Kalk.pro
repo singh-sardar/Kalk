@@ -25,11 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        kalk.cpp
+        kalk.cpp \
+    colore.cpp
 
 HEADERS += \
         kalk.h \
-    vettoregenerico.h
+    vettoregenerico.h \
+    colore.h
 
 FORMS += \
         kalk.ui

@@ -26,7 +26,11 @@ int main(int argc, char *argv[])
     v=v+v1;
     v=v-v1;
     l->setText(s);
+    //main per pardeep da qua a sotto
 
+
+
+    //main per me da qua a sotto
 
     l->setFont(QFont("Times",20));
     l->adjustSize();
@@ -34,13 +38,4 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
-/*
-v.aggiungiElemento("ciao");
-v.aggiungiElemento("hei");
-v.aggiungiElemento("wei");
-v1.aggiungiElemento(" come va");
-v1.aggiungiElemento(" stai bene");
-v1.aggiungiElemento(" dove vai");
-if(VettoreGenerico<int>(v)==v)
-    l->setText("uguali");
-*/
+
