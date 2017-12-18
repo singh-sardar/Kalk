@@ -16,15 +16,13 @@ class VettoreGenerico
 private:
     vector<T> vettore;
 
-protected:
+public:
+    VettoreGenerico();
+    VettoreGenerico(vector<T>);
     virtual void aggiungiElemento(const T&);
     T popBackElemento();
     bool rimuoviElemento(const T&);
     bool cerca(const T&);
-
-public:
-    VettoreGenerico();
-    VettoreGenerico(vector<T>);
     const T& operator [](int)const;
     T& operator [](int);
     unsigned int getSize() const;
@@ -38,6 +36,7 @@ public:
          toString();
          operator*(const VettoreGenerico&);
          operator/(const VettoreGenerico&);
+         ordinaVector();
 
      */
 };
