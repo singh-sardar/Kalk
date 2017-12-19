@@ -12,16 +12,16 @@ public:
     Colore();// rappresenta il colore nero
     Colore(int, int, int, float =1.0);
 
-    void modificaColore(int, int, int , float=1.0);
+
     void setR(int);
     void setG(int);
     void setB(int);
     void setA(float);
-    void getR(int)const;
-    void getG(int)const;
-    void getB(int)const;
-    void getA(float)const;
-
+    int getR()const;
+    int getG()const;
+    int getB()const;
+    float getA()const;
+    void modificaColore(int, int, int , float=1.0);
 
 
     bool operator==(const Colore &)const;
@@ -33,7 +33,6 @@ public:
     Colore& operator *(int);//scala le componenti del colore basandosi sul intero
     Colore complementare()const;
     Colore splitComplementare()const;
-    Colore complementare()const;
     bool Caldo();//ritorna true se il colore è un colore caldo
     int ScuroChiaro();//ritorna un intero compreso tra 0 e 255 che indica se un colore è chiaro o scuro. cosi si puo decidere se mettere il testo in bianco o nero avendo di sfondo il colore this
 
