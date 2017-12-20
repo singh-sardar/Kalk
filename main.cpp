@@ -3,6 +3,7 @@
 
 #include "vettoregenerico.h"
 #include "colore.h"
+#include "colorergb.h"
 
 #include <QLabel>
 #include <QPushButton>
@@ -38,12 +39,15 @@ int main(int argc, char *argv[])
 
 
     //main per me da qua a sotto
-    Colore myColor(255,0,0);
-    Colore myColor2(0,255,0);
-    myColor= myColor+ myColor2;
+    Colore* myColor = new ColoreRgb(255,255,0);
+    ColoreRgb myColor2(0,255,255);
+    //myColor2= *( myColor2 + *myColor);
+     //myColor2= *( myColor2 - *myColor);
+    myColor2= *( myColor2 * *myColor);
+
     QPushButton btn(&w);
     btn.setGeometry(100,100,50,50);
-    QColor c(myColor.getR(),myColor.getG(),myColor.getB());
+    QColor c(myColor2.getR(),myColor2.getG(),myColor2.getB());
     /*QPalette p;
     p.setColor(QPalette::Button,c);
     btn.setAutoFillBackground(true);
