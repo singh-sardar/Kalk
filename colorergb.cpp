@@ -145,21 +145,21 @@ void ColoreRgb::rgb2lab(double Lab[3])const{
     adapt[2] = 108.8969;
 
     //riporto il colore da scala 0 - 255 a 0 - 1.0
-    RGB[0] = PivotRgb(r /255.0);//0.392156
+    RGB[0] = PivotRgb(r /255.0);
     RGB[1] = PivotRgb(g /255.0);
     RGB[2] = PivotRgb(b /255.0);
 
     //RGB TO XYZ
-    XYZ[0] = 0.412424 * RGB[0] + 0.357579 * RGB[1] + 0.180464 * RGB[2];//0.161734
-    XYZ[1] = 0.212656 * RGB[0] + 0.715158 * RGB[1] + 0.0721856 * RGB[2];//0.08339450
-    XYZ[2] = 0.0193324 * RGB[0] + 0.119193 * RGB[1] + 0.950444 * RGB[2];//0.0758133
-//0.00170162667404
+    XYZ[0] = 0.412424 * RGB[0] + 0.357579 * RGB[1] + 0.180464 * RGB[2];
+    XYZ[1] = 0.212656 * RGB[0] + 0.715158 * RGB[1] + 0.0721856 * RGB[2];
+    XYZ[2] = 0.0193324 * RGB[0] + 0.119193 * RGB[1] + 0.950444 * RGB[2];
+
+    //LAB
     Lab[0] = 116 * pivotXYZ( XYZ[1] / adapt[1] ) - 16;
     if(Lab[0]<0)
         Lab[0]=0;
     Lab[1] = 500 * ( pivotXYZ( XYZ[0] / adapt[0] ) - pivotXYZ( XYZ[1] / adapt[1] ) );
     Lab[2] = 200 * ( pivotXYZ( XYZ[1] / adapt[1] ) - pivotXYZ( XYZ[2] / adapt[2] ) );
-  //  Lab[0]=XYZ[0];
     return;
 }
 
@@ -171,9 +171,8 @@ double ColoreRgb::pivotXYZ(double q)const
         return value;
     }
     else {
-       // value = 7.787*q + 0.137931;
         value = (903.3*q+16)/116;
-        return value;//0.1511817187
+        return value;
     }
 
 }
