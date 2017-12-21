@@ -39,11 +39,12 @@ int main(int argc, char *argv[])
 
 
     //main per me da qua a sotto
-    Colore* myColor = new ColoreRgb(255,255,0);
-    ColoreRgb myColor2(0,255,255);
+    Colore* myColor = new ColoreRgb(255,5,0);
+    ColoreRgb myColor2(114,255,0);
     //myColor2= *( myColor2 + *myColor);
      //myColor2= *( myColor2 - *myColor);
-    myColor2= *( myColor2 * *myColor);
+    //myColor2= *( myColor2 * *myColor);
+    l->setText(std::to_string(myColor2.DeltaE(*myColor)).c_str());
 
     QPushButton btn(&w);
     btn.setGeometry(100,100,50,50);

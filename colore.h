@@ -15,8 +15,8 @@ public:
     virtual Colore* operator +(const Colore&)const =0;// somma tra 2 colori se non va a buon fine ritorna colore nero
     virtual Colore* operator-(const Colore &)const =0;// differenza tra 2 colori
     virtual Colore* operator*(const Colore&)const=0;//modulazione di un colore
-    /*virtual Colore* operator/(const Colore&)=0;//modulazione di un colore
-    virtual  Colore* operator *(int)=0;//scala le componenti del colore basandosi sul intero
+    virtual double DeltaE(const Colore&)const =0;
+    /*virtual  Colore* operator *(int)=0;//scala le componenti del colore basandosi sul intero
     virtual  Colore* complementare()const=0;
     virtual Colore* splitComplementare()const=0;
     virtual bool Caldo()const=0;//ritorna true se il colore è un colore caldo

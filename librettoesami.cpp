@@ -17,20 +17,20 @@ LibrettoEsami LibrettoEsami::operator+(const LibrettoEsami& l) const{
 }
 
 LibrettoEsami& LibrettoEsami::operator +=(const LibrettoEsami& l){
-    auto cit= vettore.begin();
+   /* auto cit= vettore.begin();
     for(; cit != l.vettore.end(); ++cit){
         //if(!cerca(*cit))
             aggiungiElemento(*cit);
-    }
+    }*/
     return *this;
 }
 
 LibrettoEsami LibrettoEsami::operator-(const LibrettoEsami& l) const{
     LibrettoEsami aux;
-    auto cit= l.vettore.begin();
+   /* auto cit= l.vettore.begin();
     for(; cit != l.vettore.end(); ++cit){
         //if(cerca(*cit))
             aux.rimuoviElemento(*cit);
-    }
+    }*/
     return aux;
 }

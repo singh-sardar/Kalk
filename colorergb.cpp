@@ -115,3 +115,69 @@ ColoreRgb* ColoreRgb::operator *(const Colore& c)const{
     return aux;
 }
 
+//calcola DeltaE tra 2 colori ovvero controlla quanto essi si assomigliano un valore sotto al 3% non  è molto percettibile al occhio umano
+double ColoreRgb::DeltaE(const Colore& c1)const{ // se la conversione fallisce ritorna -1
+    const ColoreRgb* crgb1 = dynamic_cast<const ColoreRgb*>(&c1);
+    if(crgb1){
+            double deltaE;
+            double Lab1[3], Lab2[3];
+
+            rgb2lab(Lab1);
+            crgb1->rgb2lab(Lab2);
+
+            deltaE= sqrt(pow(Lab2[0]-Lab1[0],2) + pow(Lab2[1]-Lab1[1],2) +pow(Lab2[2]-Lab1[2],2));
+            return deltaE;
+
+    }else
+        return -1;
+}
+
+
+void ColoreRgb::rgb2lab(double Lab[3])const{
+
+    double RGB[3];
+    double XYZ[3];
+    double adapt[3];
+
+    //riferimenti del bianco
+    adapt[0] = 95.0467;
+    adapt[1] = 100.0000;
+    adapt[2] = 108.8969;
+
+    //riporto il colore da scala 0 - 255 a 0 - 1.0
+    RGB[0] = PivotRgb(r /255.0);//0.392156
+    RGB[1] = PivotRgb(g /255.0);
+    RGB[2] = PivotRgb(b /255.0);
+
+    //RGB TO XYZ
+    XYZ[0] = 0.412424 * RGB[0] + 0.357579 * RGB[1] + 0.180464 * RGB[2];//0.161734
+    XYZ[1] = 0.212656 * RGB[0] + 0.715158 * RGB[1] + 0.0721856 * RGB[2];//0.08339450
+    XYZ[2] = 0.0193324 * RGB[0] + 0.119193 * RGB[1] + 0.950444 * RGB[2];//0.0758133
+//0.00170162667404
+    Lab[0] = 116 * pivotXYZ( XYZ[1] / adapt[1] ) - 16;
+    if(Lab[0]<0)
+        Lab[0]=0;
+    Lab[1] = 500 * ( pivotXYZ( XYZ[0] / adapt[0] ) - pivotXYZ( XYZ[1] / adapt[1] ) );
+    Lab[2] = 200 * ( pivotXYZ( XYZ[1] / adapt[1] ) - pivotXYZ( XYZ[2] / adapt[2] ) );
+  //  Lab[0]=XYZ[0];
+    return;
+}
+
+double ColoreRgb::pivotXYZ(double q)const
+{
+    double value;
+    if ( q > 0.008856 ) {
+        value = pow ( q, 0.333333 );
+        return value;
+    }
+    else {
+       // value = 7.787*q + 0.137931;
+        value = (903.3*q+16)/116;
+        return value;//0.1511817187
+    }
+
+}
+double ColoreRgb::PivotRgb(double n)const
+{
+    return (n > 0.04045 ? pow((n + 0.055) / 1.055, 2.4) : n / 12.92) * 100.0;
+}
