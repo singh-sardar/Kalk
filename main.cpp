@@ -5,6 +5,8 @@
 #include "colore.h"
 #include "colorergb.h"
 
+#include "librettoesami.h"
+
 #include <QLabel>
 #include <QPushButton>
 #include <QColor>
@@ -20,9 +22,21 @@ int main(int argc, char *argv[])
     kalk w;
     QLabel* l= new QLabel(&w);
 
+
+    /*
     VettoreGenerico<int> v,v1;
+    VettoreGenerico<int>* v3 = new VettoreGenerico<int>();
+    */
+    /*
+    LibrettoEsami le("nome","cognome",12345,180,60), *le2;
+    le2 = new LibrettoEsami("nome","cognome",12345,180,60);
+    le.aggiungiElemento(Esame());
+    le2->aggiungiElemento(Esame(1,18,"a","b","c"));
+    le = *(le + *le2);
+    */
     const char* s ;
 
+    /*
     v.aggiungiElemento(1);
     v.aggiungiElemento(2);
     v.aggiungiElemento(3);
@@ -30,28 +44,20 @@ int main(int argc, char *argv[])
     v1.aggiungiElemento(5);
     v1.aggiungiElemento(6);
     s=std::to_string(v[0]).c_str();
-    v=v+v1;
-    v=v-v1;
+    v3=(v + v1);
+    v=*(v - v1);
     l->setText(s);
-
+    */
     //main per pardeep da qua a sotto
 
 
 
     //main per me da qua a sotto
-    Colore* myColor = new ColoreRgb(255,5,0);
-    ColoreRgb myColor2(250,100,100);
-    double HSL[3];
-    string str;
-
+    Colore* myColor = new ColoreRgb(255,255,0);
+    ColoreRgb myColor2(0,255,255);
     //myColor2= *( myColor2 + *myColor);
-    //myColor2= *( myColor2 - *myColor);
-    //myColor2= *( myColor2 * *myColor);
-    //  myColor2= *(myColor2* 0.5);
-    //  l->setText(std::to_string(myColor2.DeltaE(*myColor)).c_str());
-    myColor2.rgb2hsl(HSL);
-    str="hsl("+to_string(HSL[0])+","+to_string(HSL[1])+","+to_string(HSL[2])+")";
-    l->setText(str.c_str());
+     //myColor2= *( myColor2 - *myColor);
+    myColor2= *( myColor2 * *myColor);
 
     QPushButton btn(&w);
     btn.setGeometry(100,100,50,50);

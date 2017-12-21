@@ -2,7 +2,14 @@
 
 using std::string;
 
-Esame::Esame(int c, int v,string nomeM,string nomeC, string nomeP): CFU(c>=1?c:1), voto(v>=18?v:18), nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP)
+Esame::Esame(int c,int v,string nomeM,string nomeC,string nomeP):
+    Esame(Data(),c,v,nomeM,nomeC,nomeP)
+{
+
+}
+
+Esame::Esame(const Data& d,int c, int v,string nomeM,string nomeC, string nomeP):
+    data(d),CFU(c>=1?c:1), voto(v>=18?v:18), nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP)
 {
     lode = (voto > 30) ? true : false;
 }

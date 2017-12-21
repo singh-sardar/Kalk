@@ -2,6 +2,7 @@
 #define ESAME_H
 
 #include <string>
+#include "data.h"
 
 using std::string;
 
@@ -13,9 +14,11 @@ private:
     string nomeMateria;
     string nomeCorso;
     string nomeProfessore;
+    Data data;
 
 public:
     Esame(int c=1,int v=18,string nomeM="",string nomeC="",string nomeP="");
+    Esame(const Data&,int c=1,int v=18,string nomeM="",string nomeC="",string nomeP="");
     string getNomeCorso() const;
     string getNomeMateria() const;
     string getNomeProfessore() const;
