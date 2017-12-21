@@ -13,7 +13,7 @@ using std::find;
 template <class T>
 class VettoreGenerico
 {
-protected:
+private:
     vector<T> vettore;
 
 public:
