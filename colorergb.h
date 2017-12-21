@@ -9,8 +9,11 @@ private:
     int r, g, b; //rappresentano un colore in formato red, green,blue
     float a; //alpha compreso tra 0.0 e 1.0
 
-    double pivotXYZ(double)const;//funzione di utilita per rgb2lab
-    double PivotRgb(double)const;
+    double static pivotXYZ(double);//funzione di utilita per rgb2lab
+    double static PivotRgb(double);
+    double static Min(double,double);
+    double static Max(double,double);
+
 public:
     ColoreRgb();// rappresenta il colore nero
     ColoreRgb(int, int, int, float =1.0);
@@ -32,9 +35,11 @@ public:
     ColoreRgb* operator +(const Colore&)const;// somma tra 2 colori
     ColoreRgb* operator-(const Colore &)const;// differenza tra 2 colori
     ColoreRgb* operator*(const Colore&)const;//modulazione di un colore
-    ColoreRgb* operator *(int);//scala le componenti del colore basandosi sul intero
+    ColoreRgb* operator *(double);//scala le componenti del colore basandosi sul parametro
     double DeltaE(const Colore&)const;//calcola il delta E tra due colori
     void rgb2lab(double [3])const; //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
+    void rgb2hsl(double [3])const;
+
     ColoreRgb* complementare()const;
     ColoreRgb* splitComplementare()const;
     bool Caldo()const;//ritorna true se il colore è un colore caldo

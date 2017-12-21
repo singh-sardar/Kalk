@@ -115,18 +115,32 @@ ColoreRgb* ColoreRgb::operator *(const Colore& c)const{
     return aux;
 }
 
+ColoreRgb* ColoreRgb::operator *(double s){//scala le componenti del colore basandosi sul parametro
+    ColoreRgb* aux = new ColoreRgb(r,g,b,a);
+    if(r*s>0 && r*s<255){
+        aux->setR(r*s);
+    }
+    if(g*s>0 && g*s<255){
+        aux->setG(g*s);
+    }
+    if(b*s>0 && b*s<255){
+        aux->setB(b*s);
+    }
+    return aux;
+
+}
 //calcola DeltaE tra 2 colori ovvero controlla quanto essi si assomigliano un valore sotto al 3% non  è molto percettibile al occhio umano
 double ColoreRgb::DeltaE(const Colore& c1)const{ // se la conversione fallisce ritorna -1
     const ColoreRgb* crgb1 = dynamic_cast<const ColoreRgb*>(&c1);
     if(crgb1){
-            double deltaE;
-            double Lab1[3], Lab2[3];
+        double deltaE;
+        double Lab1[3], Lab2[3];
 
-            rgb2lab(Lab1);
-            crgb1->rgb2lab(Lab2);
+        rgb2lab(Lab1);
+        crgb1->rgb2lab(Lab2);
 
-            deltaE= sqrt(pow(Lab2[0]-Lab1[0],2) + pow(Lab2[1]-Lab1[1],2) +pow(Lab2[2]-Lab1[2],2));
-            return deltaE;
+        deltaE= sqrt(pow(Lab2[0]-Lab1[0],2) + pow(Lab2[1]-Lab1[1],2) +pow(Lab2[2]-Lab1[2],2));
+        return deltaE;
 
     }else
         return -1;
@@ -163,7 +177,7 @@ void ColoreRgb::rgb2lab(double Lab[3])const{
     return;
 }
 
-double ColoreRgb::pivotXYZ(double q)const
+double ColoreRgb::pivotXYZ(double q)
 {
     double value;
     if ( q > 0.008856 ) {
@@ -176,7 +190,69 @@ double ColoreRgb::pivotXYZ(double q)const
     }
 
 }
-double ColoreRgb::PivotRgb(double n)const
+double ColoreRgb::PivotRgb(double n)
 {
     return (n > 0.04045 ? pow((n + 0.055) / 1.055, 2.4) : n / 12.92) * 100.0;
+}
+
+
+
+void ColoreRgb::rgb2hsl(double HSL[3])const{
+    //IL CASO DA SISTEMARE E' Quello in esecuzione
+    //DEVO CONTROLLARE SE HSL MEGLIO RITORNARE IN DOUBLE O INT
+    double RGB[3];
+    RGB[0] = r /255.0;
+    RGB[1] = g /255.0;
+    RGB[2] = b /255.0;
+
+
+    double min = Min(Min(RGB[0], RGB[1]), RGB[2]);
+    double max = Max(Max(RGB[0], RGB[1]), RGB[2]);
+    double delta = max - min;
+
+
+    HSL[2] = (max + min) / 2.0;
+
+    if (delta == 0.0)
+    {
+        HSL[0] = 0.0;
+        HSL[1] = 0.0;
+    }
+    else
+    {
+        HSL[1] = (HSL[2] <= 0.5) ? (delta / (max + min)) : (delta / (2.0 - max + min));
+
+        double hue;
+
+        if (RGB[0] == max)
+        {
+            hue = ((RGB[1] - RGB[2]) / 6.0) / delta;
+        }
+        else if (RGB[1] == max)
+        {
+            hue = (1.0 / 3.0) + ((RGB[2] - RGB[0]) / 6.0) / delta;
+        }
+        else
+        {
+            hue = (2.0 / 3.0) + ((RGB[0] - RGB[1]) / 6.0) / delta;
+        }
+
+        if (hue < 0.0)
+            hue += 1;
+        if (hue > 1.0)
+            hue -= 1;
+
+        HSL[0] =(hue  *360);
+        HSL[1]= HSL[1]*100;
+        HSL[2]= HSL[2]*100;
+
+    }
+    return;
+}
+
+double  ColoreRgb::Min(double a ,double b){
+    return a<b ? a:b;
+}
+double  ColoreRgb::Max(double a,double b){
+    return a>b ? a:b;
 }
