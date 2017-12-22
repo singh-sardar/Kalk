@@ -29,7 +29,8 @@ SOURCES += \
     colorergb.cpp \
     librettoesami.cpp \
     esame.cpp \
-    data.cpp
+    data.cpp \
+    colore.cpp
 
 HEADERS += \
         kalk.h \

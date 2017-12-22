@@ -51,17 +51,25 @@ int main(int argc, char *argv[])
     //main per pardeep da qua a sotto
 
 
-
+//0.3024
     //main per me da qua a sotto
     Colore* myColor = new ColoreRgb(255,5,0);
     ColoreRgb myColor2(100,255  ,100);
+    //uttilizzo delle operazioni della classe
     //myColor2= *( myColor2 + *myColor);
     //myColor2= *( myColor2 - *myColor);
     //myColor2= *( myColor2 * *myColor);
     //l->setText(std::to_string(myColor2.DeltaE(*myColor)).c_str());
-    double HSL[3];
-    myColor2.rgb2hsl(HSL);
-    string str= "hsl("+to_string(HSL[0])+","+to_string(HSL[1])+","+to_string(HSL[2])+")";
+    // myColor2.rgb2hsl(HSL);
+    // string str= "hsl("+to_string(HSL[0])+","+to_string(HSL[1])+","+to_string(HSL[2])+")";
+
+    double HSL[3]{344,56,12};
+    int RGB[3];
+    Colore::hsl2rgb(HSL,RGB);
+    myColor2.setR(RGB[0]);
+    myColor2.setG(RGB[1]);
+    myColor2.setB(RGB[2]);
+    string str= "rgb("+to_string(RGB[0])+","+to_string(RGB[1])+","+to_string(RGB[2])+")";
     l->setText(str.c_str());
 
 

@@ -1,14 +1,19 @@
 #ifndef COLORE_H
 #define COLORE_H
 #include <string>
+#include <math.h>
 using std::string;
 using std::to_string;
 class Colore
 {
+private:
 
+    double static abs(double);
 
 public:
 
+
+    void static hsl2rgb(double[3],int[3]);//funzione di classe che converte hsl to rgb. implmentata di classe perche non si è deciso di implementare la classe ColoreHsl che rappresenta i colori in hsl
 
     virtual bool operator==(const Colore &)const =0;
     virtual bool operator !=(const Colore &)const =0;
