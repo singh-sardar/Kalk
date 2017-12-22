@@ -53,11 +53,17 @@ int main(int argc, char *argv[])
 
 
     //main per me da qua a sotto
-    Colore* myColor = new ColoreRgb(255,255,0);
-    ColoreRgb myColor2(0,255,255);
+    Colore* myColor = new ColoreRgb(255,5,0);
+    ColoreRgb myColor2(100,255  ,100);
     //myColor2= *( myColor2 + *myColor);
-     //myColor2= *( myColor2 - *myColor);
-    myColor2= *( myColor2 * *myColor);
+    //myColor2= *( myColor2 - *myColor);
+    //myColor2= *( myColor2 * *myColor);
+    //l->setText(std::to_string(myColor2.DeltaE(*myColor)).c_str());
+    double HSL[3];
+    myColor2.rgb2hsl(HSL);
+    string str= "hsl("+to_string(HSL[0])+","+to_string(HSL[1])+","+to_string(HSL[2])+")";
+    l->setText(str.c_str());
+
 
     QPushButton btn(&w);
     btn.setGeometry(100,100,50,50);

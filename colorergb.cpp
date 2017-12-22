@@ -198,32 +198,32 @@ double ColoreRgb::PivotRgb(double n)
 
 
 void ColoreRgb::rgb2hsl(double HSL[3])const{
-    //IL CASO DA SISTEMARE E' Quello in esecuzione
-    //DEVO CONTROLLARE SE HSL MEGLIO RITORNARE IN DOUBLE O INT
     double RGB[3];
+    //Portare RGB in ranga tra 0 -1.0
     RGB[0] = r /255.0;
     RGB[1] = g /255.0;
     RGB[2] = b /255.0;
 
-
+    //calcolo del min e max e del delta
     double min = Min(Min(RGB[0], RGB[1]), RGB[2]);
     double max = Max(Max(RGB[0], RGB[1]), RGB[2]);
     double delta = max - min;
 
-
+    //calcolo del L
     HSL[2] = (max + min) / 2.0;
 
     if (delta == 0.0)
-    {
+    {   //in caso di delta = 0 => H = S = 0
         HSL[0] = 0.0;
         HSL[1] = 0.0;
     }
     else
     {
-        HSL[1] = (HSL[2] <= 0.5) ? (delta / (max + min)) : (delta / (2.0 - max + min));
+      //Formula di calcolo DEL S se delta !=0
+        HSL[1] = ((2*HSL[2]) >=1.0) ? (delta / (1.0 -(2.0*HSL[2]-1.0))) : (delta / (1.0 +(2.0*HSL[2]-1.0)));
 
         double hue;
-
+        //Calcolo del H
         if (RGB[0] == max)
         {
             hue = ((RGB[1] - RGB[2]) / 6.0) / delta;
@@ -243,10 +243,10 @@ void ColoreRgb::rgb2hsl(double HSL[3])const{
             hue -= 1;
 
         HSL[0] =(hue  *360);
-        HSL[1]= HSL[1]*100;
-        HSL[2]= HSL[2]*100;
-
     }
+    //trasformazione in precentuale di SL
+    HSL[1]= HSL[1]*100;
+    HSL[2]= HSL[2]*100;
     return;
 }
 
