@@ -2,7 +2,10 @@
 #define COLORERGB_H
 #include "colore.h"
 #include <math.h>
+#include <string>
+#include <stdlib.h>
 
+using std::string;
 class ColoreRgb:public Colore
 {
 private:
@@ -37,40 +40,18 @@ public:
     ColoreRgb* operator*(const Colore&)const;//modulazione di un colore
     ColoreRgb* operator *(double);//scala le componenti del colore basandosi sul parametro
     double DeltaE(const Colore&)const;//calcola il delta E tra due colori
-    void rgb2lab(double [3])const; //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
-    void rgb2hsl(double [3])const;
-
     ColoreRgb* complementare()const;
-    ColoreRgb* splitComplementare()const;
-    bool Caldo()const;//ritorna true se il colore è un colore caldo
-    int ScuroChiaro()const;//ritorna un intero compreso tra 0 e 255 che indica se un colore è chiaro o scuro. cosi si puo decidere se mettere il testo in bianco o nero avendo di sfondo il colore this
+    bool coloreCaldo()const;//ritorna true se il colore è un colore caldo
+    ColoreRgb* luminositaColore()const;//ritorna un intero compreso tra 0 e 255 che indica la scala in grigio del colore
     string schemaColore()const;
 
+    void rgb2lab(double [3])const; //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
+    void rgb2hsl(double [3])const;
+    string rgb2hex()const;
 
-    //colore analogo To search
 
-    //Decidere se mettere le conversioni da rgba a hex/hsl come metodi o come classi derivate
 
 };
 
 #endif // COLORERGB_H
-/*
-  LONG = B * 65536 + G * 256 + R
 
-              0            0      255
-              255*256
-              65.280
-
-
-              65025 è totale
-
-
-
-
-'Convert LONG to RGB:
- B = LONG \ 65536====0
- G = (LONG - B * 65536) \ 256== 254
- R = LONG - B * 65536 - G * 256   1
-
-
- * */

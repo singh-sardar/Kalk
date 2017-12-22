@@ -256,3 +256,56 @@ double  ColoreRgb::Min(double a ,double b){
 double  ColoreRgb::Max(double a,double b){
     return a>b ? a:b;
 }
+
+ColoreRgb* ColoreRgb::complementare()const{
+    ColoreRgb* aux = new ColoreRgb();
+    double HSL[3];
+    int RGB[3];
+    rgb2hsl(HSL);
+    HSL[0]+=180;
+    HSL[0]=fmod(HSL[0],400);
+    hsl2rgb(HSL,RGB);
+    aux->setR(RGB[0]);
+    aux->setG(RGB[1]);
+    aux->setB(RGB[2]);
+
+    return aux;
+}
+
+
+ColoreRgb*  ColoreRgb::luminositaColore()const{
+    int value=sqrt(r * r* 0.241 + g * g * 0.691 + b * b * 0.068);
+    return new ColoreRgb(value,value,value);
+}
+
+bool ColoreRgb::coloreCaldo()const{
+    return r>b;
+}
+
+
+string ColoreRgb::rgb2hex()const{
+    string s= "#";
+    char tmp[2];
+    itoa(r,tmp,16);
+    s+= tmp;
+    if(s.length()==2){
+        s="#0";
+                s+=tmp;
+    }
+    itoa(g,tmp,16);
+    s+= tmp;
+    if(s.length()==4){
+        s+='0';
+        s[4]= s[3];
+        s[3]='0';
+    }
+
+    itoa(b,tmp,16);
+    s+= tmp;
+    if(s.length()==6){
+        s+='0';
+        s[6]= s[5];
+        s[5]='0';
+    }
+    return s;
+}
