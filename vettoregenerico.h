@@ -3,10 +3,13 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iostream>
 
 using std::vector;
 using std::string;
 using std::find;
+using std::ostream;
+using std::endl;
 /*
  * classe base rappresentante un vettore generico di tipo T
  * */
@@ -27,9 +30,9 @@ public:
     T& operator [](int);
     unsigned int getSize() const;
     virtual VettoreGenerico<T>* operator+(const VettoreGenerico<T>&) const;
-    virtual VettoreGenerico<T>* operator+=(const VettoreGenerico<T>&) ;
+    virtual VettoreGenerico<T>& operator+=(const VettoreGenerico<T>&) ;
     virtual VettoreGenerico<T>* operator-(const VettoreGenerico<T>&) const;
-    virtual VettoreGenerico<T>* operator-=(const VettoreGenerico<T>&);
+    virtual VettoreGenerico<T>& operator-=(const VettoreGenerico<T>&);
     virtual bool operator ==(const VettoreGenerico<T>&)const;
     virtual bool operator !=(const VettoreGenerico<T>&)const;
     virtual ~VettoreGenerico();
@@ -43,7 +46,13 @@ public:
      */
 };
 
-
+template <class T>
+ostream& operator<<(ostream& os, const VettoreGenerico<T>& vG){
+    for(unsigned int i=0; i < vG.getSize(); ++i){
+        os << vG[i] << endl;
+    }
+    return os;
+}
 
 //#H
 template <class T>
@@ -108,42 +117,42 @@ VettoreGenerico<T>* VettoreGenerico<T>::operator+(const VettoreGenerico<T>& vG)c
     }
     return aux;
     */
-    VettoreGenerico<T>* aux = new VettoreGenerico<T>();
-    aux = *aux + vG;
-    return aux;
+    VettoreGenerico aux = VettoreGenerico(*this);
+    aux += vG;
+    return new VettoreGenerico(aux);
 }
 
 //#P
 //esegue la assegnazione al vettore in seguito alla somma degli elementi di un altro vettore
 template <class T>
-VettoreGenerico<T>* VettoreGenerico<T>::operator +=(const VettoreGenerico<T>& vG){
+VettoreGenerico<T>& VettoreGenerico<T>::operator +=(const VettoreGenerico<T>& vG){
     if(vettore.size()==vG.getSize()){
         for(unsigned int i = 0; i < vettore.size();i++){
             //aggiungiElemento(vettore[i]+vG.vettore[i]);
 
-            //vettore[i] = vettore[i] + vG.vettore[i];
+            //vettore[i] = vettore[i] + vG[i];
         }
     }
-    return this;
+    return *this;
 }
 
 //#H
 //sottrae 2 vettori e ritorna un terzo vettore che contiene la differenza elemento per elemento. se i due vettori hanno lunghezza differente ritorna un vettore vuoto
 template <class T>
 VettoreGenerico<T>* VettoreGenerico<T>::operator-(const VettoreGenerico<T>& vG)const{
-    VettoreGenerico<T>* aux = new VettoreGenerico<T>();
-    aux = *aux - vG;
-    return aux;
+    VettoreGenerico aux = VettoreGenerico(*this);
+    aux -= vG;
+    return new VettoreGenerico(aux);
 }
 
 template <class T>
-VettoreGenerico<T>* VettoreGenerico<T>::operator-=(const VettoreGenerico<T>& vG){
+VettoreGenerico<T>& VettoreGenerico<T>::operator-=(const VettoreGenerico<T>& vG){
     if(vettore.size()==vG.getSize()){
         for(unsigned int i = 0; i < vettore.size();i++){
-            //vettore[i] = vettore[i] - vG.vettore[i];
+            //vettore[i] = vettore[i] - vG[i];
         }
     }
-    return this;
+    return *this;
 }
 
 //#P

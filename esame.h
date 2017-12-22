@@ -25,8 +25,11 @@ public:
     int getVoto() const;
     bool getLode() const;
     int getCFU() const;
+    Data ottieniData() const;
     bool operator ==(const Esame&) const;
     bool operator !=(const Esame&) const;
 };
+
+ostream& operator<<(ostream&, const Esame&);
 
 #endif // ESAME_H

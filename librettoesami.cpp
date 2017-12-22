@@ -1,13 +1,24 @@
 #include "librettoesami.h"
 
+using std::endl;
 using std::string;
 
 /*
  * Costruttore
  */
 //LibrettoEsami::LibrettoEsami(): VettoreGenerico(){}
-LibrettoEsami::LibrettoEsami(string nomeS,string cognomeS, unsigned int matricolaS, unsigned int targCFU, unsigned int totCFU):
-    nomeStudente(nomeS), cognomeStudente(cognomeS), matricolaStudente(matricolaS), targetCFU(targCFU), totaleCFU(totCFU){}
+LibrettoEsami::LibrettoEsami(string nomeS,string cognomeS, unsigned int matricolaS, unsigned int targCFU):
+    nomeStudente(nomeS), cognomeStudente(cognomeS), matricolaStudente(matricolaS), targetCFU(targCFU), totaleCFU(0){}
+
+void LibrettoEsami::aggiungiElemento(const Esame& e){
+    VettoreGenerico::aggiungiElemento(e);
+    totaleCFU += e.getCFU();
+}
+
+bool LibrettoEsami::rimuoviElemento(const Esame& e){
+    totaleCFU -= e.getCFU();
+    return VettoreGenerico::rimuoviElemento(e);
+}
 
 //Ritorna i CFU per completare il percorso di studi
 unsigned int LibrettoEsami::getTargetCFU() const{
@@ -58,7 +69,7 @@ double LibrettoEsami::mediaPonderata() const{
         esameTemp = this->operator [](i);
         votoTemp += esameTemp.getVoto() * esameTemp.getCFU();
     }
-    return votoTemp/i;
+    return votoTemp/getTotaleCFU();
 }
 
 Esame LibrettoEsami::esameMigliore() const{
@@ -87,30 +98,102 @@ Esame LibrettoEsami::esamePeggiore() const{
     return esamePeggiore;
 }
 
-LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& l) const{
-    LibrettoEsami* aux = new LibrettoEsami();
-    aux = *aux + l;
-    return aux;
+Esame LibrettoEsami::esameMenoRecente() const{
+    Esame esameTemp, esameMenoRecente;
+    if(getSize() >= 1)
+        esameMenoRecente = operator [](0);
+
+    for(unsigned int i=0; i < getSize(); ++i){
+        esameTemp = this->operator [](i);
+        if(esameTemp.ottieniData() < esameMenoRecente.ottieniData())
+            esameMenoRecente = esameTemp;
+    }
+    return esameMenoRecente;
 }
 
-LibrettoEsami* LibrettoEsami::operator +=(const VettoreGenerico<Esame>& l){
-    for(unsigned int i = l.getSize(); i != l.getSize(); ++i){
-        if(!cerca(this->operator [](i)))
-            aggiungiElemento(l[i]);
+Esame LibrettoEsami::esamePiuRecente() const{
+    Esame esameTemp, esamePiuRecente;
+    if(getSize() >= 1)
+        esamePiuRecente = operator [](0);
+
+    for(unsigned int i=0; i < getSize(); ++i){
+        esameTemp = this->operator [](i);
+        if(esameTemp.ottieniData() > esamePiuRecente.ottieniData())
+            esamePiuRecente = esameTemp;
     }
-    return this;
+    return esamePiuRecente;
+}
+
+LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& l) const{
+    LibrettoEsami aux = LibrettoEsami(*this);
+    aux += l;
+    return new LibrettoEsami(aux);
+}
+
+LibrettoEsami& LibrettoEsami::operator +=(const VettoreGenerico<Esame>& l){
+    for(unsigned int i = 0; i != l.getSize(); ++i){
+        if(!cerca(l[i])){
+            aggiungiElemento(l[i]);
+        }
+    }
+    return *this;
+}
+
+LibrettoEsami* LibrettoEsami::operator +(const Esame& e) const{
+    LibrettoEsami aux = LibrettoEsami(*this);
+    aux += e;
+    return new LibrettoEsami(aux);
+}
+
+LibrettoEsami* operator+(const Esame& e, const LibrettoEsami& l){
+    return l.operator +(e);
+}
+
+LibrettoEsami* operator-(const Esame& e, const LibrettoEsami& l){
+    return l.operator -(e);
+}
+
+LibrettoEsami& LibrettoEsami::operator +=(const Esame& e){
+    if(!cerca(e)){
+        aggiungiElemento(e);
+    }
+    return *this;
+}
+
+LibrettoEsami* LibrettoEsami::operator -(const Esame& e) const{
+    LibrettoEsami aux = LibrettoEsami(*this);
+    aux -= e;
+    return new LibrettoEsami(aux);
+}
+
+LibrettoEsami& LibrettoEsami::operator -=(const Esame& e){
+    if(cerca(e)){
+        rimuoviElemento(e);
+    }
+    return *this;
 }
 
 LibrettoEsami* LibrettoEsami::operator-(const VettoreGenerico<Esame>& l) const{
-    LibrettoEsami* aux = new LibrettoEsami();
-    aux = *aux - l;
-    return aux;
+    LibrettoEsami aux = LibrettoEsami(*this);
+    aux -= l;
+    return new LibrettoEsami(aux);
 }
 
-LibrettoEsami* LibrettoEsami::operator -=(const VettoreGenerico<Esame>& l){
-    for(unsigned int i = l.getSize(); i != l.getSize(); ++i){
-        if(cerca(this->operator [](i)))
+LibrettoEsami& LibrettoEsami::operator -=(const VettoreGenerico<Esame>& l){
+    for(unsigned int i = 0; i != l.getSize(); ++i){
+        if(cerca(operator [](i))){
             rimuoviElemento(l[i]);
+        }
     }
-    return this;
+    return *this;
+}
+
+ostream& operator <<(ostream& os, const LibrettoEsami& l){
+    os << "\nMatricola studente: " << l.getMatricola() << endl;
+    for(unsigned int i=0; i < l.getSize(); ++i){
+         os << " - Esame numero " << i+1 << " - " << endl;
+         os << l[i];
+    }
+    os << "\n";
+    return os;
 }

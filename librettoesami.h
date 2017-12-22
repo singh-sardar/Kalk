@@ -14,11 +14,17 @@ private:
     unsigned int totaleCFU;  //rappresenta i CFU acquisiti
 
 public:
-    LibrettoEsami(string nomeS="",string cognomeS="",unsigned int matricolaS=0, unsigned int targCFU=0, unsigned int totCFU=0);
+    LibrettoEsami(string nomeS="",string cognomeS="",unsigned int matricolaS=0, unsigned int targCFU=0);
+    void aggiungiElemento(const Esame&) override;
+    bool rimuoviElemento(const Esame&);
     LibrettoEsami* operator+(const VettoreGenerico<Esame>&) const override;
+    LibrettoEsami* operator +(const Esame&) const;
     LibrettoEsami* operator-(const VettoreGenerico<Esame>&) const override;
-    LibrettoEsami* operator+=(const VettoreGenerico<Esame>&) override;
-    LibrettoEsami* operator-=(const VettoreGenerico<Esame>&) override;
+    LibrettoEsami* operator -(const Esame&) const;
+    LibrettoEsami& operator+=(const VettoreGenerico<Esame>&) override;
+    LibrettoEsami& operator +=(const Esame&);
+    LibrettoEsami& operator-=(const VettoreGenerico<Esame>&) override;
+    LibrettoEsami& operator -=(const Esame&);
     double percentualeCompletamento() const;//ritorna la percentuale di completamento degli studi
     unsigned int rimanentiCFU() const;
     double mediaAritmetica() const;
@@ -26,6 +32,8 @@ public:
     double previsioneVotoLaurea() const;
     Esame esameMigliore() const; //ritorna l'esame col risultato migliore
     Esame esamePeggiore() const; //ritorna l'esame col risultato peggiore
+    Esame esamePiuRecente() const;//ritorna l'esame che è stato svolto più recentemente
+    Esame esameMenoRecente() const;//ritorna l'esame che è stato svolto meno recentemente
     unsigned int getTargetCFU() const;
     unsigned int getTotaleCFU() const;
     unsigned int getMatricola() const;
@@ -33,5 +41,8 @@ public:
     string getCognomeStudente() const;
 };
 
+ostream& operator <<(ostream&, const LibrettoEsami&);
+LibrettoEsami* operator+(const Esame&, const LibrettoEsami&);
+LibrettoEsami* operator-(const Esame&, const LibrettoEsami&);
 
 #endif // LIBRETTOESAMI_H

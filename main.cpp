@@ -23,20 +23,31 @@ int main(int argc, char *argv[])
     QLabel* l= new QLabel(&w);
 
 
-    /*
     VettoreGenerico<int> v,v1;
     VettoreGenerico<int>* v3 = new VettoreGenerico<int>();
-    */
-    /*
-    LibrettoEsami le("nome","cognome",12345,180,60), *le2;
-    le2 = new LibrettoEsami("nome","cognome",12345,180,60);
+
+    LibrettoEsami le("nome","cognome",12345,180), *le2, le3;
+    le2 = new LibrettoEsami("nome","cognome",12345,180);
     le.aggiungiElemento(Esame());
-    le2->aggiungiElemento(Esame(1,18,"a","b","c"));
-    le = *(le + *le2);
-    */
+    le.aggiungiElemento(Esame(12,31,"Analisi","Informatica", "Sartori"));
+    le3.aggiungiElemento(Esame(1,18,"a","b","c"));
+    //le2->aggiungiElemento(Esame());
+    //le2->aggiungiElemento(Esame(12,31,"Analisi","Informatica", "Sartori"));
+    //le2->aggiungiElemento(Esame(1,18,"a","b","c"));
+    //le = *(le + *le2);
+    //le = *(le3 + le);
+    //le = *(le + le3);
+    le += le3;
+    //cout << le << endl;
+    //le = *(le - le3);
+    le -= le3;
+    le = *(Esame() + le);
+    //le = *(Esame() - le);
+    //cout << le << endl;
+    //cout << le.mediaPonderata() << endl;
+    //cout << le.previsioneVotoLaurea() << endl;
     const char* s ;
 
-    /*
     v.aggiungiElemento(1);
     v.aggiungiElemento(2);
     v.aggiungiElemento(3);
@@ -47,7 +58,7 @@ int main(int argc, char *argv[])
     v3=(v + v1);
     v=*(v - v1);
     l->setText(s);
-    */
+
     //main per pardeep da qua a sotto
 
 
