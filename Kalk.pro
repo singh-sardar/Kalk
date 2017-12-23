@@ -30,7 +30,8 @@ SOURCES += \
     librettoesami.cpp \
     esame.cpp \
     data.cpp \
-    colore.cpp
+    colore.cpp \
+    ingrediente.cpp
 
 HEADERS += \
         kalk.h \
@@ -39,7 +40,8 @@ HEADERS += \
     colorergb.h \
     esame.h \
     librettoesami.h \
-    data.h
+    data.h \
+    ingrediente.h
 
 FORMS += \
         kalk.ui

@@ -4,7 +4,6 @@
 #include "vettoregenerico.h"
 #include "colore.h"
 #include "colorergb.h"
-
 #include "librettoesami.h"
 
 #include <QLabel>
