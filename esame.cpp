@@ -62,3 +62,11 @@ ostream& operator<<(ostream& os, const Esame& d){
     os << "Nome Corso: " << d.getNomeCorso() << endl;
     return os;
 }
+
+//E' sommare 2 esami significa sommare 2 voti e sommare 2 voti è come fare la loro media.
+Esame Esame::operator+(const Esame& e)const{
+    Esame tmp(*this);
+    if(nomeMateria == e.getNomeMateria() && nomeCorso == e.getNomeCorso() && nomeProfessore == e.getNomeProfessore() && data== e.data){
+        tmp.voto = (voto+e.getVoto())/2;
+    }
+}

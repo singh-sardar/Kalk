@@ -65,3 +65,14 @@ Ingrediente Ingrediente::operator-(double q)const{
 double Ingrediente::calorieTorali()const{
     return (calorie/100)*quantita;
 }
+
+
+string Ingrediente::getDescrizione(){
+    return "Nome Ingrediente: "+nome+"   Quantita:"+std::to_string(quantita)+" g    calorie: "+std::to_string(calorie);
+}
+bool Ingrediente::operator==(const Ingrediente& i)const{
+    return i.getNome()==nome &&  i.getQuantita() == quantita && i.getCalorie()==calorie ;
+}
+bool Ingrediente::operator!=(const Ingrediente& i)const{
+    return !(*this == i);
+}

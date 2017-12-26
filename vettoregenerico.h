@@ -21,7 +21,7 @@ private:
 
 public:
     VettoreGenerico();
-    VettoreGenerico(vector<T>);
+    VettoreGenerico(const vector<T>&);
     virtual void aggiungiElemento(const T&);
     T popBackElemento();
     bool rimuoviElemento(const T&);
@@ -66,7 +66,7 @@ VettoreGenerico<T>::VettoreGenerico(){}
 //#H
 //costruttore con un parametro di tipo vector<T>
 template <class T>//costruttore a un parametro di tipo vector<T>
-VettoreGenerico<T>::VettoreGenerico(vector<T> v):vettore(v){}
+VettoreGenerico<T>::VettoreGenerico(const vector<T>& v):vettore(v){}
 
 //#H
 //Aggiunge un elemento di tipo T in coda
@@ -109,17 +109,17 @@ bool VettoreGenerico<T>::rimuoviElemento(const T& element){
 //somma 2 vettori e ritorna un terzo vettore che contiene la somma elemento per elemento. se i due vettori hanno lunghezza differente ritorna un vettore vuoto
 template <class T>
 VettoreGenerico<T>* VettoreGenerico<T>::operator+(const VettoreGenerico<T>& vG)const{
-    /*VettoreGenerico<T> aux;
+    VettoreGenerico<T>* aux = new VettoreGenerico<T>();
     if(vettore.size()==vG.getSize()){
         for(unsigned int i = 0; i < vettore.size();i++){
-            aux.aggiungiElemento(vettore[i]+vG.vettore[i]);
+            aux->aggiungiElemento(vettore[i]+vG.vettore[i]);
         }
     }
     return aux;
-    */
+    /*
     VettoreGenerico aux = VettoreGenerico(*this);
     aux += vG;
-    return new VettoreGenerico(aux);
+    return new VettoreGenerico(aux);*/
 }
 
 //#P

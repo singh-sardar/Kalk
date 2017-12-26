@@ -31,7 +31,8 @@ SOURCES += \
     esame.cpp \
     data.cpp \
     colore.cpp \
-    ingrediente.cpp
+    ingrediente.cpp \
+    ricetta.cpp
 
 HEADERS += \
         kalk.h \
@@ -41,7 +42,8 @@ HEADERS += \
     esame.h \
     librettoesami.h \
     data.h \
-    ingrediente.h
+    ingrediente.h \
+    ricetta.h
 
 FORMS += \
         kalk.ui

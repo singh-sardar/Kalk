@@ -20,13 +20,15 @@ public:
     void setQuantita(double);
     void setCalorie(double);
     static double kilo2g(double);
+    string getDescrizione();
 
     Ingrediente operator+(const Ingrediente&)const;
     Ingrediente operator-(const Ingrediente&)const;
     Ingrediente operator*(int)const;
     Ingrediente operator-(double)const;
     double calorieTorali()const;
-
+    bool operator==(const Ingrediente&)const;
+    bool operator !=(const Ingrediente&)const;
 
 
 };

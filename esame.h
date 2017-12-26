@@ -28,6 +28,12 @@ public:
     Data ottieniData() const;
     bool operator ==(const Esame&) const;
     bool operator !=(const Esame&) const;
+
+//TI consiglio dei metodi set per poter modificare le robe del esame
+
+    //operatore + tra esami richiesto da vettore generico
+    Esame operator+(const Esame&)const;
+
 };
 
 ostream& operator<<(ostream&, const Esame&);

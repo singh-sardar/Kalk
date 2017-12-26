@@ -5,6 +5,7 @@
 #include "colore.h"
 #include "colorergb.h"
 #include "librettoesami.h"
+#include "ingrediente.h"
 
 #include <QLabel>
 #include <QPushButton>
@@ -61,7 +62,6 @@ int main(int argc, char *argv[])
     //main per pardeep da qua a sotto
 
 
-//0.3024
     //main per me da qua a sotto
     Colore* myColor = new ColoreRgb(255,5,0);
     ColoreRgb myColor2(251,251  ,16);
@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
     myColor2.setB(RGB[2]);
     string str= "rgb("+to_string(RGB[0])+","+to_string(RGB[1])+","+to_string(RGB[2])+")\n";
      str+= myColor2.rgb2hex();
-    l->setText(str.c_str());
+
 
 /*
     l->setText(str.c_str());
@@ -92,6 +92,15 @@ int main(int argc, char *argv[])
    myColor2= *myColor2.luminositaColore();
      l->setText(myColor2.schemaColore().c_str());
 */
+
+    Ingrediente i("ciao",50,20), j("ciao",50,20);
+
+    if(i==j)
+        l->setText("Uguali");
+    else
+        l->setText("Diversi");
+
+//    l->setText(str.c_str());
 
 
    QPushButton btn(&w);
