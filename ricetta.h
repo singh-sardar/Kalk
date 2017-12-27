@@ -5,14 +5,22 @@
 
 class Ricetta: public VettoreGenerico<Ingrediente>
 {
+private:
+    string nomeRicetta;
+
+
 public:
     Ricetta();
-    Ricetta(const vector<Ingrediente> &);
+    Ricetta(const vector<Ingrediente> &,string );
+
+    void setNomeRicetta(string);
+    string getNomeRicetta()const;
+    string getRicetta()const;
 
     Ricetta* operator+(const VettoreGenerico<Ingrediente>&) const;
-   /* Ricetta* operator-(const VettoreGenerico<Ingrediente>&) const;
+    Ricetta* operator-(const VettoreGenerico<Ingrediente>&) const;
     bool operator ==(const VettoreGenerico<Ingrediente>&)const;
-    bool operator !=(const VettoreGenerico<Ingrediente>&)const;*/
+    bool operator !=(const VettoreGenerico<Ingrediente>&)const;
 
 
 };

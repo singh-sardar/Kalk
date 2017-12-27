@@ -6,6 +6,7 @@
 #include "colorergb.h"
 #include "librettoesami.h"
 #include "ingrediente.h"
+#include "ricetta.h"
 
 #include <QLabel>
 #include <QPushButton>
@@ -92,15 +93,23 @@ int main(int argc, char *argv[])
    myColor2= *myColor2.luminositaColore();
      l->setText(myColor2.schemaColore().c_str());
 */
+    Ricetta* r= new Ricetta();
+    r->setNomeRicetta("Ricetta di test");
+    Ingrediente i("ciao",51,20,40.5), j("ciao",50,20,40.5);
+    r->aggiungiElemento(i);
+    r->aggiungiElemento(j);
+    Ricetta r1;
+    r1.aggiungiElemento(j);
 
-    Ingrediente i("ciao",50,20), j("ciao",50,20);
-
-    if(i==j)
+    //r=*r-r1;
+    if(*r == r1){
         l->setText("Uguali");
-    else
+    }else
         l->setText("Diversi");
 
-//    l->setText(str.c_str());
+
+
+    //l->setText(r->getRicetta().c_str());
 
 
    QPushButton btn(&w);

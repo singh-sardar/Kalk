@@ -25,6 +25,7 @@ public:
     virtual void aggiungiElemento(const T&);
     T popBackElemento();
     bool rimuoviElemento(const T&);
+    void rimuoviPoz(unsigned int);
     bool cerca(const T&);
     const T& operator [](int)const;
     T& operator [](int);
@@ -57,6 +58,14 @@ ostream& operator<<(ostream& os, const VettoreGenerico<T>& vG){
 //#H
 template <class T>
 VettoreGenerico<T>::~VettoreGenerico(){}
+
+//#H
+template <class T>
+void VettoreGenerico<T>::rimuoviPoz(unsigned int i){
+    if(i>=0 && i < getSize())
+        vettore.erase(vettore.begin() + i);
+
+}
 
 //#H
 //costruttore senza parametri

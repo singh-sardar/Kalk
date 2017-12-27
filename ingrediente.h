@@ -9,18 +9,21 @@ private:
     string nome;
     double quantita;// in grammi
     double calorie;// // in riferimento a 100 grammi
+    double costo;
 public:
     Ingrediente();
-    Ingrediente(string ,double,double);
+    Ingrediente(string ,double,double,double);
 
     string getNome()const;
     double getQuantita()const;
     double getCalorie()const;
+    double getCosto()const;
     void setNome(string);
     void setQuantita(double);
     void setCalorie(double);
+    void setCosto(double);
     static double kilo2g(double);
-    string getDescrizione();
+    string getDescrizione()const;
 
     Ingrediente operator+(const Ingrediente&)const;
     Ingrediente operator-(const Ingrediente&)const;

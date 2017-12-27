@@ -1,7 +1,7 @@
 #include "ingrediente.h"
 
 Ingrediente::Ingrediente():nome(""),quantita(0),calorie(0){ }
-Ingrediente::Ingrediente(string name,double quantity,double cal):nome(name),quantita(quantity),calorie(cal){
+Ingrediente::Ingrediente(string name,double quantity,double cal,double euro):nome(name),quantita(quantity),calorie(cal),costo(euro){
     if(quantita<0.0){
         quantita=0;
         nome="Quantita negativa";
@@ -9,6 +9,10 @@ Ingrediente::Ingrediente(string name,double quantity,double cal):nome(name),quan
     if(calorie<0.0){
         calorie=0;
         nome="Calorie negative";
+    }
+    if(costo<0.0){
+        costo=0;
+        nome="Costo negativo";
     }
 
 }
@@ -22,6 +26,10 @@ double Ingrediente::getQuantita()const{
 double Ingrediente::getCalorie()const{
     return calorie;
 }
+double Ingrediente::getCosto()const{
+    return costo;
+}
+
 void Ingrediente::setNome(string title){
     nome=title;
 }
@@ -36,6 +44,10 @@ void Ingrediente::setCalorie(double cal){
 }
 double Ingrediente::kilo2g(double kg){
     return kg*1000;
+}
+void Ingrediente::setCosto(double c){
+    if(c>0.0)
+        costo = c;
 }
 
 Ingrediente Ingrediente::operator+(const Ingrediente& i)const{
@@ -67,11 +79,11 @@ double Ingrediente::calorieTorali()const{
 }
 
 
-string Ingrediente::getDescrizione(){
-    return "Nome Ingrediente: "+nome+"   Quantita:"+std::to_string(quantita)+" g    calorie: "+std::to_string(calorie);
+string Ingrediente::getDescrizione()const{
+    return "Nome Ingrediente: "+nome+"   Quantita:"+std::to_string(quantita)+" g    calorie: "+std::to_string(calorie)+"   Costo: "+std::to_string(costo);
 }
 bool Ingrediente::operator==(const Ingrediente& i)const{
-    return i.getNome()==nome &&  i.getQuantita() == quantita && i.getCalorie()==calorie ;
+    return i.getNome()==nome && i.getCalorie()==calorie && i.getCosto() == costo;
 }
 bool Ingrediente::operator!=(const Ingrediente& i)const{
     return !(*this == i);
