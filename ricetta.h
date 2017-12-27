@@ -21,7 +21,9 @@ public:
     Ricetta* operator-(const VettoreGenerico<Ingrediente>&) const;
     bool operator ==(const VettoreGenerico<Ingrediente>&)const;
     bool operator !=(const VettoreGenerico<Ingrediente>&)const;
-
+    double calorieRicetta()const;
+    double costoRicetta()const;
+    Ricetta operator*(int)const;
 
 };
 

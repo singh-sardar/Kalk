@@ -104,3 +104,33 @@ bool Ricetta::operator !=(const VettoreGenerico<Ingrediente>& vgr)const{
 
     return !(*this == vgr);
 }
+
+
+double Ricetta::calorieRicetta()const{
+    double cal=0;
+
+    for(unsigned int i = 0 ; i < getSize();i++){
+        cal+= operator [](i).calorieTorali();
+    }
+
+    return cal;
+}
+
+double Ricetta::costoRicetta()const{
+    double euro=0.0;
+
+    for(unsigned int i = 0 ; i < getSize();i++){
+        euro+= operator [](i).getCosto()*operator [](i).getQuantita() ;
+    }
+
+    return euro;
+}
+Ricetta Ricetta::operator*(int persone)const{
+    Ricetta r;
+    r.setNomeRicetta(nomeRicetta+" per "+std::to_string(persone)+" persone");
+    for(unsigned int i = 0 ; i < getSize();i++){
+        r.aggiungiElemento(Ingrediente(operator [](i).getNome(),operator [](i).getQuantita()* persone,operator [](i).getCalorie(),operator [](i).getCosto()));
+
+    }
+return r;
+}

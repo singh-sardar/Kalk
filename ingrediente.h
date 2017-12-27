@@ -9,7 +9,7 @@ private:
     string nome;
     double quantita;// in grammi
     double calorie;// // in riferimento a 100 grammi
-    double costo;
+    double costo;//al grammo
 public:
     Ingrediente();
     Ingrediente(string ,double,double,double);

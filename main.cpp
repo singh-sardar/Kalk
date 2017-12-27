@@ -102,14 +102,15 @@ int main(int argc, char *argv[])
     r1.aggiungiElemento(j);
 
     //r=*r-r1;
-    if(*r == r1){
+  /*  if(*r == r1){
         l->setText("Uguali");
     }else
         l->setText("Diversi");
+*/
+   // *r= *r * 2;
+    l->setText(to_string(r->costoRicetta()).c_str());
 
-
-
-    //l->setText(r->getRicetta().c_str());
+   // l->setText(r->getRicetta().c_str());
 
 
    QPushButton btn(&w);
