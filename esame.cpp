@@ -3,14 +3,14 @@ using std::ostream;
 using std::endl;
 using std::string;
 
-Esame::Esame(int c,int v,string nomeM,string nomeC,string nomeP):
-    Esame(Data(),c,v,nomeM,nomeC,nomeP)
+Esame::Esame(string nomeM,string nomeC,string nomeP,unsigned int c,unsigned int v):
+    Esame(nomeM,nomeC,nomeP,Data(),c,v)
 {
 
 }
 
-Esame::Esame(const Data& d,int c, int v,string nomeM,string nomeC, string nomeP):
-    data(d),CFU(c>=1?c:1), voto(v>=18?v:18), nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP)
+Esame::Esame(string nomeM,string nomeC, string nomeP,const Data& d,unsigned int c,unsigned int v):
+    nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP), data(d),CFU(c>=1?c:1), voto(v>=18?v:18)
 {
     lode = (voto > 30) ? true : false;
     if(lode)
@@ -45,12 +45,52 @@ Data Esame::ottieniData() const{
     return data;
 }
 
+void Esame::setNomeCorso(string n){
+    nomeCorso = n;
+}
+
+void Esame::setNomeMateria(string n){
+    nomeMateria = n;
+}
+
+void Esame::setNomeProfessore(string n){
+    nomeProfessore = n;
+}
+
+void Esame::setCFU(int c){
+    if(c >= 1)
+        CFU = c;
+}
+
+void Esame::setVoto(int v){
+    if(v >= 18)
+        voto = v;
+}
+
+void Esame::setLode(bool b){
+    lode = b;
+}
+
+void Esame::setData(const Data& d){
+    data = d;
+}
+
 bool Esame::operator ==(const Esame& e) const{
    return nomeCorso == e.getNomeCorso() && nomeMateria == e.getNomeMateria();
 }
 
 bool Esame::operator !=(const Esame& e) const{
     return !(*this == e);
+}
+
+string Esame::esameToString() const{
+    string t = "CFU: " + to_string(getCFU()) + "; ";
+    t += "Voto: " + to_string(getVoto()) + "; ";
+    t.append(string("Lode: ") + (getLode() ? "Si" : "No") + "; ");
+    t += "Nome Materia: " + getNomeMateria() + "; ";
+    t += "Nome Professore: " + getNomeProfessore() + "; ";
+    t += "Nome Corso: " + getNomeCorso() + "; ";
+    return t;
 }
 
 ostream& operator<<(ostream& os, const Esame& d){

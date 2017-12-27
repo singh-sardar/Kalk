@@ -32,7 +32,8 @@ SOURCES += \
     data.cpp \
     colore.cpp \
     ingrediente.cpp \
-    ricetta.cpp
+    ricetta.cpp \
+    matricealgebrica.cpp
 
 HEADERS += \
         kalk.h \
@@ -43,7 +44,8 @@ HEADERS += \
     librettoesami.h \
     data.h \
     ingrediente.h \
-    ricetta.h
+    ricetta.h \
+    matricealgebrica.h
 
 FORMS += \
         kalk.ui

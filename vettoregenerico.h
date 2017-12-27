@@ -30,9 +30,9 @@ public:
     const T& operator [](int)const;
     T& operator [](int);
     unsigned int getSize() const;
-    virtual VettoreGenerico<T>* operator+(const VettoreGenerico<T>&) const;
+    virtual VettoreGenerico<T>* operator+(const VettoreGenerico<T>&) const=0;
     virtual VettoreGenerico<T>& operator+=(const VettoreGenerico<T>&) ;
-    virtual VettoreGenerico<T>* operator-(const VettoreGenerico<T>&) const;
+    virtual VettoreGenerico<T>* operator-(const VettoreGenerico<T>&) const=0;
     virtual VettoreGenerico<T>& operator-=(const VettoreGenerico<T>&);
     virtual bool operator ==(const VettoreGenerico<T>&)const;
     virtual bool operator !=(const VettoreGenerico<T>&)const;
@@ -116,6 +116,7 @@ bool VettoreGenerico<T>::rimuoviElemento(const T& element){
 
 //#H
 //somma 2 vettori e ritorna un terzo vettore che contiene la somma elemento per elemento. se i due vettori hanno lunghezza differente ritorna un vettore vuoto
+/*
 template <class T>
 VettoreGenerico<T>* VettoreGenerico<T>::operator+(const VettoreGenerico<T>& vG)const{
     VettoreGenerico<T>* aux = new VettoreGenerico<T>();
@@ -125,12 +126,13 @@ VettoreGenerico<T>* VettoreGenerico<T>::operator+(const VettoreGenerico<T>& vG)c
         }
     }
     return aux;
-    /*
+
     VettoreGenerico aux = VettoreGenerico(*this);
     aux += vG;
     return new VettoreGenerico(aux);*/
+/*
 }
-
+*/
 //#P
 //esegue la assegnazione al vettore in seguito alla somma degli elementi di un altro vettore
 template <class T>
@@ -147,12 +149,13 @@ VettoreGenerico<T>& VettoreGenerico<T>::operator +=(const VettoreGenerico<T>& vG
 
 //#H
 //sottrae 2 vettori e ritorna un terzo vettore che contiene la differenza elemento per elemento. se i due vettori hanno lunghezza differente ritorna un vettore vuoto
-template <class T>
+/*template <class T>
 VettoreGenerico<T>* VettoreGenerico<T>::operator-(const VettoreGenerico<T>& vG)const{
     VettoreGenerico aux = VettoreGenerico(*this);
     aux -= vG;
     return new VettoreGenerico(aux);
 }
+*/
 
 template <class T>
 VettoreGenerico<T>& VettoreGenerico<T>::operator-=(const VettoreGenerico<T>& vG){

@@ -5,11 +5,12 @@
 #include "data.h"
 
 using std::string;
+using std::to_string;
 
 class Esame{
 private:
-    int CFU;
-    int voto;//rappresenta il voto relativo all'esame
+    unsigned int CFU;
+    unsigned int voto;//rappresenta il voto relativo all'esame
     bool lode;
     string nomeMateria;
     string nomeCorso;
@@ -17,8 +18,8 @@ private:
     Data data;
 
 public:
-    Esame(int c=1,int v=18,string nomeM="",string nomeC="",string nomeP="");
-    Esame(const Data&,int c=1,int v=18,string nomeM="",string nomeC="",string nomeP="");
+    Esame(string nomeM="",string nomeC="",string nomeP="",unsigned int c=1,unsigned int v=18);
+    Esame(string nomeM,string nomeC,string nomeP, const Data&,unsigned int c=1,unsigned int v=18);
     string getNomeCorso() const;
     string getNomeMateria() const;
     string getNomeProfessore() const;
@@ -26,9 +27,16 @@ public:
     bool getLode() const;
     int getCFU() const;
     Data ottieniData() const;
+    void setNomeCorso(string);
+    void setNomeMateria(string);
+    void setNomeProfessore(string);
+    void setVoto(int);
+    void setLode(bool);
+    void setCFU(int);
+    void setData(const Data&);
     bool operator ==(const Esame&) const;
     bool operator !=(const Esame&) const;
-
+    string esameToString() const;
 //TI consiglio dei metodi set per poter modificare le robe del esame
 
     //operatore + tra esami richiesto da vettore generico

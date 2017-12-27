@@ -7,7 +7,7 @@
 #include "librettoesami.h"
 #include "ingrediente.h"
 #include "ricetta.h"
-
+#include "matricealgebrica.h"
 #include <QLabel>
 #include <QPushButton>
 #include <QColor>
@@ -23,18 +23,19 @@ int main(int argc, char *argv[])
     kalk w;
     QLabel* l= new QLabel(&w);
 
-
-    VettoreGenerico<int> v,v1;
-    VettoreGenerico<int>* v3 = new VettoreGenerico<int>();
+    /*
+        VettoreGenerico<int> v,v1;
+        VettoreGenerico<int>* v3 = new VettoreGenerico<int>();
+    */
 
     LibrettoEsami le("nome","cognome",12345,180), *le2, le3;
     le2 = new LibrettoEsami("nome","cognome",12345,180);
     le.aggiungiElemento(Esame());
-    le.aggiungiElemento(Esame(12,31,"Analisi","Informatica", "Sartori"));
-    le3.aggiungiElemento(Esame(1,18,"a","b","c"));
+    le.aggiungiElemento(Esame("Analisi","Informatica", "Sartori",12,31));
+    le3.aggiungiElemento(Esame("a","b","c",1,18));
     //le2->aggiungiElemento(Esame());
-    //le2->aggiungiElemento(Esame(12,31,"Analisi","Informatica", "Sartori"));
-    //le2->aggiungiElemento(Esame(1,18,"a","b","c"));
+    //le2->aggiungiElemento(Esame("Analisi","Informatica", "Sartori",12,31));
+    //le2->aggiungiElemento(Esame("a","b","c",1,18));
     //le = *(le + *le2);
     //le = *(le3 + le);
     //le = *(le + le3);
@@ -47,20 +48,72 @@ int main(int argc, char *argv[])
     //cout << le << endl;
     //cout << le.mediaPonderata() << endl;
     //cout << le.previsioneVotoLaurea() << endl;
-    const char* s ;
+    //cout << le.librettoToString();
+    //const char* s ;
 
-    v.aggiungiElemento(1);
-    v.aggiungiElemento(2);
-    v.aggiungiElemento(3);
-    v1.aggiungiElemento(4);
-    v1.aggiungiElemento(5);
-    v1.aggiungiElemento(6);
-    s=std::to_string(v[0]).c_str();
-    v3=(v + v1);
-    v=*(v - v1);
-    l->setText(s);
+    /*
+    MatriceAlgebrica m(10), m2(10);
+    m[0][0] = 20;
+    m2[5][0] = 99;
+    m[5][0] = 99;
+    m = *(m + m2);
+    for(unsigned int i=0; i < m.getSize(); ++i){
 
-    //main per pardeep da qua a sotto
+
+        for(int j=0; j < m[i].size(); ++j){
+            //m[i][j] = 999;
+        }
+        vector<int> t = m[i];
+        for(int j=0; j < t.size(); ++j){
+            cout << t[j] << " ";
+        }
+        cout << endl;
+    }*/
+
+    MatriceAlgebrica m(2,3), m2(3,3);
+    MatriceAlgebrica* mr;
+    m[0][0] = 2;
+    m[0][1] = 3;
+    m[0][2] = 7;
+    m[1][0] = 6;
+    m[1][1] = 0;
+    m[1][2] = 5;
+    m2[0][0] = 1;
+    m2[0][1] = 1;
+    m2[0][2] = -2;
+    m2[1][0] = 4;
+    m2[1][1] = 3;
+    m2[1][2] = 3;
+
+    /* //se vado a accedere a elementi che stanno oltre il numero di righe da errore.. execption?
+    m2[2][0] = 0;
+    m2[2][1] = -1;
+    m2[2][2] = 2;
+    */
+
+    //cout << m2.getNumRighe();
+    /*mr = (m*m2);
+    if(mr){
+        m = *mr;
+        for(unsigned int i=0; i < m.getSize(); ++i){
+            for(int j=0; j < m[i].size(); ++j){
+                cout << m[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }*/
+
+
+    /*cout << endl;
+    mr = m*2;
+    m = *mr;
+    for(unsigned int i=0; i < m.getSize(); ++i){
+        for(int j=0; j < m[i].size(); ++j){
+            cout << m[i][j] << " ";
+        }
+        cout << endl;
+    }*/
+    //main per pardeep fino a qui ---------------------------------------------------------------------------------------
 
 
     //main per me da qua a sotto
