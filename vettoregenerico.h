@@ -201,14 +201,14 @@ bool VettoreGenerico<T>::operator !=(const VettoreGenerico<T>& vG) const{
 //ritorna l' elemento i const
 template <class T>
 const T& VettoreGenerico<T>::operator [](int i)const{
-   return vettore[i];
+   return vettore.at(i);//a differenza di []. at(i) solleva le eccezzioni di out_of_Range etc..
 }
 
 //#H
 //ritorna l' elemento i
 template <class T>
 T& VettoreGenerico<T>::operator [](int i){
-   return vettore[i];
+   return vettore.at(i);//a differenza di []. at(i) solleva le eccezzioni di out_of_Range etc..
 }
 
 #endif // VETTOREGENERICO_H

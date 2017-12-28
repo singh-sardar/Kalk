@@ -13,9 +13,6 @@ public:
     unsigned int getNumColonne() const;
     static int sommaVettori(const vector<int>&,const vector<int>&);
     unsigned int getMaxNumColonne() const;
-    /*const vector<int>& operator [](int)const;
-    vector<int>& operator [](int);
-    */
     MatriceAlgebrica* operator +(const VettoreGenerico<vector<int>>&)const override;
     MatriceAlgebrica* operator -(const VettoreGenerico<vector<int>>&)const override;
     MatriceAlgebrica* operator*(double)const;//prodotto scalare

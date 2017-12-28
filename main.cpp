@@ -70,49 +70,54 @@ int main(int argc, char *argv[])
         cout << endl;
     }*/
 
-    MatriceAlgebrica m(2,3), m2(3,3);
+    MatriceAlgebrica m(2,2), m2(2,3);
     MatriceAlgebrica* mr;
-    m[0][0] = 2;
-    m[0][1] = 3;
-    m[0][2] = 7;
-    m[1][0] = 6;
-    m[1][1] = 0;
-    m[1][2] = 5;
-    m2[0][0] = 1;
-    m2[0][1] = 1;
-    m2[0][2] = -2;
-    m2[1][0] = 4;
-    m2[1][1] = 3;
-    m2[1][2] = 3;
+    try {
+        m[0][0] = 2;
+        m[0][1] = 3;
+        m[0][2] = 7;
+        m[1][0] = 6;
+        m[1][1] = 5;
+        m[1][2] = 5;
+        m2[0][0] = 1;
+        m2[0][1] = 1;
+        m2[0][2] = -2;
+        m2[1][0] = 4;
+        m2[1][1] = 3;
+        m2[1][2] = 3;
 
-    /* //se vado a accedere a elementi che stanno oltre il numero di righe da errore.. execption?
-    m2[2][0] = 0;
-    m2[2][1] = -1;
-    m2[2][2] = 2;
-    */
 
-    //cout << m2.getNumRighe();
-    /*mr = (m*m2);
-    if(mr){
-        m = *mr;
+        m2[2][0] = 0;
+        m2[2][1] = -1;
+        m2[2][2] = 2;
+
+
+        //cout << m2.getNumRighe();
+        mr = (m*m2);
+        if(mr){
+            m = *mr;
+            for(unsigned int i=0; i < m.getSize(); ++i){
+                for(int j=0; j < m[i].size(); ++j){
+                    //cout << m[i].at(j) << " ";
+                }
+                //cout << endl;
+            }
+        }
+
+
+        //cout << endl;
+        m = *(m*2);
         for(unsigned int i=0; i < m.getSize(); ++i){
             for(int j=0; j < m[i].size(); ++j){
-                cout << m[i][j] << " ";
+                //cout << m[i].at(j) << " ";
             }
-            cout << endl;
+            //cout << endl;
         }
-    }*/
-
-
-    /*cout << endl;
-    mr = m*2;
-    m = *mr;
-    for(unsigned int i=0; i < m.getSize(); ++i){
-        for(int j=0; j < m[i].size(); ++j){
-            cout << m[i][j] << " ";
-        }
-        cout << endl;
-    }*/
+    }
+    catch (const std::out_of_range& e) {
+        //cout << "Out of Range error.";
+        l->setText(string("Out of range!").c_str());
+    }
     //main per pardeep fino a qui ---------------------------------------------------------------------------------------
 
 

@@ -12,19 +12,7 @@ unsigned int MatriceAlgebrica::getNumRighe() const{
 unsigned int MatriceAlgebrica::getNumColonne() const{
     return numColonne;
 }
-/*
-const vector<int>& MatriceAlgebrica::operator[](int i)const{
-    if(i < getNumRighe()){
-        return VettoreGenerico::operator [](i);
-    }
-}
 
-vector<int>& MatriceAlgebrica::operator[](int i){
-    if(i < getNumRighe()){
-        return VettoreGenerico::operator [](i);
-    }
-}
-*/
 int MatriceAlgebrica::sommaVettori(const vector<int>& v1, const vector<int>& v2){
     int temp=0;
     if(v1.size() == v2.size()){
