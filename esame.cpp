@@ -109,4 +109,5 @@ Esame Esame::operator+(const Esame& e)const{
     if(nomeMateria == e.getNomeMateria() && nomeCorso == e.getNomeCorso() && nomeProfessore == e.getNomeProfessore()){
         tmp.voto = (voto+e.getVoto())/2;
     }
+    return tmp;
 }
