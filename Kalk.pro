@@ -33,7 +33,11 @@ SOURCES += \
     colore.cpp \
     ingrediente.cpp \
     ricetta.cpp \
-    matricealgebrica.cpp
+    matricealgebrica.cpp \
+    spinslider.cpp \
+    rgbslider.cpp \
+    rgbpicker.cpp \
+    tworgbpicker.cpp
 
 HEADERS += \
         kalk.h \
@@ -45,7 +49,11 @@ HEADERS += \
     data.h \
     ingrediente.h \
     ricetta.h \
-    matricealgebrica.h
+    matricealgebrica.h \
+    spinslider.h \
+    rgbslider.h \
+    rgbpicker.h \
+    tworgbpicker.h
 
 FORMS += \
         kalk.ui

@@ -8,6 +8,10 @@
 #include "ingrediente.h"
 #include "ricetta.h"
 #include "matricealgebrica.h"
+#include "tworgbpicker.h"
+
+
+
 #include <QLabel>
 #include <QPushButton>
 #include <QColor>
@@ -159,16 +163,22 @@ int main(int argc, char *argv[])
     Ricetta r1;
     r1.aggiungiElemento(j);
 
-    //r=*r-r1;
+    r=*r+r1;
   /*  if(*r == r1){
         l->setText("Uguali");
     }else
         l->setText("Diversi");
 */
    // *r= *r * 2;
-    l->setText(to_string(r->costoRicetta()).c_str());
+    //l->setText(to_string(r->costoRicetta()).c_str());
 
-   // l->setText(r->getRicetta().c_str());
+    l->setText(r->getRicetta().c_str());
+    TwoRgbPicker p;
+    p.show();
+
+
+
+
 
 
    QPushButton btn(&w);
