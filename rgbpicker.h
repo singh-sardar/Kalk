@@ -17,6 +17,10 @@ public:
     RgbPicker(QWidget* parent=0);
     RgbSlider* getRgbSlider()const;
     QWidget* getViewer()const;
+    int getRvalue()const;
+    int getGvalue()const;
+    int getBvalue()const;
+
 private:
     RgbSlider* slider;
     QWidget* viewer;

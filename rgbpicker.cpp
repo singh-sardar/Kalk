@@ -26,9 +26,12 @@ RgbSlider* RgbPicker::getRgbSlider()const{return slider;}
 QWidget* RgbPicker::getViewer()const{return viewer;}
 
 void RgbPicker::changeColor(){
-    c->setRgb(slider->getR()->getSlider()->value(),slider->getG()->getSlider()->value(),slider->getB()->getSlider()->value());
+    c->setRgb(getRvalue(),getGvalue(),getBvalue());
     QPalette p= viewer->palette();
     p.setColor(QPalette::Window,*c);
     viewer->setPalette(p);
     emit colorChanged(c);
 }
+int RgbPicker::getRvalue()const{return slider->getR()->getSlider()->value();}
+int RgbPicker::getGvalue()const{return slider->getG()->getSlider()->value();}
+int RgbPicker::getBvalue()const{return slider->getB()->getSlider()->value();}

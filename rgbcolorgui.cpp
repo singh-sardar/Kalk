@@ -4,6 +4,8 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
 {
     QFont f("Verdana",12);
     QLabel* lbl = new QLabel("Colore risultante dalla ultima operazione");
+    resultLabel = new QLabel("");
+    resultLabel->setFont(f);
     lbl->setFont(f);
 
     layout= new QGridLayout;
@@ -62,19 +64,33 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
 
 
     connect(op,SIGNAL(btnSommaClicked(bool)),this,SIGNAL(btnSommaClicked(bool)));
-    /*connect(btnDifferenza,SIGNAL(clicked(bool)),this,SIGNAL(btnDifferenzaClicked(bool)));
-    connect(btnModulazione,SIGNAL(clicked(bool)),this,SIGNAL(btnModulazioneClicked(bool)));
-    connect(btnDeltaE,SIGNAL(clicked(bool)),this,SIGNAL(btnDeltaEClicked(bool)));
-    connect(btnScala,SIGNAL(clicked(bool)),this,SIGNAL(btnScalaClicked(bool)));
-    connect(btnComplementare,SIGNAL(clicked(bool)),this,SIGNAL(btnComplementareClicked(bool)));
-    connect(btnLuminosita,SIGNAL(clicked(bool)),this,SIGNAL(btnLuminositaClicked(bool)));
-    connect(btnCaldo,SIGNAL(clicked(bool)),this,SIGNAL(btnCaldoClicked(bool)));
-    connect(btnLab,SIGNAL(clicked(bool)),this,SIGNAL(btnLabClicked(bool)));
-    connect(btnHsl,SIGNAL(clicked(bool)),this,SIGNAL(btnHslClicked(bool)));
-    connect(btnHex,SIGNAL(clicked(bool)),this,SIGNAL(btnHexClicked(bool)));
-    connect(btnHsl2Rgb,SIGNAL(clicked(bool)),this,SIGNAL(btnHsl2RgbClicked(bool)));*/
+    connect(op,SIGNAL(btnDifferenzaClicked(bool)),this,SIGNAL(btnDifferenzaClicked(bool)));
+    connect(op,SIGNAL(btnModulazioneClicked(bool)),this,SIGNAL(btnModulazioneClicked(bool)));
+    connect(op,SIGNAL(btnDeltaEClicked(bool)),this,SIGNAL(btnDeltaEClicked(bool)));
+    connect(op,SIGNAL(btnScalaClicked(bool)),this,SIGNAL(btnScalaClicked(bool)));
+    connect(op,SIGNAL(btnComplementareClicked(bool)),this,SIGNAL(btnComplementareClicked(bool)));
+    connect(op,SIGNAL(btnLuminositaClicked(bool)),this,SIGNAL(btnLuminositaClicked(bool)));
+    connect(op,SIGNAL(btnCaldoClicked(bool)),this,SIGNAL(btnCaldoClicked(bool)));
+    connect(op,SIGNAL(btnLabClicked(bool)),this,SIGNAL(btnLabClicked(bool)));
+    connect(op,SIGNAL(btnHslClicked(bool)),this,SIGNAL(btnHslClicked(bool)));
+    connect(op,SIGNAL(btnHexClicked(bool)),this,SIGNAL(btnHexClicked(bool)));
+    connect(op,SIGNAL(btnHsl2RgbClicked(bool)),this,SIGNAL(btnHsl2RgbClicked(bool)));
+
+    connect(saveOperando1,SIGNAL(clicked(bool)),this,SIGNAL(btnSaveOperando1Clicked(bool)));
+    connect(saveOperando2,SIGNAL(clicked(bool)),this,SIGNAL(btnSaveOperando2Clicked(bool)));
 
 
 
 
 }
+
+int RgbColorGui::getColor1Rvalue()const{return p->getColor1()->getRvalue();}
+int RgbColorGui::getColor1Gvalue()const{return p->getColor1()->getGvalue();}
+int RgbColorGui::getColor1Bvalue()const{return p->getColor1()->getBvalue();}
+int RgbColorGui::getColor2Rvalue()const{return p->getColor2()->getRvalue();}
+int RgbColorGui::getColor2Gvalue()const{return p->getColor2()->getGvalue();}
+int RgbColorGui::getColor2Bvalue()const{return p->getColor2()->getBvalue();}
+QWidget* RgbColorGui::getResultViewer()const{return result;}
+QWidget* RgbColorGui::getOperand1Viewer()const{return operando1;}
+QWidget* RgbColorGui::getOperand2Viewer()const{return operando2;}
+QLabel* RgbColorGui::getResultLabel()const{return resultLabel;}

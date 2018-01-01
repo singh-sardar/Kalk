@@ -3,7 +3,6 @@
 
 
 #include "colorergb.h"
-#include "colore.h"
 #include "QObject"
 #include "rgbcolorgui.h"
 
@@ -15,10 +14,17 @@ public:
     ColorController(RgbColorGui*);
 private:
     RgbColorGui* view;
-    Colore* model;
+    ColoreRgb* model1,* model2,*result;
 
 private slots:
+    void SaveOperando1();
+    void SaveOperando2();
     void SommaColori();
+    void DifferenzaColori();
+    void ModulazioneColori();
+    void DeltaEColori();
+
+    void ChangeResultColor();
 };
 
 #endif // COLORCONTROLLER_H
