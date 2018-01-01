@@ -1,6 +1,6 @@
 #include "colorergb.h"
 string ColoreRgb::schemaColore()const{
-    string s= "rgb("+to_string(getR())+","+to_string(getG())+","+to_string(getB())+","+to_string(getA())+")";
+    string s= "rgba("+to_string(getR())+","+to_string(getG())+","+to_string(getB())+","+to_string(static_cast<int>(getA()))+")";
     return s;
 }
 ColoreRgb::ColoreRgb():r(0),g(0),b(0),a(1.0)

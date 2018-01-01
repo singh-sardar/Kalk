@@ -15,6 +15,8 @@ public:
 private:
     RgbColorGui* view;
     ColoreRgb* model1,* model2,*result;
+    static void showMessageBox(QString,QString);
+    void updateOneOperandResult(QString);
 
 private slots:
     void SaveOperando1();
@@ -23,6 +25,16 @@ private slots:
     void DifferenzaColori();
     void ModulazioneColori();
     void DeltaEColori();
+
+
+    void ScalaColore();
+    void ComplementareColore();
+    void LuminositaColore();
+    void CaldoColore();
+    void LabColore();
+    void HslColore();
+    void HexColore();
+    void Hsl2RgbColore();
 
     void ChangeResultColor();
 };

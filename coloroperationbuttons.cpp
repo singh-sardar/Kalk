@@ -15,7 +15,7 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
     btnDeltaE =new QPushButton(tr("Delta E"));
     btnScala=new QPushButton(tr("Scala"));
     btnComplementare=new QPushButton(tr("Complementare"));
-    btnLuminosita= new QPushButton(tr("Luminosita"));
+    btnLuminosita= new QPushButton(tr("Luminosità"));
     btnCaldo= new QPushButton(tr("Colore Caldo/Freddo"));
     btnLab= new QPushButton(tr("Rappresentazione Lab"));
     btnHsl= new QPushButton(tr("Rappresentazione HSL "));

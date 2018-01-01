@@ -40,7 +40,8 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
     layout->addWidget(operando1,2,0);
     layout->addWidget(operando2,2,1);
     layout->addWidget(op,3,0,1,2);
-    layout->addWidget(lbl,4,0,1,2,Qt::AlignCenter);
+    layout->addWidget(lbl,4,0,Qt::AlignCenter);
+        layout->addWidget(resultLabel,4,1);
     layout->addWidget(result,5,0,1,2);
 
     QColor* c = new QColor;
