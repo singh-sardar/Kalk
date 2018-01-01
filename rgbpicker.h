@@ -9,7 +9,7 @@
 #include "rgbslider.h"
 
 
-//rappresenta un rgb color picker
+//rappresenta un rgb color picker con i slider
 class RgbPicker:public QWidget
 {
     Q_OBJECT

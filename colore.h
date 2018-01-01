@@ -24,7 +24,7 @@ public:
     virtual double DeltaE(const Colore&)const =0;
     virtual  Colore* operator *(double)=0; //scala le componenti del colore basandosi sul parametro
     virtual  Colore* complementare()const=0;
-    virtual Colore* luminositaColore()const=0;//ritorna un intero compreso tra 0 e 255 che indica se un colore è chiaro o scuro. cosi si puo decidere se mettere il testo in bianco o nero avendo di sfondo il colore this
+    virtual Colore* luminositaColore()const=0;//ritorna un colore compreso tra 0 e 255 che indica se un colore è chiaro o scuro. cosi si puo decidere se mettere il testo in bianco o nero avendo di sfondo il colore this
     virtual bool coloreCaldo()const=0;
     virtual string schemaColore()const=0;
     virtual ~Colore(){}

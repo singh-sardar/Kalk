@@ -1,6 +1,7 @@
 #include "kalk.h"
 #include <QApplication>
 
+//include classi logica calcolatrice
 #include "vettoregenerico.h"
 #include "colore.h"
 #include "colorergb.h"
@@ -9,10 +10,16 @@
 #include "ricetta.h"
 //#include "matricealgebrica.h"
 #include "matrice.h"
+
+
+
+//include for color gui
 #include "tworgbpicker.h"
+#include "coloroperationbuttons.h"
+#include "rgbcolorgui.h"
 
 
-
+//include qt
 #include <QLabel>
 #include <QPushButton>
 #include <QColor>
@@ -227,11 +234,16 @@ int main(int argc, char *argv[])
     //l->setText(to_string(r->costoRicetta()).c_str());
 
     l->setText(r->getRicetta().c_str());
+/*
+
     TwoRgbPicker p;
     p.show();
+    colorOperationButtons b;
+    b.show();
 
-
-
+*/
+    RgbColorGui g;
+    g.show();
 
 
 

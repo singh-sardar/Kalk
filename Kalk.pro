@@ -37,7 +37,9 @@ SOURCES += \
     rgbslider.cpp \
     rgbpicker.cpp \
     tworgbpicker.cpp \
-    matrice.cpp
+    matrice.cpp \
+    coloroperationbuttons.cpp \
+    rgbcolorgui.cpp
 
 HEADERS += \
         kalk.h \
@@ -53,7 +55,9 @@ HEADERS += \
     rgbslider.h \
     rgbpicker.h \
     tworgbpicker.h \
-    matrice.h
+    matrice.h \
+    coloroperationbuttons.h \
+    rgbcolorgui.h
 
 FORMS += \
         kalk.ui
