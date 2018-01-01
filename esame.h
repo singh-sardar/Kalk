@@ -40,7 +40,7 @@ public:
 //TI consiglio dei metodi set per poter modificare le robe del esame
 
     //operatore + tra esami richiesto da vettore generico
-    Esame operator+(const Esame&)const;
+    //Esame operator+(const Esame&)const;
 
 };
 

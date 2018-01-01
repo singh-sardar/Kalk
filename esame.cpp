@@ -10,7 +10,7 @@ Esame::Esame(string nomeM,string nomeC,string nomeP,unsigned int c,unsigned int 
 }
 
 Esame::Esame(string nomeM,string nomeC, string nomeP,const Data& d,unsigned int c,unsigned int v):
-    nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP), data(d),CFU(c>=1?c:1), voto(v>=18?v:18)
+    CFU(c>=1?c:1), voto(v>=18?v:18),nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP), data(d)
 {
     lode = (voto > 30) ? true : false;
     if(lode)
@@ -104,10 +104,10 @@ ostream& operator<<(ostream& os, const Esame& d){
 }
 
 //Somma dei parziali
-Esame Esame::operator+(const Esame& e)const{
+/*Esame Esame::operator+(const Esame& e)const{
     Esame tmp(*this);
     if(nomeMateria == e.getNomeMateria() && nomeCorso == e.getNomeCorso() && nomeProfessore == e.getNomeProfessore()){
         tmp.voto = (voto+e.getVoto())/2;
     }
-    return tmp;
 }
+*/

@@ -27,8 +27,8 @@ public:
     bool rimuoviElemento(const T&);
     void rimuoviPoz(unsigned int);
     bool cerca(const T&);
-    const T& operator [](int)const;
-    T& operator [](int);
+    const T& operator [](unsigned int i)const;
+    T& operator [](unsigned int i);
     unsigned int getSize() const;
     virtual VettoreGenerico<T>* operator+(const VettoreGenerico<T>&) const=0;
     virtual VettoreGenerico<T>& operator+=(const VettoreGenerico<T>&) ;
@@ -200,14 +200,14 @@ bool VettoreGenerico<T>::operator !=(const VettoreGenerico<T>& vG) const{
 //#P
 //ritorna l' elemento i const
 template <class T>
-const T& VettoreGenerico<T>::operator [](int i)const{
+const T& VettoreGenerico<T>::operator [](unsigned int i)const{
    return vettore.at(i);//a differenza di []. at(i) solleva le eccezzioni di out_of_Range etc..
 }
 
 //#H
 //ritorna l' elemento i
 template <class T>
-T& VettoreGenerico<T>::operator [](int i){
+T& VettoreGenerico<T>::operator [](unsigned int i){
    return vettore.at(i);//a differenza di []. at(i) solleva le eccezzioni di out_of_Range etc..
 }
 
