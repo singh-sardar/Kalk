@@ -1,6 +1,6 @@
 #include "rgbcolorgui.h"
 
-RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent)
+RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorController(this))
 {
     QFont f("Verdana",12);
     QLabel* lbl = new QLabel("Colore risultante dalla ultima operazione");
@@ -56,4 +56,25 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent)
     result->setPalette(p);
 
     setLayout(layout);
+
+
+
+
+
+    connect(op,SIGNAL(btnSommaClicked(bool)),this,SIGNAL(btnSommaClicked(bool)));
+    /*connect(btnDifferenza,SIGNAL(clicked(bool)),this,SIGNAL(btnDifferenzaClicked(bool)));
+    connect(btnModulazione,SIGNAL(clicked(bool)),this,SIGNAL(btnModulazioneClicked(bool)));
+    connect(btnDeltaE,SIGNAL(clicked(bool)),this,SIGNAL(btnDeltaEClicked(bool)));
+    connect(btnScala,SIGNAL(clicked(bool)),this,SIGNAL(btnScalaClicked(bool)));
+    connect(btnComplementare,SIGNAL(clicked(bool)),this,SIGNAL(btnComplementareClicked(bool)));
+    connect(btnLuminosita,SIGNAL(clicked(bool)),this,SIGNAL(btnLuminositaClicked(bool)));
+    connect(btnCaldo,SIGNAL(clicked(bool)),this,SIGNAL(btnCaldoClicked(bool)));
+    connect(btnLab,SIGNAL(clicked(bool)),this,SIGNAL(btnLabClicked(bool)));
+    connect(btnHsl,SIGNAL(clicked(bool)),this,SIGNAL(btnHslClicked(bool)));
+    connect(btnHex,SIGNAL(clicked(bool)),this,SIGNAL(btnHexClicked(bool)));
+    connect(btnHsl2Rgb,SIGNAL(clicked(bool)),this,SIGNAL(btnHsl2RgbClicked(bool)));*/
+
+
+
+
 }

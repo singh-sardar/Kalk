@@ -39,7 +39,8 @@ SOURCES += \
     tworgbpicker.cpp \
     matrice.cpp \
     coloroperationbuttons.cpp \
-    rgbcolorgui.cpp
+    rgbcolorgui.cpp \
+    colorcontroller.cpp
 
 HEADERS += \
         kalk.h \
@@ -57,7 +58,8 @@ HEADERS += \
     tworgbpicker.h \
     matrice.h \
     coloroperationbuttons.h \
-    rgbcolorgui.h
+    rgbcolorgui.h \
+    colorcontroller.h
 
 FORMS += \
         kalk.ui
