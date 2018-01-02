@@ -286,21 +286,23 @@ bool ColoreRgb::coloreCaldo()const{
 string ColoreRgb::rgb2hex()const{
     string s= "#";
     char tmp[2];
-    itoa(r,tmp,16);
+    sprintf(tmp,"%x",r);
+
     s+= tmp;
     if(s.length()==2){
         s="#0";
                 s+=tmp;
     }
-    itoa(g,tmp,16);
+    sprintf(tmp,"%x",g);
+
     s+= tmp;
     if(s.length()==4){
         s+='0';
         s[4]= s[3];
         s[3]='0';
     }
+    sprintf(tmp,"%x",b);
 
-    itoa(b,tmp,16);
     s+= tmp;
     if(s.length()==6){
         s+='0';
