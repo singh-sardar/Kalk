@@ -40,7 +40,8 @@ SOURCES += \
     matrice.cpp \
     coloroperationbuttons.cpp \
     rgbcolorgui.cpp \
-    colorcontroller.cpp
+    colorcontroller.cpp \
+    ricettagui.cpp
 
 HEADERS += \
         kalk.h \
@@ -59,7 +60,8 @@ HEADERS += \
     matrice.h \
     coloroperationbuttons.h \
     rgbcolorgui.h \
-    colorcontroller.h
+    colorcontroller.h \
+    ricettagui.h
 
 FORMS += \
         kalk.ui

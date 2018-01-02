@@ -13,11 +13,11 @@
 
 
 
-//include for color gui
+//include for  gui
 #include "tworgbpicker.h"
 #include "coloroperationbuttons.h"
 #include "rgbcolorgui.h"
-
+#include "ricettagui.h"
 
 //include qt
 #include <QLabel>
@@ -244,6 +244,8 @@ int main(int argc, char *argv[])
 */
     RgbColorGui g;
     g.show();
+    RicettaGui rgui;
+    rgui.show();
 
 
 
