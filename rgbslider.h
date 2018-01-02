@@ -15,9 +15,9 @@ public:
     SpinSlider* getR()const;
     SpinSlider* getG()const;
     SpinSlider* getB()const;
-
+    ~RgbSlider();
 private:
-    SpinSlider *R,*G,*B,*A;
+    SpinSlider *R,*G,*B;
     QVBoxLayout* layout;
 
 signals:

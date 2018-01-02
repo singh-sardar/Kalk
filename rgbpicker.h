@@ -20,6 +20,7 @@ public:
     int getRvalue()const;
     int getGvalue()const;
     int getBvalue()const;
+    ~RgbPicker();
 
 private:
     RgbSlider* slider;

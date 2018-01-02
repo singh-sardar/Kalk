@@ -30,7 +30,12 @@ SpinSlider::SpinSlider(QWidget* parent,QString desc,int min,int max ):QWidget(pa
 
 }
 
-
+SpinSlider::~SpinSlider(){
+    delete layout ;
+    delete desc_lable;
+    delete slider;
+    delete spin_box;
+}
 QLabel* SpinSlider::getLable() const{
     return desc_lable;
 }

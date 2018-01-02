@@ -3,7 +3,7 @@
 RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorController(this))
 {
     QFont f("Verdana",12);
-    QLabel* lbl = new QLabel("Colore risultante dalla ultima operazione");
+     lbl = new QLabel("Colore risultante dalla ultima operazione");
     resultLabel = new QLabel("");
     resultLabel->setFont(f);
     lbl->setFont(f);
@@ -15,8 +15,10 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
 
     saveOperando1 = new QPushButton("Salva Colore 1 come Operando 1");
     saveOperando2 = new QPushButton("Salva Colore 2 come Operando 2");
+    useResultAsOperando= new QPushButton("Usa ultimo risultato come Operando 1");
     saveOperando1->setFont(f);
     saveOperando2->setFont(f);
+    useResultAsOperando->setFont(f);
 
 
     operando1= new QWidget;
@@ -28,7 +30,7 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
     operando2->setAutoFillBackground(true);
 
     result= new QWidget;
-    result->setMinimumSize(600,100);
+    result->setMinimumSize(600,75);
     result->setAutoFillBackground(true);
 
 
@@ -41,8 +43,9 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
     layout->addWidget(operando2,2,1);
     layout->addWidget(op,3,0,1,2);
     layout->addWidget(lbl,4,0,Qt::AlignCenter);
-        layout->addWidget(resultLabel,4,1);
+    layout->addWidget(resultLabel,4,1);
     layout->addWidget(result,5,0,1,2);
+    layout->addWidget(useResultAsOperando,6,0,1,2);
 
     QColor* c = new QColor;
     c->setRgb(0,0,0);
@@ -79,12 +82,27 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
 
     connect(saveOperando1,SIGNAL(clicked(bool)),this,SIGNAL(btnSaveOperando1Clicked(bool)));
     connect(saveOperando2,SIGNAL(clicked(bool)),this,SIGNAL(btnSaveOperando2Clicked(bool)));
+    connect(useResultAsOperando,SIGNAL(clicked(bool)),this,SIGNAL(btnUseResultAsOperandoClicked(bool)));
 
 
 
 
 }
 
+RgbColorGui::~RgbColorGui(){
+    delete layout;
+    delete p;
+    delete op;
+    delete saveOperando1;
+    delete saveOperando2;
+    delete useResultAsOperando;
+    delete operando1;
+    delete operando2 ;
+    delete result;
+    delete controller;
+    delete resultLabel;
+    delete lbl;
+}
 int RgbColorGui::getColor1Rvalue()const{return p->getColor1()->getRvalue();}
 int RgbColorGui::getColor1Gvalue()const{return p->getColor1()->getGvalue();}
 int RgbColorGui::getColor1Bvalue()const{return p->getColor1()->getBvalue();}
@@ -95,3 +113,7 @@ QWidget* RgbColorGui::getResultViewer()const{return result;}
 QWidget* RgbColorGui::getOperand1Viewer()const{return operando1;}
 QWidget* RgbColorGui::getOperand2Viewer()const{return operando2;}
 QLabel* RgbColorGui::getResultLabel()const{return resultLabel;}
+double RgbColorGui::getHValue()const{return op->getHSpin()->value();}
+double RgbColorGui::getSValue()const{return op->getSSpin()->value();}
+double RgbColorGui::getLValue()const{return op->getLSpin()->value();}
+double RgbColorGui::getFattoreScalaValue()const{return op->getFattoreScalaSpin()->value();}

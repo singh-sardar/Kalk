@@ -21,7 +21,12 @@ RgbPicker::RgbPicker(QWidget* parent):QWidget(parent)
     setLayout(layout);
 
 }
-
+RgbPicker::~RgbPicker(){
+    delete slider;
+    delete viewer;
+    delete c;
+    delete layout;
+}
 RgbSlider* RgbPicker::getRgbSlider()const{return slider;}
 QWidget* RgbPicker::getViewer()const{return viewer;}
 

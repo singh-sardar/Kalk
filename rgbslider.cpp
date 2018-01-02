@@ -19,6 +19,13 @@ RgbSlider::RgbSlider(QWidget* parent ):QWidget(parent)
     connect(B,SIGNAL(valueChanged(int)),this,SIGNAL(BvalueChanged(int)));
 
 }
+RgbSlider::~RgbSlider(){
+    delete R;
+    delete G;
+    delete B;
+    delete layout;
+
+}
 SpinSlider* RgbSlider::getR()const{return R;}
 SpinSlider* RgbSlider::getG()const{return G;}
 SpinSlider* RgbSlider::getB()const{return B;}

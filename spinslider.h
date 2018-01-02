@@ -20,7 +20,7 @@ public:
     QLabel* getLable() const;
     QSlider* getSlider() const;
     QSpinBox* getSpinBox() const;
-
+    ~SpinSlider();
 private:
     QHBoxLayout* layout ;
     QLabel* desc_lable;

@@ -12,11 +12,13 @@ class ColorController:public QObject
     Q_OBJECT
 public:
     ColorController(RgbColorGui*);
+     ~ColorController();
 private:
     RgbColorGui* view;
     ColoreRgb* model1,* model2,*result;
     static void showMessageBox(QString,QString);
     void updateOneOperandResult(QString);
+
 
 private slots:
     void SaveOperando1();
@@ -37,6 +39,7 @@ private slots:
     void Hsl2RgbColore();
 
     void ChangeResultColor();
+    void ResultAsOperando();
 };
 
 #endif // COLORCONTROLLER_H

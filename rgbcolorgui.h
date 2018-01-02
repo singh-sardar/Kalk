@@ -24,15 +24,21 @@ public:
     QWidget* getOperand1Viewer()const;
     QWidget* getOperand2Viewer()const;
     QLabel* getResultLabel()const;
+    double getHValue()const;
+    double getSValue()const;
+    double getLValue()const;
+    double getFattoreScalaValue()const;
+
+    ~RgbColorGui();
 private:
     QGridLayout* layout;
     TwoRgbPicker* p;
     colorOperationButtons* op;
-    QPushButton *saveOperando1, *saveOperando2;
+    QPushButton *saveOperando1, *saveOperando2,*useResultAsOperando;
     QWidget *operando1,*operando2 , *result;
     ColorController* controller;
     QLabel* resultLabel;
-
+    QLabel* lbl;
 
 
 signals:
@@ -50,6 +56,7 @@ signals:
     void btnHsl2RgbClicked(bool);
     void btnSaveOperando1Clicked(bool);
     void btnSaveOperando2Clicked(bool);
+    void btnUseResultAsOperandoClicked(bool);
 
 };
 

@@ -5,16 +5,27 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QLabel>
+#include <QDoubleSpinBox>
+#include <QHBoxLayout>
 class colorOperationButtons:public QWidget
 {
     Q_OBJECT
 public:
     colorOperationButtons(QWidget* parent = 0);
+    QDoubleSpinBox* getFattoreScalaSpin()const;
+    QDoubleSpinBox* getHSpin()const;
+    QDoubleSpinBox* getSSpin()const;
+    QDoubleSpinBox* getLSpin()const;
+    ~colorOperationButtons();
+
+
 
 private:
 
     QPushButton *btnSomma,*btnDifferenza,*btnModulazione,*btnDeltaE,*btnScala,*btnComplementare,*btnLuminosita,*btnCaldo,*btnLab,*btnHsl,*btnHex,*btnHsl2Rgb;
     QGridLayout* layout;
+    QDoubleSpinBox *fattoreScala,*H,*S,*L;
+    QLabel* lbl1,*lbl2;
 
 signals:
     void btnSommaClicked(bool);

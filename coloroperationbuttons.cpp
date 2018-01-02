@@ -2,18 +2,40 @@
 
 colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
 {
-    QLabel* lbl1,*lbl2;
+
     lbl1= new QLabel("Operazioni tra 2 Operandi");
     lbl2 = new QLabel("Operazioni su Operando 1");
     QFont f("Verdana",12);
     lbl1->setFont(f);
     lbl2->setFont(f);
+
+
+
+    fattoreScala = new QDoubleSpinBox;
+    fattoreScala->setMinimum(0.1);
+    fattoreScala->setFont(f);
+
+    H = new QDoubleSpinBox;
+    H->setRange(0.0,400.0);
+    H->setFont(f);
+    H->setSuffix(" H");
+
+    S= new QDoubleSpinBox;
+    S->setRange(0.0,100.0);
+    S->setFont(f);
+    S->setSuffix(" S");
+
+    L= new QDoubleSpinBox;;
+    L->setRange(0.0,100.0);
+    L->setFont(f);
+    L->setSuffix(" L");
+
     layout = new QGridLayout;
     btnSomma = new QPushButton(tr("Somma"));
     btnDifferenza =new QPushButton(tr("Differenza"));
     btnModulazione=new QPushButton(tr("Moluazione"));
     btnDeltaE =new QPushButton(tr("Delta E"));
-    btnScala=new QPushButton(tr("Scala"));
+    btnScala=new QPushButton(tr("Scala di "));
     btnComplementare=new QPushButton(tr("Complementare"));
     btnLuminosita= new QPushButton(tr("Luminosità"));
     btnCaldo= new QPushButton(tr("Colore Caldo/Freddo"));
@@ -43,14 +65,20 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
     layout->addWidget(btnModulazione,1,2);
     layout->addWidget(btnDeltaE,1,3);
     layout->addWidget(lbl2,2,0,1,4,Qt::AlignCenter);
-    layout->addWidget(btnScala,3,0);
-    layout->addWidget(btnComplementare,3,1);
-    layout->addWidget(btnLuminosita,3,2);
+    layout->addWidget(btnComplementare,3,0);
+    layout->addWidget(btnLuminosita,3,1,1,2);
     layout->addWidget(btnCaldo,3,3);
     layout->addWidget(btnLab,4,0);
-    layout->addWidget(btnHsl,4,1);
-    layout->addWidget(btnHex,4,2);
-    layout->addWidget(btnHsl2Rgb,4,3);
+    layout->addWidget(btnHsl,4,1,1,2);
+    layout->addWidget(btnHex,4,3);
+    layout->addWidget(btnScala,5,0,1,2);
+    layout->addWidget(fattoreScala,5,2,1,2);
+    layout->addWidget(btnHsl2Rgb,6,0,1,2);
+    QHBoxLayout* l = new QHBoxLayout;
+    l->addWidget(H);
+    l->addWidget(S);
+    l->addWidget(L);
+    layout->addLayout(l,6,2,1,2);
 
     connect(btnSomma,SIGNAL(clicked(bool)),this,SIGNAL(btnSommaClicked(bool)));
     connect(btnDifferenza,SIGNAL(clicked(bool)),this,SIGNAL(btnDifferenzaClicked(bool)));
@@ -67,3 +95,28 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
 
     setLayout(layout);
 }
+colorOperationButtons::~colorOperationButtons(){
+    delete btnSomma;
+    delete btnDifferenza;
+    delete btnModulazione;
+    delete btnDeltaE;
+    delete btnScala;
+    delete btnComplementare;
+    delete btnLuminosita ;
+    delete btnCaldo;
+    delete btnLab ;
+    delete btnHsl ;
+    delete btnHex ;
+    delete btnHsl2Rgb;
+    delete layout;
+    delete fattoreScala;
+    delete H;
+    delete S;
+    delete L;
+    delete lbl1;
+    delete lbl2;
+}
+QDoubleSpinBox*  colorOperationButtons::getFattoreScalaSpin()const{return fattoreScala;}
+QDoubleSpinBox* colorOperationButtons::getHSpin()const{return H;}
+QDoubleSpinBox* colorOperationButtons::getSSpin()const{return S;}
+QDoubleSpinBox* colorOperationButtons::getLSpin()const{return L;}

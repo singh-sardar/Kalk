@@ -23,7 +23,13 @@ TwoRgbPicker::TwoRgbPicker(QWidget* parent):QWidget(parent)
     setLayout(grid);
 
 }
-
+TwoRgbPicker::~TwoRgbPicker(){
+    delete color1;
+    delete color2;
+    delete label1;
+    delete label2;
+    delete grid;
+}
 RgbPicker* TwoRgbPicker::getColor1()const{return color1;}
 RgbPicker* TwoRgbPicker::getColor2()const{return color2;}
 QLabel* TwoRgbPicker::getLabel1()const{return label1;}

@@ -14,6 +14,7 @@ public:
     RgbPicker* getColor2()const;
     QLabel* getLabel1()const;
     QLabel* getLabel2()const;
+    ~TwoRgbPicker();
 
 private:
     RgbPicker *color1,*color2;

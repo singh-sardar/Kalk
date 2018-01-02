@@ -15,10 +15,22 @@ ColorController::ColorController(RgbColorGui* v):view(v),model1(new ColoreRgb())
     connect(view,SIGNAL(btnLabClicked(bool)),this,SLOT(LabColore()));
     connect(view,SIGNAL(btnHslClicked(bool)),this,SLOT(HslColore()));
     connect(view,SIGNAL(btnHexClicked(bool)),this,SLOT(HexColore()));
-     connect(view,SIGNAL(btnCaldoClicked(bool)),this,SLOT(CaldoColore()));
-     connect(view,SIGNAL(btnComplementareClicked(bool)),this,SLOT(ComplementareColore()));
-     connect(view,SIGNAL(btnComplementareClicked(bool)),this,SLOT(ChangeResultColor()));
+    connect(view,SIGNAL(btnCaldoClicked(bool)),this,SLOT(CaldoColore()));
+    connect(view,SIGNAL(btnComplementareClicked(bool)),this,SLOT(ComplementareColore()));
+    connect(view,SIGNAL(btnComplementareClicked(bool)),this,SLOT(ChangeResultColor()));
     connect(view,SIGNAL(btnLuminositaClicked(bool)),this,SLOT(LuminositaColore()));
+    connect(view,SIGNAL(btnScalaClicked(bool)),this,SLOT(ScalaColore()));
+    connect(view,SIGNAL(btnScalaClicked(bool)),this,SLOT(ChangeResultColor()));
+    connect(view,SIGNAL(btnHsl2RgbClicked(bool)),this,SLOT(Hsl2RgbColore()));
+    connect(view,SIGNAL(btnHsl2RgbClicked(bool)),this,SLOT(ChangeResultColor()));
+    connect(view,SIGNAL(btnUseResultAsOperandoClicked(bool)),this,SLOT(ResultAsOperando()));
+
+}
+ColorController::~ColorController(){
+
+    delete model1;
+    delete model2;
+    delete result;
 
 }
 void ColorController::SommaColori(){
@@ -32,11 +44,11 @@ void ColorController::SaveOperando1(){
     model1->setB(view->getColor1Bvalue());
 
 
-    QColor* c = new QColor;
+    QColor c;
     QPalette p= view->getOperand1Viewer()->palette();
 
-    c->setRgb(model1->getR(),model1->getG(),model1->getB());
-    p.setColor(QPalette::Window,*c);
+    c.setRgb(model1->getR(),model1->getG(),model1->getB());
+    p.setColor(QPalette::Window,c);
     view->getOperand1Viewer()->setPalette(p);
 }
 
@@ -47,11 +59,11 @@ void ColorController::SaveOperando2(){
     model2->setB(view->getColor2Bvalue());
 
 
-    QColor* c = new QColor;
+    QColor c;
     QPalette p= view->getOperand2Viewer()->palette();
 
-    c->setRgb(model2->getR(),model2->getG(),model2->getB());
-    p.setColor(QPalette::Window,*c);
+    c.setRgb(model2->getR(),model2->getG(),model2->getB());
+    p.setColor(QPalette::Window,c);
     view->getOperand2Viewer()->setPalette(p);
 }
 void ColorController::showMessageBox(QString title,QString text){
@@ -68,27 +80,23 @@ void ColorController::ChangeResultColor(){
     updateOneOperandResult(result->schemaColore().c_str());
 }
 void ColorController::updateOneOperandResult(QString s){
-    QColor* c = new QColor;
+    QColor c;
     QPalette p= view->getResultViewer()->palette();
 
-    c->setRgb(result->getR(),result->getG(),result->getB());
-    p.setColor(QPalette::Window,*c);
+    c.setRgb(result->getR(),result->getG(),result->getB());
+    p.setColor(QPalette::Window,c);
     view->getResultViewer()->setPalette(p);
     view->getResultLabel()->setText(s);
 }
+void ColorController::ResultAsOperando(){
+    *model1 = *result;
+    QColor c;
+    QPalette p= view->getOperand1Viewer()->palette();
 
-
-
-
-
-
-
-
-
-
-
-
-
+    c.setRgb(model1->getR(),model1->getG(),model1->getB());
+    p.setColor(QPalette::Window,c);
+    view->getOperand1Viewer()->setPalette(p);
+}
 
 
 void ColorController::DifferenzaColori(){
@@ -151,6 +159,7 @@ void ColorController::LabColore(){
     result= model1;
     updateOneOperandResult(s);
 
+
 }
 void ColorController::HslColore(){
     double HSL[3];
@@ -168,6 +177,7 @@ void ColorController::HslColore(){
     updateOneOperandResult(s);
 
 
+
 }
 void ColorController::HexColore(){
     QString s= model1->schemaColore().c_str();
@@ -178,5 +188,18 @@ void ColorController::HexColore(){
     result= model1;
     updateOneOperandResult(s);
 }
-void ColorController::Hsl2RgbColore(){}
-void ColorController::ScalaColore(){}
+void ColorController::Hsl2RgbColore(){
+    double HSL[3];
+    HSL[0] = view->getHValue();
+    HSL[1] = view->getSValue();
+    HSL[2] = view->getLValue();
+    int RGB[3];
+    Colore::hsl2rgb(HSL,RGB);
+    result->modificaColore(RGB[0],RGB[1],RGB[2]);
+
+
+}
+void ColorController::ScalaColore(){
+    result = *model1 * view->getFattoreScalaValue();
+
+}
