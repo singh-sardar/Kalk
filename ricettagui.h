@@ -6,6 +6,8 @@
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QHBoxLayout>
+#include <QSpinBox>
 class RicettaGui:public QWidget
 {
 public:
@@ -23,7 +25,20 @@ private:
     QPushButton* addIngrediente2;
     QPushButton* removeIngrediente1;
     QPushButton* removeIngrediente2;
+    QPushButton* calorie1;
+    QPushButton* calorie2;
+    QPushButton* costo1;
+    QPushButton* costo2;
+    QPushButton* sommaRicette;
+    QPushButton* differenzaRicette;
+    QPushButton* proporziona1;
+    QPushButton* proporziona2;
     QGridLayout* layout;
+    QPushButton* useResultAsRicetta1;
+    QPushButton* useResultAsRicetta2;
+    QHBoxLayout* l1;
+    QSpinBox* prop1;
+    QSpinBox* prop2;
 };
 
 #endif // RICETTAGUI_H
