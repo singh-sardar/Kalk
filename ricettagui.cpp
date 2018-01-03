@@ -4,7 +4,7 @@ RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
 {
 
     ingDialog = new IngredienteDialog;
-     ingDialog->setModal(true);
+    ingDialog->setModal(true);
     QFont f("Verdana",12);
     layout = new QGridLayout;
     ricetta1 = new QPlainTextEdit;
@@ -93,7 +93,9 @@ RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
     connect(useResultAsRicetta2,SIGNAL(clicked(bool)),this,SIGNAL(btnUseAsRicetta2Clicked()));
     connect(ricetta1Nome,SIGNAL(textChanged(QString)),this,SIGNAL(Ricetta1NameChanged()));
     connect(ricetta2Nome,SIGNAL(textChanged(QString)),this,SIGNAL(Ricetta2NameChanged()));
-     Controller= new RicettaController(this);
+    connect(prop1,SIGNAL(valueChanged(int)),this,SIGNAL(btnProporziona1Clicked()));
+    connect(prop2,SIGNAL(valueChanged(int)),this,SIGNAL(btnProporziona2Clicked()));
+    Controller= new RicettaController(this);
 
 }
 RicettaGui::~RicettaGui(){
@@ -125,7 +127,7 @@ RicettaGui::~RicettaGui(){
 }
 IngredienteDialog* RicettaGui::getIngredienteDialog()const{return ingDialog;}
 void RicettaGui::showDialogIngrediente(){
- ingDialog->exec();
+    ingDialog->exec();
 }
 QPlainTextEdit* RicettaGui::getRicetta1Viewer()const{return ricetta1;}
 QPlainTextEdit* RicettaGui::getRicetta2Viewer()const{return ricetta2;}
