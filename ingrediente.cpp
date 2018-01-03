@@ -80,7 +80,7 @@ double Ingrediente::calorieTorali()const{
 
 
 string Ingrediente::getDescrizione()const{
-    return "Nome Ingrediente: "+nome+"   Quantita:"+std::to_string(quantita)+" g    calorie: "+std::to_string(calorie)+"   Costo: "+std::to_string(costo);
+    return "\nNome Ingrediente: "+nome+"\n -Quantita:"+std::to_string(quantita)+" g\n -calorie: "+std::to_string(calorie)+" x 100g\n -Costo: "+std::to_string(costo)+" al g";
 }
 bool Ingrediente::operator==(const Ingrediente& i)const{
     return i.getNome()==nome && i.getCalorie()==calorie && i.getCosto() == costo;

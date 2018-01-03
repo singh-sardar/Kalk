@@ -12,13 +12,13 @@ ColorController::ColorController(RgbColorGui* v):view(v),model1(new ColoreRgb())
     connect(view,SIGNAL(btnModulazioneClicked(bool)),this,SLOT(ChangeResultColor()));
     connect(view,SIGNAL(btnDeltaEClicked(bool)),this,SLOT(DeltaEColori()));
     connect(view,SIGNAL(btnDeltaEClicked(bool)),this,SLOT(ChangeResultColor()));
-    connect(view,SIGNAL(btnLabClicked(bool)),this,SLOT(LabColore()));
-    connect(view,SIGNAL(btnHslClicked(bool)),this,SLOT(HslColore()));
-    connect(view,SIGNAL(btnHexClicked(bool)),this,SLOT(HexColore()));
-    connect(view,SIGNAL(btnCaldoClicked(bool)),this,SLOT(CaldoColore()));
     connect(view,SIGNAL(btnComplementareClicked(bool)),this,SLOT(ComplementareColore()));
     connect(view,SIGNAL(btnComplementareClicked(bool)),this,SLOT(ChangeResultColor()));
     connect(view,SIGNAL(btnLuminositaClicked(bool)),this,SLOT(LuminositaColore()));
+    connect(view,SIGNAL(btnCaldoClicked(bool)),this,SLOT(CaldoColore()));
+    connect(view,SIGNAL(btnLabClicked(bool)),this,SLOT(LabColore()));
+    connect(view,SIGNAL(btnHslClicked(bool)),this,SLOT(HslColore()));
+    connect(view,SIGNAL(btnHexClicked(bool)),this,SLOT(HexColore()));
     connect(view,SIGNAL(btnScalaClicked(bool)),this,SLOT(ScalaColore()));
     connect(view,SIGNAL(btnScalaClicked(bool)),this,SLOT(ChangeResultColor()));
     connect(view,SIGNAL(btnHsl2RgbClicked(bool)),this,SLOT(Hsl2RgbColore()));
@@ -28,9 +28,15 @@ ColorController::ColorController(RgbColorGui* v):view(v),model1(new ColoreRgb())
 }
 ColorController::~ColorController(){
 
-    delete model1;
-    delete model2;
-    delete result;
+    if(result == model1 || result == model2){
+        delete model1;
+        delete model2;
+    }else
+    {
+        delete model1;
+        delete model2;
+        delete result;
+    }
 
 }
 void ColorController::SommaColori(){
@@ -66,7 +72,7 @@ void ColorController::SaveOperando2(){
     p.setColor(QPalette::Window,c);
     view->getOperand2Viewer()->setPalette(p);
 }
-void ColorController::showMessageBox(QString title,QString text){
+void ColorController::showMessageBox(QString title,QString text)const{
     QMessageBox msgBox;
     msgBox.setWindowTitle(title);
     msgBox.setIcon(QMessageBox::Information);

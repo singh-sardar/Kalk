@@ -11,7 +11,7 @@ IngredienteDialog::IngredienteDialog(QWidget* parent):  QDialog(parent)
     ok = new QPushButton("OK");
     cancel= new QPushButton("Annulla");
     lblNome = new QLabel("Nome Ingrediente");
-    lblQuantita = new QLabel("Costo Ingrediente");
+    lblQuantita = new QLabel("Quantita Ingrediente");
     lblCalorie = new QLabel("Calorie Ingrediente");
     lblCosto = new QLabel("Costo Ingrediente");
 

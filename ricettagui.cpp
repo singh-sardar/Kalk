@@ -2,6 +2,7 @@
 
 RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
 {
+
     ingDialog = new IngredienteDialog;
      ingDialog->setModal(true);
     QFont f("Verdana",12);
@@ -16,7 +17,6 @@ RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
 
     ricetta1Nome = new QLineEdit("Nome Ricetta 1");
     ricetta2Nome = new QLineEdit("Nome Ricetta 2");
-    ricettaResultNome = new QLineEdit("Nome Ricetta Risultato");
 
 
     addIngrediente1 = new QPushButton("Aggiungi Ingrediente");
@@ -27,8 +27,8 @@ RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
     calorie2= new QPushButton("Calcola Calorie");
     costo1= new QPushButton("Calcola Costo");
     costo2= new QPushButton("Calcola Costo");
-    sommaRicette= new QPushButton("Somma le 2 ricette");
-    differenzaRicette= new QPushButton("Differenza tra le 2 ricette");
+    sommaRicette= new QPushButton("Somma le quantita degli ingredienti di ricetta B a ricetta A");
+    differenzaRicette= new QPushButton("Sottrai le quantita degli ingredienti di ricetta B da ricetta A");
     proporziona1= new QPushButton("Proporziona\n ricetta  per ");
     proporziona2 = new QPushButton("Proporziona\n ricetta  per ");
     useResultAsRicetta1 =new QPushButton("Usa come Ricetta 1");
@@ -49,11 +49,11 @@ RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
 
     layout->addWidget(ricetta1Nome,0,0);
     layout->addWidget(ricetta2Nome,0,1);
-    layout->addWidget(ricettaResultNome,0,2);
+
 
     layout->addWidget(ricetta1,1,0);
     layout->addWidget(ricetta2,1,1);
-    layout->addWidget(ricettaResult,1,2,6,1);
+    layout->addWidget(ricettaResult,0,2,7,1);
     layout->addWidget(addIngrediente1,2,0);
     layout->addWidget(addIngrediente2,2,1);
     layout->addWidget(removeIngrediente1,3,0);
@@ -91,9 +91,48 @@ RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
     connect(differenzaRicette,SIGNAL(clicked(bool)),this,SIGNAL(btnDifferenzaClicked()));
     connect(useResultAsRicetta1,SIGNAL(clicked(bool)),this,SIGNAL(btnUseAsRicetta1Clicked()));
     connect(useResultAsRicetta2,SIGNAL(clicked(bool)),this,SIGNAL(btnUseAsRicetta2Clicked()));
-
+    connect(ricetta1Nome,SIGNAL(textChanged(QString)),this,SIGNAL(Ricetta1NameChanged()));
+    connect(ricetta2Nome,SIGNAL(textChanged(QString)),this,SIGNAL(Ricetta2NameChanged()));
+     Controller= new RicettaController(this);
 
 }
+RicettaGui::~RicettaGui(){
+    delete l1;
+    delete ricetta1;
+    delete ricetta2;
+    delete ricettaResult;
+    delete ricetta1Nome;
+    delete ricetta2Nome;
+    delete addIngrediente1;
+    delete addIngrediente2;
+    delete removeIngrediente1;
+    delete removeIngrediente2;
+    delete calorie1;
+    delete calorie2;
+    delete costo1;
+    delete costo2;
+    delete sommaRicette;
+    delete differenzaRicette;
+    delete proporziona1;
+    delete proporziona2;
+    delete layout;
+    delete useResultAsRicetta1;
+    delete useResultAsRicetta2;
+    delete prop1;
+    delete prop2;
+    delete ingDialog;
+    delete Controller;
+}
+IngredienteDialog* RicettaGui::getIngredienteDialog()const{return ingDialog;}
 void RicettaGui::showDialogIngrediente(){
  ingDialog->exec();
 }
+QPlainTextEdit* RicettaGui::getRicetta1Viewer()const{return ricetta1;}
+QPlainTextEdit* RicettaGui::getRicetta2Viewer()const{return ricetta2;}
+QPlainTextEdit* RicettaGui::getResultViewer()const{return ricettaResult;}
+QString RicettaGui::getNomeRicetta1()const{return ricetta1Nome->text();}
+QString RicettaGui::getNomeRicetta2()const{return ricetta2Nome->text();}
+int RicettaGui::getPropRicetta1Value()const{return prop1->value();}
+int RicettaGui::getPropRicetta2Value()const{return prop2->value();}
+QLineEdit* RicettaGui::getLineEdit1Nome()const{return ricetta1Nome;}
+QLineEdit* RicettaGui::getLineEdit2Nome()const{return ricetta2Nome;}
