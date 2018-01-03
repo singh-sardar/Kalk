@@ -41,7 +41,9 @@ SOURCES += \
     coloroperationbuttons.cpp \
     rgbcolorgui.cpp \
     colorcontroller.cpp \
-    ricettagui.cpp
+    ricettagui.cpp \
+    ingredientedialog.cpp \
+    ricettacontroller.cpp
 
 HEADERS += \
         kalk.h \
@@ -61,7 +63,9 @@ HEADERS += \
     coloroperationbuttons.h \
     rgbcolorgui.h \
     colorcontroller.h \
-    ricettagui.h
+    ricettagui.h \
+    ingredientedialog.h \
+    ricettacontroller.h
 
 FORMS += \
         kalk.ui

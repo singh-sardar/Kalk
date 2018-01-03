@@ -2,6 +2,8 @@
 
 RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
 {
+    ingDialog = new IngredienteDialog;
+     ingDialog->setModal(true);
     QFont f("Verdana",12);
     layout = new QGridLayout;
     ricetta1 = new QPlainTextEdit;
@@ -69,4 +71,29 @@ RicettaGui::RicettaGui(QWidget* parent ):QWidget(parent)
 
     setLayout(layout);
 
+    connect(addIngrediente1,SIGNAL(clicked(bool)),this,SLOT(showDialogIngrediente()));
+    connect(addIngrediente2,SIGNAL(clicked(bool)),this,SLOT(showDialogIngrediente()));
+    connect(removeIngrediente1,SIGNAL(clicked(bool)),this,SLOT(showDialogIngrediente()));
+    connect(removeIngrediente2,SIGNAL(clicked(bool)),this,SLOT(showDialogIngrediente()));
+
+
+    connect(addIngrediente1,SIGNAL(clicked(bool)),this,SIGNAL(btnAddIngrediente1Clicked()));
+    connect(addIngrediente2,SIGNAL(clicked(bool)),this,SIGNAL(btnAddIngrediente2Clicked()));
+    connect(removeIngrediente1,SIGNAL(clicked(bool)),this,SIGNAL(btnRemoveIngrediente1Clicked()));
+    connect(removeIngrediente2,SIGNAL(clicked(bool)),this,SIGNAL(btnRemoveIngrediente2Clicked()));
+    connect(costo1,SIGNAL(clicked(bool)),this,SIGNAL(btnCosto1Clicked()));
+    connect(costo2,SIGNAL(clicked(bool)),this,SIGNAL(btnCosto2Clicked()));
+    connect(calorie1,SIGNAL(clicked(bool)),this,SIGNAL(btnCalorie1Clicked()));
+    connect(calorie2,SIGNAL(clicked(bool)),this,SIGNAL(btnCalorie2Clicked()));
+    connect(proporziona1,SIGNAL(clicked(bool)),this,SIGNAL(btnProporziona1Clicked()));
+    connect(proporziona2,SIGNAL(clicked(bool)),this,SIGNAL(btnProporziona2Clicked()));
+    connect(sommaRicette,SIGNAL(clicked(bool)),this,SIGNAL(btnSommaClicked()));
+    connect(differenzaRicette,SIGNAL(clicked(bool)),this,SIGNAL(btnDifferenzaClicked()));
+    connect(useResultAsRicetta1,SIGNAL(clicked(bool)),this,SIGNAL(btnUseAsRicetta1Clicked()));
+    connect(useResultAsRicetta2,SIGNAL(clicked(bool)),this,SIGNAL(btnUseAsRicetta2Clicked()));
+
+
+}
+void RicettaGui::showDialogIngrediente(){
+ ingDialog->exec();
 }

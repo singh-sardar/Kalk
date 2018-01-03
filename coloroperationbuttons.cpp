@@ -6,8 +6,7 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
     lbl1= new QLabel("Operazioni tra 2 Operandi");
     lbl2 = new QLabel("Operazioni su Operando 1");
     QFont f("Verdana",12);
-    lbl1->setFont(f);
-    lbl2->setFont(f);
+    setFont(f);
 
 
 
@@ -17,17 +16,14 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
 
     H = new QDoubleSpinBox;
     H->setRange(0.0,400.0);
-    H->setFont(f);
     H->setSuffix(" H");
 
     S= new QDoubleSpinBox;
     S->setRange(0.0,100.0);
-    S->setFont(f);
     S->setSuffix(" S");
 
     L= new QDoubleSpinBox;;
     L->setRange(0.0,100.0);
-    L->setFont(f);
     L->setSuffix(" L");
 
     layout = new QGridLayout;
@@ -43,20 +39,6 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
     btnHsl= new QPushButton(tr("Rappresentazione HSL "));
     btnHex= new QPushButton(tr("Rappresentazione HEX "));
     btnHsl2Rgb = new QPushButton(tr("HSL TO RGB"));
-
-
-    btnSomma->setFont(f);
-    btnDifferenza->setFont(f);
-    btnModulazione->setFont(f);
-    btnDeltaE->setFont(f);
-    btnScala->setFont(f);
-    btnComplementare->setFont(f);
-    btnLuminosita->setFont(f);
-    btnCaldo->setFont(f);
-    btnLab->setFont(f);
-    btnHsl->setFont(f);
-    btnHex->setFont(f);
-    btnHsl2Rgb->setFont(f);
 
 
     layout->addWidget(lbl1,0,0,1,4,Qt::AlignCenter);

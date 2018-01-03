@@ -8,8 +8,10 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QSpinBox>
+#include "ingredientedialog.h"
 class RicettaGui:public QWidget
 {
+    Q_OBJECT
 public:
     RicettaGui(QWidget* parent = 0);
 
@@ -39,6 +41,27 @@ private:
     QHBoxLayout* l1;
     QSpinBox* prop1;
     QSpinBox* prop2;
+    IngredienteDialog* ingDialog;
+signals:
+    void btnAddIngrediente1Clicked();
+    void btnAddIngrediente2Clicked();
+    void btnRemoveIngrediente1Clicked();
+    void btnRemoveIngrediente2Clicked();
+    void btnCosto1Clicked();
+    void btnCosto2Clicked();
+    void btnCalorie1Clicked();
+    void btnCalorie2Clicked();
+    void btnProporziona1Clicked();
+    void btnProporziona2Clicked();
+    void btnSommaClicked();
+    void btnDifferenzaClicked();
+    void btnUseAsRicetta1Clicked();
+    void btnUseAsRicetta2Clicked();
+
+private slots:
+    void showDialogIngrediente();
+
+
 };
 
 #endif // RICETTAGUI_H

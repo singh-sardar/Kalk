@@ -5,8 +5,8 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
     QFont f("Verdana",12);
      lbl = new QLabel("Colore risultante dalla ultima operazione");
     resultLabel = new QLabel("");
-    resultLabel->setFont(f);
-    lbl->setFont(f);
+    setFont(f);
+
 
     layout= new QGridLayout;
     p = new TwoRgbPicker;
@@ -16,8 +16,7 @@ RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorCo
     saveOperando1 = new QPushButton("Salva Colore 1 come Operando 1");
     saveOperando2 = new QPushButton("Salva Colore 2 come Operando 2");
     useResultAsOperando= new QPushButton("Usa ultimo risultato come Operando 1");
-    saveOperando1->setFont(f);
-    saveOperando2->setFont(f);
+
     useResultAsOperando->setFont(f);
 
 
