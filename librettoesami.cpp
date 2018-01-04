@@ -124,6 +124,10 @@ Esame LibrettoEsami::esamePiuRecente() const{
     return esamePiuRecente;
 }
 
+int LibrettoEsami::numeroEsamiSostenuti() const{
+    return getSize();
+}
+
 LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& l) const{
     LibrettoEsami aux = LibrettoEsami(*this);
     aux += l;

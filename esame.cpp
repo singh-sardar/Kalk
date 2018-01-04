@@ -67,10 +67,6 @@ void Esame::setVoto(int v){
         voto = v;
 }
 
-void Esame::setLode(bool b){
-    lode = b;
-}
-
 void Esame::setData(const Data& d){
     data = d;
 }
@@ -104,10 +100,10 @@ ostream& operator<<(ostream& os, const Esame& d){
 }
 
 //Somma dei parziali
-/*Esame Esame::operator+(const Esame& e)const{
+Esame Esame::operator+(const Esame& e)const{
     Esame tmp(*this);
     if(nomeMateria == e.getNomeMateria() && nomeCorso == e.getNomeCorso() && nomeProfessore == e.getNomeProfessore()){
         tmp.voto = (voto+e.getVoto())/2;
     }
+    return tmp;
 }
-*/

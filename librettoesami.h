@@ -30,6 +30,7 @@ public:
     double mediaAritmetica() const;
     double mediaPonderata() const;
     double previsioneVotoLaurea() const;
+    int numeroEsamiSostenuti() const;
     Esame esameMigliore() const; //ritorna l'esame col risultato migliore
     Esame esamePeggiore() const; //ritorna l'esame col risultato peggiore
     Esame esamePiuRecente() const;//ritorna l'esame che è stato svolto più recentemente

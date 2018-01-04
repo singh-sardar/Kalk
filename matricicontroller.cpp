@@ -1,6 +1,6 @@
 #include "matricicontroller.h"
 #include <QMessageBox>
-#include <QDebug>
+#include <QtDebug>
 
 MatriciController::MatriciController(MatriciGUI* view):
     viewMatrici(view)
@@ -359,7 +359,6 @@ void MatriciController::isScalare2(){
 }
 
 MatriciController::~MatriciController(){
-    delete viewMatrici;
     delete matrice1;
     delete matrice2;
     delete matriceRisultato;

@@ -7,6 +7,9 @@ using std::ostream;
 Data::Data(int g, int m, int a) : giorno(g), mese(m), anno(a) {
     if(!dataValida()){
         //eccezzione
+        g=1;
+        m=1;
+        a=1900;
     }
 }
 

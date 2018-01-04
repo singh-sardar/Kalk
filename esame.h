@@ -31,7 +31,6 @@ public:
     void setNomeMateria(string);
     void setNomeProfessore(string);
     void setVoto(int);
-    void setLode(bool);
     void setCFU(int);
     void setData(const Data&);
     bool operator ==(const Esame&) const;
@@ -40,7 +39,7 @@ public:
 //TI consiglio dei metodi set per poter modificare le robe del esame
 
     //operatore + tra esami richiesto da vettore generico
-    //Esame operator+(const Esame&)const;
+    Esame operator+(const Esame&)const;
 
 };
 

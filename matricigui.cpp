@@ -28,8 +28,7 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
     tableWidgetRisultato->setShowGrid(true);
     tableWidgetRisultato->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableWidgetRisultato->setSelectionBehavior(QAbstractItemView::SelectRows);
-    QHeaderView* header = tableWidgetRisultato->horizontalHeader();
-    header->setSectionResizeMode(QHeaderView::Stretch);
+    tableWidgetRisultato->resizeColumnsToContents();
 
     verticalLayout->addWidget(btnSomma);
     verticalLayout->addWidget(btnDifferenza);
