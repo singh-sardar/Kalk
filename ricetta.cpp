@@ -24,7 +24,7 @@ string Ricetta::getRicetta()const{
 Ricetta* Ricetta::operator+(const VettoreGenerico<Ingrediente>& vgr) const{
 
     Ricetta* aux= new Ricetta(*this);
-
+    aux->setNomeRicetta("Somma");
     const Ricetta* r = dynamic_cast<const Ricetta*>(&vgr);
     if(r){
         bool presente = false;
@@ -54,6 +54,7 @@ Ricetta* Ricetta::operator+(const VettoreGenerico<Ingrediente>& vgr) const{
 Ricetta* Ricetta::operator-(const VettoreGenerico<Ingrediente>& vgr) const{
 
     Ricetta* aux= new Ricetta(*this);
+    aux->setNomeRicetta("Differenza");
 
     const Ricetta* r = dynamic_cast<const Ricetta*>(&vgr);
     if(r){
