@@ -29,14 +29,14 @@ ElementiSingolaMatrice::ElementiSingolaMatrice(QWidget *parent):
     gridLayout->addWidget(btnMatriceCofattori,0,1);
     gridLayout->addWidget(btnMatriceInversa,1,0);
     gridLayout->addWidget(btnMatriceTrasposta,1,1);
-    gridLayout->addWidget(btnMoltiplicazioneScalare,2,0,1,2);
-    gridLayout->addWidget(btnDivisioneScalare,3,0,1,2);
-    gridLayout->addWidget(btnElevaAPotenza,4,0,1,2);
-    gridLayout->addWidget(btnIsDiagonale,5,0,1,2);
-    gridLayout->addWidget(btnIsScalare,6,0,1,2);
-    gridLayout->addWidget(btnIsSimmetrica,7,0,1,2);
-    gridLayout->addWidget(labelInputNumerici,8,0);
-    gridLayout->addWidget(inputNumerici,8,1);
+    gridLayout->addWidget(btnMoltiplicazioneScalare,2,0);
+    gridLayout->addWidget(btnDivisioneScalare,2,1);
+    gridLayout->addWidget(btnElevaAPotenza,3,0);
+    gridLayout->addWidget(btnIsDiagonale,3,1);
+    gridLayout->addWidget(btnIsScalare,4,0);
+    gridLayout->addWidget(btnIsSimmetrica,4,1);
+    gridLayout->addWidget(labelInputNumerici,5,0);
+    gridLayout->addWidget(inputNumerici,5,1);
 
     setLayout(gridLayout);
 
@@ -75,4 +75,20 @@ void ElementiSingolaMatrice::inputNumericoChanged(QString s)
         btnDivisioneScalare->setEnabled(false);
         btnElevaAPotenza->setEnabled(false);
     }
+}
+
+ElementiSingolaMatrice::~ElementiSingolaMatrice(){
+    delete btnMatriceCofattori;
+    delete btnMatriceInversa;
+    delete btnMatriceTrasposta;
+    delete btnDeterminante;
+    delete btnElevaAPotenza;
+    delete btnDivisioneScalare;
+    delete btnIsSimmetrica;
+    delete btnIsDiagonale;
+    delete btnIsScalare;
+    delete btnMoltiplicazioneScalare;
+    delete gridLayout;
+    delete labelInputNumerici;
+    delete inputNumerici;
 }

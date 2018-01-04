@@ -11,9 +11,9 @@ TableViewMatrice::TableViewMatrice(QWidget* parent, QString lblMatrice, int righ
     QWidget(parent)
 {
     tableWidget = new QTableWidget(righe,colonne,this);
-    tableWidget->setGeometry(10,10,350,350);
+    tableWidget->setGeometry(0,0,350,350);
     tableWidget->setMinimumSize(350,350);
-    tableWidget->setMaximumSize(350,350);
+    //tableWidget->setMaximumSize(350,350);
     tableWidget->setShowGrid(true);
 
     /*
@@ -24,8 +24,9 @@ TableViewMatrice::TableViewMatrice(QWidget* parent, QString lblMatrice, int righ
     tableWidget->setEditTriggers(QAbstractItemView::AllEditTriggers);
     tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
-    QVBoxLayout* verticalLayout= new QVBoxLayout;
-    QHBoxLayout* hLPerRighe = new QHBoxLayout, *hLPerColonne = new QHBoxLayout;
+    verticalLayout= new QVBoxLayout;
+    hLPerRighe = new QHBoxLayout;
+    hLPerColonne = new QHBoxLayout;
 
     QFont f("Verdana",14);
     f.setBold(false);
@@ -103,4 +104,16 @@ void TableViewMatrice::impostaCelle(){
     }
 
     tableWidget->resizeColumnsToContents();
+}
+
+TableViewMatrice::~TableViewMatrice(){
+    delete tableWidget;
+    delete spinBoxRighe;
+    delete spinBoxColonne;
+    delete labelMatrice;
+    delete labelSpinBoxRighe;
+    delete labelSpinBoxColonne;
+    delete verticalLayout;
+    delete hLPerRighe;
+    delete hLPerColonne;
 }

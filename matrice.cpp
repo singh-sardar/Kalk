@@ -172,7 +172,7 @@ Matrice* Matrice::matriceRidotta(unsigned int i, unsigned int j) const{
 }
 
 Matrice* Matrice::matriceCofattore() const{
-    if((numRighe == numColonne) && numRighe > 2){
+    if((numRighe == numColonne) && numRighe >= 2){
         Matrice* mat1 = new Matrice(numRighe, numColonne);
         for(unsigned int i=0; i < mat1->getNumRighe(); ++i){
             for(unsigned int j=0; j < mat1->getNumColonne(); ++j){
@@ -201,8 +201,10 @@ double Matrice::determinante() const{
                 t-= (getValore(0,i)*min->determinante());
             }
         }
-    }else{//matrice 2*2
+    }else if((numRighe==numColonne) && numRighe==2){//matrice 2*2
         t+= ((getValore(0,0)*getValore(1,1))-(getValore(1,0)*getValore(0,1)));
+    }else{
+        t = getValore(0,0);
     }
     return t;
 }

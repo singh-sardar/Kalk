@@ -24,7 +24,7 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
     tableWidgetRisultato = new QTableWidget(1,1);
     tableWidgetRisultato->setGeometry(0,0,350,350);
     tableWidgetRisultato->setMinimumSize(350,350);
-    tableWidgetRisultato->setMaximumSize(350,350);
+    //tableWidgetRisultato->setMaximumSize(350,350);
     tableWidgetRisultato->setShowGrid(true);
     tableWidgetRisultato->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableWidgetRisultato->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -43,8 +43,6 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
     gridLayout->addWidget(controlliWidget1,1,0);
     gridLayout->addWidget(controlliWidget2,1,2);
     gridLayout->addWidget(labelRisultato,2,0,1,3,Qt::AlignCenter);
-
-    setMaximumSize(this->minimumWidth(),this->minimumHeight());
 
     setLayout(gridLayout);
 
@@ -97,4 +95,21 @@ QTableWidget* MatriciGUI::getTableWidget2() const{
 
 QTableWidget* MatriciGUI::getTableWidgetRisultato() const{
     return tableWidgetRisultato;
+}
+
+MatriciGUI::~MatriciGUI(){
+     delete tableWidget1;
+     delete tableWidget2;
+     delete tableWidgetRisultato;
+     delete controlliWidget1;
+     delete controlliWidget2;
+     delete btnSomma;
+     delete btnDifferenza;
+     delete btnMoltiplicazione;
+     delete gridLayout;
+     delete controllerMatrici;
+     delete verticalLayout;
+     delete verticalLayoutMatriceRisultato;
+     delete labelRisultato;
+     delete labelMatriceRisultato;
 }

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QTableWidget>
 #include <QSpinBox>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QLabel>
 
 class TableViewMatrice: public QWidget{
@@ -15,6 +17,7 @@ public:
     QSpinBox* getSpinBoxRighe() const;
     QSpinBox* getSpinBoxColonne() const;
     QTableWidget* getTableWidget() const;
+    ~TableViewMatrice();
 
 private:
     QTableWidget* tableWidget;
@@ -23,6 +26,8 @@ private:
     QLabel* labelMatrice;
     QLabel* labelSpinBoxRighe;
     QLabel* labelSpinBoxColonne;
+    QVBoxLayout* verticalLayout;
+    QHBoxLayout* hLPerRighe, *hLPerColonne;
 
 private slots:
     void impostaCelle();
