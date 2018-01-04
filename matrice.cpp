@@ -172,7 +172,7 @@ Matrice* Matrice::matriceRidotta(unsigned int i, unsigned int j) const{
 }
 
 Matrice* Matrice::matriceCofattore() const{
-    if(numColonne==numRighe){
+    if((numRighe == numColonne) && numRighe > 2){
         Matrice* mat1 = new Matrice(numRighe, numColonne);
         for(unsigned int i=0; i < mat1->getNumRighe(); ++i){
             for(unsigned int j=0; j < mat1->getNumColonne(); ++j){

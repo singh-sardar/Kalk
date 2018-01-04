@@ -18,6 +18,7 @@
 #include "coloroperationbuttons.h"
 #include "rgbcolorgui.h"
 #include "ricettagui.h"
+#include "matricigui.h"
 
 //include qt
 #include <QLabel>
@@ -183,6 +184,10 @@ int main(int argc, char *argv[])
     catch (const std::out_of_range& e) {
         //cout << "Out of Range error.";
     }
+
+    MatriciGUI matGUI;
+    matGUI.show();
+
     //main per pardeep fino a qui ---------------------------------------------------------------------------------------
 
 
@@ -242,6 +247,8 @@ int main(int argc, char *argv[])
     b.show();
 
 */
+
+
     RgbColorGui g;
     g.show();
     RicettaGui rgui;
@@ -249,7 +256,8 @@ int main(int argc, char *argv[])
 
 
 
-   QPushButton btn(&w);
+
+    QPushButton btn(&w);
     btn.setGeometry(100,100,50,50);
     QColor c(myColor2.getR(),myColor2.getG(),myColor2.getB());
     /*QPalette p;

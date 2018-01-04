@@ -43,7 +43,11 @@ SOURCES += \
     colorcontroller.cpp \
     ricettagui.cpp \
     ingredientedialog.cpp \
-    ricettacontroller.cpp
+    ricettacontroller.cpp \
+    matricigui.cpp \
+    elementisingolamatrice.cpp \
+    tableviewmatrice.cpp \
+    matricicontroller.cpp
 
 HEADERS += \
         kalk.h \
@@ -65,7 +69,11 @@ HEADERS += \
     colorcontroller.h \
     ricettagui.h \
     ingredientedialog.h \
-    ricettacontroller.h
+    ricettacontroller.h \
+    matricigui.h \
+    elementisingolamatrice.h \
+    matricicontroller.h \
+    tableviewmatrice.h
 
 FORMS += \
         kalk.ui
