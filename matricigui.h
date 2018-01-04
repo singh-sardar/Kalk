@@ -24,6 +24,7 @@ public:
     QLabel* getLabelRisultato() const;
     QLineEdit* getLineEditMatrice1() const;
     QLineEdit* getLineEditMatrice2() const;
+    ~MatriciGUI();
 
 private:
     TableViewMatrice* tableWidget1, *tableWidget2;

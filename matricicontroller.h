@@ -14,6 +14,7 @@ class MatriciController: public QWidget{
 
 public:
     MatriciController(MatriciGUI*);
+    ~MatriciController();
 
 private:
     MatriciGUI* viewMatrici;
@@ -21,10 +22,6 @@ private:
     void aggiornaLabelRisultato(QString);
 
 private slots:
-    /*
-    void matrice1SizeChanged(int righe, int colonne);
-    void matrice2SiceChanged(int righe, int colonne);
-    */
     void aggiornaMatrice1();
     void aggiornaMatrice2();
     void aggiornaTableViewRisultato();

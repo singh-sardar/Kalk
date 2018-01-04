@@ -14,6 +14,7 @@ public:
     ElementiSingolaMatrice(QWidget *parent=0);
     QLabel* getLabelInputNumerici() const;
     QLineEdit* getLineEditNumerici() const;
+    ~ElementiSingolaMatrice();
 
 private:
     QPushButton *btnMatriceCofattori;

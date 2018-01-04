@@ -52,7 +52,7 @@ MatriciController::MatriciController(MatriciGUI* view):
     connect(viewMatrici,SIGNAL(btnIsScalareClicked1(bool)),this,SLOT(isScalare1()));
 
     connect(viewMatrici,SIGNAL(btnDeterminanteClicked2(bool)),this,SLOT(aggiornaMatrice2()));
-    connect(viewMatrici,SIGNAL(btnDeterminanteClicked2(bool)),this,SLOT(determinante1()));
+    connect(viewMatrici,SIGNAL(btnDeterminanteClicked2(bool)),this,SLOT(determinante2()));
 
     connect(viewMatrici,SIGNAL(btnMoltiplicazioneScalareClicked2(bool)),this,SLOT(aggiornaMatrice2()));
     connect(viewMatrici,SIGNAL(btnMoltiplicazioneScalareClicked2(bool)),this,SLOT(moltiplicazioneScalare2()));
@@ -134,7 +134,7 @@ void MatriciController::somma(){
     matriceRisultato = (*matrice1) + (*matrice2);
     if(matriceRisultato){
         aggiornaTableViewRisultato();
-        aggiornaLabelRisultato("La matrice somma si trova nella matrice Risultato");
+        aggiornaLabelRisultato("La matrice (somma) si trova nella matrice Risultato");
     }else
         QMessageBox::critical(this,"Errore somma matrici","Le matrici devono avere stesse dimensioni");
 }
@@ -143,15 +143,17 @@ void MatriciController::sottrazione(){
     matriceRisultato = *matrice1 - *matrice2;
     if(matriceRisultato){
         aggiornaTableViewRisultato();
-        aggiornaLabelRisultato("La matrice sottrazione si trova nella matrice Risultato");
+        aggiornaLabelRisultato("La matrice (sottrazione) si trova nella matrice Risultato");
     }else
         QMessageBox::critical(this,"Errore sottrazione matrici","Le matrici devono avere stesse dimensioni");
 }
 
 void MatriciController::moltiplicazione(){
     matriceRisultato = *matrice1 * *matrice2;
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice (moltiplicazione) si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore moltiplicazione matrici","Non è possibile eseguire la moltiplicazione.");
 }
@@ -159,29 +161,35 @@ void MatriciController::moltiplicazione(){
 void MatriciController::moltiplicazioneScalare1(){
     double d = viewMatrici->getLineEditMatrice1()->text().toDouble();
     matriceRisultato = *matrice1 * d;
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice dell'operazione (prodotto scalare) si trova nella matrice Risultato");
+    }
     else
-        QMessageBox::critical(this,"Errore moltiplicazione matrici","Non è possibile eseguire la moltiplicazione scalare.");
+        QMessageBox::critical(this,"Errore moltiplicazione scalare","Non è possibile eseguire la moltiplicazione scalare.");
 }
 
 void MatriciController::moltiplicazioneScalare2(){
     double d = viewMatrici->getLineEditMatrice2()->text().toDouble();
     matriceRisultato = *matrice2 * d;
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice dell'operazione (prodotto scalare) si trova nella matrice Risultato");
+    }
     else
-        QMessageBox::critical(this,"Errore moltiplicazione matrici","Non è possibile eseguire la moltiplicazione scalare.");
+        QMessageBox::critical(this,"Errore moltiplicazione scalare","Non è possibile eseguire la moltiplicazione scalare.");
 }
 
 void MatriciController::divisioneScalare1(){
     double d = viewMatrici->getLineEditMatrice1()->text().toDouble();
     if(d != 0.0){
         matriceRisultato = (*matrice1/d);
-        if(matriceRisultato)
+        if(matriceRisultato){
             aggiornaTableViewRisultato();
+            aggiornaLabelRisultato("La matrice dell'operazione (divisione scalare) si trova nella matrice Risultato");
+        }
         else
-            QMessageBox::critical(this,"Errore moltiplicazione matrici","Non è possibile eseguire la divisione scalare.");
+            QMessageBox::critical(this,"Errore divisione scalare","Non è possibile eseguire la divisione scalare.");
     }
     else{
         QMessageBox::critical(this,"Errore divisione per 0","Non è possibile dividere la matrice per 0.");
@@ -192,10 +200,12 @@ void MatriciController::divisioneScalare2(){
     double d = viewMatrici->getLineEditMatrice2()->text().toDouble();
     if(d != 0.0){
         matriceRisultato = (*matrice2/d);
-        if(matriceRisultato)
+        if(matriceRisultato){
             aggiornaTableViewRisultato();
+            aggiornaLabelRisultato("La matrice dell'operazione (divisione scalare) si trova nella matrice Risultato");
+        }
         else
-            QMessageBox::critical(this,"Errore moltiplicazione matrici","Non è possibile eseguire la divisione scalare.");
+            QMessageBox::critical(this,"Errore divisione scalare","Non è possibile eseguire la divisione scalare.");
     }
     else{
         QMessageBox::critical(this,"Errore divisione per 0","Non è possibile dividere la matrice per 0.");
@@ -220,49 +230,60 @@ void MatriciController::determinante2(){
 
 void MatriciController::matriceInversa1(){
     matriceRisultato = matrice1->matriceInversa();
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice inversa si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore matrice inversa 1","La matrice 1 deve essere quadrata oppure determinante è 0.");
 }
 
 void MatriciController::matriceInversa2(){
     matriceRisultato = matrice2->matriceInversa();
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice inversa si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore matrice inversa 2","La matrice 2 deve essere quadrata oppure determinante è 0.");
 }
 
 void MatriciController::matriceTrasposta1(){
     matriceRisultato = matrice1->matriceTrasposta();
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice trasposta si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore matrice trasposta 1","Non è possibile trovare la matrice trasposta.");
 }
 
 void MatriciController::matriceTrasposta2(){
-    if(matrice2)
-        matriceRisultato = matrice2->matriceTrasposta();
-    if(matriceRisultato)
+    matriceRisultato = matrice2->matriceTrasposta();
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice trasposta si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore matrice trasposta 2","Non è possibile trovare la matrice trasposta.");
 }
 
 void MatriciController::matriceCofattori1(){
     matriceRisultato = matrice1->matriceCofattore();
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice dei cofattori si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore matrice dei cofattori 1","Non è possibile trovare la matrice dei cofattori oppure determinante è 0.");
 }
 
 void MatriciController::matriceCofattori2(){
     matriceRisultato = matrice2->matriceCofattore();
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice dei cofattori si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore matrice dei cofattori 2","Non è possibile trovare la matrice dei cofattori oppure determinante è 0.");
 }
@@ -270,8 +291,10 @@ void MatriciController::matriceCofattori2(){
 void MatriciController::elevaAPotenza1(){
     double d = viewMatrici->getLineEditMatrice1()->text().toDouble();
     matriceRisultato = matrice1->elevaAPotenza(d);
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice dell'operazione (elevamento a potenza) si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore matrice 1","Non è possibile eseguire l'elevazione a potenza.");
 }
@@ -279,8 +302,10 @@ void MatriciController::elevaAPotenza1(){
 void MatriciController::elevaAPotenza2(){
     double d = viewMatrici->getLineEditMatrice2()->text().toDouble();
     matriceRisultato = matrice2->elevaAPotenza(d);
-    if(matriceRisultato)
+    if(matriceRisultato){
         aggiornaTableViewRisultato();
+        aggiornaLabelRisultato("La matrice dell'operazione (elevamento a potenza) si trova nella matrice Risultato");
+    }
     else
         QMessageBox::critical(this,"Errore matrice 2","Non è possibile eseguire l'elevazione a potenza.");
 }
@@ -331,4 +356,11 @@ void MatriciController::isScalare2(){
     }else{
         aggiornaLabelRisultato(QString("La matrice 2 non è scalare."));
     }
+}
+
+MatriciController::~MatriciController(){
+    delete viewMatrici;
+    delete matrice1;
+    delete matrice2;
+    delete matriceRisultato;
 }
