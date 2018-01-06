@@ -18,7 +18,7 @@ private:
     Data data;
 
 public:
-    Esame(string nomeM="",string nomeC="",string nomeP="",unsigned int c=1,unsigned int v=18);
+    Esame(string nomeM="Nome materia",string nomeC="Nome corso",string nomeP="Nome professore",unsigned int c=1,unsigned int v=18);
     Esame(string nomeM,string nomeC,string nomeP, const Data&,unsigned int c=1,unsigned int v=18);
     string getNomeCorso() const;
     string getNomeMateria() const;
@@ -35,7 +35,7 @@ public:
     void setData(const Data&);
     bool operator ==(const Esame&) const;
     bool operator !=(const Esame&) const;
-    string esameToString() const;
+    string getRappresentazioneStringa() const;
 //TI consiglio dei metodi set per poter modificare le robe del esame
 
     //operatore + tra esami richiesto da vettore generico

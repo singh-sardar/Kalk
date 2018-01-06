@@ -8,16 +8,21 @@ using std::string;
  */
 //LibrettoEsami::LibrettoEsami(): VettoreGenerico(){}
 LibrettoEsami::LibrettoEsami(string nomeS,string cognomeS, unsigned int matricolaS, unsigned int targCFU):
-    nomeStudente(nomeS), cognomeStudente(cognomeS), matricolaStudente(matricolaS), targetCFU(targCFU), totaleCFU(0){}
+    nomeStudente(nomeS), cognomeStudente(cognomeS), matricolaStudente(matricolaS), targetCFU(targCFU), totaleCFU(0)
+{}
 
 void LibrettoEsami::aggiungiElemento(const Esame& e){
-    VettoreGenerico::aggiungiElemento(e);
-    totaleCFU += e.getCFU();
+    if(!cerca(e)){
+        VettoreGenerico::aggiungiElemento(e);
+        totaleCFU += e.getCFU();
+    }
 }
 
 bool LibrettoEsami::rimuoviElemento(const Esame& e){
-    totaleCFU -= e.getCFU();
-    return VettoreGenerico::rimuoviElemento(e);
+    if(cerca(e)){
+        totaleCFU -= e.getCFU();
+        return VettoreGenerico::rimuoviElemento(e);
+    }
 }
 
 //Ritorna i CFU per completare il percorso di studi
@@ -34,12 +39,34 @@ unsigned int LibrettoEsami::getMatricola() const{
     return matricolaStudente;
 }
 
+void LibrettoEsami::setMatricola(unsigned int m){
+    matricolaStudente = m;
+}
+
 string LibrettoEsami::getNomeStudente() const{
     return nomeStudente;
 }
 
+void LibrettoEsami::setNomeStudente(string n){
+    nomeStudente = n;
+}
+
 string LibrettoEsami::getCognomeStudente() const{
     return cognomeStudente;
+}
+
+string LibrettoEsami::getInfoStudente() const{
+    string s = "Nome: ";
+    s += nomeStudente;
+    s += "\nCognome: ";
+    s += cognomeStudente;
+    s += "\nMatricola: ";
+    s += to_string(matricolaStudente);
+    return s;
+}
+
+void LibrettoEsami::setCognomeStudente(string c){
+    cognomeStudente = c;
 }
 
 double LibrettoEsami::percentualeCompletamento() const{
@@ -55,73 +82,93 @@ double LibrettoEsami::previsioneVotoLaurea() const{
 }
 
 double LibrettoEsami::mediaAritmetica() const{
-    unsigned int i=0, votoTemp=0;
-    for(; i < getSize(); ++i){
-        votoTemp += (this->operator[](i)).getVoto();
+    if(getSize()){
+        unsigned int i=0, votoTemp=0;
+        for(; i < getSize(); ++i){
+            votoTemp += (this->operator[](i)).getVoto();
+        }
+        return votoTemp/i;
     }
-    return votoTemp/i;
+    return 0;
 }
 
 double LibrettoEsami::mediaPonderata() const{
-    unsigned int i=0, votoTemp=0;
-    Esame esameTemp;
-    for(; i < getSize(); ++i){
-        esameTemp = this->operator [](i);
-        votoTemp += esameTemp.getVoto() * esameTemp.getCFU();
-    }
-    return votoTemp/getTotaleCFU();
-}
-
-Esame LibrettoEsami::esameMigliore() const{
-    Esame esameTemp, esameMigliore;
-    int pesoEsame=0;
-    for(unsigned int i=0; i < getSize(); ++i){
-        esameTemp = this->operator [](i);
-        if(esameTemp.getVoto()*esameTemp.getCFU() > pesoEsame){
-            esameMigliore = esameTemp;
-            pesoEsame = esameTemp.getVoto()*esameTemp.getCFU();
+    if(totaleCFU > 0){
+        unsigned int i=0, votoTemp=0;
+        Esame esameTemp;
+        for(; i < getSize(); ++i){
+            esameTemp = this->operator [](i);
+            votoTemp += esameTemp.getVoto() * esameTemp.getCFU();
         }
+        return votoTemp/getTotaleCFU();
     }
-    return esameMigliore;
+    return 0;
 }
 
-Esame LibrettoEsami::esamePeggiore() const{
-    Esame esameTemp, esamePeggiore;
-    int pesoEsame=0;
-    for(unsigned int i=0; i < getSize(); ++i){
-        esameTemp = this->operator [](i);
-        if(esameTemp.getVoto()*esameTemp.getCFU() < pesoEsame){
-            esamePeggiore = esameTemp;
-            pesoEsame = esameTemp.getVoto()*esameTemp.getCFU();
+Esame* LibrettoEsami::esameMigliore() const{
+    if(getSize() > 0){
+        Esame esameTemp, esameMigliore;
+        int pesoEsame=0;
+        for(unsigned int i=0; i < getSize(); ++i){
+            esameTemp = this->operator [](i);
+            if(esameTemp.getVoto()*esameTemp.getCFU() > pesoEsame){
+                esameMigliore = esameTemp;
+                pesoEsame = esameMigliore.getVoto()*esameMigliore.getCFU();
+            }
         }
+        return new Esame(esameMigliore);
     }
-    return esamePeggiore;
+    return 0;
 }
 
-Esame LibrettoEsami::esameMenoRecente() const{
-    Esame esameTemp, esameMenoRecente;
-    if(getSize() >= 1)
-        esameMenoRecente = operator [](0);
-
-    for(unsigned int i=0; i < getSize(); ++i){
-        esameTemp = this->operator [](i);
-        if(esameTemp.ottieniData() < esameMenoRecente.ottieniData())
-            esameMenoRecente = esameTemp;
+Esame* LibrettoEsami::esamePeggiore() const{
+    if(getSize() > 0){
+        Esame esameTemp, esamePeggiore;
+        int pesoEsame=0;
+        for(unsigned int i=0; i < getSize(); ++i){
+            esameTemp = this->operator [](i);
+            if(esameTemp.getVoto()*esameTemp.getCFU() < pesoEsame){
+                esamePeggiore = esameTemp;
+                pesoEsame = esamePeggiore.getVoto()*esamePeggiore.getCFU();
+            }
+        }
+        return new Esame(esamePeggiore);
     }
-    return esameMenoRecente;
+    return 0;
+
 }
 
-Esame LibrettoEsami::esamePiuRecente() const{
-    Esame esameTemp, esamePiuRecente;
-    if(getSize() >= 1)
-        esamePiuRecente = operator [](0);
+Esame* LibrettoEsami::esameMenoRecente() const{
+    if(getSize() > 0){
+        Esame esameTemp, esameMenoRecente;
+        if(getSize() >= 1)
+            esameMenoRecente = operator [](0);
 
-    for(unsigned int i=0; i < getSize(); ++i){
-        esameTemp = this->operator [](i);
-        if(esameTemp.ottieniData() > esamePiuRecente.ottieniData())
-            esamePiuRecente = esameTemp;
+        for(unsigned int i=0; i < getSize(); ++i){
+            esameTemp = this->operator [](i);
+            if(esameTemp.ottieniData() < esameMenoRecente.ottieniData())
+                esameMenoRecente = esameTemp;
+        }
+        return new Esame(esameMenoRecente);
     }
-    return esamePiuRecente;
+    return 0;
+
+}
+
+Esame* LibrettoEsami::esamePiuRecente() const{
+    if(getSize() > 0){
+        Esame esameTemp, esamePiuRecente;
+        if(getSize() >= 1)
+            esamePiuRecente = operator [](0);
+
+        for(unsigned int i=0; i < getSize(); ++i){
+            esameTemp = this->operator [](i);
+            if(esameTemp.ottieniData() > esamePiuRecente.ottieniData())
+                esamePiuRecente = esameTemp;
+        }
+        return new Esame(esamePiuRecente);
+    }
+    return 0;
 }
 
 int LibrettoEsami::numeroEsamiSostenuti() const{
@@ -129,24 +176,30 @@ int LibrettoEsami::numeroEsamiSostenuti() const{
 }
 
 LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& l) const{
-    LibrettoEsami aux = LibrettoEsami(*this);
-    aux += l;
-    return new LibrettoEsami(aux);
+    LibrettoEsami* aux = new LibrettoEsami(*this);
+    //aux += l;
+    for(unsigned int i = 0; i != l.getSize(); ++i){
+        if(!aux->cerca(l[i]) && (totaleCFU+l[i].getCFU() <= targetCFU)){
+            aux->aggiungiElemento(l[i]);
+        }
+    }
+    return aux;
 }
-
+/*
 LibrettoEsami& LibrettoEsami::operator +=(const VettoreGenerico<Esame>& l){
     for(unsigned int i = 0; i != l.getSize(); ++i){
-        if(!cerca(l[i])){
+        if(!cerca(l[i]) && (totaleCFU+l[i].getCFU() <= targetCFU)){
             aggiungiElemento(l[i]);
         }
     }
     return *this;
 }
-
+*/
 LibrettoEsami* LibrettoEsami::operator +(const Esame& e) const{
-    LibrettoEsami aux = LibrettoEsami(*this);
-    aux += e;
-    return new LibrettoEsami(aux);
+    LibrettoEsami* aux = new LibrettoEsami(*this);
+    //aux += e;
+    aux->aggiungiElemento(e);
+    return aux;
 }
 
 LibrettoEsami* operator+(const Esame& e, const LibrettoEsami& l){
@@ -156,33 +209,38 @@ LibrettoEsami* operator+(const Esame& e, const LibrettoEsami& l){
 LibrettoEsami* operator-(const Esame& e, const LibrettoEsami& l){
     return l.operator -(e);
 }
-
+/*
 LibrettoEsami& LibrettoEsami::operator +=(const Esame& e){
     if(!cerca(e)){
         aggiungiElemento(e);
     }
     return *this;
 }
+*/
 
 LibrettoEsami* LibrettoEsami::operator -(const Esame& e) const{
-    LibrettoEsami aux = LibrettoEsami(*this);
-    aux -= e;
-    return new LibrettoEsami(aux);
+    LibrettoEsami* aux = new LibrettoEsami(*this);
+    //aux += e;
+    aux->rimuoviElemento(e);
+    return aux;
 }
-
+/*
 LibrettoEsami& LibrettoEsami::operator -=(const Esame& e){
     if(cerca(e)){
         rimuoviElemento(e);
     }
     return *this;
 }
-
+*/
 LibrettoEsami* LibrettoEsami::operator-(const VettoreGenerico<Esame>& l) const{
-    LibrettoEsami aux = LibrettoEsami(*this);
-    aux -= l;
-    return new LibrettoEsami(aux);
+    LibrettoEsami* aux = new LibrettoEsami(*this);
+    //aux += l;
+    for(unsigned int i = 0; i != l.getSize(); ++i){
+        aux->rimuoviElemento(l[i]);
+    }
+    return aux;
 }
-
+/*
 LibrettoEsami& LibrettoEsami::operator -=(const VettoreGenerico<Esame>& l){
     for(unsigned int i = 0; i != l.getSize(); ++i){
         if(cerca(operator [](i))){
@@ -191,7 +249,7 @@ LibrettoEsami& LibrettoEsami::operator -=(const VettoreGenerico<Esame>& l){
     }
     return *this;
 }
-
+*/
 ostream& operator <<(ostream& os, const LibrettoEsami& l){
     os << "\nMatricola studente: " << l.getMatricola() << endl;
     for(unsigned int i=0; i < l.getSize(); ++i){
@@ -200,4 +258,13 @@ ostream& operator <<(ostream& os, const LibrettoEsami& l){
     }
     os << "\n";
     return os;
+}
+
+string LibrettoEsami::getRappresentazioneStringa() const{
+    string t;
+    t+= "Nome: "+getNomeStudente() + "; Cognome: "+getCognomeStudente()+"; Matricola: "+to_string(getMatricola());
+    for(unsigned int i=0; i < getSize(); ++i){
+        t += (operator [](i)).getRappresentazioneStringa();
+    }
+    return t;
 }

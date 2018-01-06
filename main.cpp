@@ -19,6 +19,7 @@
 #include "rgbcolorgui.h"
 #include "ricettagui.h"
 #include "matricigui.h"
+#include "librettoesamigui.h"
 
 //include qt
 #include <QLabel>
@@ -52,10 +53,10 @@ int main(int argc, char *argv[])
     //le = *(le + *le2);
     //le = *(le3 + le);
     //le = *(le + le3);
-    le += le3;
+    //le += le3;
     //cout << le << endl;
     //le = *(le - le3);
-    le -= le3;
+    //le -= le3;
     le = *(Esame() + le);
     //le = *(Esame() - le);
     //cout << le << endl;
@@ -185,8 +186,13 @@ int main(int argc, char *argv[])
         //cout << "Out of Range error.";
     }
 
+    /*
     MatriciGUI matGUI;
     matGUI.show();
+    */
+
+    LibrettoEsamiGUI lGUI;
+    lGUI.show();
 
     //main per pardeep fino a qui ---------------------------------------------------------------------------------------
 
@@ -248,12 +254,10 @@ int main(int argc, char *argv[])
 
 */
 
-
     RgbColorGui g;
     g.show();
     RicettaGui rgui;
     rgui.show();
-
 
 
 
@@ -273,8 +277,9 @@ int main(int argc, char *argv[])
 
     l->setFont(QFont("Times",20));
     l->adjustSize();
+    /*
     w.show();
-
+    */
     return a.exec();
 }
 

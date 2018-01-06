@@ -47,7 +47,11 @@ SOURCES += \
     matricigui.cpp \
     elementisingolamatrice.cpp \
     tableviewmatrice.cpp \
-    matricicontroller.cpp
+    matricicontroller.cpp \
+    singololibrettoesamiview.cpp \
+    esamedialog.cpp \
+    librettoesamicontroller.cpp \
+    librettoesamigui.cpp
 
 HEADERS += \
         kalk.h \
@@ -73,7 +77,11 @@ HEADERS += \
     matricigui.h \
     elementisingolamatrice.h \
     matricicontroller.h \
-    tableviewmatrice.h
+    tableviewmatrice.h \
+    singololibrettoesamiview.h \
+    esamedialog.h \
+    librettoesamicontroller.h \
+    librettoesamigui.h
 
 FORMS += \
         kalk.ui

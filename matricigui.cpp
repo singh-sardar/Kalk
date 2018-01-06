@@ -24,7 +24,6 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
     tableWidgetRisultato = new QTableWidget(1,1);
     tableWidgetRisultato->setGeometry(0,0,350,350);
     tableWidgetRisultato->setMinimumSize(350,350);
-    //tableWidgetRisultato->setMaximumSize(350,350);
     tableWidgetRisultato->setShowGrid(true);
     tableWidgetRisultato->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableWidgetRisultato->setSelectionBehavior(QAbstractItemView::SelectRows);

@@ -79,8 +79,9 @@ bool Esame::operator !=(const Esame& e) const{
     return !(*this == e);
 }
 
-string Esame::esameToString() const{
-    string t = "CFU: " + to_string(getCFU()) + "; ";
+string Esame::getRappresentazioneStringa() const{
+    string t="\n";
+    t += "CFU: " + to_string(getCFU()) + "; ";
     t += "Voto: " + to_string(getVoto()) + "; ";
     t.append(string("Lode: ") + (getLode() ? "Si" : "No") + "; ");
     t += "Nome Materia: " + getNomeMateria() + "; ";
