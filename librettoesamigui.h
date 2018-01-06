@@ -29,13 +29,7 @@ public:
     QString getTargetCFU1() const;
     QString getTargetCFU2() const;
 
-    /*QLineEdit* getLineEditNome1() const;
-    QLineEdit* getLineEditNome2() const;
-    QLineEdit* getLineEditCognome1() const;
-    QLineEdit* getLineEditCognome2() const;
-    QLineEdit* getLineEditMatricola1() const;
-    QLineEdit* getLineEditMatricola2() const;
-    */
+    ~LibrettoEsamiGUI();
 
 
 private:
@@ -60,37 +54,6 @@ private:
 
     QLabel* labelLibretto1;
     QLabel* labelLibretto2;
-
-    /*QPushButton* btnAggiungiEsame1;
-    QPushButton* btnRimuoviEsame1;
-    QPushButton* btnEsameMigliore1;
-    QPushButton* btnEsamePiuRecente1;
-    QPushButton* btnEsamePeggiore1;
-    QPushButton* btnEsameMenoRecente1;
-    QPushButton* btnTargetCFU1;
-    QPushButton* btnTotalCFU1;
-    QPushButton* btnMediaAritmetica1;
-    QPushButton* btnMediaPonderata1;
-    QPushButton* btnPercentualeCompletamento1;
-    QPushButton* btnPrevisioneVoto1;
-    QPushButton* btnCFURimanenti1;
-    QPushButton* btnNumEsamiSostenuti1;
-
-    QPushButton* btnAggiungiEsame2;
-    QPushButton* btnRimuoviEsame2;
-    QPushButton* btnEsameMigliore2;
-    QPushButton* btnEsamePiuRecente2;
-    QPushButton* btnEsamePeggiore2;
-    QPushButton* btnEsameMenoRecente2;
-    QPushButton* btnTargetCFU2;
-    QPushButton* btnTotalCFU2;
-    QPushButton* btnMediaAritmetica2;
-    QPushButton* btnMediaPonderata2;
-    QPushButton* btnPercentualeCompletamento2;
-    QPushButton* btnPrevisioneVoto2;
-    QPushButton* btnCFURimanenti2;
-    QPushButton* btnNumEsamiSostenuti2;
-    */
 
     QVBoxLayout* vLayout;
     QGridLayout* gridLayout;

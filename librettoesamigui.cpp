@@ -158,14 +158,31 @@ QString LibrettoEsamiGUI::getTargetCFU2() const{
     return spinBoxTargetCFU2->text();
 }
 
-/*
-QLineEdit* LibrettoEsamiGUI::getLineEditNome1() const{
+LibrettoEsamiGUI::~LibrettoEsamiGUI(){
+    delete viewLibretto1;
+    delete viewLibretto2;
 
+    delete btnAggiungiLibretto1AdLibretto2;
+    delete btnAggiungiLibretto2AdLibretto1;
+    delete btnRimuoviLibretto1DaLibretto2;
+    delete btnRimuoviLibretto2DaLibretto1;
+
+    delete esameDialog;
+
+    delete lineEditNomeStudente1;
+    delete lineEditCognomeStudente1;
+    delete lineEditMatricolaStudente1;
+    delete lineEditNomeStudente2;
+    delete lineEditCognomeStudente2;
+    delete lineEditMatricolaStudente2;
+    delete spinBoxTargetCFU1;
+    delete spinBoxTargetCFU2;
+
+    delete labelLibretto1;
+    delete labelLibretto2;
+
+    delete vLayout;
+    delete gridLayout;
+
+    delete librettoController;
 }
-
-QLineEdit* LibrettoEsamiGUI::getLineEditNome2() const;
-QLineEdit* LibrettoEsamiGUI::getLineEditCognome1() const;
-QLineEdit* LibrettoEsamiGUI::getLineEditCognome2() const;
-QLineEdit* LibrettoEsamiGUI::getLineEditMatricola1() const;
-QLineEdit* LibrettoEsamiGUI::getLineEditMatricola2() const;
-*/

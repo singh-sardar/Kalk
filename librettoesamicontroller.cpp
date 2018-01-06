@@ -177,22 +177,26 @@ void LibrettoEsamiController::rimuoviEsameLibretto2(){
 }
 
 void LibrettoEsamiController::aggiungiLibretto1AdLibretto2(){
-    libretto2 = *libretto1 + *libretto2;
+    //libretto2 = *libretto1 + *libretto2;
+    *libretto2 += *libretto1;
     aggiornaLibrettoGUI(libretto2,guiLibretto->getLibretto2Viewer()->getPlainTextEdit());
 }
 
 void LibrettoEsamiController::aggiungiLibretto2AdLibretto1(){
-    libretto1 = *libretto1 + *libretto2;
+    //libretto1 = *libretto1 + *libretto2;
+    *libretto1 += *libretto2;
     aggiornaLibrettoGUI(libretto1,guiLibretto->getLibretto1Viewer()->getPlainTextEdit());
 }
 
 void LibrettoEsamiController::rimuoviLibretto1DalLibretto2(){
-    libretto2 = *libretto2 - *libretto1;
+    //libretto2 = *libretto2 - *libretto1;
+    *libretto2 -= *libretto1;
     aggiornaLibrettoGUI(libretto2,guiLibretto->getLibretto2Viewer()->getPlainTextEdit());
 }
 
 void LibrettoEsamiController::rimuoviLibretto2DalLibretto1(){
-    libretto1 = *libretto1 - *libretto2;
+    //libretto1 = *libretto1 - *libretto2;
+    *libretto1 -= *libretto2;
     aggiornaLibrettoGUI(libretto1,guiLibretto->getLibretto1Viewer()->getPlainTextEdit());
 }
 
@@ -204,7 +208,7 @@ void LibrettoEsamiController::esameMenoReceneteLibretto1(){
         s += (tmp->getRappresentazioneStringa().c_str());
         showMessageBox("Esame meno recente libretto 1",s);
     }else{
-        QMessageBox::critical(this,"Errore","Operazione non disponibile.");
+        showMessageBox("Errore","Operazione non disponibile.");
     }
 }
 
@@ -216,7 +220,7 @@ void LibrettoEsamiController::esameMenoReceneteLibretto2(){
         s += (tmp->getRappresentazioneStringa().c_str());
         showMessageBox("Esame meno recente libretto 2",s);
     }else{
-        QMessageBox::critical(this,"Errore","Operazione non disponibile.");
+        showMessageBox("Errore","Operazione non disponibile.");
     }
 }
 
@@ -228,7 +232,7 @@ void LibrettoEsamiController::esamePiuRecenteLibretto1(){
         s += (tmp->getRappresentazioneStringa().c_str());
         showMessageBox("Esame piu recente libretto 1",s);
     }else{
-        QMessageBox::critical(this,"Errore","Operazione non disponibile.");
+        showMessageBox("Errore","Operazione non disponibile.");
     }
 }
 
@@ -240,7 +244,7 @@ void LibrettoEsamiController::esamePiuRecenteLibretto2(){
         s += (tmp->getRappresentazioneStringa().c_str());
         showMessageBox("Esame piu recente libretto 2",s);
     }else{
-        QMessageBox::critical(this,"Errore","Operazione non disponibile.");
+        showMessageBox("Errore","Operazione non disponibile.");
     }
 }
 
@@ -252,7 +256,7 @@ void LibrettoEsamiController::esameMiglioreLibretto1(){
         s += (tmp->getRappresentazioneStringa().c_str());
         showMessageBox("Esame migliore libretto 1",s);
     }else{
-        QMessageBox::critical(this,"Errore","Operazione non disponibile.");
+        showMessageBox("Errore","Operazione non disponibile.");
     }
 }
 
@@ -264,7 +268,7 @@ void LibrettoEsamiController::esamePeggioreLibretto1(){
         s += (tmp->getRappresentazioneStringa().c_str());
         showMessageBox("Esame peggiore libretto 1",s);
     }else{
-        QMessageBox::critical(this,"Errore","Operazione non disponibile.");
+        showMessageBox("Errore","Operazione non disponibile.");
     }
 }
 
@@ -276,7 +280,7 @@ void LibrettoEsamiController::esamePeggioreLibretto2(){
         s += (tmp->getRappresentazioneStringa().c_str());
         showMessageBox("Esame peggiore libretto 2",s);
     }else{
-        QMessageBox::critical(this,"Errore","Operazione non disponibile.");
+        showMessageBox("Errore","Operazione non disponibile.");
     }
 }
 
@@ -288,7 +292,7 @@ void LibrettoEsamiController::esameMiglioreLibretto2(){
         s += tmp->getRappresentazioneStringa().c_str();
         showMessageBox("Esame migliore libretto 2",s);
     }else{
-        QMessageBox::critical(this,"Errore","Operazione non disponibile.");
+        showMessageBox("Errore","Operazione non disponibile.");
     }
 }
 
@@ -342,56 +346,56 @@ void LibrettoEsamiController::aggiornaTargetCFU2(){
 
 void LibrettoEsamiController::mostraTargetCFU1(){
     QString s = libretto1->getInfoStudente().c_str();
-    s += "\n - Target CFU - \n";
+    s += "\n\n - Target CFU - \n";
     s += to_string(libretto1->getTargetCFU()).c_str();
     showMessageBox("Target CFU libretto 1",s);
 }
 
 void LibrettoEsamiController::mostraTotalCFU1(){
     QString s = libretto1->getInfoStudente().c_str();
-    s += "\n - Totale CFU - \n";
+    s += "\n\n - Totale CFU - \n";
     s += to_string(libretto1->getTotaleCFU()).c_str();
     showMessageBox("Totale CFU libretto 1",s);
 }
 
 void LibrettoEsamiController::mostraNumEsamiFatti1(){
     QString s = libretto1->getInfoStudente().c_str();
-    s += "\n - Numero esami sostenuti - \n";
+    s += "\n\n - Numero esami sostenuti - \n";
     s += to_string(libretto1->getSize()).c_str();
     showMessageBox("Numero esami sostenuti libretto 1",s);
 }
 
 void LibrettoEsamiController::mostraMediaAritmetica1(){
     QString s = libretto1->getInfoStudente().c_str();
-    s += "\n - Media aritmetica - \n";
+    s += "\n\n - Media aritmetica - \n";
     s += to_string(libretto1->mediaAritmetica()).c_str();
     showMessageBox("Media aritmetica libretto 1",s);
 }
 
 void LibrettoEsamiController::mostraMediaPonderata1(){
     QString s = libretto1->getInfoStudente().c_str();
-    s += "\n - Media ponderata - \n";
+    s += "\n\n - Media ponderata - \n";
     s += to_string(libretto1->mediaPonderata()).c_str();
     showMessageBox("Media ponderata libretto 1",s);
 }
 
 void LibrettoEsamiController::mostraPrevisioneVoto1(){
     QString s = libretto1->getInfoStudente().c_str();
-    s += "\n - Voto laurea - \n";
+    s += "\n\n - Voto laurea - \n";
     s += to_string(libretto1->previsioneVotoLaurea()).c_str();
     showMessageBox("Voto laurea libretto 1",s);
 }
 
 void LibrettoEsamiController::mostraPercentualeCompletamento1(){
     QString s = libretto1->getInfoStudente().c_str();
-    s += "\n - Percentuale completamento - \n";
+    s += "\n\n - Percentuale completamento - \n";
     s += to_string(libretto1->percentualeCompletamento()).c_str();
     showMessageBox("Percentuale completamento libretto 1",s);
 }
 
 void LibrettoEsamiController::mostraCFURimanenti1(){
     QString s = libretto1->getInfoStudente().c_str();
-    s += "\n - CFU rimanenti - \n";
+    s += "\n\n - CFU rimanenti - \n";
     s += to_string(libretto1->rimanentiCFU()).c_str();
     showMessageBox("CFU rimanenti libretto 1",s);
 }
@@ -399,56 +403,62 @@ void LibrettoEsamiController::mostraCFURimanenti1(){
 
 void LibrettoEsamiController::mostraTargetCFU2(){
     QString s = libretto2->getInfoStudente().c_str();
-    s += "\n - Target CFU - \n";
+    s += "\n\n - Target CFU - \n";
     s += to_string(libretto2->getTargetCFU()).c_str();
     showMessageBox("Target CFU libretto 2",s);
 }
 
 void LibrettoEsamiController::mostraTotalCFU2(){
     QString s = libretto2->getInfoStudente().c_str();
-    s += "\n - Totale CFU - \n";
+    s += "\n\n - Totale CFU - \n";
     s += to_string(libretto2->getTotaleCFU()).c_str();
     showMessageBox("Totale CFU libretto 2",s);
 }
 
 void LibrettoEsamiController::mostraNumEsamiFatti2(){
     QString s = libretto2->getInfoStudente().c_str();
-    s += "\n - Numero esami sostenuti - \n";
+    s += "\n\n - Numero esami sostenuti - \n";
     s += to_string(libretto2->getSize()).c_str();
     showMessageBox("Numero esami sostenuti libretto 2",s);
 }
 
 void LibrettoEsamiController::mostraMediaAritmetica2(){
     QString s = libretto2->getInfoStudente().c_str();
-    s += "\n - Media aritmetica - \n";
+    s += "\n\n - Media aritmetica - \n";
     s += to_string(libretto2->mediaAritmetica()).c_str();
     showMessageBox("Media aritmetica libretto 2",s);
 }
 
 void LibrettoEsamiController::mostraMediaPonderata2(){
     QString s = libretto2->getInfoStudente().c_str();
-    s += "\n - Media ponderata - \n";
+    s += "\n\n - Media ponderata - \n";
     s += to_string(libretto2->mediaPonderata()).c_str();
     showMessageBox("Media ponderata libretto 2",s);
 }
 
 void LibrettoEsamiController::mostraPrevisioneVoto2(){
     QString s = libretto2->getInfoStudente().c_str();
-    s += "\n - Voto laurea - \n";
+    s += "\n\n - Voto laurea - \n";
     s += to_string(libretto2->previsioneVotoLaurea()).c_str();
     showMessageBox("Voto laurea libretto 2",s);
 }
 
 void LibrettoEsamiController::mostraPercentualeCompletamento2(){
     QString s = libretto2->getInfoStudente().c_str();
-    s += "\n - Percentuale completamento - \n";
+    s += "\n\n - Percentuale completamento - \n";
     s += to_string(libretto2->percentualeCompletamento()).c_str();
     showMessageBox("Percentuale completamento libretto 2",s);
 }
 
 void LibrettoEsamiController::mostraCFURimanenti2(){
     QString s = libretto2->getInfoStudente().c_str();
-    s += "\n - CFU rimanenti - \n";
+    s += "\n\n - CFU rimanenti - \n";
     s += to_string(libretto2->rimanentiCFU()).c_str();
     showMessageBox("CFU rimanenti libretto 2",s);
+}
+
+LibrettoEsamiController::~LibrettoEsamiController(){
+    delete libretto1;
+    delete libretto2;
+    delete esame;
 }

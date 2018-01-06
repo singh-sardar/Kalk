@@ -20,6 +20,7 @@ private:
     MatriciGUI* viewMatrici;
     Matrice* matrice1, *matrice2, *matriceRisultato;
     void aggiornaLabelRisultato(QString);
+    void showMessageBox(QString, QString) const;
 
 private slots:
     void aggiornaMatrice1();

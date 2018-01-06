@@ -17,6 +17,7 @@ class LibrettoEsamiController: public QWidget{
 
 public:
     LibrettoEsamiController(LibrettoEsamiGUI* g);
+    ~LibrettoEsamiController();
 
 private:
     LibrettoEsamiGUI* guiLibretto;

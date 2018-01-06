@@ -71,7 +71,7 @@ void LibrettoEsami::setCognomeStudente(string c){
 }
 
 double LibrettoEsami::percentualeCompletamento() const{
-    return totaleCFU/targetCFU;
+    return (totaleCFU*100)/targetCFU;
 }
 
 unsigned int LibrettoEsami::rimanentiCFU() const{
@@ -83,8 +83,9 @@ double LibrettoEsami::previsioneVotoLaurea() const{
 }
 
 double LibrettoEsami::mediaAritmetica() const{
-    if(getSize()){
-        unsigned int i=0, votoTemp=0;
+    if(getSize() > 0){
+        unsigned int i=0;
+        double votoTemp=0;
         for(; i < getSize(); ++i){
             votoTemp += (this->operator[](i)).getVoto();
         }
@@ -94,12 +95,11 @@ double LibrettoEsami::mediaAritmetica() const{
 }
 
 double LibrettoEsami::mediaPonderata() const{
-    if(totaleCFU > 0){
-        unsigned int i=0, votoTemp=0;
-        Esame esameTemp;
+    if(getSize() > 0){
+        unsigned int i=0;
+        double votoTemp=0;
         for(; i < getSize(); ++i){
-            esameTemp = this->operator [](i);
-            votoTemp += esameTemp.getVoto() * esameTemp.getCFU();
+            votoTemp += (this->operator [](i).getVoto()) * (this->operator [](i).getCFU());
         }
         return votoTemp/getTotaleCFU();
     }
@@ -109,7 +109,7 @@ double LibrettoEsami::mediaPonderata() const{
 Esame* LibrettoEsami::esameMigliore() const{
     if(getSize() > 0){
         Esame esameTemp, esameMigliore=this->operator [](0);
-        unsigned int pesoEsame=0;
+        unsigned int pesoEsame=esameMigliore.getVoto()*esameMigliore.getCFU();
         for(unsigned int i=0; i < getSize(); ++i){
             esameTemp = this->operator [](i);
             if(esameTemp.getVoto()*esameTemp.getCFU() > pesoEsame){
@@ -125,7 +125,7 @@ Esame* LibrettoEsami::esameMigliore() const{
 Esame* LibrettoEsami::esamePeggiore() const{
     if(getSize() > 0){
         Esame esameTemp, esamePeggiore=this->operator [](0);
-        unsigned int pesoEsame=0;
+        unsigned int pesoEsame=esamePeggiore.getVoto()*esamePeggiore.getCFU();
         for(unsigned int i=0; i < getSize(); ++i){
             esameTemp = this->operator [](i);
             if(esameTemp.getVoto()*esameTemp.getCFU() < pesoEsame){
@@ -186,16 +186,16 @@ LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& l) const{
     }
     return aux;
 }
-/*
+
 LibrettoEsami& LibrettoEsami::operator +=(const VettoreGenerico<Esame>& l){
-    for(unsigned int i = 0; i != l.getSize(); ++i){
+    for(unsigned int i = 0; i < l.getSize(); ++i){
         if(!cerca(l[i]) && (totaleCFU+l[i].getCFU() <= targetCFU)){
             aggiungiElemento(l[i]);
         }
     }
     return *this;
 }
-*/
+
 LibrettoEsami* LibrettoEsami::operator +(const Esame& e) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
     //aux += e;
@@ -210,14 +210,13 @@ LibrettoEsami* operator+(const Esame& e, const LibrettoEsami& l){
 LibrettoEsami* operator-(const Esame& e, const LibrettoEsami& l){
     return l.operator -(e);
 }
-/*
+
 LibrettoEsami& LibrettoEsami::operator +=(const Esame& e){
     if(!cerca(e)){
         aggiungiElemento(e);
     }
     return *this;
 }
-*/
 
 LibrettoEsami* LibrettoEsami::operator -(const Esame& e) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
@@ -225,14 +224,14 @@ LibrettoEsami* LibrettoEsami::operator -(const Esame& e) const{
     aux->rimuoviElemento(e);
     return aux;
 }
-/*
+
 LibrettoEsami& LibrettoEsami::operator -=(const Esame& e){
     if(cerca(e)){
         rimuoviElemento(e);
     }
     return *this;
 }
-*/
+
 LibrettoEsami* LibrettoEsami::operator-(const VettoreGenerico<Esame>& l) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
     //aux += l;
@@ -241,16 +240,15 @@ LibrettoEsami* LibrettoEsami::operator-(const VettoreGenerico<Esame>& l) const{
     }
     return aux;
 }
-/*
+
 LibrettoEsami& LibrettoEsami::operator -=(const VettoreGenerico<Esame>& l){
-    for(unsigned int i = 0; i != l.getSize(); ++i){
-        if(cerca(operator [](i))){
+    for(unsigned int i = 0; i < l.getSize(); ++i){
+        if(cerca(l[i])){
             rimuoviElemento(l[i]);
         }
     }
     return *this;
 }
-*/
 ostream& operator <<(ostream& os, const LibrettoEsami& l){
     os << "\nMatricola studente: " << l.getMatricola() << endl;
     for(unsigned int i=0; i < l.getSize(); ++i){

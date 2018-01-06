@@ -37,9 +37,6 @@ EsameDialog::EsameDialog(QWidget *parent):
     spinGiorno->setRange(1,31);
     spinMese->setRange(1,12);
     spinAnno->setMinimum(2000);
-    /*spinGiorno->setSuffix(" giorno");
-    spinMese->setSuffix(" mese");
-    spinAnno->setSuffix(" anno");*/
 
     layout->addWidget(lblNomeMateria,0,0);
     layout->addWidget(lineEditNomeMateria,1,0);
@@ -105,4 +102,26 @@ QSpinBox* EsameDialog::getSpinBoxVoto() const{
 
 QSpinBox* EsameDialog::getSpinBoxCFU() const{
     return spinCFU;
+}
+
+EsameDialog::~EsameDialog(){
+    delete lineEditNomeMateria;
+    delete lineEditNomeCorso;
+    delete lineEditNomeProfessore;
+    delete spinGiorno;
+    delete spinMese;
+    delete spinAnno;
+    delete spinVoto;
+    delete spinCFU;
+    delete layout;
+    delete ok;
+    delete cancel;
+    delete lblNomeMateria;
+    delete lblNomeCorso;
+    delete lblNomeProfessore;
+    delete lblGiorno;
+    delete lblMese;
+    delete lblAnno;
+    delete lblVoto;
+    delete lblCFU;
 }

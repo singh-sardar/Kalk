@@ -3,11 +3,8 @@
 #include <QtDebug>
 
 MatriciController::MatriciController(MatriciGUI* view):
-    viewMatrici(view)
+    viewMatrici(view), matrice1(new Matrice()), matrice2(new Matrice()), matriceRisultato(new Matrice())
 {
-    matrice1 = new Matrice();
-    matrice2 = new Matrice();
-    matriceRisultato = new Matrice();
 
     connect(viewMatrici,SIGNAL(btnSommaClicked(bool)),this,SLOT(aggiornaMatrice1()));
     connect(viewMatrici,SIGNAL(btnSommaClicked(bool)),this,SLOT(aggiornaMatrice2()));
@@ -82,6 +79,16 @@ MatriciController::MatriciController(MatriciGUI* view):
     connect(viewMatrici,SIGNAL(btnIsScalareClicked2(bool)),this,SLOT(isScalare2()));
 }
 
+void MatriciController::showMessageBox(QString title, QString text) const{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle(title);
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setFont(QFont("Verdana",14));
+
+    msgBox.setText(text);
+    msgBox.exec();
+}
+
 void MatriciController::aggiornaLabelRisultato(QString s){
     viewMatrici->getLabelRisultato()->setText(s);
 }
@@ -135,8 +142,9 @@ void MatriciController::somma(){
     if(matriceRisultato){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice (somma) si trova nella matrice Risultato");
-    }else
-        QMessageBox::critical(this,"Errore somma matrici","Le matrici devono avere stesse dimensioni");
+    }else{
+        showMessageBox("Errore somma matrici","Le matrici devono avere stesse dimensioni");
+    }
 }
 
 void MatriciController::sottrazione(){
@@ -144,8 +152,9 @@ void MatriciController::sottrazione(){
     if(matriceRisultato){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice (sottrazione) si trova nella matrice Risultato");
-    }else
-        QMessageBox::critical(this,"Errore sottrazione matrici","Le matrici devono avere stesse dimensioni");
+    }else{
+        showMessageBox("Errore sottrazione matrici","Le matrici devono avere stesse dimensioni");
+    }
 }
 
 void MatriciController::moltiplicazione(){
@@ -154,8 +163,9 @@ void MatriciController::moltiplicazione(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice (moltiplicazione) si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore moltiplicazione matrici","Non è possibile eseguire la moltiplicazione.");
+    else{
+        showMessageBox("Errore moltiplicazione matrici","Non è possibile eseguire la moltiplicazione.");
+    }
 }
 
 void MatriciController::moltiplicazioneScalare1(){
@@ -165,8 +175,9 @@ void MatriciController::moltiplicazioneScalare1(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice dell'operazione (prodotto scalare) si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore moltiplicazione scalare","Non è possibile eseguire la moltiplicazione scalare.");
+    else{
+        showMessageBox("Errore moltiplicazione scalare","Non è possibile eseguire la moltiplicazione scalare.");
+    }
 }
 
 void MatriciController::moltiplicazioneScalare2(){
@@ -176,8 +187,9 @@ void MatriciController::moltiplicazioneScalare2(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice dell'operazione (prodotto scalare) si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore moltiplicazione scalare","Non è possibile eseguire la moltiplicazione scalare.");
+    else{
+        showMessageBox("Errore moltiplicazione scalare","Non è possibile eseguire la moltiplicazione scalare.");
+    }
 }
 
 void MatriciController::divisioneScalare1(){
@@ -188,11 +200,12 @@ void MatriciController::divisioneScalare1(){
             aggiornaTableViewRisultato();
             aggiornaLabelRisultato("La matrice dell'operazione (divisione scalare) si trova nella matrice Risultato");
         }
-        else
-            QMessageBox::critical(this,"Errore divisione scalare","Non è possibile eseguire la divisione scalare.");
+        else{
+            showMessageBox("Errore divisione scalare","Non è possibile eseguire la divisione scalare.");
+        }
     }
     else{
-        QMessageBox::critical(this,"Errore divisione per 0","Non è possibile dividere la matrice per 0.");
+        showMessageBox("Errore divisione per 0","Non è possibile dividere la matrice per 0.");
     }
 }
 
@@ -204,11 +217,12 @@ void MatriciController::divisioneScalare2(){
             aggiornaTableViewRisultato();
             aggiornaLabelRisultato("La matrice dell'operazione (divisione scalare) si trova nella matrice Risultato");
         }
-        else
-            QMessageBox::critical(this,"Errore divisione scalare","Non è possibile eseguire la divisione scalare.");
+        else{
+            showMessageBox("Errore divisione scalare","Non è possibile eseguire la divisione scalare.");
+        }
     }
     else{
-        QMessageBox::critical(this,"Errore divisione per 0","Non è possibile dividere la matrice per 0.");
+        showMessageBox("Errore divisione per 0","Non è possibile dividere la matrice per 0.");
     }
 }
 
@@ -216,7 +230,7 @@ void MatriciController::determinante1(){
     if((matrice1->getNumRighe()==matrice1->getNumColonne())){
         aggiornaLabelRisultato(QString("Determinante matrice 1: ")+QString::number(matrice1->determinante()));
     }else{
-        QMessageBox::critical(this,"Errore determinante matrice 1","La matrice 1 deve essere quadrata.");
+        showMessageBox("Errore determinante matrice 1","La matrice 1 deve essere quadrata.");
     }
 }
 
@@ -224,7 +238,7 @@ void MatriciController::determinante2(){
     if((matrice2->getNumRighe()==matrice2->getNumColonne())){
         aggiornaLabelRisultato(QString("Determinante matrice 2: ")+QString::number(matrice2->determinante()));
     }else{
-        QMessageBox::critical(this,"Errore determinante matrice 2","La matrice 2 deve essere quadrata.");
+        showMessageBox("Errore determinante matrice 2","La matrice 2 deve essere quadrata.");
     }
 }
 
@@ -234,8 +248,9 @@ void MatriciController::matriceInversa1(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice inversa si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore matrice inversa 1","La matrice 1 deve essere quadrata oppure determinante è 0.");
+    else{
+        showMessageBox("Errore matrice inversa 1","La matrice 1 deve essere quadrata oppure determinante è 0.");
+    }
 }
 
 void MatriciController::matriceInversa2(){
@@ -244,8 +259,9 @@ void MatriciController::matriceInversa2(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice inversa si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore matrice inversa 2","La matrice 2 deve essere quadrata oppure determinante è 0.");
+    else{
+        showMessageBox("Errore matrice inversa 2","La matrice 2 deve essere quadrata oppure determinante è 0.");
+    }
 }
 
 void MatriciController::matriceTrasposta1(){
@@ -254,8 +270,9 @@ void MatriciController::matriceTrasposta1(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice trasposta si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore matrice trasposta 1","Non è possibile trovare la matrice trasposta.");
+    else{
+        showMessageBox("Errore matrice trasposta 1","Non è possibile trovare la matrice trasposta.");
+    }
 }
 
 void MatriciController::matriceTrasposta2(){
@@ -264,8 +281,9 @@ void MatriciController::matriceTrasposta2(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice trasposta si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore matrice trasposta 2","Non è possibile trovare la matrice trasposta.");
+    else{
+        showMessageBox("Errore matrice trasposta 2","Non è possibile trovare la matrice trasposta.");
+    }
 }
 
 void MatriciController::matriceCofattori1(){
@@ -274,8 +292,9 @@ void MatriciController::matriceCofattori1(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice dei cofattori si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore matrice dei cofattori 1","Non è possibile trovare la matrice dei cofattori oppure determinante è 0.");
+    else{
+        showMessageBox("Errore matrice dei cofattori 1","Non è possibile trovare la matrice dei cofattori oppure determinante è 0.");
+    }
 }
 
 void MatriciController::matriceCofattori2(){
@@ -284,8 +303,9 @@ void MatriciController::matriceCofattori2(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice dei cofattori si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore matrice dei cofattori 2","Non è possibile trovare la matrice dei cofattori oppure determinante è 0.");
+    else{
+        showMessageBox("Errore matrice dei cofattori 2","Non è possibile trovare la matrice dei cofattori oppure determinante è 0.");
+    }
 }
 
 void MatriciController::elevaAPotenza1(){
@@ -295,8 +315,9 @@ void MatriciController::elevaAPotenza1(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice dell'operazione (elevamento a potenza) si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore matrice 1","Non è possibile eseguire l'elevazione a potenza.");
+    else{
+        showMessageBox("Errore matrice 1","Non è possibile eseguire l'elevazione a potenza.");
+    }
 }
 
 void MatriciController::elevaAPotenza2(){
@@ -306,8 +327,9 @@ void MatriciController::elevaAPotenza2(){
         aggiornaTableViewRisultato();
         aggiornaLabelRisultato("La matrice dell'operazione (elevamento a potenza) si trova nella matrice Risultato");
     }
-    else
-        QMessageBox::critical(this,"Errore matrice 2","Non è possibile eseguire l'elevazione a potenza.");
+    else{
+        showMessageBox("Errore matrice 2","Non è possibile eseguire l'elevazione a potenza.");
+    }
 }
 
 void MatriciController::isDiagonale1(){

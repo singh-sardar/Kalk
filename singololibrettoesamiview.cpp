@@ -75,14 +75,23 @@ SingoloLibrettoEsamiView::SingoloLibrettoEsamiView(QWidget *parent):
     connect(btnPrevisioneVoto,SIGNAL(clicked(bool)),this,SIGNAL(btnPrevisioneVotoClicked()));
 }
 
-/*
-QLabel* SingoloLibrettoEsamiView::getLabelCFURimanenti() const{return labelCFURimanentiContent;}
-QLabel* SingoloLibrettoEsamiView::getLabelTotalCFU() const{return labelTotalCFUContent;}
-QLabel* SingoloLibrettoEsamiView::getLabelMediaAritmetica() const{return labelMediaAritmeticaContent;}
-QLabel* SingoloLibrettoEsamiView::getLabelMediaPonderata() const{return labelMediaPonderataContent;}
-QLabel* SingoloLibrettoEsamiView::getLabelPercentualeCompletamento() const{return labelPercentualeCompletamentoContent;}
-QLabel* SingoloLibrettoEsamiView::getLabelPrevisioneVotoLaurea() const{return labelPrevisioneVotoContent;}
-QLabel* SingoloLibrettoEsamiView::getLabelEsamiSostenuti() const{return labelEsamiSostenutiContent;}
-QLabel* SingoloLibrettoEsamiView::getLabelTargetCFU() const{return labelTargetCFUContent;}
-*/
 QPlainTextEdit* SingoloLibrettoEsamiView::getPlainTextEdit() const{return plainText;}
+
+SingoloLibrettoEsamiView::~SingoloLibrettoEsamiView(){
+    delete plainText;
+    delete btnAggiungiEsame;
+    delete btnRimuoviEsame;
+    delete btnEsameMigliore;
+    delete btnEsamePiuRecente;
+    delete btnEsamePeggiore;
+    delete btnEsameMenoRecente;
+    delete btnTargetCFU;
+    delete btnTotalCFU;
+    delete btnMediaAritmetica;
+    delete btnMediaPonderata;
+    delete btnPercentualeCompletamento;
+    delete btnPrevisioneVoto;
+    delete btnCFURimanenti;
+    delete btnNumEsamiSostenuti;
+    delete gridLayout;
+}

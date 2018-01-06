@@ -22,7 +22,7 @@ public:
     QLineEdit* getLineEditMateria() const;
     QLineEdit* getLineEditCorso() const;
     QLineEdit* getLineEditProfessore() const;
-
+    ~EsameDialog();
 private:
     QLineEdit* lineEditNomeMateria;
     QLineEdit* lineEditNomeCorso;

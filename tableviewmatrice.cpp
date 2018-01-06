@@ -117,3 +117,4 @@ TableViewMatrice::~TableViewMatrice(){
     delete hLPerRighe;
     delete hLPerColonne;
 }
+

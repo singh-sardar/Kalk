@@ -16,24 +16,9 @@ class SingoloLibrettoEsamiView: public QWidget{
 public:
     SingoloLibrettoEsamiView(QWidget* parent=0);
     QPlainTextEdit* getPlainTextEdit() const;
+    ~SingoloLibrettoEsamiView();
 
 private:
-    /*QLabel* labelTargetCFU;
-    QLabel* labelTargetCFUContent;
-    QLabel* labelTotalCFU;
-    QLabel* labelTotalCFUContent;
-    QLabel* labelMediaAritmetica;
-    QLabel* labelMediaAritmeticaContent;
-    QLabel* labelMediaPonderata;
-    QLabel* labelMediaPonderataContent;
-    QLabel* labelPercentualeCompletamento;
-    QLabel* labelPercentualeCompletamentoContent;
-    QLabel* labelPrevisioneVoto;
-    QLabel* labelPrevisioneVotoContent;
-    QLabel* labelCFURimanenti;
-    QLabel* labelCFURimanentiContent;
-    QLabel* labelEsamiSostenuti;
-    QLabel* labelEsamiSostenutiContent;*/
     QPlainTextEdit* plainText;
 
     QPushButton* btnAggiungiEsame;

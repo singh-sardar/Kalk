@@ -186,10 +186,10 @@ int main(int argc, char *argv[])
         //cout << "Out of Range error.";
     }
 
-    /*
+
     MatriciGUI matGUI;
     matGUI.show();
-    */
+
 
     LibrettoEsamiGUI lGUI;
     lGUI.show();
@@ -272,7 +272,6 @@ int main(int argc, char *argv[])
 
     QString qss = QString("background-color: %1").arg(c.name());
     btn.setStyleSheet(qss);
-
 
 
     l->setFont(QFont("Times",20));
