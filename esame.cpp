@@ -29,11 +29,11 @@ string Esame::getNomeProfessore() const{
     return nomeProfessore;
 }
 
-int Esame::getCFU() const{
+unsigned int Esame::getCFU() const{
     return CFU;
 }
 
-int Esame::getVoto() const{
+unsigned int Esame::getVoto() const{
     return voto;
 }
 
@@ -80,13 +80,14 @@ bool Esame::operator !=(const Esame& e) const{
 }
 
 string Esame::getRappresentazioneStringa() const{
-    string t="\n";
-    t += "CFU: " + to_string(getCFU()) + "; ";
-    t += "Voto: " + to_string(getVoto()) + "; ";
-    t.append(string("Lode: ") + (getLode() ? "Si" : "No") + "; ");
-    t += "Nome Materia: " + getNomeMateria() + "; ";
-    t += "Nome Professore: " + getNomeProfessore() + "; ";
-    t += "Nome Corso: " + getNomeCorso() + "; ";
+    string t;
+    t += "\nCFU: " + to_string(getCFU()) + "; ";
+    t += "\nVoto: " + to_string(getVoto()) + "; ";
+    t.append(string("\nLode: ") + (getLode() ? "Si" : "No") + "; ");
+    t += "\nNome Materia: " + getNomeMateria() + "; ";
+    t += "\nNome Professore: " + getNomeProfessore() + "; ";
+    t += "\nNome Corso: " + getNomeCorso() + "; ";
+    t += "\nData: " + data.getRappresentazioneStringa() + "; ";
     return t;
 }
 

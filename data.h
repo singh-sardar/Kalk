@@ -24,6 +24,7 @@ public:
     void impostaData(int,int,int);
     bool dataValida() const;
     bool annoBisestile(int) const;
+    string getRappresentazioneStringa() const;
     bool operator==(const Data&) const;
     bool operator!=(const Data&) const;
     bool operator<(const Data&) const;

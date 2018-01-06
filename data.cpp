@@ -83,6 +83,12 @@ bool Data::operator>(const Data& d) const{
     return !(*this < d);
 }
 
+string Data::getRappresentazioneStringa() const{
+    string s;
+    s = std::to_string(giorno) + "/" + std::to_string(mese) + "/" + std::to_string(anno);
+    return s;
+}
+
 ostream& operator<<(ostream& os, const Data& d){
     return os<<d.Giorno()<<"/"<<d.Mese()<<"/"<<d.Anno();
 }

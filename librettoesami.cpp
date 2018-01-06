@@ -12,7 +12,7 @@ LibrettoEsami::LibrettoEsami(string nomeS,string cognomeS, unsigned int matricol
 {}
 
 void LibrettoEsami::aggiungiElemento(const Esame& e){
-    if(!cerca(e)){
+    if(!cerca(e) && (targetCFU-totaleCFU) >= e.getCFU()){
         VettoreGenerico::aggiungiElemento(e);
         totaleCFU += e.getCFU();
     }
@@ -23,6 +23,7 @@ bool LibrettoEsami::rimuoviElemento(const Esame& e){
         totaleCFU -= e.getCFU();
         return VettoreGenerico::rimuoviElemento(e);
     }
+    return false;
 }
 
 //Ritorna i CFU per completare il percorso di studi
@@ -107,8 +108,8 @@ double LibrettoEsami::mediaPonderata() const{
 
 Esame* LibrettoEsami::esameMigliore() const{
     if(getSize() > 0){
-        Esame esameTemp, esameMigliore;
-        int pesoEsame=0;
+        Esame esameTemp, esameMigliore=this->operator [](0);
+        unsigned int pesoEsame=0;
         for(unsigned int i=0; i < getSize(); ++i){
             esameTemp = this->operator [](i);
             if(esameTemp.getVoto()*esameTemp.getCFU() > pesoEsame){
@@ -123,8 +124,8 @@ Esame* LibrettoEsami::esameMigliore() const{
 
 Esame* LibrettoEsami::esamePeggiore() const{
     if(getSize() > 0){
-        Esame esameTemp, esamePeggiore;
-        int pesoEsame=0;
+        Esame esameTemp, esamePeggiore=this->operator [](0);
+        unsigned int pesoEsame=0;
         for(unsigned int i=0; i < getSize(); ++i){
             esameTemp = this->operator [](i);
             if(esameTemp.getVoto()*esameTemp.getCFU() < pesoEsame){
@@ -264,6 +265,7 @@ string LibrettoEsami::getRappresentazioneStringa() const{
     string t;
     t+= "Nome: "+getNomeStudente() + "; Cognome: "+getCognomeStudente()+"; Matricola: "+to_string(getMatricola());
     for(unsigned int i=0; i < getSize(); ++i){
+        t += "\n\nEsame " + to_string(i+1) + ":";
         t += (operator [](i)).getRappresentazioneStringa();
     }
     return t;

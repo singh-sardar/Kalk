@@ -23,9 +23,9 @@ public:
     string getNomeCorso() const;
     string getNomeMateria() const;
     string getNomeProfessore() const;
-    int getVoto() const;
+    unsigned int getVoto() const;
     bool getLode() const;
-    int getCFU() const;
+    unsigned int getCFU() const;
     Data ottieniData() const;
     void setNomeCorso(string);
     void setNomeMateria(string);
@@ -36,7 +36,6 @@ public:
     bool operator ==(const Esame&) const;
     bool operator !=(const Esame&) const;
     string getRappresentazioneStringa() const;
-//TI consiglio dei metodi set per poter modificare le robe del esame
 
     //operatore + tra esami richiesto da vettore generico
     Esame operator+(const Esame&)const;
