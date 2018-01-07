@@ -106,8 +106,12 @@ MatriciGUI::~MatriciGUI(){
      delete btnMoltiplicazione;
      delete gridLayout;
      delete controllerMatrici;
-     delete verticalLayout;
-     delete verticalLayoutMatriceRisultato;
+     /*if(verticalLayout){
+        delete verticalLayout;
+     }
+     if(verticalLayoutMatriceRisultato){
+        delete verticalLayoutMatriceRisultato;
+     }*/
      delete labelRisultato;
      delete labelMatriceRisultato;
 }

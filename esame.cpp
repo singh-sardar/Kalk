@@ -10,7 +10,7 @@ Esame::Esame(string nomeM,string nomeC,string nomeP,unsigned int c,unsigned int 
 }
 
 Esame::Esame(string nomeM,string nomeC, string nomeP,const Data& d,unsigned int c,unsigned int v):
-    CFU(c>=1?c:1), voto(v>=18?v:18),nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP), data(d)
+    CFU(c>=1?c:1), voto(v>=18?v:18),nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP), data(new Data(d))
 {
     lode = (voto > 30) ? true : false;
     if(lode)
@@ -42,7 +42,7 @@ bool Esame::getLode() const{
 }
 
 Data Esame::ottieniData() const{
-    return data;
+    return *data;
 }
 
 void Esame::setNomeCorso(string n){
@@ -68,7 +68,7 @@ void Esame::setVoto(int v){
 }
 
 void Esame::setData(const Data& d){
-    data = d;
+    data = new Data(d);
 }
 
 bool Esame::operator ==(const Esame& e) const{
@@ -87,10 +87,10 @@ string Esame::getRappresentazioneStringa() const{
     t += "\nNome Materia: " + getNomeMateria() + "; ";
     t += "\nNome Professore: " + getNomeProfessore() + "; ";
     t += "\nNome Corso: " + getNomeCorso() + "; ";
-    t += "\nData: " + data.getRappresentazioneStringa() + "; ";
+    t += "\nData: " + data->getRappresentazioneStringa() + "; ";
     return t;
 }
-
+/*
 ostream& operator<<(ostream& os, const Esame& d){
     os<<"CFU: " <<d.getCFU() << endl;
     os << "Voto: " << d.getVoto() << endl;
@@ -100,7 +100,7 @@ ostream& operator<<(ostream& os, const Esame& d){
     os << "Nome Corso: " << d.getNomeCorso() << endl;
     return os;
 }
-
+*/
 //Somma dei parziali
 Esame Esame::operator+(const Esame& e)const{
     Esame tmp(*this);
@@ -108,4 +108,8 @@ Esame Esame::operator+(const Esame& e)const{
         tmp.voto = (voto+e.getVoto())/2;
     }
     return tmp;
+}
+
+Esame::~Esame(){
+    delete data;
 }

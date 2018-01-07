@@ -47,7 +47,7 @@ public:
     string getRappresentazioneStringa() const;
 };
 
-ostream& operator <<(ostream&, const LibrettoEsami&);
+//ostream& operator <<(ostream&, const LibrettoEsami&);
 LibrettoEsami* operator+(const Esame&, const LibrettoEsami&);
 LibrettoEsami* operator-(const Esame&, const LibrettoEsami&);
 

@@ -1,6 +1,6 @@
 #include "matricicontroller.h"
 #include <QMessageBox>
-#include <QtDebug>
+#include <QDebug>
 
 MatriciController::MatriciController(MatriciGUI* view):
     viewMatrici(view), matrice1(new Matrice()), matrice2(new Matrice()), matriceRisultato(new Matrice())
@@ -141,6 +141,7 @@ void MatriciController::somma(){
     matriceRisultato = (*matrice1) + (*matrice2);
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Somma matrici","La matrice (somma) si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice (somma) si trova nella matrice Risultato");
     }else{
         showMessageBox("Errore somma matrici","Le matrici devono avere stesse dimensioni");
@@ -151,6 +152,7 @@ void MatriciController::sottrazione(){
     matriceRisultato = *matrice1 - *matrice2;
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Differenza matrici","La matrice (sottrazione) si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice (sottrazione) si trova nella matrice Risultato");
     }else{
         showMessageBox("Errore sottrazione matrici","Le matrici devono avere stesse dimensioni");
@@ -161,6 +163,7 @@ void MatriciController::moltiplicazione(){
     matriceRisultato = *matrice1 * *matrice2;
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Moltiplicazione matrici","La matrice (moltiplicazione) si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice (moltiplicazione) si trova nella matrice Risultato");
     }
     else{
@@ -173,6 +176,7 @@ void MatriciController::moltiplicazioneScalare1(){
     matriceRisultato = *matrice1 * d;
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Prodotto scalare matrice 1","La matrice dell'operazione (prodotto scalare) si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice dell'operazione (prodotto scalare) si trova nella matrice Risultato");
     }
     else{
@@ -185,6 +189,7 @@ void MatriciController::moltiplicazioneScalare2(){
     matriceRisultato = *matrice2 * d;
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Prodotto scalare matrice 2","La matrice dell'operazione (prodotto scalare) si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice dell'operazione (prodotto scalare) si trova nella matrice Risultato");
     }
     else{
@@ -198,6 +203,7 @@ void MatriciController::divisioneScalare1(){
         matriceRisultato = (*matrice1/d);
         if(matriceRisultato){
             aggiornaTableViewRisultato();
+            showMessageBox("Divisione scalare matrice 1","La matrice dell'operazione (divisione scalare) si trova nella matrice Risultato");
             aggiornaLabelRisultato("La matrice dell'operazione (divisione scalare) si trova nella matrice Risultato");
         }
         else{
@@ -215,6 +221,7 @@ void MatriciController::divisioneScalare2(){
         matriceRisultato = (*matrice2/d);
         if(matriceRisultato){
             aggiornaTableViewRisultato();
+            showMessageBox("Divisione scalare matrice 2","La matrice dell'operazione (divisione scalare) si trova nella matrice Risultato");
             aggiornaLabelRisultato("La matrice dell'operazione (divisione scalare) si trova nella matrice Risultato");
         }
         else{
@@ -228,6 +235,7 @@ void MatriciController::divisioneScalare2(){
 
 void MatriciController::determinante1(){
     if((matrice1->getNumRighe()==matrice1->getNumColonne())){
+        showMessageBox("Determinante matrice 1",QString("Determinante matrice 1: ")+QString::number(matrice1->determinante()));
         aggiornaLabelRisultato(QString("Determinante matrice 1: ")+QString::number(matrice1->determinante()));
     }else{
         showMessageBox("Errore determinante matrice 1","La matrice 1 deve essere quadrata.");
@@ -236,6 +244,7 @@ void MatriciController::determinante1(){
 
 void MatriciController::determinante2(){
     if((matrice2->getNumRighe()==matrice2->getNumColonne())){
+        showMessageBox("Determinante matrice 2",QString("Determinante matrice 2: ")+QString::number(matrice2->determinante()));
         aggiornaLabelRisultato(QString("Determinante matrice 2: ")+QString::number(matrice2->determinante()));
     }else{
         showMessageBox("Errore determinante matrice 2","La matrice 2 deve essere quadrata.");
@@ -246,6 +255,7 @@ void MatriciController::matriceInversa1(){
     matriceRisultato = matrice1->matriceInversa();
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Matrice inversa 1","La matrice inversa si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice inversa si trova nella matrice Risultato");
     }
     else{
@@ -257,6 +267,7 @@ void MatriciController::matriceInversa2(){
     matriceRisultato = matrice2->matriceInversa();
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Matrice inversa 2","La matrice inversa si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice inversa si trova nella matrice Risultato");
     }
     else{
@@ -268,6 +279,7 @@ void MatriciController::matriceTrasposta1(){
     matriceRisultato = matrice1->matriceTrasposta();
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Matrice trasposta 1","La matrice trasposta si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice trasposta si trova nella matrice Risultato");
     }
     else{
@@ -279,6 +291,7 @@ void MatriciController::matriceTrasposta2(){
     matriceRisultato = matrice2->matriceTrasposta();
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Matrice trasposta 2","La matrice trasposta si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice trasposta si trova nella matrice Risultato");
     }
     else{
@@ -290,6 +303,7 @@ void MatriciController::matriceCofattori1(){
     matriceRisultato = matrice1->matriceCofattore();
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Matrice dei cofattori 1","La matrice dei cofattori si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice dei cofattori si trova nella matrice Risultato");
     }
     else{
@@ -301,6 +315,7 @@ void MatriciController::matriceCofattori2(){
     matriceRisultato = matrice2->matriceCofattore();
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Matrice dei cofattori 2","La matrice dei cofattori si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice dei cofattori si trova nella matrice Risultato");
     }
     else{
@@ -313,6 +328,7 @@ void MatriciController::elevaAPotenza1(){
     matriceRisultato = matrice1->elevaAPotenza(d);
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Elevamento a potenza matrice 1","La matrice dell'operazione (elevamento a potenza) si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice dell'operazione (elevamento a potenza) si trova nella matrice Risultato");
     }
     else{
@@ -325,6 +341,7 @@ void MatriciController::elevaAPotenza2(){
     matriceRisultato = matrice2->elevaAPotenza(d);
     if(matriceRisultato){
         aggiornaTableViewRisultato();
+        showMessageBox("Elevamento a potenza matrice 2","La matrice dell'operazione (elevamento a potenza) si trova nella matrice Risultato");
         aggiornaLabelRisultato("La matrice dell'operazione (elevamento a potenza) si trova nella matrice Risultato");
     }
     else{
@@ -334,48 +351,60 @@ void MatriciController::elevaAPotenza2(){
 
 void MatriciController::isDiagonale1(){
     if(matrice1->isDiagonale()){
+        showMessageBox("Matrice 1 diagonale",QString("La matrice 1 è diagonale."));
         aggiornaLabelRisultato(QString("La matrice 1 è diagonale."));
     }else{
+        showMessageBox("Matrice 1 diagonale",QString("La matrice 1 non è diagonale."));
         aggiornaLabelRisultato(QString("La matrice 1 non è diagonale."));
     }
 }
 
 void MatriciController::isDiagonale2(){
     if(matrice2->isDiagonale()){
+        showMessageBox("Matrice 2 diagonale",QString("La matrice 2 è diagonale."));
         aggiornaLabelRisultato(QString("La matrice 2 è diagonale."));
     }else{
+        showMessageBox("Matrice 2 diagonale",QString("La matrice 2 non è diagonale."));
         aggiornaLabelRisultato(QString("La matrice 2 non è diagonale."));
     }
 }
 
 void MatriciController::isSimmetrica1(){
     if(matrice1->isSimmetrica()){
+        showMessageBox("Matrice 1 simmetrica",QString("La matrice 1 è simmetrica."));
         aggiornaLabelRisultato(QString("La matrice 1 è simmetrica."));
     }else{
+        showMessageBox("Matrice 1 simmetrica",QString("La matrice 1 non è simmetrica."));
         aggiornaLabelRisultato(QString("La matrice 1 non è simmetrica."));
     }
 }
 
 void MatriciController::isSimmetrica2(){
     if(matrice2->isSimmetrica()){
+        showMessageBox("Matrice 2 simmetrica",QString("La matrice 2 è simmetrica."));
         aggiornaLabelRisultato(QString("La matrice 2 è simmetrica."));
     }else{
+        showMessageBox("Matrice 2 simmetrica",QString("La matrice 2 non è simmetrica."));
         aggiornaLabelRisultato(QString("La matrice 2 non è simmetrica."));
     }
 }
 
 void MatriciController::isScalare1(){
     if(matrice1->isScalare(viewMatrici->getLineEditMatrice1()->text().toDouble())){
+        showMessageBox("Matrice 1 scalare",QString("La matrice 1 è scalare."));
         aggiornaLabelRisultato(QString("La matrice 1 è scalare."));
     }else{
+        showMessageBox("Matrice 1 scalare",QString("La matrice 1 non è scalare."));
         aggiornaLabelRisultato(QString("La matrice 1 non è scalare."));
     }
 }
 
 void MatriciController::isScalare2(){
     if(matrice2->isScalare(viewMatrici->getLineEditMatrice2()->text().toDouble())){
+        showMessageBox("Matrice 2 scalare",QString("La matrice 2 è scalare."));
         aggiornaLabelRisultato(QString("La matrice 2 è scalare."));
     }else{
+        showMessageBox("Matrice 2 scalare",QString("La matrice 2 non è scalare."));
         aggiornaLabelRisultato(QString("La matrice 2 non è scalare."));
     }
 }

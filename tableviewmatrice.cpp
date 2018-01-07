@@ -113,8 +113,8 @@ TableViewMatrice::~TableViewMatrice(){
     delete labelMatrice;
     delete labelSpinBoxRighe;
     delete labelSpinBoxColonne;
-    delete verticalLayout;
     delete hLPerRighe;
     delete hLPerColonne;
+    delete verticalLayout;
 }
 

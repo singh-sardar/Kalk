@@ -249,6 +249,7 @@ LibrettoEsami& LibrettoEsami::operator -=(const VettoreGenerico<Esame>& l){
     }
     return *this;
 }
+/*
 ostream& operator <<(ostream& os, const LibrettoEsami& l){
     os << "\nMatricola studente: " << l.getMatricola() << endl;
     for(unsigned int i=0; i < l.getSize(); ++i){
@@ -258,7 +259,7 @@ ostream& operator <<(ostream& os, const LibrettoEsami& l){
     os << "\n";
     return os;
 }
-
+*/
 string LibrettoEsami::getRappresentazioneStringa() const{
     string t;
     t+= "Nome: "+getNomeStudente() + "; Cognome: "+getCognomeStudente()+"; Matricola: "+to_string(getMatricola());

@@ -15,7 +15,7 @@ private:
     string nomeMateria;
     string nomeCorso;
     string nomeProfessore;
-    Data data;
+    Data* data;
 
 public:
     Esame(string nomeM="Nome materia",string nomeC="Nome corso",string nomeP="Nome professore",unsigned int c=1,unsigned int v=18);
@@ -39,9 +39,10 @@ public:
 
     //operatore + tra esami richiesto da vettore generico
     Esame operator+(const Esame&)const;
+    ~Esame();
 
 };
 
-ostream& operator<<(ostream&, const Esame&);
+//ostream& operator<<(ostream&, const Esame&);
 
 #endif // ESAME_H
