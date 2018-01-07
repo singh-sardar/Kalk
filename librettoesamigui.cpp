@@ -21,10 +21,10 @@ LibrettoEsamiGUI::LibrettoEsamiGUI(QWidget *parent): QWidget(parent){
     spinBoxTargetCFU1->setRange(1,1000);
     spinBoxTargetCFU2->setRange(1,1000);
 
-    btnAggiungiLibretto1AdLibretto2 = new QPushButton("Aggiungi libretto 1 a libretto 2");
-    btnAggiungiLibretto2AdLibretto1 = new QPushButton("Aggiungi libretto 2 a libretto 1");
-    btnRimuoviLibretto1DaLibretto2 = new QPushButton("Rimuovi libretto 1 da libretto 2");
-    btnRimuoviLibretto2DaLibretto1 = new QPushButton("Rimuovi libretto 2 da libretto 1");
+    btnAggiungiLibretto1AdLibretto2 = new QPushButton("Aggiungi libretto 1\n a libretto 2");
+    btnAggiungiLibretto2AdLibretto1 = new QPushButton("Aggiungi libretto 2\n a libretto 1");
+    btnRimuoviLibretto1DaLibretto2 = new QPushButton("Rimuovi libretto 1\n da libretto 2");
+    btnRimuoviLibretto2DaLibretto1 = new QPushButton("Rimuovi libretto 2\n da libretto 1");
 
     labelLibretto1 = new QLabel("Libretto 1");
     labelLibretto2 = new QLabel("Libretto 2");

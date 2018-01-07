@@ -20,6 +20,7 @@
 #include "ricettagui.h"
 #include "matricigui.h"
 #include "librettoesamigui.h"
+#include "tabwidgetgui.h"
 
 //include qt
 #include <QLabel>
@@ -27,6 +28,7 @@
 #include <QColor>
 #include <QPalette>
 #include <string>
+#include <qtabwidget.h>
 
 using std::string;
 
@@ -186,13 +188,17 @@ int main(int argc, char *argv[])
         //cout << "Out of Range error.";
     }
 
+/*
+    MatriciGUI* matGUI = new MatriciGUI;
+    matGUI->show();
 
-    MatriciGUI matGUI;
-    matGUI.show();
 
+    LibrettoEsamiGUI* lGUI = new LibrettoEsamiGUI;
+    lGUI->show();
+*/
 
-    LibrettoEsamiGUI lGUI;
-    lGUI.show();
+    TabWidgetGUI widgetGUI;
+    widgetGUI.show();
 
     //main per pardeep fino a qui ---------------------------------------------------------------------------------------
 
@@ -254,11 +260,12 @@ int main(int argc, char *argv[])
 
 */
 
+    /*
     RgbColorGui g;
     g.show();
     RicettaGui rgui;
     rgui.show();
-
+    */
 
 
     QPushButton btn(&w);

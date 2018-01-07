@@ -51,7 +51,8 @@ SOURCES += \
     singololibrettoesamiview.cpp \
     esamedialog.cpp \
     librettoesamicontroller.cpp \
-    librettoesamigui.cpp
+    librettoesamigui.cpp \
+    tabwidgetgui.cpp
 
 HEADERS += \
         kalk.h \
@@ -81,7 +82,8 @@ HEADERS += \
     singololibrettoesamiview.h \
     esamedialog.h \
     librettoesamicontroller.h \
-    librettoesamigui.h
+    librettoesamigui.h \
+    tabwidgetgui.h
 
 FORMS += \
         kalk.ui

@@ -12,7 +12,7 @@ TableViewMatrice::TableViewMatrice(QWidget* parent, QString lblMatrice, int righ
 {
     tableWidget = new QTableWidget(righe,colonne,this);
     tableWidget->setGeometry(0,0,350,350);
-    tableWidget->setMinimumSize(350,350);
+    //tableWidget->setMinimumSize(350,350);
     //tableWidget->setMaximumSize(350,350);
     tableWidget->setShowGrid(true);
 

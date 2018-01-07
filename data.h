@@ -18,10 +18,12 @@ public:
     int Giorno() const;
     int Mese() const;
     int Anno() const;
+    /*
     void impostaGiorno(int);
     void impostaMese(int);
     void impostaAnno(int);
     void impostaData(int,int,int);
+    */
     bool dataValida() const;
     bool annoBisestile(int) const;
     string getRappresentazioneStringa() const;

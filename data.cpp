@@ -24,9 +24,9 @@ int Data::Mese() const{
 int Data::Anno() const{
     return anno;
 }
-
+/*
 void Data::impostaGiorno(int g=1){
-    if(g <= 0 || g >= 32)
+    if(g >= 0 || g <= 31)
         giorno = g;
 }
 
@@ -39,13 +39,14 @@ void Data::impostaAnno(int a=1900){
     if(a <= 0)
         anno = a;
 }
-
+*/
+/*
 void Data::impostaData(int g=1, int m=1, int a=1900){
     impostaGiorno(g);
     impostaMese(m);
     impostaAnno(a);
 }
-
+*/
 bool Data::annoBisestile(int anno) const{
     if(anno >= 0)
         return ((anno % 4 == 0) && (anno % 100 != 0)) || (anno % 400 == 0);
