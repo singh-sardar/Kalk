@@ -41,20 +41,23 @@ bool Esame::getLode() const{
     return lode;
 }
 
-Data Esame::ottieniData() const{
+Data Esame::getData() const{
     return *data;
 }
 
 void Esame::setNomeCorso(string n){
-    nomeCorso = n;
+    if(!n.empty())
+        nomeCorso = n;
 }
 
 void Esame::setNomeMateria(string n){
-    nomeMateria = n;
+    if(!n.empty())
+        nomeMateria = n;
 }
 
 void Esame::setNomeProfessore(string n){
-    nomeProfessore = n;
+    if(!n.empty())
+        nomeProfessore = n;
 }
 
 void Esame::setCFU(int c){
@@ -65,6 +68,12 @@ void Esame::setCFU(int c){
 void Esame::setVoto(int v){
     if(v >= 18)
         voto = v;
+    if(voto > 30){
+        voto = 30;
+        lode = true;
+    }else{
+        lode = false;
+    }
 }
 
 void Esame::setData(const Data& d){
@@ -113,3 +122,4 @@ Esame Esame::operator+(const Esame& e)const{
 Esame::~Esame(){
     delete data;
 }
+

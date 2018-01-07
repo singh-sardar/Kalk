@@ -26,7 +26,7 @@ public:
     unsigned int getVoto() const;
     bool getLode() const;
     unsigned int getCFU() const;
-    Data ottieniData() const;
+    Data getData() const;
     void setNomeCorso(string);
     void setNomeMateria(string);
     void setNomeProfessore(string);

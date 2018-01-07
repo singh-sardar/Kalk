@@ -33,6 +33,6 @@ public:
     bool operator>(const Data&) const;
 };
 
-ostream& operator<<(ostream&, const Data&);
+//ostream& operator<<(ostream&, const Data&);
 
 #endif // DATA_H

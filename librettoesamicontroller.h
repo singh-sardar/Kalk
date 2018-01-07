@@ -22,7 +22,7 @@ public:
 private:
     LibrettoEsamiGUI* guiLibretto;
     LibrettoEsami* libretto1, *libretto2;
-    Esame* esame;
+    Esame esame;
     void aggiornaLibrettoGUI(LibrettoEsami*, QPlainTextEdit*);
     void showMessageBox(QString, QString) const;
 

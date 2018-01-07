@@ -110,14 +110,14 @@ void LibrettoEsamiController::aggiungiEsameLibretto1(){
         Data d(eD->getSpinBoxGiorno()->text().toInt(),
                eD->getSpinBoxMese()->text().toInt(),
                eD->getSpinBoxAnno()->text().toInt());
-        esame = new Esame(eD->getLineEditMateria()->text().toStdString(),
+        esame = Esame(eD->getLineEditMateria()->text().toStdString(),
                           eD->getLineEditCorso()->text().toStdString(),
                           eD->getLineEditProfessore()->text().toStdString(),
                           d,
                           eD->getSpinBoxCFU()->text().toInt(),
                           eD->getSpinBoxVoto()->text().toInt()
                           );
-        libretto1 = *libretto1 + *esame;
+        libretto1 = *libretto1 + esame;
         aggiornaLibrettoGUI(libretto1,guiLibretto->getLibretto1Viewer()->getPlainTextEdit());
     }
 }
@@ -128,14 +128,14 @@ void LibrettoEsamiController::aggiungiEsameLibretto2(){
         Data d(eD->getSpinBoxGiorno()->text().toInt(),
                eD->getSpinBoxMese()->text().toInt(),
                eD->getSpinBoxAnno()->text().toInt());
-        esame = new Esame(eD->getLineEditMateria()->text().toStdString(),
+        esame = Esame(eD->getLineEditMateria()->text().toStdString(),
                           eD->getLineEditCorso()->text().toStdString(),
                           eD->getLineEditProfessore()->text().toStdString(),
                           d,
                           eD->getSpinBoxCFU()->text().toInt(),
                           eD->getSpinBoxVoto()->text().toInt()
                           );
-        libretto2 = *libretto2 + *esame;
+        libretto2 = *libretto2 + esame;
         aggiornaLibrettoGUI(libretto2,guiLibretto->getLibretto2Viewer()->getPlainTextEdit());
     }
 }
@@ -146,14 +146,14 @@ void LibrettoEsamiController::rimuoviEsameLibretto1(){
         Data d(eD->getSpinBoxGiorno()->text().toInt(),
                eD->getSpinBoxMese()->text().toInt(),
                eD->getSpinBoxAnno()->text().toInt());
-        esame = new Esame(eD->getLineEditMateria()->text().toStdString(),
+        esame = Esame(eD->getLineEditMateria()->text().toStdString(),
                           eD->getLineEditCorso()->text().toStdString(),
                           eD->getLineEditProfessore()->text().toStdString(),
                           d,
                           eD->getSpinBoxCFU()->text().toInt(),
                           eD->getSpinBoxVoto()->text().toInt()
                           );
-        libretto1 = *libretto1 - *esame;
+        libretto1 = *libretto1 - esame;
         aggiornaLibrettoGUI(libretto1,guiLibretto->getLibretto1Viewer()->getPlainTextEdit());
     }
 }
@@ -164,14 +164,14 @@ void LibrettoEsamiController::rimuoviEsameLibretto2(){
         Data d(eD->getSpinBoxGiorno()->text().toInt(),
                eD->getSpinBoxMese()->text().toInt(),
                eD->getSpinBoxAnno()->text().toInt());
-        esame = new Esame(eD->getLineEditMateria()->text().toStdString(),
+        esame = Esame(eD->getLineEditMateria()->text().toStdString(),
                           eD->getLineEditCorso()->text().toStdString(),
                           eD->getLineEditProfessore()->text().toStdString(),
                           d,
                           eD->getSpinBoxCFU()->text().toInt(),
                           eD->getSpinBoxVoto()->text().toInt()
                           );
-        libretto2 = *libretto2 - *esame;
+        libretto2 = *libretto2 - esame;
         aggiornaLibrettoGUI(libretto2,guiLibretto->getLibretto2Viewer()->getPlainTextEdit());
     }
 }
@@ -460,5 +460,7 @@ void LibrettoEsamiController::mostraCFURimanenti2(){
 LibrettoEsamiController::~LibrettoEsamiController(){
     delete libretto1;
     delete libretto2;
-    delete esame;
+    /*if(esame)
+        delete esame;
+        */
 }

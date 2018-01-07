@@ -147,7 +147,7 @@ Esame* LibrettoEsami::esameMenoRecente() const{
 
         for(unsigned int i=0; i < getSize(); ++i){
             esameTemp = this->operator [](i);
-            if(esameTemp.ottieniData() < esameMenoRecente.ottieniData())
+            if(esameTemp.getData() < esameMenoRecente.getData())
                 esameMenoRecente = esameTemp;
         }
         return new Esame(esameMenoRecente);
@@ -164,7 +164,7 @@ Esame* LibrettoEsami::esamePiuRecente() const{
 
         for(unsigned int i=0; i < getSize(); ++i){
             esameTemp = this->operator [](i);
-            if(esameTemp.ottieniData() > esamePiuRecente.ottieniData())
+            if(esameTemp.getData() > esamePiuRecente.getData())
                 esamePiuRecente = esameTemp;
         }
         return new Esame(esamePiuRecente);
