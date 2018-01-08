@@ -41,10 +41,7 @@ unsigned int LibrettoEsami::getMatricola() const{
 }
 
 void LibrettoEsami::setMatricola(unsigned int m){
-    if(m > 0)
-        matricolaStudente = m;
-    else
-        matricolaStudente = 1;
+    matricolaStudente = (m > 0 ? m : 1);
 }
 
 string LibrettoEsami::getNomeStudente() const{
@@ -213,6 +210,7 @@ LibrettoEsami* operator-(const Esame& e, const LibrettoEsami& l){
     return l.operator -(e);
 }
 */
+
 LibrettoEsami& LibrettoEsami::operator +=(const Esame& e){
     aggiungiElemento(e);
     return *this;

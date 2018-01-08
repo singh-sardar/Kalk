@@ -15,10 +15,6 @@ unsigned int Matrice::getNumColonne() const{
     return numColonne;
 }
 
-unsigned int Matrice::getNumElementi() const{
-    return getSize();
-}
-
 double Matrice::getValore(unsigned int riga, unsigned int colonna) const{
     return VettoreGenerico::operator [](riga*numColonne+colonna);
 }
@@ -75,7 +71,6 @@ Matrice* Matrice::operator +(const VettoreGenerico<double>& m) const{
         Matrice* aux = new Matrice(*this);
         for(unsigned int i = 0; i < getNumRighe(); ++i){
             for(unsigned int j=0; j < getNumColonne(); ++j){
-                //(aux->operator [](i))[j] += (tempM->operator [](i))[j];
                 aux->setValore(i,j,(aux->getValore(i,j) + tempM->getValore(i,j)));
             }
         }

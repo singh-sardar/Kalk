@@ -16,7 +16,6 @@ public:
     Matrice(unsigned int numR=1, unsigned int numC=1, double valDef=0);
     unsigned int getNumRighe() const;
     unsigned int getNumColonne() const;
-    unsigned int getNumElementi() const;
     const double& operator [](unsigned int)const;
     double& operator [](unsigned int);
     bool rimuoviElemento(double);
