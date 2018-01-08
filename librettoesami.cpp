@@ -8,7 +8,7 @@ using std::string;
  */
 //LibrettoEsami::LibrettoEsami(): VettoreGenerico(){}
 LibrettoEsami::LibrettoEsami(string nomeS,string cognomeS, unsigned int matricolaS, unsigned int targCFU):
-    nomeStudente(nomeS), cognomeStudente(cognomeS), matricolaStudente(matricolaS), targetCFU(targCFU), totaleCFU(0)
+    nomeStudente(nomeS), cognomeStudente(cognomeS), matricolaStudente(matricolaS > 0?matricolaS:1), targetCFU(targCFU > 0?targCFU:1), totaleCFU(0)
 {}
 
 void LibrettoEsami::aggiungiElemento(const Esame& e){
@@ -141,9 +141,7 @@ Esame* LibrettoEsami::esamePeggiore() const{
 
 Esame* LibrettoEsami::esameMenoRecente() const{
     if(getSize() > 0){
-        Esame esameTemp, esameMenoRecente;
-        if(getSize() >= 1)
-            esameMenoRecente = operator [](0);
+        Esame esameTemp, esameMenoRecente= operator [](0);
 
         for(unsigned int i=0; i < getSize(); ++i){
             esameTemp = this->operator [](i);
@@ -158,9 +156,7 @@ Esame* LibrettoEsami::esameMenoRecente() const{
 
 Esame* LibrettoEsami::esamePiuRecente() const{
     if(getSize() > 0){
-        Esame esameTemp, esamePiuRecente;
-        if(getSize() >= 1)
-            esamePiuRecente = operator [](0);
+        Esame esameTemp, esamePiuRecente= operator [](0);
 
         for(unsigned int i=0; i < getSize(); ++i){
             esameTemp = this->operator [](i);
@@ -170,10 +166,6 @@ Esame* LibrettoEsami::esamePiuRecente() const{
         return new Esame(esamePiuRecente);
     }
     return 0;
-}
-
-int LibrettoEsami::numeroEsamiSostenuti() const{
-    return getSize();
 }
 
 LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& l) const{
