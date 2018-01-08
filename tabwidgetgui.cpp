@@ -26,8 +26,7 @@ TabWidgetGUI::TabWidgetGUI(QWidget *parent):
     setLayout(gridLayout);
 */
 
-    tabWidget->setMinimumSize(rgbGUI->minimumSize());
-    tabWidget->tabBar()->setFont(QFont("Verdana",16));
+    tabWidget->setStyleSheet("QTabBar::tab{height:40px; width:150px;font: 14pt}");
     tabWidget->addTab(rgbGUI,"Colori RGB");
     tabWidget->addTab(ricettaGUI,"Ricette");
     tabWidget->addTab(matriciGUI,"Matrici");
