@@ -9,7 +9,7 @@
 #include "matricigui.h"
 
 class MatriciGUI;
-class MatriciController: public QWidget{
+class MatriciController: public QObject{
     Q_OBJECT
 
 public:

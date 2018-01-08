@@ -2,6 +2,9 @@
 #define TABWIDGETGUI_H
 
 #include <QTabWidget>
+#include <QWidget>
+#include <QGridLayout>
+#include <QPushButton>
 #include "tworgbpicker.h"
 #include "coloroperationbuttons.h"
 #include "rgbcolorgui.h"
@@ -9,8 +12,9 @@
 #include "matricigui.h"
 #include "librettoesamigui.h"
 
-class TabWidgetGUI: QWidget{
+class TabWidgetGUI: public QWidget{
 
+    Q_OBJECT
 private:
     QTabWidget* tabWidget;
     RgbColorGui* rgbGUI;
@@ -18,10 +22,17 @@ private:
     MatriciGUI* matriciGUI;
     LibrettoEsamiGUI* librettoGUI;
 
+    /*
+    QPushButton* btnRGBGUI, *btnRicetteGUI, *btnMatriciGUI, *btnLibrettoEsamiGUI;
+    QGridLayout* gridLayout;
+    */
 public:
     TabWidgetGUI(QWidget* parent = 0);
     void show();
     ~TabWidgetGUI();
+
+private slots:
+    void impostaMinSize();
 
 };
 

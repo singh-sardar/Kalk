@@ -11,7 +11,7 @@
 using std::to_string;
 
 class LibrettoEsamiGUI;
-class LibrettoEsamiController: public QWidget{
+class LibrettoEsamiController: public QObject{
 
     Q_OBJECT
 

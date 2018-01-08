@@ -10,7 +10,7 @@ Esame::Esame(string nomeM,string nomeC,string nomeP,unsigned int c,unsigned int 
 }
 
 Esame::Esame(string nomeM,string nomeC, string nomeP,const Data& d,unsigned int c,unsigned int v):
-    CFU(c>=1?c:1), voto(v>=18?v:18),nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP), data(new Data(d))
+    CFU(c>=1?c:1), voto(v>=18?v:18),nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP), data(d)
 {
     lode = (voto > 30) ? true : false;
     if(lode)
@@ -42,7 +42,7 @@ bool Esame::getLode() const{
 }
 
 Data Esame::getData() const{
-    return *data;
+    return data;
 }
 
 void Esame::setNomeCorso(string n){
@@ -77,7 +77,7 @@ void Esame::setVoto(int v){
 }
 
 void Esame::setData(const Data& d){
-    data = new Data(d);
+    data = Data(d);
 }
 
 bool Esame::operator ==(const Esame& e) const{
@@ -90,13 +90,13 @@ bool Esame::operator !=(const Esame& e) const{
 
 string Esame::getRappresentazioneStringa() const{
     string t;
-    t += "\nCFU: " + to_string(getCFU()) + "; ";
-    t += "\nVoto: " + to_string(getVoto()) + "; ";
-    t.append(string("\nLode: ") + (getLode() ? "Si" : "No") + "; ");
-    t += "\nNome Materia: " + getNomeMateria() + "; ";
-    t += "\nNome Professore: " + getNomeProfessore() + "; ";
-    t += "\nNome Corso: " + getNomeCorso() + "; ";
-    t += "\nData: " + data->getRappresentazioneStringa() + "; ";
+    t += "\n - CFU: " + to_string(getCFU()) + "; ";
+    t += "\n - Voto: " + to_string(getVoto()) + "; ";
+    t.append(string("\n - Lode: ") + (getLode() ? "Si" : "No") + "; ");
+    t += "\n - Nome Materia: " + getNomeMateria() + "; ";
+    t += "\n - Nome Professore: " + getNomeProfessore() + "; ";
+    t += "\n - Nome Corso: " + getNomeCorso() + "; ";
+    t += "\n - Data: " + data.getRappresentazioneStringa() + "; ";
     return t;
 }
 /*
@@ -118,8 +118,3 @@ Esame Esame::operator+(const Esame& e)const{
     }
     return tmp;
 }
-
-Esame::~Esame(){
-    delete data;
-}
-

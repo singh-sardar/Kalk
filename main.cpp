@@ -43,12 +43,13 @@ int main(int argc, char *argv[])
         VettoreGenerico<int> v,v1;
         VettoreGenerico<int>* v3 = new VettoreGenerico<int>();
     */
-
+/*
     LibrettoEsami le("nome","cognome",12345,180), *le2, le3;
     le2 = new LibrettoEsami("nome","cognome",12345,180);
     le.aggiungiElemento(Esame());
     le.aggiungiElemento(Esame("Analisi","Informatica", "Sartori",12,31));
     le3.aggiungiElemento(Esame("a","b","c",1,18));
+    */
     //le2->aggiungiElemento(Esame());
     //le2->aggiungiElemento(Esame("Analisi","Informatica", "Sartori",12,31));
     //le2->aggiungiElemento(Esame("a","b","c",1,18));
@@ -59,7 +60,7 @@ int main(int argc, char *argv[])
     //cout << le << endl;
     //le = *(le - le3);
     //le -= le3;
-    le = *(Esame() + le);
+    //le = *(Esame() + le);
     //le = *(Esame() - le);
     //cout << le << endl;
     //cout << le.mediaPonderata() << endl;
@@ -260,13 +261,13 @@ int main(int argc, char *argv[])
 
 */
 
-    /*
+/*
     RgbColorGui g;
     g.show();
     RicettaGui rgui;
     rgui.show();
-    */
-
+    l->setText(QString::number(lGUI->minimumWidth()) + " " + QString::number(lGUI->minimumHeight()));
+*/
 
     QPushButton btn(&w);
     btn.setGeometry(100,100,50,50);
@@ -283,9 +284,9 @@ int main(int argc, char *argv[])
 
     l->setFont(QFont("Times",20));
     l->adjustSize();
-    /*
+/*
     w.show();
-    */
+*/
     return a.exec();
 }
 

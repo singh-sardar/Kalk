@@ -9,18 +9,57 @@ TabWidgetGUI::TabWidgetGUI(QWidget *parent):
     matriciGUI = new MatriciGUI;
     librettoGUI = new LibrettoEsamiGUI;
 
-    //tabWidget->setTabPosition(QTabWidget::West);
+    /*
+    btnRGBGUI = new QPushButton("Colori RGB");
+    btnRGBGUI->setFixedSize(50,25);
+    btnRicetteGUI = new QPushButton("Ricette");
+    btnMatriciGUI = new QPushButton("Matrici");
+    btnLibrettoEsamiGUI = new QPushButton("Libretto esami");
+
+    gridLayout = new QGridLayout(this);
+    gridLayout->addWidget(btnRGBGUI,0,0);
+    gridLayout->addWidget(btnRicetteGUI,1,0);
+    gridLayout->addWidget(btnMatriciGUI,2,0);
+    gridLayout->addWidget(btnLibrettoEsamiGUI,3,0);
+    gridLayout->addWidget(rgbGUI,0,1,4,2,Qt::AlignCenter);
+
+    setLayout(gridLayout);
+*/
+
+    tabWidget->setMinimumSize(rgbGUI->minimumSize());
     tabWidget->tabBar()->setFont(QFont("Verdana",16));
     tabWidget->addTab(rgbGUI,"Colori RGB");
     tabWidget->addTab(ricettaGUI,"Ricette");
     tabWidget->addTab(matriciGUI,"Matrici");
     tabWidget->addTab(librettoGUI,"Libretto esami");
-    tabWidget->setMinimumSize(900,700);
-    tabWidget->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
+
+    connect(tabWidget,SIGNAL(currentChanged(int)),this,SLOT(impostaMinSize()));
+
+    impostaMinSize();
 }
 
 void TabWidgetGUI::show(){
     tabWidget->show();
+}
+
+void TabWidgetGUI::impostaMinSize(){
+    switch (tabWidget->currentIndex()) {
+    case 1:
+        tabWidget->setMinimumSize(665,741);
+        break;
+    case 2:
+        tabWidget->setMinimumSize(694,365);
+        break;
+    case 3:
+        tabWidget->setMinimumSize(841,431);
+        break;
+    case 4:
+        tabWidget->setMinimumSize(1095,595);
+        break;
+    default:
+        tabWidget->setMinimumSize(900,700);
+        break;
+    }
 }
 
 TabWidgetGUI::~TabWidgetGUI(){
