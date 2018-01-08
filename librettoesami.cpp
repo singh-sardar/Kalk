@@ -41,7 +41,10 @@ unsigned int LibrettoEsami::getMatricola() const{
 }
 
 void LibrettoEsami::setMatricola(unsigned int m){
-    matricolaStudente = m;
+    if(m > 0)
+        matricolaStudente = m;
+    else
+        matricolaStudente = 1;
 }
 
 string LibrettoEsami::getNomeStudente() const{
@@ -168,21 +171,28 @@ Esame* LibrettoEsami::esamePiuRecente() const{
     return 0;
 }
 
-LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& l) const{
+LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& v) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
-    //aux += l;
-    for(unsigned int i = 0; i != l.getSize(); ++i){
-        if(!aux->cerca(l[i]) && (totaleCFU+l[i].getCFU() <= targetCFU)){
-            aux->aggiungiElemento(l[i]);
+    *aux += v;
+    /*
+    const LibrettoEsami* l = dynamic_cast<const LibrettoEsami*>(&l);
+    if(l){
+        for(unsigned int i = 0; i < l.getSize(); ++i){
+            if(!aux->cerca(l[i]) && (totaleCFU+l[i].getCFU() <= targetCFU)){
+                aux->aggiungiElemento(l[i]);
+            }
         }
-    }
+    }*/
     return aux;
 }
 
-LibrettoEsami& LibrettoEsami::operator +=(const VettoreGenerico<Esame>& l){
-    for(unsigned int i = 0; i < l.getSize(); ++i){
-        if(!cerca(l[i]) && (totaleCFU+l[i].getCFU() <= targetCFU)){
-            aggiungiElemento(l[i]);
+LibrettoEsami& LibrettoEsami::operator +=(const VettoreGenerico<Esame>& v){
+    const LibrettoEsami* l = dynamic_cast<const LibrettoEsami*>(&v);
+    if(l){
+        for(unsigned int i = 0; i < l->getSize(); ++i){
+            if(!cerca(l->operator [](i)) && (totaleCFU+(l->operator [](i)).getCFU() <= targetCFU)){
+                aggiungiElemento(l->operator [](i));
+            }
         }
     }
     return *this;
@@ -190,11 +200,11 @@ LibrettoEsami& LibrettoEsami::operator +=(const VettoreGenerico<Esame>& l){
 
 LibrettoEsami* LibrettoEsami::operator +(const Esame& e) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
-    //aux += e;
-    aux->aggiungiElemento(e);
+    *aux += e;
+    //aux->aggiungiElemento(e);
     return aux;
 }
-
+/*
 LibrettoEsami* operator+(const Esame& e, const LibrettoEsami& l){
     return l.operator +(e);
 }
@@ -202,41 +212,44 @@ LibrettoEsami* operator+(const Esame& e, const LibrettoEsami& l){
 LibrettoEsami* operator-(const Esame& e, const LibrettoEsami& l){
     return l.operator -(e);
 }
-
+*/
 LibrettoEsami& LibrettoEsami::operator +=(const Esame& e){
-    if(!cerca(e)){
-        aggiungiElemento(e);
-    }
+    aggiungiElemento(e);
     return *this;
 }
 
 LibrettoEsami* LibrettoEsami::operator -(const Esame& e) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
-    //aux += e;
-    aux->rimuoviElemento(e);
+    *aux -= e;
+    //aux->rimuoviElemento(e);
     return aux;
 }
 
 LibrettoEsami& LibrettoEsami::operator -=(const Esame& e){
-    if(cerca(e)){
-        rimuoviElemento(e);
-    }
+    rimuoviElemento(e);
     return *this;
 }
 
-LibrettoEsami* LibrettoEsami::operator-(const VettoreGenerico<Esame>& l) const{
+LibrettoEsami* LibrettoEsami::operator-(const VettoreGenerico<Esame>& v) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
-    //aux += l;
-    for(unsigned int i = 0; i != l.getSize(); ++i){
-        aux->rimuoviElemento(l[i]);
+    *aux -= v;
+    /*const LibrettoEsami* l = dynamic_cast<const LibrettoEsami*>(&l);
+    if(l){
+        for(unsigned int i = 0; i != l.getSize(); ++i){
+            aux->rimuoviElemento(l[i]);
+        }
     }
+    */
     return aux;
 }
 
-LibrettoEsami& LibrettoEsami::operator -=(const VettoreGenerico<Esame>& l){
-    for(unsigned int i = 0; i < l.getSize(); ++i){
-        if(cerca(l[i])){
-            rimuoviElemento(l[i]);
+LibrettoEsami& LibrettoEsami::operator -=(const VettoreGenerico<Esame>& v){
+    const LibrettoEsami* l = dynamic_cast<const LibrettoEsami*>(&v);
+    if(l){
+        for(unsigned int i = 0; i < l->getSize(); ++i){
+            if(cerca(l->operator [](i))){
+                rimuoviElemento(l->operator [](i));
+            }
         }
     }
     return *this;

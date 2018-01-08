@@ -47,7 +47,7 @@ public:
 };
 
 //ostream& operator <<(ostream&, const LibrettoEsami&);
-LibrettoEsami* operator+(const Esame&, const LibrettoEsami&);
+/*LibrettoEsami* operator+(const Esame&, const LibrettoEsami&);
 LibrettoEsami* operator-(const Esame&, const LibrettoEsami&);
-
+*/
 #endif // LIBRETTOESAMI_H
