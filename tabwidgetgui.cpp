@@ -27,12 +27,12 @@ void TabWidgetGUI::show(){
 void TabWidgetGUI::impostaMinSize(){
     switch (tabWidget->currentIndex()) {
         case 0:
-            tabWidget->setMinimumSize(665,741);
-            tabWidget->resize(720,711);
+            tabWidget->setMinimumSize(665,715);
+            tabWidget->resize(760,720);
             break;
         case 1:
-            tabWidget->setMinimumSize(694,365);
-            tabWidget->resize(802,486);
+            tabWidget->setMinimumSize(694,400);
+            tabWidget->resize(770,500);
             break;
         case 2:
             tabWidget->setMinimumSize(841,431);
@@ -42,9 +42,7 @@ void TabWidgetGUI::impostaMinSize(){
             tabWidget->setMinimumSize(1095,595);
             tabWidget->resize(1095,616);
             break;
-        default:
-            tabWidget->setMinimumSize(900,700);
-            break;
+
     }
 }
 

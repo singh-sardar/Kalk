@@ -15,6 +15,7 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
 
 
     QFont f("Verdana",12);
+    setFont(QFont("Verdana",11));
     f.setBold(false);
     labelMatriceRisultato = new QLabel(tr("Matrice Risultato"));
     labelMatriceRisultato->setFont(f);
