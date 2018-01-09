@@ -25,7 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        kalk.cpp \
     colorergb.cpp \
     librettoesami.cpp \
     esame.cpp \
@@ -55,7 +54,6 @@ SOURCES += \
     tabwidgetgui.cpp
 
 HEADERS += \
-        kalk.h \
     vettoregenerico.h \
     colore.h \
     colorergb.h \
@@ -85,6 +83,5 @@ HEADERS += \
     librettoesamigui.h \
     tabwidgetgui.h
 
-FORMS += \
-        kalk.ui
+FORMS +=
 QMAKE_CXXFLAGS += -std=c++11
