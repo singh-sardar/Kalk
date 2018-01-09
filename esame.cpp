@@ -60,18 +60,12 @@ void Esame::setNomeProfessore(string n){
         nomeProfessore = n;
 }
 
-void Esame::setCFU(int c){
-    if(c >= 1)
-        CFU = c;
-}
-
 void Esame::setVoto(int v){
-    if(v >= 18)
-        voto = v;
-    if(voto > 30){
+    voto = (v >= 18 ? v : 18);
+    if(voto > 30) {
         voto = 30;
         lode = true;
-    }else{
+    }else {
         lode = false;
     }
 }
@@ -90,26 +84,16 @@ bool Esame::operator !=(const Esame& e) const{
 
 string Esame::getRappresentazioneStringa() const{
     string t;
-    t += "\n - CFU: " + to_string(getCFU()) + "; ";
-    t += "\n - Voto: " + to_string(getVoto()) + "; ";
-    t.append(string("\n - Lode: ") + (getLode() ? "Si" : "No") + "; ");
-    t += "\n - Nome Materia: " + getNomeMateria() + "; ";
-    t += "\n - Nome Professore: " + getNomeProfessore() + "; ";
-    t += "\n - Nome Corso: " + getNomeCorso() + "; ";
-    t += "\n - Data: " + data.getRappresentazioneStringa() + "; ";
+    t += "\n - CFU: " + to_string(getCFU()) + ";";
+    t += "\n - Voto: " + to_string(getVoto()) + ";";
+    t.append(string("\n - Lode: ") + (getLode() ? "Si" : "No") + ";");
+    t += "\n - Nome Materia: " + getNomeMateria() + ";";
+    t += "\n - Nome Professore: " + getNomeProfessore() + ";";
+    t += "\n - Nome Corso: " + getNomeCorso() + ";";
+    t += "\n - Data: " + data.getRappresentazioneStringa() + ";";
     return t;
 }
 /*
-ostream& operator<<(ostream& os, const Esame& d){
-    os<<"CFU: " <<d.getCFU() << endl;
-    os << "Voto: " << d.getVoto() << endl;
-    os << "Lode: " << (d.getLode() ? "Si" : "No") << endl;
-    os << "Nome Materia: " << d.getNomeMateria() << endl;
-    os << "Nome Professore: " << d.getNomeProfessore() << endl;
-    os << "Nome Corso: " << d.getNomeCorso() << endl;
-    return os;
-}
-*/
 //Somma dei parziali
 Esame Esame::operator+(const Esame& e)const{
     Esame tmp(*this);
@@ -118,3 +102,4 @@ Esame Esame::operator+(const Esame& e)const{
     }
     return tmp;
 }
+*/

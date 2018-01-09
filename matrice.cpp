@@ -135,6 +135,7 @@ Matrice* Matrice::operator *(const VettoreGenerico<double>& m) const{
 }
 
 Matrice* Matrice::operator /(double n) const{
+    if(!n){ return 0;}
     return (*this) * (1/n);
 }
 

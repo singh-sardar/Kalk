@@ -31,17 +31,14 @@ public:
     void setNomeMateria(string);
     void setNomeProfessore(string);
     void setVoto(int);
-    void setCFU(int);
     void setData(const Data&);
     bool operator ==(const Esame&) const;
     bool operator !=(const Esame&) const;
     string getRappresentazioneStringa() const;
 
     //operatore + tra esami richiesto da vettore generico
-    Esame operator+(const Esame&)const;
+    //Esame operator+(const Esame&)const;
 
 };
-
-//ostream& operator<<(ostream&, const Esame&);
 
 #endif // ESAME_H
