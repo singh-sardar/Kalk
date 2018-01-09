@@ -22,10 +22,6 @@ private:
     MatriciGUI* matriciGUI;
     LibrettoEsamiGUI* librettoGUI;
 
-    /*
-    QPushButton* btnRGBGUI, *btnRicetteGUI, *btnMatriciGUI, *btnLibrettoEsamiGUI;
-    QGridLayout* gridLayout;
-    */
 public:
     TabWidgetGUI(QWidget* parent = 0);
     void show();

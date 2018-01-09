@@ -201,15 +201,6 @@ LibrettoEsami* LibrettoEsami::operator +(const Esame& e) const{
     //aux->aggiungiElemento(e);
     return aux;
 }
-/*
-LibrettoEsami* operator+(const Esame& e, const LibrettoEsami& l){
-    return l.operator +(e);
-}
-
-LibrettoEsami* operator-(const Esame& e, const LibrettoEsami& l){
-    return l.operator -(e);
-}
-*/
 
 LibrettoEsami& LibrettoEsami::operator +=(const Esame& e){
     aggiungiElemento(e);

@@ -11,7 +11,6 @@ class Esame{
 private:
     unsigned int CFU;
     unsigned int voto;//rappresenta il voto relativo all'esame
-    bool lode;
     string nomeMateria;
     string nomeCorso;
     string nomeProfessore;

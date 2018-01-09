@@ -12,9 +12,7 @@ Esame::Esame(string nomeM,string nomeC,string nomeP,unsigned int c,unsigned int 
 Esame::Esame(string nomeM,string nomeC, string nomeP,const Data& d,unsigned int c,unsigned int v):
     CFU(c>=1?c:1), voto(v>=18?v:18),nomeMateria(nomeM), nomeCorso(nomeC), nomeProfessore(nomeP), data(d)
 {
-    lode = (voto > 30) ? true : false;
-    if(lode)
-        voto = 30;
+    voto = (voto <= 30 ? voto: 30);
 }
 
 string Esame::getNomeCorso() const{
@@ -35,10 +33,6 @@ unsigned int Esame::getCFU() const{
 
 unsigned int Esame::getVoto() const{
     return voto;
-}
-
-bool Esame::getLode() const{
-    return lode;
 }
 
 Data Esame::getData() const{
@@ -62,12 +56,7 @@ void Esame::setNomeProfessore(string n){
 
 void Esame::setVoto(int v){
     voto = (v >= 18 ? v : 18);
-    if(voto > 30) {
-        voto = 30;
-        lode = true;
-    }else {
-        lode = false;
-    }
+    voto = (voto <= 30 ? voto : 30);
 }
 
 void Esame::setData(const Data& d){
@@ -86,7 +75,6 @@ string Esame::getRappresentazioneStringa() const{
     string t;
     t += "\n - CFU: " + to_string(getCFU()) + ";";
     t += "\n - Voto: " + to_string(getVoto()) + ";";
-    t.append(string("\n - Lode: ") + (getLode() ? "Si" : "No") + ";");
     t += "\n - Nome Materia: " + getNomeMateria() + ";";
     t += "\n - Nome Professore: " + getNomeProfessore() + ";";
     t += "\n - Nome Corso: " + getNomeCorso() + ";";

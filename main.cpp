@@ -266,7 +266,7 @@ int main(int argc, char *argv[])
     g.show();
     RicettaGui rgui;
     rgui.show();
-    l->setText(QString::number(lGUI->minimumWidth()) + " " + QString::number(lGUI->minimumHeight()));
+    l->setText(QString::number(lGUI->width()) + " " + QString::number(lGUI->height()));
 */
 
     QPushButton btn(&w);
@@ -284,9 +284,9 @@ int main(int argc, char *argv[])
 
     l->setFont(QFont("Times",20));
     l->adjustSize();
-/*
-    w.show();
-*/
+
+    //w.show();
+
     return a.exec();
 }
 

@@ -4,7 +4,7 @@
 using std::string;
 using std::ostream;
 
-Data::Data(int g, int m, int a) : giorno(g), mese(m), anno(a) {
+Data::Data(int g, int m, int a) : giorno((g >= 0 || g <= 31) ? g : 1), mese((m >= 1 || m <=12) ? m : 1), anno((a >= 1900) ? a : 1900) {
     if(!dataValida()){
         g=1;
         m=1;

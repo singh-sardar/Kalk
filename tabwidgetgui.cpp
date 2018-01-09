@@ -9,23 +9,6 @@ TabWidgetGUI::TabWidgetGUI(QWidget *parent):
     matriciGUI = new MatriciGUI;
     librettoGUI = new LibrettoEsamiGUI;
 
-    /*
-    btnRGBGUI = new QPushButton("Colori RGB");
-    btnRGBGUI->setFixedSize(50,25);
-    btnRicetteGUI = new QPushButton("Ricette");
-    btnMatriciGUI = new QPushButton("Matrici");
-    btnLibrettoEsamiGUI = new QPushButton("Libretto esami");
-
-    gridLayout = new QGridLayout(this);
-    gridLayout->addWidget(btnRGBGUI,0,0);
-    gridLayout->addWidget(btnRicetteGUI,1,0);
-    gridLayout->addWidget(btnMatriciGUI,2,0);
-    gridLayout->addWidget(btnLibrettoEsamiGUI,3,0);
-    gridLayout->addWidget(rgbGUI,0,1,4,2,Qt::AlignCenter);
-
-    setLayout(gridLayout);
-*/
-
     tabWidget->setStyleSheet("QTabBar::tab{height:40px; width:150px;font: 14pt}");
     tabWidget->addTab(rgbGUI,"Colori RGB");
     tabWidget->addTab(ricettaGUI,"Ricette");
@@ -43,21 +26,25 @@ void TabWidgetGUI::show(){
 
 void TabWidgetGUI::impostaMinSize(){
     switch (tabWidget->currentIndex()) {
-    case 1:
-        tabWidget->setMinimumSize(665,741);
-        break;
-    case 2:
-        tabWidget->setMinimumSize(694,365);
-        break;
-    case 3:
-        tabWidget->setMinimumSize(841,431);
-        break;
-    case 4:
-        tabWidget->setMinimumSize(1095,595);
-        break;
-    default:
-        tabWidget->setMinimumSize(900,700);
-        break;
+        case 1:
+            tabWidget->setMinimumSize(665,741);
+            tabWidget->resize(720,711);
+            break;
+        case 2:
+            tabWidget->setMinimumSize(694,365);
+            tabWidget->resize(802,486);
+            break;
+        case 3:
+            tabWidget->setMinimumSize(841,431);
+            tabWidget->resize(1011,752);
+            break;
+        case 4:
+            tabWidget->setMinimumSize(1095,595);
+            tabWidget->resize(1095,816);
+            break;
+        default:
+            tabWidget->setMinimumSize(900,700);
+            break;
     }
 }
 
