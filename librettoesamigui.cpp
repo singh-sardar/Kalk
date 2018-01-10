@@ -5,6 +5,8 @@ LibrettoEsamiGUI::LibrettoEsamiGUI(QWidget *parent): QWidget(parent){
     esameDialog = new EsameDialog;
     esameDialog->setModal(true);
     QFont f("Verdana",12);
+    QFont f2("Verdana",14);
+    f2.setBold(false);
 
     viewLibretto1 = new SingoloLibrettoEsamiView;
     viewLibretto2 = new SingoloLibrettoEsamiView;
@@ -16,10 +18,19 @@ LibrettoEsamiGUI::LibrettoEsamiGUI(QWidget *parent): QWidget(parent){
     lineEditCognomeStudente2 = new QLineEdit("Cognome studente");
     lineEditMatricolaStudente2 = new QLineEdit("Matricola studente");
 
+    vLayout1 = new QVBoxLayout;
+    vLayout2 = new QVBoxLayout;
+    gL1 = new QGridLayout;
+    gL2 = new QGridLayout;
+
     spinBoxTargetCFU1 = new QSpinBox;
     spinBoxTargetCFU2 = new QSpinBox;
     spinBoxTargetCFU1->setRange(1,1000);
+    spinBoxTargetCFU1->setSuffix(" Target CFU");
     spinBoxTargetCFU2->setRange(1,1000);
+    spinBoxTargetCFU2->setSuffix(" Target CFU");
+    spinBoxTargetCFU1->setAlignment(Qt::AlignRight);
+    spinBoxTargetCFU2->setAlignment(Qt::AlignRight);
 
     btnAggiungiLibretto1AdLibretto2 = new QPushButton("Aggiungi libretto 1\n a libretto 2");
     btnAggiungiLibretto2AdLibretto1 = new QPushButton("Aggiungi libretto 2\n a libretto 1");
@@ -27,7 +38,23 @@ LibrettoEsamiGUI::LibrettoEsamiGUI(QWidget *parent): QWidget(parent){
     btnRimuoviLibretto2DaLibretto1 = new QPushButton("Rimuovi libretto 2\n da libretto 1");
 
     labelLibretto1 = new QLabel("Libretto 1");
+    labelLibretto1->setFont(f2);
     labelLibretto2 = new QLabel("Libretto 2");
+    labelLibretto2->setFont(f2);
+    vLayout1->addWidget(labelLibretto1,0,Qt::AlignCenter);
+    vLayout2->addWidget(labelLibretto2,0,Qt::AlignCenter);
+    gL1->addWidget(lineEditNomeStudente1,0,0);
+    gL1->addWidget(lineEditCognomeStudente1,0,1);
+    gL1->addWidget(lineEditMatricolaStudente1,1,0);
+    gL1->addWidget(spinBoxTargetCFU1,1,1);
+    vLayout1->addLayout(gL1);
+    vLayout1->addWidget(viewLibretto1);
+    gL2->addWidget(lineEditNomeStudente2,0,0);
+    gL2->addWidget(lineEditCognomeStudente2,0,1);
+    gL2->addWidget(lineEditMatricolaStudente2,1,0);
+    gL2->addWidget(spinBoxTargetCFU2,1,1);
+    vLayout2->addLayout(gL2);
+    vLayout2->addWidget(viewLibretto2);
 
     setFont(f);
 
@@ -38,6 +65,7 @@ LibrettoEsamiGUI::LibrettoEsamiGUI(QWidget *parent): QWidget(parent){
     vLayout->addWidget(btnRimuoviLibretto1DaLibretto2);
     vLayout->addWidget(btnRimuoviLibretto2DaLibretto1);
 
+    /*
     gridLayout->addWidget(labelLibretto1,0,0,1,2,Qt::AlignCenter);
     gridLayout->addWidget(lineEditNomeStudente1,1,0);
     gridLayout->addWidget(lineEditCognomeStudente1,1,1);
@@ -45,14 +73,20 @@ LibrettoEsamiGUI::LibrettoEsamiGUI(QWidget *parent): QWidget(parent){
     gridLayout->addWidget(spinBoxTargetCFU1,2,1);
     gridLayout->addWidget(viewLibretto1,3,0,1,2);
     gridLayout->addLayout(vLayout,0,2);
+    */
     /*gridLayout->addWidget(btnAggiungiLibretto1AdLibretto2,2,2,Qt::AlignBottom);
     gridLayout->addWidget(btnAggiungiLibretto2AdLibretto1,2,3);*/
+    /*
     gridLayout->addWidget(labelLibretto2,0,3,1,2,Qt::AlignCenter);
     gridLayout->addWidget(lineEditNomeStudente2,1,3);
     gridLayout->addWidget(lineEditCognomeStudente2,1,4);
     gridLayout->addWidget(lineEditMatricolaStudente2,2,3);
     gridLayout->addWidget(spinBoxTargetCFU2,2,4);
     gridLayout->addWidget(viewLibretto2,3,3,1,2);
+    */
+    gridLayout->addLayout(vLayout1,0,0);
+    gridLayout->addLayout(vLayout,0,1);
+    gridLayout->addLayout(vLayout2,0,2);
 
     setLayout(gridLayout);
 
@@ -150,12 +184,12 @@ QString LibrettoEsamiGUI::getMatricolaStudente2() const{
     return lineEditMatricolaStudente2->text();
 }
 
-QString LibrettoEsamiGUI::getTargetCFU1() const{
-    return spinBoxTargetCFU1->text();
+int LibrettoEsamiGUI::getTargetCFU1() const{
+    return spinBoxTargetCFU1->value();
 }
 
-QString LibrettoEsamiGUI::getTargetCFU2() const{
-    return spinBoxTargetCFU2->text();
+int LibrettoEsamiGUI::getTargetCFU2() const{
+    return spinBoxTargetCFU2->value();
 }
 
 LibrettoEsamiGUI::~LibrettoEsamiGUI(){
@@ -180,7 +214,10 @@ LibrettoEsamiGUI::~LibrettoEsamiGUI(){
 
     delete labelLibretto1;
     delete labelLibretto2;
-
+    delete gL1;
+    delete gL2;
+    delete vLayout1;
+    delete vLayout2;
     delete vLayout;
     delete gridLayout;
 

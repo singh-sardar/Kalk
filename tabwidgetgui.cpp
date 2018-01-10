@@ -39,8 +39,8 @@ void TabWidgetGUI::impostaMinSize(){
             tabWidget->resize(1011,652);
             break;
         case 3:
-            tabWidget->setMinimumSize(1095,595);
-            tabWidget->resize(1095,616);
+            tabWidget->setMinimumSize(900,595);
+            tabWidget->resize(1095,716);
             break;
 
     }

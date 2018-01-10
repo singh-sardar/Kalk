@@ -26,8 +26,8 @@ public:
     QString getCognomeStudente2() const;
     QString getMatricolaStudente1() const;
     QString getMatricolaStudente2() const;
-    QString getTargetCFU1() const;
-    QString getTargetCFU2() const;
+    int getTargetCFU1() const;
+    int getTargetCFU2() const;
 
     ~LibrettoEsamiGUI();
 
@@ -55,6 +55,10 @@ private:
     QLabel* labelLibretto1;
     QLabel* labelLibretto2;
 
+    QVBoxLayout* vLayout1;
+    QVBoxLayout* vLayout2;
+    QGridLayout* gL1;
+    QGridLayout* gL2;
     QVBoxLayout* vLayout;
     QGridLayout* gridLayout;
 

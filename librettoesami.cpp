@@ -12,7 +12,7 @@ LibrettoEsami::LibrettoEsami(string nomeS,string cognomeS, unsigned int matricol
 {}
 
 void LibrettoEsami::aggiungiElemento(const Esame& e){
-    if(!cerca(e) && (targetCFU-totaleCFU) >= e.getCFU()){
+    if(!cerca(e) && ((targetCFU-totaleCFU) >= e.getCFU())){
         VettoreGenerico::aggiungiElemento(e);
         totaleCFU += e.getCFU();
     }
@@ -171,15 +171,6 @@ Esame* LibrettoEsami::esamePiuRecente() const{
 LibrettoEsami* LibrettoEsami::operator+(const VettoreGenerico<Esame>& v) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
     *aux += v;
-    /*
-    const LibrettoEsami* l = dynamic_cast<const LibrettoEsami*>(&l);
-    if(l){
-        for(unsigned int i = 0; i < l.getSize(); ++i){
-            if(!aux->cerca(l[i]) && (totaleCFU+l[i].getCFU() <= targetCFU)){
-                aux->aggiungiElemento(l[i]);
-            }
-        }
-    }*/
     return aux;
 }
 
@@ -187,9 +178,7 @@ LibrettoEsami& LibrettoEsami::operator +=(const VettoreGenerico<Esame>& v){
     const LibrettoEsami* l = dynamic_cast<const LibrettoEsami*>(&v);
     if(l){
         for(unsigned int i = 0; i < l->getSize(); ++i){
-            if(!cerca(l->operator [](i)) && (totaleCFU+(l->operator [](i)).getCFU() <= targetCFU)){
-                aggiungiElemento(l->operator [](i));
-            }
+            aggiungiElemento(l->operator [](i));
         }
     }
     return *this;
@@ -197,8 +186,7 @@ LibrettoEsami& LibrettoEsami::operator +=(const VettoreGenerico<Esame>& v){
 
 LibrettoEsami* LibrettoEsami::operator +(const Esame& e) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
-    *aux += e;
-    //aux->aggiungiElemento(e);
+    aux->aggiungiElemento(e);
     return aux;
 }
 
@@ -209,8 +197,7 @@ LibrettoEsami& LibrettoEsami::operator +=(const Esame& e){
 
 LibrettoEsami* LibrettoEsami::operator -(const Esame& e) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
-    *aux -= e;
-    //aux->rimuoviElemento(e);
+    aux->rimuoviElemento(e);
     return aux;
 }
 
@@ -222,13 +209,6 @@ LibrettoEsami& LibrettoEsami::operator -=(const Esame& e){
 LibrettoEsami* LibrettoEsami::operator-(const VettoreGenerico<Esame>& v) const{
     LibrettoEsami* aux = new LibrettoEsami(*this);
     *aux -= v;
-    /*const LibrettoEsami* l = dynamic_cast<const LibrettoEsami*>(&l);
-    if(l){
-        for(unsigned int i = 0; i != l.getSize(); ++i){
-            aux->rimuoviElemento(l[i]);
-        }
-    }
-    */
     return aux;
 }
 
@@ -243,17 +223,7 @@ LibrettoEsami& LibrettoEsami::operator -=(const VettoreGenerico<Esame>& v){
     }
     return *this;
 }
-/*
-ostream& operator <<(ostream& os, const LibrettoEsami& l){
-    os << "\nMatricola studente: " << l.getMatricola() << endl;
-    for(unsigned int i=0; i < l.getSize(); ++i){
-         os << " - Esame numero " << i+1 << " - " << endl;
-         os << l[i];
-    }
-    os << "\n";
-    return os;
-}
-*/
+
 string LibrettoEsami::getRappresentazioneStringa() const{
     string t;
     t+= "Nome: "+getNomeStudente() + "; Cognome: "+getCognomeStudente()+"; Matricola: "+to_string(getMatricola());

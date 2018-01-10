@@ -3,23 +3,6 @@
 SingoloLibrettoEsamiView::SingoloLibrettoEsamiView(QWidget *parent):
     QWidget(parent)
 {
-    /*labelTargetCFU = new QLabel("Target CFU: ");
-    labelTargetCFUContent = new QLabel;
-    labelTotalCFU = new QLabel("Totale CFU");
-    labelTotalCFUContent = new QLabel;
-    labelMediaAritmetica = new QLabel("Media aritmetica: ");
-    labelMediaAritmeticaContent = new QLabel;
-    labelMediaPonderata = new QLabel("Media ponderata: ");
-    labelMediaPonderataContent = new QLabel;
-    labelPercentualeCompletamento = new QLabel("Percentuale completamento: ");
-    labelPercentualeCompletamentoContent = new QLabel;
-    labelPrevisioneVoto = new QLabel("Previsione voto laurea: ");
-    labelPrevisioneVotoContent = new QLabel;
-    labelCFURimanenti = new QLabel("CFU rimanenti: ");
-    labelCFURimanentiContent = new QLabel;
-    labelEsamiSostenuti = new QLabel("Num. esami sostenuti: ");
-    labelEsamiSostenutiContent = new QLabel;*/
-
     plainText = new QPlainTextEdit;
     plainText->setReadOnly(true);
 

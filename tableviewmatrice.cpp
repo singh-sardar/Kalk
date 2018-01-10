@@ -12,14 +12,7 @@ TableViewMatrice::TableViewMatrice(QWidget* parent, QString lblMatrice, int righ
 {
     tableWidget = new QTableWidget(righe,colonne,this);
     tableWidget->setGeometry(0,0,350,350);
-    //tableWidget->setMinimumSize(350,350);
-    //tableWidget->setMaximumSize(350,350);
     tableWidget->setShowGrid(true);
-
-    /*
-    QHeaderView* header = tableWidget->horizontalHeader();
-    header->setSectionResizeMode(QHeaderView::Stretch);
-    */
 
     tableWidget->setEditTriggers(QAbstractItemView::AllEditTriggers);
     tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -28,7 +21,7 @@ TableViewMatrice::TableViewMatrice(QWidget* parent, QString lblMatrice, int righ
     hLPerRighe = new QHBoxLayout;
     hLPerColonne = new QHBoxLayout;
 
-    QFont f("Verdana",14);
+    QFont f("Verdana",13);
     f.setBold(false);
     labelSpinBoxRighe = new QLabel;
     labelSpinBoxColonne = new QLabel;

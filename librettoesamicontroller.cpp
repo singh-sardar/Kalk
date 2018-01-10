@@ -177,25 +177,21 @@ void LibrettoEsamiController::rimuoviEsameLibretto2(){
 }
 
 void LibrettoEsamiController::aggiungiLibretto1AdLibretto2(){
-    //libretto2 = *libretto1 + *libretto2;
     *libretto2 += *libretto1;
     aggiornaLibrettoGUI(libretto2,guiLibretto->getLibretto2Viewer()->getPlainTextEdit());
 }
 
 void LibrettoEsamiController::aggiungiLibretto2AdLibretto1(){
-    //libretto1 = *libretto1 + *libretto2;
     *libretto1 += *libretto2;
     aggiornaLibrettoGUI(libretto1,guiLibretto->getLibretto1Viewer()->getPlainTextEdit());
 }
 
 void LibrettoEsamiController::rimuoviLibretto1DalLibretto2(){
-    //libretto2 = *libretto2 - *libretto1;
     *libretto2 -= *libretto1;
     aggiornaLibrettoGUI(libretto2,guiLibretto->getLibretto2Viewer()->getPlainTextEdit());
 }
 
 void LibrettoEsamiController::rimuoviLibretto2DalLibretto1(){
-    //libretto1 = *libretto1 - *libretto2;
     *libretto1 -= *libretto2;
     aggiornaLibrettoGUI(libretto1,guiLibretto->getLibretto1Viewer()->getPlainTextEdit());
 }
@@ -296,40 +292,12 @@ void LibrettoEsamiController::esameMiglioreLibretto2(){
     }
 }
 
-/*
-void LibrettoEsamiController::aggiornaLabelLibretto1(){
-    SingoloLibrettoEsamiView* l = guiLibretto->getLibretto1Viewer();
-    l->getLabelCFURimanenti()->setText(to_string(libretto1->rimanentiCFU()).c_str());
-    l->getLabelEsamiSostenuti()->setText(to_string(libretto1->numeroEsamiSostenuti()).c_str());
-    l->getLabelMediaAritmetica()->setText(to_string(libretto1->mediaAritmetica()).c_str());
-    l->getLabelMediaPonderata()->setText(to_string(libretto1->mediaPonderata()).c_str());
-    l->getLabelPercentualeCompletamento()->setText(to_string(libretto1->percentualeCompletamento()).c_str());
-    l->getLabelPrevisioneVotoLaurea()->setText(to_string(libretto1->previsioneVotoLaurea()).c_str());
-    l->getLabelTargetCFU()->setText(to_string(libretto1->getTargetCFU()).c_str());
-    l->getLabelTotalCFU()->setText(to_string(libretto1->getTotaleCFU()).c_str());
-}
-*/
-
-/*
-void LibrettoEsamiController::aggiornaLabelLibretto2(){
-    SingoloLibrettoEsamiView* l = guiLibretto->getLibretto2Viewer();
-    l->getLabelCFURimanenti()->setText(to_string(libretto2->rimanentiCFU()).c_str());
-    l->getLabelEsamiSostenuti()->setText(to_string(libretto2->numeroEsamiSostenuti()).c_str());
-    l->getLabelMediaAritmetica()->setText(to_string(libretto2->mediaAritmetica()).c_str());
-    l->getLabelMediaPonderata()->setText(to_string(libretto2->mediaPonderata()).c_str());
-    l->getLabelPercentualeCompletamento()->setText(to_string(libretto2->percentualeCompletamento()).c_str());
-    l->getLabelPrevisioneVotoLaurea()->setText(to_string(libretto2->previsioneVotoLaurea()).c_str());
-    l->getLabelTargetCFU()->setText(to_string(libretto2->getTargetCFU()).c_str());
-    l->getLabelTotalCFU()->setText(to_string(libretto2->getTotaleCFU()).c_str());
-}
-*/
-
 void LibrettoEsamiController::aggiornaTargetCFU1(){
     delete libretto1;
     libretto1 = new LibrettoEsami(guiLibretto->getNomeStudente1().toStdString(),
                                   guiLibretto->getCognomeStudente1().toStdString(),
                                   guiLibretto->getMatricolaStudente1().toUInt(),
-                                  guiLibretto->getTargetCFU1().toUInt()
+                                  guiLibretto->getTargetCFU1()
                                   );
     aggiornaLibrettoGUI(libretto1,guiLibretto->getLibretto1Viewer()->getPlainTextEdit());
 }
@@ -339,7 +307,7 @@ void LibrettoEsamiController::aggiornaTargetCFU2(){
     libretto2 = new LibrettoEsami(guiLibretto->getNomeStudente2().toStdString(),
                                   guiLibretto->getCognomeStudente2().toStdString(),
                                   guiLibretto->getMatricolaStudente2().toUInt(),
-                                  guiLibretto->getTargetCFU2().toUInt()
+                                  guiLibretto->getTargetCFU2()
                                   );
     aggiornaLibrettoGUI(libretto2,guiLibretto->getLibretto2Viewer()->getPlainTextEdit());
 }
@@ -460,7 +428,4 @@ void LibrettoEsamiController::mostraCFURimanenti2(){
 LibrettoEsamiController::~LibrettoEsamiController(){
     delete libretto1;
     delete libretto2;
-    /*if(esame)
-        delete esame;
-        */
 }

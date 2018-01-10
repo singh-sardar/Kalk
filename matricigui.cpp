@@ -14,8 +14,7 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
     btnMoltiplicazione = new QPushButton("*");
 
 
-    QFont f("Verdana",12);
-    setFont(QFont("Verdana",11));
+    QFont f("Verdana",13);
     f.setBold(false);
     labelMatriceRisultato = new QLabel(tr("Matrice Risultato"));
     labelMatriceRisultato->setFont(f);
@@ -24,11 +23,11 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
 
     tableWidgetRisultato = new QTableWidget(1,1);
     tableWidgetRisultato->setGeometry(0,0,350,350);
-    //tableWidgetRisultato->setMinimumSize(350,350);
     tableWidgetRisultato->setShowGrid(true);
     tableWidgetRisultato->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableWidgetRisultato->setSelectionBehavior(QAbstractItemView::SelectRows);
     tableWidgetRisultato->resizeColumnsToContents();
+    tableWidgetRisultato->setFont(f);
 
     verticalLayout->addWidget(btnSomma);
     verticalLayout->addWidget(btnDifferenza);
@@ -43,6 +42,7 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
     gridLayout->addWidget(controlliWidget2,1,2);
     gridLayout->addWidget(labelRisultato,2,0,1,3,Qt::AlignCenter);
 
+    setFont(f);
     setLayout(gridLayout);
 
     connect(btnSomma,SIGNAL(clicked(bool)),this,SIGNAL(btnSommaClicked(bool)));
@@ -107,12 +107,6 @@ MatriciGUI::~MatriciGUI(){
      delete btnMoltiplicazione;
      delete gridLayout;
      delete controllerMatrici;
-     /*if(verticalLayout){
-        delete verticalLayout;
-     }
-     if(verticalLayoutMatriceRisultato){
-        delete verticalLayoutMatriceRisultato;
-     }*/
      delete labelRisultato;
      delete labelMatriceRisultato;
 }
