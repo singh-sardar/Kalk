@@ -65,25 +65,6 @@ LibrettoEsamiGUI::LibrettoEsamiGUI(QWidget *parent): QWidget(parent){
     vLayout->addWidget(btnRimuoviLibretto1DaLibretto2);
     vLayout->addWidget(btnRimuoviLibretto2DaLibretto1);
 
-    /*
-    gridLayout->addWidget(labelLibretto1,0,0,1,2,Qt::AlignCenter);
-    gridLayout->addWidget(lineEditNomeStudente1,1,0);
-    gridLayout->addWidget(lineEditCognomeStudente1,1,1);
-    gridLayout->addWidget(lineEditMatricolaStudente1,2,0);
-    gridLayout->addWidget(spinBoxTargetCFU1,2,1);
-    gridLayout->addWidget(viewLibretto1,3,0,1,2);
-    gridLayout->addLayout(vLayout,0,2);
-    */
-    /*gridLayout->addWidget(btnAggiungiLibretto1AdLibretto2,2,2,Qt::AlignBottom);
-    gridLayout->addWidget(btnAggiungiLibretto2AdLibretto1,2,3);*/
-    /*
-    gridLayout->addWidget(labelLibretto2,0,3,1,2,Qt::AlignCenter);
-    gridLayout->addWidget(lineEditNomeStudente2,1,3);
-    gridLayout->addWidget(lineEditCognomeStudente2,1,4);
-    gridLayout->addWidget(lineEditMatricolaStudente2,2,3);
-    gridLayout->addWidget(spinBoxTargetCFU2,2,4);
-    gridLayout->addWidget(viewLibretto2,3,3,1,2);
-    */
     gridLayout->addLayout(vLayout1,0,0);
     gridLayout->addLayout(vLayout,0,1);
     gridLayout->addLayout(vLayout2,0,2);

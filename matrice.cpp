@@ -89,9 +89,8 @@ Matrice* Matrice::operator -(const VettoreGenerico<double>& m) const{
             }
         }
         return aux;
-    }else{
-        return 0;
     }
+    return 0;
 }
 
 Matrice* Matrice::operator *(double n) const{
@@ -129,9 +128,8 @@ Matrice* Matrice::operator *(const VettoreGenerico<double>& m) const{
             }
         }
         return aux;
-    }else{
-        return 0;
     }
+    return 0;
 }
 
 Matrice* Matrice::operator /(double n) const{

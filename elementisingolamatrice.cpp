@@ -15,9 +15,6 @@ ElementiSingolaMatrice::ElementiSingolaMatrice(QWidget *parent):
     btnIsSimmetrica = new QPushButton(tr("Verifica simmetrica"));
     inputNumerici = new QLineEdit;
     labelInputNumerici = new QLabel("Input numerico: ");
-    QFont f("Verdana",14);
-    f.setBold(false);
-    labelInputNumerici->setFont(f);
 
     btnElevaAPotenza->setEnabled(false);
     btnIsScalare->setEnabled(false);
@@ -56,7 +53,6 @@ ElementiSingolaMatrice::ElementiSingolaMatrice(QWidget *parent):
 QLabel* ElementiSingolaMatrice::getLabelInputNumerici() const{
     return labelInputNumerici;
 }
-
 
 QLineEdit* ElementiSingolaMatrice::getLineEditNumerici() const{
     return inputNumerici;
