@@ -285,26 +285,27 @@ bool ColoreRgb::coloreCaldo()const{
 
 string ColoreRgb::rgb2hex()const{
     string s= "#";
-    char tmp[2];
-    sprintf(tmp,"%x",r);
+    char tmp[30];
+    int len=0;
+    len=sprintf(tmp,"%x",r);
 
     s+= tmp;
-    if(s.length()==2){
+    if(len==1){
         s="#0";
                 s+=tmp;
     }
-    sprintf(tmp,"%x",g);
+    len=sprintf(tmp,"%x",g);
 
     s+= tmp;
-    if(s.length()==4){
+    if(len==1){
         s+='0';
         s[4]= s[3];
         s[3]='0';
     }
-    sprintf(tmp,"%x",b);
+    len=sprintf(tmp,"%x",b);
 
     s+= tmp;
-    if(s.length()==6){
+    if(len==1){
         s+='0';
         s[6]= s[5];
         s[5]='0';
