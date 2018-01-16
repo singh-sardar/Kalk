@@ -15,6 +15,7 @@ TabWidgetGUI::TabWidgetGUI(QWidget *parent):
     tabWidget->addTab(matriciGUI,"Matrici");
     tabWidget->addTab(librettoGUI,"Libretto esami");
 
+    connect(tabWidget,SIGNAL(currentChanged(int)),this, SLOT(updateSizes(int)));    
     connect(tabWidget,SIGNAL(currentChanged(int)),this,SLOT(impostaMinSize()));
 
     impostaMinSize();
@@ -43,6 +44,20 @@ void TabWidgetGUI::impostaMinSize(){
             tabWidget->resize(1095,716);
             break;
 
+    }
+}
+
+void TabWidgetGUI::updateSizes(int index){
+    if(index >= 0){
+        for(int i=0;i<tabWidget->count();i++)
+        if(i!=index)
+            tabWidget->widget(i)->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+
+        tabWidget->widget(index)->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        tabWidget->widget(index)->resize(tabWidget->widget(index)->minimumSizeHint());
+        tabWidget->widget(index)->adjustSize();
+        resize(minimumSizeHint());
+        adjustSize();
     }
 }
 
