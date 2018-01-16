@@ -29,7 +29,7 @@ public:
 
 private slots:
     void impostaMinSize();
-
+    void updateSizes(int);
 };
 
 #endif // TABWIDGETGUI_H
