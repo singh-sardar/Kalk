@@ -34,10 +34,6 @@ public:
     bool operator ==(const Esame&) const;
     bool operator !=(const Esame&) const;
     string getRappresentazioneStringa() const;
-
-    //operatore + tra esami richiesto da vettore generico
-    //Esame operator+(const Esame&)const;
-
 };
 
 #endif // ESAME_H

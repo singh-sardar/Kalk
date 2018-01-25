@@ -81,13 +81,3 @@ string Esame::getRappresentazioneStringa() const{
     t += "\n - Data: " + data.getRappresentazioneStringa() + ";";
     return t;
 }
-/*
-//Somma dei parziali
-Esame Esame::operator+(const Esame& e)const{
-    Esame tmp(*this);
-    if(nomeMateria == e.getNomeMateria() && nomeCorso == e.getNomeCorso() && nomeProfessore == e.getNomeProfessore()){
-        tmp.voto = (voto+e.getVoto())/2;
-    }
-    return tmp;
-}
-*/

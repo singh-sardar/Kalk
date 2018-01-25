@@ -37,7 +37,7 @@ MatriciGUI::MatriciGUI(QWidget *parent): QWidget(parent), controllerMatrici(new 
     gridLayout->addWidget(tableWidget1,0,0);
     gridLayout->addLayout(verticalLayout,0,1);
     gridLayout->addWidget(tableWidget2,0,2);
-    gridLayout->addLayout(verticalLayoutMatriceRisultato,0,3);
+    gridLayout->addLayout(verticalLayoutMatriceRisultato,0,3,2,1);
     gridLayout->addWidget(controlliWidget1,1,0);
     gridLayout->addWidget(controlliWidget2,1,2);
     gridLayout->addWidget(labelRisultato,2,0,1,3,Qt::AlignCenter);

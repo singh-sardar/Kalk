@@ -358,6 +358,7 @@ void LibrettoEsamiController::mostraPercentualeCompletamento1(){
     QString s = libretto1->getInfoStudente().c_str();
     s += "\n\n - Percentuale completamento - \n";
     s += to_string(libretto1->percentualeCompletamento()).c_str();
+    s+=" %";
     showMessageBox("Percentuale completamento libretto 1",s);
 }
 
@@ -415,6 +416,7 @@ void LibrettoEsamiController::mostraPercentualeCompletamento2(){
     QString s = libretto2->getInfoStudente().c_str();
     s += "\n\n - Percentuale completamento - \n";
     s += to_string(libretto2->percentualeCompletamento()).c_str();
+    s+=" %";
     showMessageBox("Percentuale completamento libretto 2",s);
 }
 
