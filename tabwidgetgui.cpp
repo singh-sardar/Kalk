@@ -26,24 +26,26 @@ void TabWidgetGUI::show(){
 }
 
 void TabWidgetGUI::impostaMinSize(){
-    switch (tabWidget->currentIndex()) {
-        case 0:
-            tabWidget->setMinimumSize(665,715);
-            tabWidget->resize(760,720);
-            break;
-        case 1:
-            tabWidget->setMinimumSize(694,400);
-            tabWidget->resize(770,500);
-            break;
-        case 2:
-            tabWidget->setMinimumSize(841,431);
-            tabWidget->resize(1011,652);
-            break;
-        case 3:
-            tabWidget->setMinimumSize(900,595);
-            tabWidget->resize(1095,716);
-            break;
+    if(!(tabWidget->windowState() == Qt::WindowMaximized)){
+        switch (tabWidget->currentIndex()) {
+            case 0:
+                tabWidget->setMinimumSize(665,715);
+                tabWidget->resize(760,720);
+                break;
+            case 1:
+                tabWidget->setMinimumSize(694,400);
+                tabWidget->resize(770,500);
+                break;
+            case 2:
+                tabWidget->setMinimumSize(841,431);
+                tabWidget->resize(1011,652);
+                break;
+            case 3:
+                tabWidget->setMinimumSize(900,595);
+                tabWidget->resize(1095,716);
+                break;
 
+        }
     }
 }
 
