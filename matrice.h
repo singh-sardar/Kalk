@@ -36,9 +36,9 @@ public:
     Matrice* matriceInversa() const;
     Matrice* matriceRidotta(unsigned int i, unsigned int j) const;
     Matrice* matriceCofattore() const;
-    virtual bool isDiagonale() const;
-    virtual bool isScalare(double) const;
-    virtual bool isSimmetrica() const;
+    bool isDiagonale() const;
+    bool isScalare(double) const;
+    bool isSimmetrica() const;
     string rappresentazioneStringa() const;
 };
 
