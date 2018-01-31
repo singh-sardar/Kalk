@@ -28,14 +28,14 @@ public:
     Matrice* operator +(const VettoreGenerico<double>&)const override;
     Matrice* operator -(const VettoreGenerico<double>&)const override;
     Matrice* operator*(double)const;//prodotto scalare
-    Matrice* operator*(const VettoreGenerico<double>&)const;
+    virtual Matrice* operator*(const VettoreGenerico<double>&)const;
     Matrice* operator/(double)const;
     Matrice* matriceTrasposta() const;
     Matrice* elevaAPotenza(int) const;
-    double determinante() const;
-    Matrice* matriceInversa() const;
+    virtual double determinante() const;
+    virtual Matrice* matriceInversa() const;
     Matrice* matriceRidotta(unsigned int i, unsigned int j) const;
-    Matrice* matriceCofattore() const;
+    virtual Matrice* matriceCofattore() const;
     bool isDiagonale() const;
     bool isScalare(double) const;
     bool isSimmetrica() const;
