@@ -23,7 +23,6 @@ public:
     string getNomeMateria() const;
     string getNomeProfessore() const;
     unsigned int getVoto() const;
-    bool getLode() const;
     unsigned int getCFU() const;
     Data getData() const;
     void setNomeCorso(string);
