@@ -31,20 +31,13 @@ public:
     T& operator [](unsigned int i);
     unsigned int getSize() const;
     virtual VettoreGenerico<T>* operator+(const VettoreGenerico<T>&) const=0;
-    virtual VettoreGenerico<T>& operator+=(const VettoreGenerico<T>&) ;
+   // virtual VettoreGenerico<T>& operator+=(const VettoreGenerico<T>&) ;
     virtual VettoreGenerico<T>* operator-(const VettoreGenerico<T>&) const=0;
-    virtual VettoreGenerico<T>& operator-=(const VettoreGenerico<T>&);
+   // virtual VettoreGenerico<T>& operator-=(const VettoreGenerico<T>&);
     virtual bool operator ==(const VettoreGenerico<T>&)const;
     virtual bool operator !=(const VettoreGenerico<T>&)const;
     virtual ~VettoreGenerico();
-    /*TODO:
-     * DECIDERE SE IMPLEMENTARE LE SEGUENTI FUNZIONI
-         toString();
-         operator*(const VettoreGenerico&);
-         operator/(const VettoreGenerico&);
-         ordinaVector();
 
-     */
 };
 
 template <class T>
@@ -114,7 +107,7 @@ bool VettoreGenerico<T>::rimuoviElemento(const T& element){
     }
 }
 
-//#H
+//#H Implementazione somma in caso di metodo non puro
 //somma 2 vettori e ritorna un terzo vettore che contiene la somma elemento per elemento. se i due vettori hanno lunghezza differente ritorna un vettore vuoto
 /*
 template <class T>
@@ -129,43 +122,19 @@ VettoreGenerico<T>* VettoreGenerico<T>::operator+(const VettoreGenerico<T>& vG)c
 
     VettoreGenerico aux = VettoreGenerico(*this);
     aux += vG;
-    return new VettoreGenerico(aux);*/
-/*
-}
-*/
-//#P
-//esegue la assegnazione al vettore in seguito alla somma degli elementi di un altro vettore
-template <class T>
-VettoreGenerico<T>& VettoreGenerico<T>::operator +=(const VettoreGenerico<T>& vG){
-    if(vettore.size()==vG.getSize()){
-        for(unsigned int i = 0; i < vettore.size();i++){
-            //aggiungiElemento(vettore[i]+vG.vettore[i]);
+    return new VettoreGenerico(aux);
 
-            //vettore[i] = vettore[i] + vG[i];
-        }
-    }
-    return *this;
 }
 
-//#H
+//#H  implementazione sottrazione in caso di non puro
 //sottrae 2 vettori e ritorna un terzo vettore che contiene la differenza elemento per elemento. se i due vettori hanno lunghezza differente ritorna un vettore vuoto
-/*template <class T>
+template <class T>
 VettoreGenerico<T>* VettoreGenerico<T>::operator-(const VettoreGenerico<T>& vG)const{
     VettoreGenerico aux = VettoreGenerico(*this);
     aux -= vG;
     return new VettoreGenerico(aux);
 }
 */
-
-template <class T>
-VettoreGenerico<T>& VettoreGenerico<T>::operator-=(const VettoreGenerico<T>& vG){
-    if(vettore.size()==vG.getSize()){
-        for(unsigned int i = 0; i < vettore.size();i++){
-            //vettore[i] = vettore[i] - vG[i];
-        }
-    }
-    return *this;
-}
 
 //#P
 //getSize()
@@ -201,14 +170,14 @@ bool VettoreGenerico<T>::operator !=(const VettoreGenerico<T>& vG) const{
 //ritorna l' elemento i const
 template <class T>
 const T& VettoreGenerico<T>::operator [](unsigned int i)const{
-   return vettore.at(i);//a differenza di []. at(i) solleva le eccezzioni di out_of_Range etc..
+   return vettore.at(i);
 }
 
 //#H
 //ritorna l' elemento i
 template <class T>
 T& VettoreGenerico<T>::operator [](unsigned int i){
-   return vettore.at(i);//a differenza di []. at(i) solleva le eccezzioni di out_of_Range etc..
+   return vettore.at(i);
 }
 
 #endif // VETTOREGENERICO_H

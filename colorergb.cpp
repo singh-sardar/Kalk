@@ -258,6 +258,7 @@ double  ColoreRgb::Max(double a,double b){
 }
 
 ColoreRgb* ColoreRgb::complementare()const{
+    //calcolo del complementare utilizzando HSL perche migliore
     ColoreRgb* aux = new ColoreRgb();
     double HSL[3];
     int RGB[3];
@@ -274,11 +275,13 @@ ColoreRgb* ColoreRgb::complementare()const{
 
 
 ColoreRgb*  ColoreRgb::luminositaColore()const{
+    //pittagora
     int value=sqrt(r * r* 0.241 + g * g * 0.691 + b * b * 0.068);
     return new ColoreRgb(value,value,value);
 }
 
 bool ColoreRgb::coloreCaldo()const{
+    //caldo se il rosso > blue
     return r>b;
 }
 

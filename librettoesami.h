@@ -21,9 +21,9 @@ public:
     LibrettoEsami* operator +(const Esame&) const;
     LibrettoEsami* operator-(const VettoreGenerico<Esame>&) const override;
     LibrettoEsami* operator -(const Esame&) const;
-    LibrettoEsami& operator+=(const VettoreGenerico<Esame>&) override;
+    LibrettoEsami& operator+=(const VettoreGenerico<Esame>&);
     LibrettoEsami& operator +=(const Esame&);
-    LibrettoEsami& operator-=(const VettoreGenerico<Esame>&) override;
+    LibrettoEsami& operator-=(const VettoreGenerico<Esame>&);
     LibrettoEsami& operator -=(const Esame&);
     virtual double percentualeCompletamento() const;//ritorna la percentuale di completamento degli studi
     unsigned int rimanentiCFU() const;

@@ -126,9 +126,9 @@ void ColorController::ComplementareColore(){
 void ColorController::LuminositaColore(){
     result = model1->luminositaColore();
     if(result->getR()<130)
-        showMessageBox("Luminosità colore","L'operando 1 è un colore SCURO.\n Per cui ti conviene mettere il testo in sovraimpressione in BIANCO");
+        showMessageBox("Luminosita colore","L'operando 1 e' un colore SCURO.\n Per cui ti conviene mettere il testo in sovraimpressione in BIANCO");
     else
-        showMessageBox("Luminosità colore","L'operando 1 è un colore CHIARO.\n Per cui ti conviene mettere il testo in sovraimpressione in NERO");
+        showMessageBox("Luminosita colore","L'operando 1 e' un colore CHIARO.\n Per cui ti conviene mettere il testo in sovraimpressione in NERO");
 
     QString s= "Luminosita Colore ";
     s+= result->schemaColore().c_str();

@@ -85,7 +85,7 @@ void RicettaController::RemoveIngredienteModel2(){
 void RicettaController::CostoModel1(){
     QString s = "Il Costo totale della ricetta ";
     s+= model1->getNomeRicetta().c_str();
-    s+=" è di ";
+    s+=" e' di ";
     s+=std::to_string(model1->costoRicetta()).c_str();
     s+= " euro";
 
@@ -94,7 +94,7 @@ void RicettaController::CostoModel1(){
 void RicettaController::CostoModel2(){
     QString s = "Il Costo totale della ricetta ";
     s+= model2->getNomeRicetta().c_str();
-    s+=" è di ";
+    s+=" e' di ";
     s+=std::to_string(model2->costoRicetta()).c_str();
     s+= " euro";
 

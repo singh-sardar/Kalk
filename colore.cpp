@@ -1,7 +1,7 @@
 #include "colore.h"
 
 void  Colore::hsl2rgb(double HSL[3],int RGB[3]){
-
+    //algoritomo di conversione
     double  RGB1[3];
     HSL[1]/=100.0;
     HSL[2]/=100.0;

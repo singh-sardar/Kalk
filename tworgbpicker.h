@@ -7,6 +7,7 @@
 #include <QLabel>
 class TwoRgbPicker:public QWidget
 {
+    //color picker per 2 colori
     Q_OBJECT
 public:
     TwoRgbPicker(QWidget* parent=0);

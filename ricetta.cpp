@@ -18,7 +18,6 @@ string Ricetta::getRicetta()const{
     }
     return s;
 }
-//fare la meno, calcolo calorie tot ricetta, calcolo soldi ricetta, calcolo quantita da comprare come stico
 
 //guarda se gli ingredienti della seconda ricetta sono presenti nella prima. se si allora somma le quantita altrimenti la mette in append
 Ricetta* Ricetta::operator+(const VettoreGenerico<Ingrediente>& vgr) const{
