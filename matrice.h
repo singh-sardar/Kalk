@@ -11,6 +11,8 @@ private:
     unsigned int numRighe;
     unsigned int numColonne;
     unsigned int indiceColonnaFinale;
+    static double sommaVettori(const vector<double>&,const vector<double>&);
+    vector<double> getRiga(unsigned int riga) const;
 
 public:
     Matrice(unsigned int numR=1, unsigned int numC=1, double valDef=0);
@@ -20,9 +22,7 @@ public:
     double& operator [](unsigned int);
     bool rimuoviElemento(double);
     void rimuoviPoz(unsigned int);
-    static double sommaVettori(const vector<double>&,const vector<double>&);
     double getValore(unsigned int riga, unsigned int colonna) const;
-    vector<double> getRiga(unsigned int riga) const;
     void setValore(unsigned int riga, unsigned int colonna, double valore);
     void aggiungiElemento(double);
     Matrice* operator +(const VettoreGenerico<double>&)const override;

@@ -47,11 +47,6 @@ private slots:
     void esamePiuRecenteLibretto2();
     void esameMenoReceneteLibretto2();
 
-    /*
-    void aggiornaLabelLibretto1();
-    void aggiornaLabelLibretto2();
-    */
-
     void aggiornaNomeStudente1();
     void aggiornaNomeStudente2();
     void aggiornaCognomeStudente1();

@@ -3,10 +3,6 @@
 using std::endl;
 using std::string;
 
-/*
- * Costruttore
- */
-//LibrettoEsami::LibrettoEsami(): VettoreGenerico(){}
 LibrettoEsami::LibrettoEsami(string nomeS,string cognomeS, unsigned int matricolaS, unsigned int targCFU):
     nomeStudente(nomeS), cognomeStudente(cognomeS), matricolaStudente(matricolaS > 0?matricolaS:1), targetCFU(targCFU > 0?targCFU:1), totaleCFU(0)
 {}

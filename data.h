@@ -18,12 +18,6 @@ public:
     int Giorno() const;
     int Mese() const;
     int Anno() const;
-    /*
-    void impostaGiorno(int);
-    void impostaMese(int);
-    void impostaAnno(int);
-    void impostaData(int,int,int);
-    */
     bool dataValida() const;
     bool annoBisestile(int) const;
     string getRappresentazioneStringa() const;
@@ -32,7 +26,5 @@ public:
     bool operator<(const Data&) const;
     bool operator>(const Data&) const;
 };
-
-//ostream& operator<<(ostream&, const Data&);
 
 #endif // DATA_H

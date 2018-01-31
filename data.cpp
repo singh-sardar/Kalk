@@ -23,29 +23,7 @@ int Data::Mese() const{
 int Data::Anno() const{
     return anno;
 }
-/*
-void Data::impostaGiorno(int g=1){
-    if(g >= 0 || g <= 31)
-        giorno = g;
-}
 
-void Data::impostaMese(int m=1){
-    if(m <= 0 || m >= 13)
-        mese = m;
-}
-
-void Data::impostaAnno(int a=1900){
-    if(a <= 0)
-        anno = a;
-}
-*/
-/*
-void Data::impostaData(int g=1, int m=1, int a=1900){
-    impostaGiorno(g);
-    impostaMese(m);
-    impostaAnno(a);
-}
-*/
 bool Data::annoBisestile(int anno) const{
     if(anno >= 0)
         return ((anno % 4 == 0) && (anno % 100 != 0)) || (anno % 400 == 0);
@@ -88,8 +66,3 @@ string Data::getRappresentazioneStringa() const{
     s = std::to_string(giorno) + "/" + std::to_string(mese) + "/" + std::to_string(anno);
     return s;
 }
-/*
-ostream& operator<<(ostream& os, const Data& d){
-    return os<<d.Giorno()<<"/"<<d.Mese()<<"/"<<d.Anno();
-}
-*/

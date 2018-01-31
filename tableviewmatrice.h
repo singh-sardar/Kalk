@@ -34,8 +34,6 @@ private slots:
     void modificaNumRighe();
     void modificaNumColonne();
 
-signals:
-    //void sizeChanged(int righe, int colonne);
 };
 
 #endif // TABLEVIEWMATRICE_H
