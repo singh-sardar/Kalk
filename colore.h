@@ -16,8 +16,8 @@ public:
 
     void static hsl2rgb(double[3],int[3]);//funzione di classe che converte hsl to rgb. implmentata di classe perche non si è deciso di implementare la classe ColoreHsl che rappresenta i colori in hsl
 
-    virtual bool operator==(const Colore &)const =0;
-    virtual bool operator !=(const Colore &)const =0;
+    virtual bool operator==(const Colore &)const ;
+    virtual bool operator !=(const Colore &)const ;
     virtual Colore* operator +(const Colore&)const =0;// somma tra 2 colori se non va a buon fine ritorna colore nero
     virtual Colore* operator-(const Colore &)const =0;// differenza tra 2 colori
     virtual Colore* operator*(const Colore&)const=0;//modulazione di un colore

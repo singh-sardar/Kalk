@@ -60,3 +60,12 @@ void  Colore::hsl2rgb(double HSL[3],int RGB[3]){
 double Colore::abs(double d){
     return d>= 0 ? d:-d;
 }
+
+
+
+bool Colore::operator==(const Colore & c)const{
+    return (schemaColore().compare(c.schemaColore())==0);
+}
+bool Colore::operator !=(const Colore & c )const{
+    return !(*this== c);
+}

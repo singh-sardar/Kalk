@@ -32,9 +32,9 @@ public:
     float getA()const;
     void modificaColore(int, int, int , float=1.0);
 
-
+/*
     bool operator==(const Colore &)const;
-    bool operator !=(const Colore &)const;
+    bool operator !=(const Colore &)const;*/
     ColoreRgb* operator +(const Colore&)const;// somma tra 2 colori
     ColoreRgb* operator-(const Colore &)const;// differenza tra 2 colori
     ColoreRgb* operator*(const Colore&)const;//modulazione di un colore

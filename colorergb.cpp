@@ -58,14 +58,14 @@ void ColoreRgb::modificaColore(int red, int green, int blue, float alpha){
     setA(alpha);
 
 }
-
+/*
 bool ColoreRgb::operator==(const Colore & c)const{
     return (schemaColore().compare(c.schemaColore())==0);
 }
 bool ColoreRgb::operator !=(const Colore & c )const{
     return !(*this== c);
 }
-
+*/
 ColoreRgb* ColoreRgb::operator +(const Colore& c)const{
     ColoreRgb* aux= new ColoreRgb();
 
