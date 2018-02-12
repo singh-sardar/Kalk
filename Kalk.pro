@@ -51,7 +51,8 @@ SOURCES += \
     esamedialog.cpp \
     librettoesamicontroller.cpp \
     librettoesamigui.cpp \
-    tabwidgetgui.cpp
+    tabwidgetgui.cpp \
+    colorehsl.cpp
 
 HEADERS += \
     vettoregenerico.h \
@@ -81,7 +82,8 @@ HEADERS += \
     esamedialog.h \
     librettoesamicontroller.h \
     librettoesamigui.h \
-    tabwidgetgui.h
+    tabwidgetgui.h \
+    colorehsl.h
 
 FORMS +=
 QMAKE_CXXFLAGS += -std=c++11
