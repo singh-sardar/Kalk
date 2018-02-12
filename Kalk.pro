@@ -52,7 +52,10 @@ SOURCES += \
     librettoesamicontroller.cpp \
     librettoesamigui.cpp \
     tabwidgetgui.cpp \
-    colorehsl.cpp
+    colorehsl.cpp \
+    hslslider.cpp \
+    hslpicker.cpp \
+    twohslpicker.cpp
 
 HEADERS += \
     vettoregenerico.h \
@@ -83,7 +86,10 @@ HEADERS += \
     librettoesamicontroller.h \
     librettoesamigui.h \
     tabwidgetgui.h \
-    colorehsl.h
+    colorehsl.h \
+    hslslider.h \
+    hslpicker.h \
+    twohslpicker.h
 
 FORMS +=
 QMAKE_CXXFLAGS += -std=c++11
