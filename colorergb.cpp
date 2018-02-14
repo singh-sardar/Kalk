@@ -115,15 +115,15 @@ ColoreRgb* ColoreRgb::operator *(const Colore& c)const{
     return aux;
 }
 
-ColoreRgb* ColoreRgb::operator *(double s){//scala le componenti del colore basandosi sul parametro
+ColoreRgb* ColoreRgb::operator *(double s)const{//scala le componenti del colore basandosi sul parametro
     ColoreRgb* aux = new ColoreRgb(r,g,b,a);
-    if(r*s>0 && r*s<255){
+    if(r*s>0 && r*s<=255){
         aux->setR(r*s);
     }
-    if(g*s>0 && g*s<255){
+    if(g*s>0 && g*s<=255){
         aux->setG(g*s);
     }
-    if(b*s>0 && b*s<255){
+    if(b*s>0 && b*s<=255){
         aux->setB(b*s);
     }
     return aux;
@@ -264,7 +264,7 @@ ColoreRgb* ColoreRgb::complementare()const{
     int RGB[3];
     rgb2hsl(HSL);
     HSL[0]+=180;
-    HSL[0]=fmod(HSL[0],400);
+    HSL[0]=fmod(HSL[0],360);
     hsl2rgb(HSL,RGB);
     aux->setR(RGB[0]);
     aux->setG(RGB[1]);

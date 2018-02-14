@@ -38,7 +38,7 @@ public:
     ColoreRgb* operator +(const Colore&)const;// somma tra 2 colori
     ColoreRgb* operator-(const Colore &)const;// differenza tra 2 colori
     ColoreRgb* operator*(const Colore&)const;//modulazione di un colore
-    ColoreRgb* operator *(double);//scala le componenti del colore basandosi sul parametro
+    ColoreRgb* operator *(double)const;//scala le componenti del colore basandosi sul parametro
     double DeltaE(const Colore&)const;//calcola il delta E tra due colori
     ColoreRgb* complementare()const;
     bool coloreCaldo()const;//ritorna true se il colore è un colore caldo

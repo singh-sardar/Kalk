@@ -5,7 +5,7 @@ string ColoreHsl::schemaColore()const{
 }
 ColoreHsl::ColoreHsl():h(0),s(0),l(0){}
 ColoreHsl::ColoreHsl(int hue ,  int sat, int light):h(hue),s(sat),l(light){
-    if(h<0|| h > 360)
+    if(h<0|| h >= 360)
         h=0;
     if(s<0|| s > 100)
         s=0;
@@ -15,7 +15,7 @@ ColoreHsl::ColoreHsl(int hue ,  int sat, int light):h(hue),s(sat),l(light){
 }
 
 void ColoreHsl::setH(int hue){
-    if(hue>=0&&hue <=360)
+    if(hue>=0&&hue <360)
         h=hue;
 }
 void ColoreHsl::setS(int sat){
@@ -34,8 +34,8 @@ void ColoreHsl::modificaColore(int hue, int sat, int light){
     setS(sat);
     setL(light);
 }
-/*
-ColoreHsl* ColoreHsl::operator +(const Colore&)const{
+
+ColoreHsl* ColoreHsl::operator +(const Colore& c)const{
    //media dei hue
    //se la la differenza tra gli hue è > 180 => add mezzo giro (360/2 = 180) in modulo 360.else
 
@@ -57,4 +57,69 @@ ColoreHsl* ColoreHsl::operator +(const Colore&)const{
     }
     return aux;
 }
-*/
+
+ColoreHsl* ColoreHsl::operator-(const Colore & c)const {
+    ColoreHsl* aux= new ColoreHsl();
+
+    const ColoreHsl* tmp = dynamic_cast<const ColoreHsl*>(&c);
+    if(tmp){
+        int diff = h-tmp->getH();
+
+        if(diff>0)
+            aux->setH(diff);
+
+        diff= s -tmp->getS();
+        if(diff>0)
+            aux->setS(diff);
+
+        diff =l-tmp->getL();
+        if(diff>0)
+            aux->setL(diff);
+    }
+    return aux;
+}
+
+
+ColoreHsl* ColoreHsl::operator*(const Colore& c)const{
+    ColoreHsl* result = new ColoreHsl;
+    const ColoreHsl* temp= dynamic_cast<const ColoreHsl*>(&c);
+    if(temp){
+        result->modificaColore((temp->getH()*h)%360,(temp->getS()*s)%100,(temp->getL()*l)%100);
+    }
+    return result;
+}
+
+
+
+ColoreHsl* ColoreHsl::operator *(double scale) const{
+    ColoreHsl* result = new ColoreHsl(h,s,l);
+    if(h*scale>=0 && h*scale<360){
+        result->setH(h*scale);
+    }
+    if(s*scale>=0 && s*scale<101){
+        result->setS(s*scale);
+    }
+    if(l*scale>=0 && l*scale<101){
+        result->setL(l*scale);
+    }
+    return result;
+}
+
+
+ColoreHsl* ColoreHsl::complementare()const{
+    ColoreHsl*  result= new ColoreHsl(*this);
+    result->setH((h+180)%360);
+    return result;
+}
+
+ColoreHsl* ColoreHsl::luminositaColore()const{
+    ColoreHsl* result = new ColoreHsl(0,0,l);
+    return result;
+}
+
+bool ColoreHsl::coloreCaldo()const{
+    return h<180;
+}
+double ColoreHsl::DeltaE(const Colore&)const{
+
+}
