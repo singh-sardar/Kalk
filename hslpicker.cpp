@@ -31,7 +31,7 @@ HSLSlider* HSLPicker::getHSLSlider()const{return slider;}
 QWidget* HSLPicker::getViewer()const{return viewer;}
 
 void HSLPicker::changeColor(){
-    c->setHsl(getHvalue(),getSvalue(),getLvalue());
+    c->setHsl(getHvalue(),getSvalue()*2.55,getLvalue()*2.55);
     QPalette p= viewer->palette();
     p.setColor(QPalette::Window,*c);
     viewer->setPalette(p);
