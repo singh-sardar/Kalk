@@ -136,8 +136,10 @@ double ColoreRgb::DeltaE(const Colore& c1)const{ // se la conversione fallisce r
         double deltaE;
         double Lab1[3], Lab2[3];
 
-        rgb2lab(Lab1);
-        crgb1->rgb2lab(Lab2);
+        //rgb2lab(Lab1);
+        ToLab(Lab1);
+       // crgb1->rgb2lab(Lab2);
+        crgb1->ToLab(Lab2);
 
         deltaE= sqrt(pow(Lab2[0]-Lab1[0],2) + pow(Lab2[1]-Lab1[1],2) +pow(Lab2[2]-Lab1[2],2));
         return deltaE;
@@ -147,122 +149,13 @@ double ColoreRgb::DeltaE(const Colore& c1)const{ // se la conversione fallisce r
 }
 
 
-void ColoreRgb::rgb2lab(double Lab[3])const{
-
-    double RGB[3];
-    double XYZ[3];
-    double adapt[3];
-
-    //riferimenti del bianco
-    adapt[0] = 95.0467;
-    adapt[1] = 100.0000;
-    adapt[2] = 108.8969;
-
-    //riporto il colore da scala 0 - 255 a 0 - 1.0
-    RGB[0] = PivotRgb(r /255.0);
-    RGB[1] = PivotRgb(g /255.0);
-    RGB[2] = PivotRgb(b /255.0);
-
-    //RGB TO XYZ
-    XYZ[0] = 0.412424 * RGB[0] + 0.357579 * RGB[1] + 0.180464 * RGB[2];
-    XYZ[1] = 0.212656 * RGB[0] + 0.715158 * RGB[1] + 0.0721856 * RGB[2];
-    XYZ[2] = 0.0193324 * RGB[0] + 0.119193 * RGB[1] + 0.950444 * RGB[2];
-
-    //LAB
-    Lab[0] = 116 * pivotXYZ( XYZ[1] / adapt[1] ) - 16;
-    if(Lab[0]<0)
-        Lab[0]=0;
-    Lab[1] = 500 * ( pivotXYZ( XYZ[0] / adapt[0] ) - pivotXYZ( XYZ[1] / adapt[1] ) );
-    Lab[2] = 200 * ( pivotXYZ( XYZ[1] / adapt[1] ) - pivotXYZ( XYZ[2] / adapt[2] ) );
-    return;
-}
-
-double ColoreRgb::pivotXYZ(double q)
-{
-    double value;
-    if ( q > 0.008856 ) {
-        value = pow ( q, 0.333333 );
-        return value;
-    }
-    else {
-        value = (903.3*q+16)/116;
-        return value;
-    }
-
-}
-double ColoreRgb::PivotRgb(double n)
-{
-    return (n > 0.04045 ? pow((n + 0.055) / 1.055, 2.4) : n / 12.92) * 100.0;
-}
-
-
-
-void ColoreRgb::rgb2hsl(double HSL[3])const{
-    double RGB[3];
-    //Portare RGB in ranga tra 0 -1.0
-    RGB[0] = r /255.0;
-    RGB[1] = g /255.0;
-    RGB[2] = b /255.0;
-
-    //calcolo del min e max e del delta
-    double min = Min(Min(RGB[0], RGB[1]), RGB[2]);
-    double max = Max(Max(RGB[0], RGB[1]), RGB[2]);
-    double delta = max - min;
-
-    //calcolo del L
-    HSL[2] = (max + min) / 2.0;
-
-    if (delta == 0.0)
-    {   //in caso di delta = 0 => H = S = 0
-        HSL[0] = 0.0;
-        HSL[1] = 0.0;
-    }
-    else
-    {
-      //Formula di calcolo DEL S se delta !=0
-        HSL[1] = ((2*HSL[2]) >=1.0) ? (delta / (1.0 -(2.0*HSL[2]-1.0))) : (delta / (1.0 +(2.0*HSL[2]-1.0)));
-
-        double hue;
-        //Calcolo del H
-        if (RGB[0] == max)
-        {
-            hue = ((RGB[1] - RGB[2]) / 6.0) / delta;
-        }
-        else if (RGB[1] == max)
-        {
-            hue = (1.0 / 3.0) + ((RGB[2] - RGB[0]) / 6.0) / delta;
-        }
-        else
-        {
-            hue = (2.0 / 3.0) + ((RGB[0] - RGB[1]) / 6.0) / delta;
-        }
-
-        if (hue < 0.0)
-            hue += 1;
-        if (hue > 1.0)
-            hue -= 1;
-
-        HSL[0] =(hue  *360);
-    }
-    //trasformazione in precentuale di SL
-    HSL[1]= HSL[1]*100;
-    HSL[2]= HSL[2]*100;
-    return;
-}
-
-double  ColoreRgb::Min(double a ,double b){
-    return a<b ? a:b;
-}
-double  ColoreRgb::Max(double a,double b){
-    return a>b ? a:b;
-}
-
 ColoreRgb* ColoreRgb::complementare()const{
     //calcolo del complementare utilizzando HSL perche migliore
     ColoreRgb* aux = new ColoreRgb();
     double HSL[3];
     int RGB[3];
-    rgb2hsl(HSL);
+   // rgb2hsl(HSL);
+    ToHsl(HSL);
     HSL[0]+=180;
     HSL[0]=fmod(HSL[0],360);
     hsl2rgb(HSL,RGB);
@@ -314,4 +207,14 @@ string ColoreRgb::rgb2hex()const{
         s[5]='0';
     }
     return s;
+}
+
+
+void ColoreRgb::ToLab(double Lab[3])const{
+    int rgb[3]={r,g,b};
+    rgb2lab(rgb,Lab);
+}
+void ColoreRgb::ToHsl(double HSL[3])const{
+    int rgb[3]={r,g,b};
+    rgb2hsl(rgb,HSL);
 }

@@ -12,11 +12,6 @@ private:
     int r, g, b; //rappresentano un colore in formato red, green,blue
     float a; //alpha compreso tra 0.0 e 1.0
 
-    double static pivotXYZ(double);//funzione di utilita per rgb2lab
-    double static PivotRgb(double);
-    double static Min(double,double);
-    double static Max(double,double);
-
 public:
     ColoreRgb();// rappresenta il colore nero
     ColoreRgb(int, int, int, float =1.0);
@@ -45,10 +40,11 @@ public:
     ColoreRgb* luminositaColore()const;//ritorna un colore compreso tra 0 e 255 che indica la scala in grigio del colore
     string schemaColore()const;
 
-    void rgb2lab(double [3])const; //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
-    void rgb2hsl(double [3])const;
+
     string rgb2hex()const;
 
+    void ToLab(double [3])const; //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
+    void ToHsl(double [3])const;
 
 
 };

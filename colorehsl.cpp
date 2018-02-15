@@ -36,12 +36,12 @@ void ColoreHsl::modificaColore(int hue, int sat, int light){
 }
 
 ColoreHsl* ColoreHsl::operator +(const Colore& c)const{
-   //media dei hue
-   //se la la differenza tra gli hue è > 180 => add mezzo giro (360/2 = 180) in modulo 360.else
+    //media dei hue
+    //se la la differenza tra gli hue è > 180 => add mezzo giro (360/2 = 180) in modulo 360.else
 
-//algoritmo ricavato da idea:
-//RGB colour space uses a Cartesian coordinate system while HSL and HSV use polar coordinates. "Half way" is fairly simple in Cartesian coordinates, you just average them pairwise. It gets more complex in polar coordinates. You think of "half way" in different terms, for instance, it's halfway point of an arc ? If an arc, there are two, and four "rules" for choosing one of the two so do you go the short way, the long way, clockwise from the first colour, or counterclockwise from the first colour.
-//To find the "straight line" you pretty much have to convert to a Cartesian coordinate system. The simplest arc version would be to average the heights (L) and radii (S), and bisect the smaller angle between the hues. The result will be more saturated than the straight line version.
+    //algoritmo ricavato da idea:
+    //RGB colour space uses a Cartesian coordinate system while HSL and HSV use polar coordinates. "Half way" is fairly simple in Cartesian coordinates, you just average them pairwise. It gets more complex in polar coordinates. You think of "half way" in different terms, for instance, it's halfway point of an arc ? If an arc, there are two, and four "rules" for choosing one of the two so do you go the short way, the long way, clockwise from the first colour, or counterclockwise from the first colour.
+    //To find the "straight line" you pretty much have to convert to a Cartesian coordinate system. The simplest arc version would be to average the heights (L) and radii (S), and bisect the smaller angle between the hues. The result will be more saturated than the straight line version.
 
     ColoreHsl* aux= new ColoreHsl();
 
@@ -120,6 +120,32 @@ ColoreHsl* ColoreHsl::luminositaColore()const{
 bool ColoreHsl::coloreCaldo()const{
     return h<180;
 }
-double ColoreHsl::DeltaE(const Colore&)const{
+double ColoreHsl::DeltaE(const Colore& c)const{
+    const ColoreHsl* chsl = dynamic_cast<const ColoreHsl*>(&c);
+    if(chsl){
+        double deltaE;
+        double Lab1[3], Lab2[3];
+        //converting to rgb
+        int rgb1[3],rgb2[3];
+        ToRgb(rgb1);
+        chsl->ToRgb(rgb2);
+        //converting to lab
+        rgb2lab(rgb1,Lab1);
+        rgb2lab(rgb2,Lab2);
+        //calculating value
+        deltaE= sqrt(pow(Lab2[0]-Lab1[0],2) + pow(Lab2[1]-Lab1[1],2) +pow(Lab2[2]-Lab1[2],2));
+        return deltaE;
 
+    }else
+        return -1;
+}
+
+
+void ColoreHsl::ToRgb(int rgb[3])const{
+    double hsl[3];
+    hsl[0]=h;
+    hsl[1]=s;
+    hsl[2]=l;
+    hsl2rgb(hsl,rgb);
+    return;
 }

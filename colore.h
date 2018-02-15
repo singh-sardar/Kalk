@@ -7,6 +7,13 @@ using std::string;
 using std::to_string;
 class Colore
 {
+private:
+    //aggiungo un capo dati luminosita ?
+    double static pivotXYZ(double);//funzione di utilita per rgb2lab
+    double static PivotRgb(double);
+    double static Min(double,double);
+    double static Max(double,double);
+
 protected:
 
     double static abs(double);
@@ -14,7 +21,6 @@ protected:
 public:
 
 
-    void static hsl2rgb(double[3],int[3]);//funzione di classe che converte hsl to rgb. implmentata di classe perche non si è deciso di implementare la classe ColoreHsl che rappresenta i colori in hsl
 
     virtual bool operator==(const Colore &)const ;
     virtual bool operator !=(const Colore &)const ;
@@ -29,6 +35,11 @@ public:
     virtual string schemaColore()const=0;
     virtual ~Colore(){}
 
+
+    //funzioni statiche di classe sui colori
+    void static rgb2lab(int[3],double [3]); //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
+    void static rgb2hsl(int[3],double [3]);
+    void static hsl2rgb(double[3],int[3]);//funzione di classe che converte hsl to rgb.
 
 
 

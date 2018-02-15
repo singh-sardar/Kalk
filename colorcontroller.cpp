@@ -152,7 +152,8 @@ void ColorController::CaldoColore(){
 }
 void ColorController::LabColore(){
     double LAB[3];
-    model1->rgb2lab(LAB);
+   // model1->rgb2lab(LAB);
+    model1->ToLab(LAB);
     QString s= model1->schemaColore().c_str();
     s+=" ==> LAB(";
     s+=to_string(LAB[0]).c_str();
@@ -169,7 +170,8 @@ void ColorController::LabColore(){
 }
 void ColorController::HslColore(){
     double HSL[3];
-    model1->rgb2hsl(HSL);
+   // model1->rgb2hsl(HSL);
+    model1->ToHsl(HSL);
     QString s= model1->schemaColore().c_str();
     s+=" ==> HSL(";
     s+=to_string(HSL[0]).c_str();
