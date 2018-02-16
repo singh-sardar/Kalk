@@ -5,6 +5,7 @@ string ColoreRgb::schemaColore()const{
 }
 ColoreRgb::ColoreRgb():r(0),g(0),b(0),a(1.0)
 {
+    updateLuminosita();
 }
 
 ColoreRgb::ColoreRgb(int red, int green, int blue, float alpha):r(red),g(green),b(blue),a(alpha){
@@ -17,20 +18,29 @@ ColoreRgb::ColoreRgb(int red, int green, int blue, float alpha):r(red),g(green),
         b=0;
     if(a>0 || a > 1.0)
         a=1.0;
+    updateLuminosita();
 }
 
 //funzioni per modificare un colore
 void ColoreRgb::setR(int red){
-    if(red>=0 && red<= 255)
+    if(red>=0 && red<= 255){
         r=red;
+        updateLuminosita();
+
+    }
 }
 void ColoreRgb::setG(int green){
-    if(green>=0 && green<=255)
+    if(green>=0 && green<=255){
         g= green;
+        updateLuminosita();
+    }
 }
 void ColoreRgb::setB(int blue){
-    if(blue>=0 && blue<= 255)
+    if(blue>=0 && blue<= 255){
         b=blue;
+        updateLuminosita();
+
+    }
 }
 void ColoreRgb::setA(float alpha){
     if(alpha>=0 && alpha <= 1.0)
@@ -167,7 +177,7 @@ ColoreRgb* ColoreRgb::complementare()const{
 }
 
 
-ColoreRgb*  ColoreRgb::luminositaColore()const{
+ColoreRgb*  ColoreRgb::grayScale()const{
     //pittagora
     int value=sqrt(r * r* 0.241 + g * g * 0.691 + b * b * 0.068);
     return new ColoreRgb(value,value,value);
@@ -217,4 +227,8 @@ void ColoreRgb::ToLab(double Lab[3])const{
 void ColoreRgb::ToHsl(double HSL[3])const{
     int rgb[3]={r,g,b};
     rgb2hsl(rgb,HSL);
+}
+void ColoreRgb::updateLuminosita(){
+    int value=sqrt(r * r* 0.241 + g * g * 0.691 + b * b * 0.068);
+    setLuminosita((100*value)/255);
 }

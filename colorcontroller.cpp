@@ -124,8 +124,8 @@ void ColorController::ComplementareColore(){
     result = model1->complementare();
 }
 void ColorController::LuminositaColore(){
-    result = model1->luminositaColore();
-    if(result->getR()<130)
+    result = model1->grayScale();
+    if(result->getLuminosita()<51)
         showMessageBox("Luminosita colore","L'operando 1 e' un colore SCURO.\n Per cui ti conviene mettere il testo in sovraimpressione in BIANCO");
     else
         showMessageBox("Luminosita colore","L'operando 1 e' un colore CHIARO.\n Per cui ti conviene mettere il testo in sovraimpressione in NERO");

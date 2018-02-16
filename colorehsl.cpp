@@ -3,7 +3,7 @@ string ColoreHsl::schemaColore()const{
     string s= "hsl("+to_string(getH())+","+to_string(getS())+","+to_string(getL())+")";
     return s;
 }
-ColoreHsl::ColoreHsl():h(0),s(0),l(0){}
+ColoreHsl::ColoreHsl():h(0),s(0),l(0){updateLuminosita();}
 ColoreHsl::ColoreHsl(int hue ,  int sat, int light):h(hue),s(sat),l(light){
     if(h<0|| h >= 360)
         h=0;
@@ -11,20 +11,26 @@ ColoreHsl::ColoreHsl(int hue ,  int sat, int light):h(hue),s(sat),l(light){
         s=0;
     if(l<0|| l > 100)
         l=0;
+    updateLuminosita();
 
 }
 
 void ColoreHsl::setH(int hue){
     if(hue>=0&&hue <360)
         h=hue;
+
+
 }
 void ColoreHsl::setS(int sat){
     if(sat>=0&&sat <=100)
         s=sat;
+
 }
 void ColoreHsl::setL(int light){
-    if(light>=0&&light <=100)
+    if(light>=0&&light <=100){
         l=light;
+        updateLuminosita();
+    }
 }
 int ColoreHsl::getH()const{ return h;}
 int ColoreHsl::getS()const{return s;}
@@ -112,7 +118,7 @@ ColoreHsl* ColoreHsl::complementare()const{
     return result;
 }
 
-ColoreHsl* ColoreHsl::luminositaColore()const{
+ColoreHsl* ColoreHsl::grayScale()const{
     ColoreHsl* result = new ColoreHsl(0,0,l);
     return result;
 }
@@ -148,4 +154,7 @@ void ColoreHsl::ToRgb(int rgb[3])const{
     hsl[2]=l;
     hsl2rgb(hsl,rgb);
     return;
+}
+void ColoreHsl::updateLuminosita(){
+    setLuminosita(l);
 }

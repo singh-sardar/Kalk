@@ -37,8 +37,9 @@ public:
     double DeltaE(const Colore&)const;//calcola il delta E tra due colori
     ColoreRgb* complementare()const;
     bool coloreCaldo()const;//ritorna true se il colore è un colore caldo
-    ColoreRgb* luminositaColore()const;//ritorna un colore compreso tra 0 e 255 che indica la scala in grigio del colore
+    ColoreRgb* grayScale()const;//ritorna un colore compreso tra 0 e 255 che indica la scala in grigio del colore
     string schemaColore()const;
+    void updateLuminosita();
 
 
     string rgb2hex()const;

@@ -1,5 +1,5 @@
 #include "colore.h"
-
+Colore::Colore(int l):luminosita(l){}
 void  Colore::hsl2rgb(double HSL[3],int RGB[3]){
     //algoritomo di conversione
     double  RGB1[3];
@@ -172,4 +172,11 @@ bool Colore::operator==(const Colore & c)const{
 }
 bool Colore::operator !=(const Colore & c )const{
     return !(*this== c);
+}
+int Colore::getLuminosita()const{
+    return luminosita;
+}
+void Colore::setLuminosita(int l){
+    if(l>=0 && l<=100)
+        luminosita=l;
 }
