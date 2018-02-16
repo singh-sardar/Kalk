@@ -1,14 +1,14 @@
 #include "colorergb.h"
 string ColoreRgb::schemaColore()const{
-    string s= "rgba("+to_string(getR())+","+to_string(getG())+","+to_string(getB())+","+to_string(static_cast<int>(getA()))+")";
+    string s= "rgb("+to_string(getR())+","+to_string(getG())+","+to_string(getB())/*+","+to_string(static_cast<int>(getA()))*/+")";
     return s;
 }
-ColoreRgb::ColoreRgb():r(0),g(0),b(0),a(1.0)
+ColoreRgb::ColoreRgb():r(0),g(0),b(0)/*,a(1.0)*/
 {
     updateLuminosita();
 }
 
-ColoreRgb::ColoreRgb(int red, int green, int blue, float alpha):r(red),g(green),b(blue),a(alpha){
+ColoreRgb::ColoreRgb(int red, int green, int blue/*, float alpha*/):r(red),g(green),b(blue)/*,a(alpha)*/{
     //se uno dei valori va fuori dal range allora lo riporto a 0 o in caso di alpha a 1
     if(r<0 || r> 255)
         r=0;
@@ -16,8 +16,8 @@ ColoreRgb::ColoreRgb(int red, int green, int blue, float alpha):r(red),g(green),
         g=0;
     if(b<0 || b> 255)
         b=0;
-    if(a>0 || a > 1.0)
-        a=1.0;
+   /* if(a>0 || a > 1.0)
+        a=1.0;*/
     updateLuminosita();
 }
 
@@ -41,12 +41,12 @@ void ColoreRgb::setB(int blue){
         updateLuminosita();
 
     }
-}
+}/*
 void ColoreRgb::setA(float alpha){
     if(alpha>=0 && alpha <= 1.0)
         a= alpha;
 }
-
+*/
 int ColoreRgb::getR()const{
     return r;
 }
@@ -55,17 +55,17 @@ int ColoreRgb::getG()const{
 }
 int ColoreRgb::getB()const{
     return b;
-}
+}/*
 float ColoreRgb::getA()const{
     return a;
 }
+*/
 
-
-void ColoreRgb::modificaColore(int red, int green, int blue, float alpha){
+void ColoreRgb::modificaColore(int red, int green, int blue/*, float alpha*/){
     setR(red);
     setG(green);
     setB(blue);
-    setA(alpha);
+  //  setA(alpha);
 
 }
 /*
@@ -126,7 +126,7 @@ ColoreRgb* ColoreRgb::operator *(const Colore& c)const{
 }
 
 ColoreRgb* ColoreRgb::operator *(double s)const{//scala le componenti del colore basandosi sul parametro
-    ColoreRgb* aux = new ColoreRgb(r,g,b,a);
+    ColoreRgb* aux = new ColoreRgb(r,g,b/*,a*/);
     if(r*s>0 && r*s<=255){
         aux->setR(r*s);
     }
@@ -191,38 +191,7 @@ string ColoreRgb::ToHex()const{
     int rgb[3]={r,g,b};
     return rgb2hex(rgb);
 }
-/*
-string ColoreRgb::rgb2hex()const{
-    string s= "#";
-    char tmp[30];
-    int len=0;
-    len=sprintf(tmp,"%x",r);
 
-    s+= tmp;
-    if(len==1){
-        s="#0";
-                s+=tmp;
-    }
-    len=sprintf(tmp,"%x",g);
-
-    s+= tmp;
-    if(len==1){
-        s+='0';
-        s[4]= s[3];
-        s[3]='0';
-    }
-    len=sprintf(tmp,"%x",b);
-
-    s+= tmp;
-    if(len==1){
-        s+='0';
-        s[6]= s[5];
-        s[5]='0';
-    }
-    return s;
-}
-
-*/
 void ColoreRgb::ToLab(double Lab[3])const{
     int rgb[3]={r,g,b};
     rgb2lab(rgb,Lab);

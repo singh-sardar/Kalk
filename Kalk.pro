@@ -55,7 +55,8 @@ SOURCES += \
     colorehsl.cpp \
     hslslider.cpp \
     hslpicker.cpp \
-    twohslpicker.cpp
+    twohslpicker.cpp \
+    colorergba.cpp
 
 HEADERS += \
     vettoregenerico.h \
@@ -89,7 +90,8 @@ HEADERS += \
     colorehsl.h \
     hslslider.h \
     hslpicker.h \
-    twohslpicker.h
+    twohslpicker.h \
+    colorergba.h
 
 FORMS +=
 QMAKE_CXXFLAGS += -std=c++11

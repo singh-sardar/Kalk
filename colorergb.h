@@ -10,22 +10,22 @@ class ColoreRgb:public Colore
 {
 private:
     int r, g, b; //rappresentano un colore in formato red, green,blue
-    float a; //alpha compreso tra 0.0 e 1.0
+   // float a; //alpha compreso tra 0.0 e 1.0
 
 public:
     ColoreRgb();// rappresenta il colore nero
-    ColoreRgb(int, int, int, float =1.0);
+    ColoreRgb(int, int, int/*, float =1.0*/);
 
 
     void setR(int);
     void setG(int);
     void setB(int);
-    void setA(float);
+   // void setA(float);
     int getR()const;
     int getG()const;
     int getB()const;
-    float getA()const;
-    void modificaColore(int, int, int , float=1.0);
+//    float getA()const;
+    void modificaColore(int, int, int /*, float=1.0*/);
 
 /*
     bool operator==(const Colore &)const;
@@ -41,10 +41,6 @@ public:
     string schemaColore()const;
     void updateLuminosita();
     string ToHex()const;
-
-
-   // string rgb2hex()const;
-
     void ToLab(double [3])const; //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
     void ToHsl(double [3])const;
 
