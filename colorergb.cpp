@@ -187,8 +187,11 @@ bool ColoreRgb::coloreCaldo()const{
     //caldo se il rosso > blue
     return r>b;
 }
-
-
+string ColoreRgb::ToHex()const{
+    int rgb[3]={r,g,b};
+    return rgb2hex(rgb);
+}
+/*
 string ColoreRgb::rgb2hex()const{
     string s= "#";
     char tmp[30];
@@ -219,7 +222,7 @@ string ColoreRgb::rgb2hex()const{
     return s;
 }
 
-
+*/
 void ColoreRgb::ToLab(double Lab[3])const{
     int rgb[3]={r,g,b};
     rgb2lab(rgb,Lab);

@@ -180,3 +180,33 @@ void Colore::setLuminosita(int l){
     if(l>=0 && l<=100)
         luminosita=l;
 }
+
+string Colore::rgb2hex(int rgb[3]){
+    string s= "#";
+    char tmp[30];
+    int len=0;
+    len=sprintf(tmp,"%x",rgb[0]);
+
+    s+= tmp;
+    if(len==1){
+        s="#0";
+                s+=tmp;
+    }
+    len=sprintf(tmp,"%x",rgb[1]);
+
+    s+= tmp;
+    if(len==1){
+        s+='0';
+        s[4]= s[3];
+        s[3]='0';
+    }
+    len=sprintf(tmp,"%x",rgb[2]);
+
+    s+= tmp;
+    if(len==1){
+        s+='0';
+        s[6]= s[5];
+        s[5]='0';
+    }
+    return s;
+}

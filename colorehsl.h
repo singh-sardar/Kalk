@@ -28,6 +28,9 @@ public:
     string schemaColore()const;
     void updateLuminosita();
     void ToRgb(int [3])const;
+    void ToLab(double [3])const;
+    string ToHex()const;
+
 
     //nn so se mettere to HEX
 

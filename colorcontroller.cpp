@@ -190,7 +190,8 @@ void ColorController::HslColore(){
 void ColorController::HexColore(){
     QString s= model1->schemaColore().c_str();
     s+=" ==> HEX(";
-    s+=model1->rgb2hex().c_str();
+   // s+=model1->rgb2hex().c_str();
+    s+=model1->ToHex().c_str();
     s+=")";
     showMessageBox("Rappresentazione HEX",s);
     result= model1;

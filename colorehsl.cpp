@@ -145,7 +145,11 @@ double ColoreHsl::DeltaE(const Colore& c)const{
     }else
         return -1;
 }
-
+void ColoreHsl::ToLab(double Lab[3])const{
+    int rgb[3];
+    ToRgb(rgb);
+    rgb2lab(rgb,Lab);
+}
 
 void ColoreHsl::ToRgb(int rgb[3])const{
     double hsl[3];
@@ -154,6 +158,11 @@ void ColoreHsl::ToRgb(int rgb[3])const{
     hsl[2]=l;
     hsl2rgb(hsl,rgb);
     return;
+}
+string ColoreHsl::ToHex()const{
+    int rgb[3];
+    ToRgb(rgb);
+    return rgb2hex(rgb);
 }
 void ColoreHsl::updateLuminosita(){
     setLuminosita(l);

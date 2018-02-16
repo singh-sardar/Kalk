@@ -40,9 +40,10 @@ public:
     ColoreRgb* grayScale()const;//ritorna un colore compreso tra 0 e 255 che indica la scala in grigio del colore
     string schemaColore()const;
     void updateLuminosita();
+    string ToHex()const;
 
 
-    string rgb2hex()const;
+   // string rgb2hex()const;
 
     void ToLab(double [3])const; //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
     void ToHsl(double [3])const;

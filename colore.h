@@ -35,6 +35,8 @@ public:
     virtual Colore* grayScale()const=0;//ritorna un colore compreso tra 0 e 255 che indica se un colore è chiaro o scuro. cosi si puo decidere se mettere il testo in bianco o nero avendo di sfondo il colore this
     virtual bool coloreCaldo()const=0;
     virtual string schemaColore()const=0;
+    virtual void ToLab(double [3])const=0;
+    virtual string ToHex()const=0;
     virtual ~Colore(){}
 
 
@@ -42,6 +44,8 @@ public:
     void static rgb2lab(int[3],double [3]); //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
     void static rgb2hsl(int[3],double [3]);
     void static hsl2rgb(double[3],int[3]);//funzione di classe che converte hsl to rgb.
+    string static rgb2hex(int[3]);
+
 
 
 
