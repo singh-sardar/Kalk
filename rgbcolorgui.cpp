@@ -1,5 +1,6 @@
 #include "rgbcolorgui.h"
 
+/*
 RgbColorGui::RgbColorGui(QWidget* parent):QWidget(parent),controller(new ColorController(this))
 {
     QFont f("Verdana",12);
@@ -116,3 +117,4 @@ double RgbColorGui::getHValue()const{return op->getHSpin()->value();}
 double RgbColorGui::getSValue()const{return op->getSSpin()->value();}
 double RgbColorGui::getLValue()const{return op->getLSpin()->value();}
 double RgbColorGui::getFattoreScalaValue()const{return op->getFattoreScalaSpin()->value();}
+*/

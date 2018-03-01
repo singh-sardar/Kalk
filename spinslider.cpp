@@ -7,6 +7,7 @@ SpinSlider::SpinSlider(QWidget* parent,QString desc,int min,int max ):QWidget(pa
     f1.setBold(false);
     f.setBold(false);
     layout= new QHBoxLayout;
+    //layout = new QGridLayout;
     desc_lable = new QLabel;
     desc_lable->setFont(f);
     desc_lable->setText(desc);
@@ -17,10 +18,10 @@ SpinSlider::SpinSlider(QWidget* parent,QString desc,int min,int max ):QWidget(pa
     spin_box->setFont(f1);
     spin_box->setRange(min,max);
     spin_box->setValue(min);
+
     layout->addWidget(desc_lable);
     layout->addWidget(slider);
     layout->addWidget(spin_box);
-
 
     connect(slider,SIGNAL(valueChanged(int)),spin_box,SLOT(setValue(int)));
     connect(spin_box,SIGNAL(valueChanged(int)),slider,SLOT(setValue(int)));

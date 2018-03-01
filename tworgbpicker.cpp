@@ -1,5 +1,6 @@
 #include "tworgbpicker.h"
 
+/*
 TwoRgbPicker::TwoRgbPicker(QWidget* parent):QWidget(parent)
 {
     QFont f("Verdana",16);
@@ -34,3 +35,4 @@ RgbPicker* TwoRgbPicker::getColor1()const{return color1;}
 RgbPicker* TwoRgbPicker::getColor2()const{return color2;}
 QLabel* TwoRgbPicker::getLabel1()const{return label1;}
 QLabel* TwoRgbPicker::getLabel2()const{return label2;}
+*/

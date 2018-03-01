@@ -1,5 +1,5 @@
 #include "twohslpicker.h"
-
+/*
 TwoHSLPicker::TwoHSLPicker(QWidget* parent):QWidget(parent)
 {
     QFont f("Verdana",16);
@@ -34,3 +34,4 @@ HSLPicker* TwoHSLPicker::getColor1()const{return color1;}
 HSLPicker* TwoHSLPicker::getColor2()const{return color2;}
 QLabel* TwoHSLPicker::getLabel1()const{return label1;}
 QLabel* TwoHSLPicker::getLabel2()const{return label2;}
+*/

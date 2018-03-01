@@ -1,26 +1,25 @@
-#ifndef RGBCOLORGUI_H
-#define RGBCOLORGUI_H
-
+#ifndef COLORGUI_H
+#define COLORGUI_H
 
 #include <QWidget>
 #include <QGridLayout>
-#include "tworgbpicker.h"
+#include <QComboBox>
+#include "twocolorpicker.h"
 #include "coloroperationbuttons.h"
 #include "colorcontroller.h"
 
-/*
 class ColorController;
-class RgbColorGui:public QWidget
+class ColorGui:public QWidget
 {
     Q_OBJECT
 public:
-    RgbColorGui(QWidget* parent=0);
-    int getColor1Rvalue()const;
-    int getColor1Gvalue()const;
-    int getColor1Bvalue()const;
-    int getColor2Rvalue()const;
-    int getColor2Gvalue()const;
-    int getColor2Bvalue()const;
+    ColorGui(QWidget* parent=0);
+    int getColor1P1value()const;
+    int getColor1P2value()const;
+    int getColor1P3value()const;
+    int getColor2P1value()const;
+    int getColor2P2value()const;
+    int getColor2P3value()const;
     QWidget* getResultViewer()const;
     QWidget* getOperand1Viewer()const;
     QWidget* getOperand2Viewer()const;
@@ -28,18 +27,27 @@ public:
     double getHValue()const;
     double getSValue()const;
     double getLValue()const;
+
+    int getRValue()const;
+    int getGValue()const;
+    int getBValue()const;
+    TwoColorPicker* getColorPicker()const;
+    colorOperationButtons* getOperationButtons()const;
+
     double getFattoreScalaValue()const;
 
-    ~RgbColorGui();
+    ~ColorGui();
 private:
     QGridLayout* layout;
-    TwoRgbPicker* p;
+    TwoColorPicker* p;
     colorOperationButtons* op;
     QPushButton *saveOperando1, *saveOperando2,*useResultAsOperando;
     QWidget *operando1,*operando2 , *result;
     ColorController* controller;
     QLabel* resultLabel;
     QLabel* lbl;
+
+    QComboBox* cb;
 
 
 signals:
@@ -59,7 +67,12 @@ signals:
     void btnSaveOperando2Clicked(bool);
     void btnUseResultAsOperandoClicked(bool);
 
-};
-*/
+    void btnRgb2HslClicked(bool);
+    void colorTypeChanged();
 
-#endif // RGBCOLORGUI_H
+private slots:
+    void changeColorType(int);
+
+};
+
+#endif // COLORGUI_H

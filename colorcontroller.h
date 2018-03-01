@@ -1,22 +1,24 @@
 #ifndef COLORCONTROLLER_H
 #define COLORCONTROLLER_H
 
-
 #include "colorergb.h"
+#include "colorehsl.h"
+#include "colorergba.h"
 #include "QObject"
-#include "rgbcolorgui.h"
+#include "colorgui.h"
 
-class RgbColorGui;
+class ColorGui;
 class ColorController:public QObject
 {
     Q_OBJECT
 public:
-    ColorController(RgbColorGui*);
+    ColorController(ColorGui*);
      ~ColorController();
 private:
-    RgbColorGui* view;
-    ColoreRgb* model1,* model2,*result;
-     void showMessageBox(QString,QString)const;
+    ColorGui* view;
+    //ColoreRgb* model1,* model2,*result;
+    Colore* model1, *model2, *result;
+    void showMessageBox(QString,QString)const;
     void updateOneOperandResult(QString);
 
 
@@ -38,8 +40,11 @@ private slots:
     void HexColore();
     void Hsl2RgbColore();
 
+    void Rgb2HslColore();
+
     void ChangeResultColor();
     void ResultAsOperando();
+    void ChangeColorType();
 };
 
 #endif // COLORCONTROLLER_H

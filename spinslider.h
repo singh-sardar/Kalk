@@ -23,6 +23,7 @@ public:
     ~SpinSlider();
 private:
     QHBoxLayout* layout ;
+    //QGridLayout* layout;
     QLabel* desc_lable;
     QSlider* slider;
     QSpinBox* spin_box;

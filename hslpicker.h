@@ -6,31 +6,16 @@
 #include <QPalette>
 #include <QHBoxLayout>
 
-#include "hslslider.h"
+#include "colorpicker.h"
 
-//rappresenta il singolo picker per i colori in formato HSL
-class HSLPicker:public QWidget
-{
+class HslPicker: public ColorPicker{
+
     Q_OBJECT
 public:
-    HSLPicker(QWidget* parent=0);
-    HSLSlider* getHSLSlider() const;
-    QWidget* getViewer()const;
-    int getHvalue()const;
-    int getSvalue()const;
-    int getLvalue()const;
-    ~HSLPicker();
+    HslPicker(QWidget* parent=0);
 
-private:
-    HSLSlider* slider;
-    QWidget* viewer;
-    QColor* c;
-    QHBoxLayout* layout;
-private slots:
+
     void changeColor();
-signals:
-    void colorChanged(QColor* c);
-
 };
 
 #endif // HSLPICKER_H

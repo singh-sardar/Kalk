@@ -16,6 +16,19 @@ public:
     QDoubleSpinBox* getHSpin()const;
     QDoubleSpinBox* getSSpin()const;
     QDoubleSpinBox* getLSpin()const;
+
+    QSpinBox* getRSpin()const;
+    QSpinBox* getGSpin()const;
+    QSpinBox* getBSpin()const;
+
+    /*
+    void removeHsl2Rgb() const;
+    void removeRgb2Hsl()const;
+    */
+    void removeSpinConversione();
+    void addHsl2Rgb();
+    void addRgb2Hsl();
+
     ~colorOperationButtons();
 
 
@@ -23,9 +36,15 @@ public:
 private:
 
     QPushButton *btnSomma,*btnDifferenza,*btnModulazione,*btnDeltaE,*btnScala,*btnComplementare,*btnLuminosita,*btnCaldo,*btnLab,*btnHsl,*btnHex,*btnHsl2Rgb;
+    QPushButton *btnRgb2Hsl;
     QGridLayout* layout;
     QDoubleSpinBox *fattoreScala,*H,*S,*L;
+    QSpinBox *R,*G,*B;
+    QHBoxLayout* l;
     QLabel* lbl1,*lbl2;
+
+
+    void deleteChildWidgets(QLayoutItem*);
 
 signals:
     void btnSommaClicked(bool);
@@ -40,6 +59,7 @@ signals:
     void btnHslClicked(bool);
     void btnHexClicked(bool);
     void btnHsl2RgbClicked(bool);
+    void btnRgb2HslClicked(bool);
 };
 
 #endif // COLOROPERATIONBUTTONS_H

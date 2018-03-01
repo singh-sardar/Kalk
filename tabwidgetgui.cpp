@@ -4,13 +4,15 @@ TabWidgetGUI::TabWidgetGUI(QWidget *parent):
     QWidget(parent)
 {
     tabWidget = new QTabWidget;
-    rgbGUI = new RgbColorGui;
+    //rgbGUI = new RgbColorGui;
+    colGUI = new ColorGui;
     ricettaGUI = new RicettaGui;
     matriciGUI = new MatriciGUI;
     librettoGUI = new LibrettoEsamiGUI;
 
     tabWidget->setStyleSheet("QTabBar::tab{height:40px; width:150px;font: 14pt}");
-    tabWidget->addTab(rgbGUI,"Colori RGB");
+    //tabWidget->addTab(rgbGUI,"Colori RGB");
+    tabWidget->addTab(colGUI, "Colori");
     tabWidget->addTab(ricettaGUI,"Ricette");
     tabWidget->addTab(matriciGUI,"Matrici");
     tabWidget->addTab(librettoGUI,"Libretto esami");
@@ -29,8 +31,8 @@ void TabWidgetGUI::impostaMinSize(){
     if(!(tabWidget->windowState() == Qt::WindowMaximized)){
         switch (tabWidget->currentIndex()) {
             case 0:
-                tabWidget->setMinimumSize(665,715);
-                tabWidget->resize(760,720);
+                tabWidget->setMinimumSize(665,790);
+                tabWidget->resize(760,800);
                 break;
             case 1:
                 tabWidget->setMinimumSize(694,400);
@@ -64,7 +66,7 @@ void TabWidgetGUI::updateSizes(int index){
 }
 
 TabWidgetGUI::~TabWidgetGUI(){
-    delete rgbGUI;
+    //delete rgbGUI;
     delete ricettaGUI;
     delete matriciGUI;
     delete librettoGUI;

@@ -5,6 +5,8 @@
 #include "rgbpicker.h"
 #include <QGridLayout>
 #include <QLabel>
+
+/*
 class TwoRgbPicker:public QWidget
 {
     //color picker per 2 colori
@@ -25,5 +27,6 @@ signals:
     void color1Changed(QColor* c);
     void color2Changed(QColor* c);
 };
+*/
 
 #endif // TWORGBPICKER_H

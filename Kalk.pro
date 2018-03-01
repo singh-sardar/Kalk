@@ -33,12 +33,9 @@ SOURCES += \
     ingrediente.cpp \
     ricetta.cpp \
     spinslider.cpp \
-    rgbslider.cpp \
     rgbpicker.cpp \
-    tworgbpicker.cpp \
     matrice.cpp \
     coloroperationbuttons.cpp \
-    rgbcolorgui.cpp \
     colorcontroller.cpp \
     ricettagui.cpp \
     ingredientedialog.cpp \
@@ -53,10 +50,18 @@ SOURCES += \
     librettoesamigui.cpp \
     tabwidgetgui.cpp \
     colorehsl.cpp \
-    hslslider.cpp \
     hslpicker.cpp \
+    colorergba.cpp \
+    colorgui.cpp \
+    colorpicker.cpp \
+    colorslider.cpp \
+    rgbapicker.cpp \
+    twocolorpicker.cpp \
+    hslslider.cpp \
     twohslpicker.cpp \
-    colorergba.cpp
+    rgbcolorgui.cpp \
+    rgbslider.cpp \
+    tworgbpicker.cpp
 
 HEADERS += \
     vettoregenerico.h \
@@ -68,12 +73,9 @@ HEADERS += \
     ingrediente.h \
     ricetta.h \
     spinslider.h \
-    rgbslider.h \
     rgbpicker.h \
-    tworgbpicker.h \
     matrice.h \
     coloroperationbuttons.h \
-    rgbcolorgui.h \
     colorcontroller.h \
     ricettagui.h \
     ingredientedialog.h \
@@ -88,10 +90,18 @@ HEADERS += \
     librettoesamigui.h \
     tabwidgetgui.h \
     colorehsl.h \
-    hslslider.h \
     hslpicker.h \
+    colorergba.h \
+    colorgui.h \
+    colorpicker.h \
+    colorslider.h \
+    rgbapicker.h \
+    twocolorpicker.h \
     twohslpicker.h \
-    colorergba.h
+    hslslider.h \
+    rgbcolorgui.h \
+    rgbslider.h \
+    tworgbpicker.h
 
 FORMS +=
 QMAKE_CXXFLAGS += -std=c++11
