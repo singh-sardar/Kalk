@@ -1,7 +1,7 @@
 #include "spinslider.h"
 
 
-SpinSlider::SpinSlider(QWidget* parent,QString desc,int min,int max ):QWidget(parent)
+SpinSlider::SpinSlider(QWidget* parent,QString desc,int min,int max,int value):QWidget(parent)
 {
     QFont f("Verdana",16),f1("Verdana",14);
     f1.setBold(false);
@@ -13,7 +13,13 @@ SpinSlider::SpinSlider(QWidget* parent,QString desc,int min,int max ):QWidget(pa
     desc_lable->setText(desc);
     slider = new QSlider(Qt::Horizontal);
     slider->setRange(min,max);
-    slider->setValue(min);
+
+    if(value < min || value > max){
+        slider->setValue(min);
+    }else{
+        slider->setValue(value);
+    }
+
     spin_box = new QSpinBox();
     spin_box->setFont(f1);
     spin_box->setRange(min,max);

@@ -14,12 +14,18 @@ class ColorGui:public QWidget
     Q_OBJECT
 public:
     ColorGui(QWidget* parent=0);
+    /*
     int getColor1P1value()const;
     int getColor1P2value()const;
     int getColor1P3value()const;
     int getColor2P1value()const;
     int getColor2P2value()const;
     int getColor2P3value()const;
+    */
+
+    int getColor1Value(int i)const;
+    int getColor2Value(int i)const;
+
     QWidget* getResultViewer()const;
     QWidget* getOperand1Viewer()const;
     QWidget* getOperand2Viewer()const;
@@ -45,7 +51,7 @@ private:
     QWidget *operando1,*operando2 , *result;
     ColorController* controller;
     QLabel* resultLabel;
-    QLabel* lbl;
+    QLabel* lbl, *lblComboBox;
 
     QComboBox* cb;
 

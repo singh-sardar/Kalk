@@ -31,8 +31,8 @@ void TabWidgetGUI::impostaMinSize(){
     if(!(tabWidget->windowState() == Qt::WindowMaximized)){
         switch (tabWidget->currentIndex()) {
             case 0:
-                tabWidget->setMinimumSize(665,790);
-                tabWidget->resize(760,800);
+                tabWidget->setMinimumSize(665,800);
+                tabWidget->resize(760,820);
                 break;
             case 1:
                 tabWidget->setMinimumSize(694,400);

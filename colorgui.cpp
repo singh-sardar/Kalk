@@ -12,6 +12,7 @@ ColorGui::ColorGui(QWidget* parent):QWidget(parent),controller(new ColorControll
     p = new TwoColorPicker;
     op = new colorOperationButtons;
     cb = new QComboBox;
+    lblComboBox = new QLabel("Formato: ");
 
     cb->addItem("Colore RGB");
     cb->addItem("Colore RGBA");
@@ -35,7 +36,8 @@ ColorGui::ColorGui(QWidget* parent):QWidget(parent),controller(new ColorControll
     result->setMinimumSize(600,75);
     result->setAutoFillBackground(true);
 
-    layout->addWidget(cb,0,0,1,2);
+    layout->addWidget(lblComboBox,0,0,1,1,Qt::AlignHCenter);
+    layout->addWidget(cb,0,1);
     layout->addWidget(p,1,0,1,2);
     layout->addWidget(saveOperando1,2,0);
     layout->addWidget(saveOperando2,2,1);
@@ -62,9 +64,6 @@ ColorGui::ColorGui(QWidget* parent):QWidget(parent),controller(new ColorControll
     result->setPalette(p);
 
     setLayout(layout);
-
-
-
 
 
     connect(op,SIGNAL(btnSommaClicked(bool)),this,SIGNAL(btnSommaClicked(bool)));
@@ -119,14 +118,21 @@ ColorGui::~ColorGui(){
     delete result;
     delete controller;
     delete resultLabel;
+    delete lblComboBox;
     delete lbl;
 }
+/*
 int ColorGui::getColor1P1value()const{return p->getColor1()->getP1value();}
 int ColorGui::getColor1P2value()const{return p->getColor1()->getP2value();}
 int ColorGui::getColor1P3value()const{return p->getColor1()->getP3value();}
 int ColorGui::getColor2P1value()const{return p->getColor2()->getP1value();}
 int ColorGui::getColor2P2value()const{return p->getColor2()->getP2value();}
 int ColorGui::getColor2P3value()const{return p->getColor2()->getP3value();}
+*/
+
+int ColorGui::getColor1Value(int i)const{return p->getColor1()->getSliderValue(i);}
+int ColorGui::getColor2Value(int i) const{return p->getColor2()->getSliderValue(i);}
+
 QWidget* ColorGui::getResultViewer()const{return result;}
 QWidget* ColorGui::getOperand1Viewer()const{return operando1;}
 QWidget* ColorGui::getOperand2Viewer()const{return operando2;}

@@ -16,7 +16,7 @@ class SpinSlider:public QWidget
 {
     Q_OBJECT
 public:
-    SpinSlider(QWidget* parent=0, QString desc="NO NAME",int min=0,int max = 255);
+    SpinSlider(QWidget* parent=0, QString desc="NO NAME",int min=0,int max = 255,int value=0);
     QLabel* getLable() const;
     QSlider* getSlider() const;
     QSpinBox* getSpinBox() const;

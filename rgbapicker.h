@@ -14,12 +14,12 @@ class RgbaPicker: public RgbPicker{
     Q_OBJECT
 public:
     RgbaPicker(QWidget* parent=0);
-    int getAlphaValue()const;
+    //int getAlphaValue()const;
 
     void changeColor();
 
 private:
-    SpinSlider *alpha;
+    //SpinSlider *alpha;
 };
 
 #endif // RGBAPICKER_H
