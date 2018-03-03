@@ -21,6 +21,7 @@ public:
     SpinSlider* getParametro3() const;
     QString getNomeParametro3() const;
     */
+
     ~ColorSlider();
 
     SpinSlider* getSlider(int i) const;

@@ -1,6 +1,6 @@
 #include "rgbpicker.h"
 
-RgbPicker::RgbPicker(QWidget* parent){
+RgbPicker::RgbPicker(QWidget* parent): ColorPicker(parent){
 
     addSlider(new SpinSlider(this,"R",0,255));
     addSlider(new SpinSlider(this,"G",0,255));

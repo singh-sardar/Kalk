@@ -14,7 +14,6 @@ class RgbaPicker: public RgbPicker{
     Q_OBJECT
 public:
     RgbaPicker(QWidget* parent=0);
-    //int getAlphaValue()const;
 
     void changeColor();
 

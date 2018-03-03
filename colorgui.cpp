@@ -118,8 +118,9 @@ ColorGui::~ColorGui(){
     delete result;
     delete controller;
     delete resultLabel;
-    delete lblComboBox;
     delete lbl;
+    delete lblComboBox;
+    delete cb;
 }
 /*
 int ColorGui::getColor1P1value()const{return p->getColor1()->getP1value();}

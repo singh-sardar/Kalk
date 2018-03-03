@@ -1,6 +1,6 @@
 #include "hslpicker.h"
 
-HslPicker::HslPicker(QWidget* parent){
+HslPicker::HslPicker(QWidget* parent): ColorPicker(parent){
     addSlider(new SpinSlider(this,"H",0,360));
     addSlider(new SpinSlider(this,"S",0,100));
     addSlider(new SpinSlider(this,"L",0,100));

@@ -13,9 +13,6 @@ class RgbPicker: public ColorPicker{
 
 public:
     RgbPicker(QWidget* parent=0);
-    SpinSlider* getRSlider()const;
-    SpinSlider* getGSlider()const;
-    SpinSlider* getBSlider()const;
 
     void changeColor();
 };
