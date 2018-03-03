@@ -54,14 +54,8 @@ SOURCES += \
     colorergba.cpp \
     colorgui.cpp \
     colorpicker.cpp \
-    colorslider.cpp \
     rgbapicker.cpp \
-    twocolorpicker.cpp \
-    hslslider.cpp \
-    twohslpicker.cpp \
-    rgbcolorgui.cpp \
-    rgbslider.cpp \
-    tworgbpicker.cpp
+    twocolorpicker.cpp
 
 HEADERS += \
     vettoregenerico.h \
@@ -94,14 +88,8 @@ HEADERS += \
     colorergba.h \
     colorgui.h \
     colorpicker.h \
-    colorslider.h \
     rgbapicker.h \
-    twocolorpicker.h \
-    twohslpicker.h \
-    hslslider.h \
-    rgbcolorgui.h \
-    rgbslider.h \
-    tworgbpicker.h
+    twocolorpicker.h
 
 FORMS +=
 QMAKE_CXXFLAGS += -std=c++11
