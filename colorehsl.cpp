@@ -99,7 +99,7 @@ ColoreHsl* ColoreHsl::operator*(const Colore& c)const{
 
 ColoreHsl* ColoreHsl::operator *(double scale) const{
     ColoreHsl* result = new ColoreHsl(h,s,l);
-    if(h*scale>=0 && h*scale<360){
+    if(h*scale>=0 && h*scale<361){
         result->setH(h*scale);
     }
     if(s*scale>=0 && s*scale<101){

@@ -9,7 +9,6 @@ private:
 public:
     ColoreHsl();//colore nero
     ColoreHsl(int, int, int);
-//TESTARE LA FUNZIONE == E !=
     void setH(int);
     void setS(int);
     void setL(int);
@@ -32,7 +31,6 @@ public:
     string ToHex()const;
 
 
-    //nn so se mettere to HEX
 
 
 };
