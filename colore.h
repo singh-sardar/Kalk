@@ -8,7 +8,7 @@ using std::to_string;
 class Colore
 {
 private:
-    //aggiungo un capo dati luminosita ?
+
     double static pivotXYZ(double);//funzione di utilita per rgb2lab
     double static PivotRgb(double);
     double static Min(double,double);
@@ -23,7 +23,7 @@ public:
 
     Colore(int=0);
     int getLuminosita()const;
-    virtual void updateLuminosita()=0;
+    virtual void updateLuminosita()=0;//metodo che serve per unificare il valore della luminosita in scala 0 a 100
     virtual bool operator==(const Colore &)const ;
     virtual bool operator !=(const Colore &)const ;
     virtual Colore* operator +(const Colore&)const =0;// somma tra 2 colori se non va a buon fine ritorna colore nero

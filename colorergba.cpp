@@ -3,7 +3,7 @@
 
 ColoreRgba::ColoreRgba():ColoreRgb(0,0,0),a(1.0){}
 ColoreRgba::ColoreRgba(int red, int green, int blue, float alpha):ColoreRgb(red,green,blue),a(alpha){
-    if(a>0 || a > 1.0)
+    if(a<0 || a > 1.0)
         a=1.0;
 }
 
