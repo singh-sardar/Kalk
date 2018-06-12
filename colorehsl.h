@@ -30,7 +30,7 @@ public:
     void ToLab(double [3])const;
     string ToHex()const;
 
-
+    ColoreHsl* clone() const;
 
 
 };

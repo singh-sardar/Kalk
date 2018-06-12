@@ -44,6 +44,7 @@ public:
     void ToLab(double [3])const; //trasforma un colore in formato lab e i valori vengono inseriti nel array passato
     void ToHsl(double [3])const;
 
+    ColoreRgb* clone() const;
 
 };
 

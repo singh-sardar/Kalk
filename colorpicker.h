@@ -10,21 +10,11 @@ class ColorPicker:public QWidget
     Q_OBJECT
 public:
     ColorPicker(QWidget* parent=0);
-    //ColorSlider* getColorSlider() const;
     QWidget* getViewer()const;
 
     int getSliderValue(int i)const;
     QString getSliderName(int i)const;
     SpinSlider* getSlider(int i)const;
-
-    /*
-    int getP1value()const;
-    QString getP1Name() const;
-    int getP2value()const;
-    QString getP2Name() const;
-    int getP3value()const;
-    QString getP3Name() const;
-    */
 
     virtual ~ColorPicker();
 
@@ -32,7 +22,6 @@ public:
 
 
 protected:
-    //ColorSlider* slider;
     QWidget* viewer;
     QColor* c;
 

@@ -46,6 +46,8 @@ void TwoColorPicker::changeColorType(ColorPicker* c){
         color2 = new RgbaPicker;
     }
 
+    delete c;
+
     if(color1 && color2){
         grid->removeItem(grid->itemAtPosition(1,0));
         grid->addWidget(color1,1,0);

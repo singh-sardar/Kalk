@@ -122,14 +122,6 @@ ColorGui::~ColorGui(){
     delete lblComboBox;
     delete cb;
 }
-/*
-int ColorGui::getColor1P1value()const{return p->getColor1()->getP1value();}
-int ColorGui::getColor1P2value()const{return p->getColor1()->getP2value();}
-int ColorGui::getColor1P3value()const{return p->getColor1()->getP3value();}
-int ColorGui::getColor2P1value()const{return p->getColor2()->getP1value();}
-int ColorGui::getColor2P2value()const{return p->getColor2()->getP2value();}
-int ColorGui::getColor2P3value()const{return p->getColor2()->getP3value();}
-*/
 
 int ColorGui::getColor1Value(int i)const{return p->getColor1()->getSliderValue(i);}
 int ColorGui::getColor2Value(int i) const{return p->getColor2()->getSliderValue(i);}

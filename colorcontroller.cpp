@@ -30,9 +30,6 @@ ColorController::ColorController(ColorGui* v):view(v),model1(new ColoreRgb()),mo
 
     connect(view,SIGNAL(colorTypeChanged()),this,SLOT(ChangeColorType()));
 
-    //view->getOperationButtons()->removeRGBSpin();
-    //ChangeColorType();
-
 }
 ColorController::~ColorController(){
 
@@ -58,48 +55,27 @@ void ColorController::SaveOperando1(){
 
     if(typeid(*model1) == typeid(ColoreRgb)){
         ColoreRgb* colRGB = dynamic_cast<ColoreRgb*>(model1);
-        //model1 = colRGB;
-        /*
-        colRGB->setR(view->getColor1P1value());
-        colRGB->setG(view->getColor1P2value());
-        colRGB->setB(view->getColor1P3value());
-        */
+
         colRGB->setR(view->getColor1Value(0));
         colRGB->setG(view->getColor1Value(1));
         colRGB->setB(view->getColor1Value(2));
         c.setRgb(colRGB->getR(),colRGB->getG(),colRGB->getB());
     }else if(typeid(*model1) == typeid(ColoreHsl)){
         ColoreHsl* colHSL = dynamic_cast<ColoreHsl*>(model1);
-        //model1 = colHSL;
-        /*
-        colHSL->setH(view->getColor1P1value());
-        colHSL->setS(view->getColor1P2value());
-        colHSL->setL(view->getColor1P3value());
-        */
+
         colHSL->setH(view->getColor1Value(0));
         colHSL->setS(view->getColor1Value(1));
         colHSL->setL(view->getColor1Value(2));
         c.setHsl(colHSL->getH(),colHSL->getS()*2.55,colHSL->getL()*2.55);
     }else if(typeid(*model1) == typeid(ColoreRgba)){
         ColoreRgba* colRgba = dynamic_cast<ColoreRgba*>(model1);
-        //model1 = colRgba;
-        /*
-        colRgba->setR(view->getColor1P1value());
-        colRgba->setG(view->getColor1P2value());
-        colRgba->setB(view->getColor1P3value());
-        */
+
         colRgba->setR(view->getColor1Value(0));
         colRgba->setG(view->getColor1Value(1));
         colRgba->setB(view->getColor1Value(2));
-        //colRgba->setA(static_cast<float>(dynamic_cast<RgbaPicker*>(view->getColorPicker()->getColor1())->getAlphaValue())/255);
         colRgba->setA(static_cast<float>(view->getColor1Value(3))/255);
         c.setRgb(colRgba->getR(),colRgba->getG(),colRgba->getB(),static_cast<int>(colRgba->getA()*255));
     }
-    /*
-    model1->setR(view->getColor1Rvalue());
-    model1->setG(view->getColor1Gvalue());
-    model1->setB(view->getColor1Bvalue());
-    */
 
 
     p.setColor(QPalette::Window,c);
@@ -112,48 +88,27 @@ void ColorController::SaveOperando2(){
 
     if(typeid(*model2) == typeid(ColoreRgb)){
         ColoreRgb* colRGB = dynamic_cast<ColoreRgb*>(model2);
-        //model2 = colRGB;
-        /*colRGB->setR(view->getColor2P1value());
-        colRGB->setG(view->getColor2P2value());
-        colRGB->setB(view->getColor2P3value());
-        */
+
         colRGB->setR(view->getColor2Value(0));
         colRGB->setG(view->getColor2Value(1));
         colRGB->setB(view->getColor2Value(2));
         c.setRgb(colRGB->getR(),colRGB->getG(),colRGB->getB());
     }else if(typeid(*model2) == typeid(ColoreHsl)){
         ColoreHsl* colHSL = dynamic_cast<ColoreHsl*>(model2);
-        //model2 = colHSL;
-        /*
-        colHSL->setH(view->getColor2P1value());
-        colHSL->setS(view->getColor2P2value());
-        colHSL->setL(view->getColor2P3value());
-        */
+
         colHSL->setH(view->getColor2Value(0));
         colHSL->setS(view->getColor2Value(1));
         colHSL->setL(view->getColor2Value(2));
         c.setHsl(colHSL->getH(),colHSL->getS()*2.55,colHSL->getL()*2.55);
     }else if(typeid(*model2) == typeid(ColoreRgba)){
         ColoreRgba* colRgba = dynamic_cast<ColoreRgba*>(model2);
-        //model2 = colRgba;
-        /*
-        colRgba->setR(view->getColor2P1value());
-        colRgba->setG(view->getColor2P2value());
-        colRgba->setB(view->getColor2P3value());
-        colRgba->setA(static_cast<float>(dynamic_cast<RgbaPicker*>(view->getColorPicker()->getColor2())->getAlphaValue())/255);
-        */
+
         colRgba->setR(view->getColor2Value(0));
         colRgba->setG(view->getColor2Value(1));
         colRgba->setB(view->getColor2Value(2));
-        //colRgba->setA(static_cast<float>(dynamic_cast<RgbaPicker*>(view->getColorPicker()->getColor1())->getAlphaValue())/255);
         colRgba->setA(static_cast<float>(view->getColor2Value(3))/255);
         c.setRgb(colRgba->getR(),colRgba->getG(),colRgba->getB(),static_cast<int>(colRgba->getA()*255));
     }
-    /*
-    model2->setR(view->getColor2Rvalue());
-    model2->setG(view->getColor2Gvalue());
-    model2->setB(view->getColor2Bvalue());
-    */
 
     p.setColor(QPalette::Window,c);
     view->getOperand2Viewer()->setPalette(p);
@@ -191,8 +146,9 @@ void ColorController::updateOneOperandResult(QString s){
     view->getResultLabel()->setText(s);
 }
 void ColorController::ResultAsOperando(){
+    delete model1;
+    model1 = result->clone();
     //*model1 = *result;
-    model1 = result;
     QColor c;
     QPalette p= view->getOperand1Viewer()->palette();
 
@@ -207,7 +163,6 @@ void ColorController::ResultAsOperando(){
         c.setHsl(temp->getH(),temp->getS()*2.55,temp->getL()*2.55);
     }
 
-    //c.setRgb(model1->getR(),model1->getG(),model1->getB());
     p.setColor(QPalette::Window,c);
     view->getOperand1Viewer()->setPalette(p);
 }
@@ -260,17 +215,13 @@ void ColorController::CaldoColore(){
 }
 void ColorController::LabColore(){
     double LAB[3];
-   // model1->rgb2lab(LAB);
     model1->ToLab(LAB);
     QString s= model1->schemaColore().c_str();
     s+=" ==> LAB(";
-    //s+=to_string(LAB[0]).c_str();
     s+= QString::number(LAB[0],'f',2);
     s+=",";
-    //s+=to_string(LAB[1]).c_str();
     s+=QString::number(LAB[1],'f',2);
     s+=",";
-    //s+=to_string(LAB[2]).c_str();
     s+=QString::number(LAB[2],'f',2);
     s+=")";
     showMessageBox("Rappresentazione LAB",s);
@@ -281,19 +232,15 @@ void ColorController::LabColore(){
 }
 void ColorController::HslColore(){
     double HSL[3];
-   // model1->rgb2hsl(HSL);
     if(dynamic_cast<ColoreRgb*>(model1)){
         (dynamic_cast<ColoreRgb*>(model1))->ToHsl(HSL);
     }
     QString s= model1->schemaColore().c_str();
     s+=" ==> HSL(";
-    //s+=to_string(HSL[0]).c_str();
     s += QString::number(HSL[0],'f',2);
     s+=",";
-    //s+=to_string(HSL[1]).c_str();
     s+=QString::number(HSL[1],'f',2);
     s+=",";
-    //s+=to_string(HSL[2]).c_str();
     s+=QString::number(HSL[2],'f',2);
     s+=")";
     showMessageBox("Rappresentazione HSL",s);
@@ -306,7 +253,6 @@ void ColorController::HslColore(){
 void ColorController::HexColore(){
     QString s= model1->schemaColore().c_str();
     s+=" ==> HEX(";
-   // s+=model1->rgb2hex().c_str();
     s+=model1->ToHex().c_str();
     s+=")";
     showMessageBox("Rappresentazione HEX",s);
@@ -321,11 +267,12 @@ void ColorController::Hsl2RgbColore(){
     int RGB[3];
     Colore::hsl2rgb(HSL,RGB);
 
-    if(dynamic_cast<ColoreRgb*>(model1)){
-        result = new ColoreRgb;
+    if (dynamic_cast<ColoreRgb*>(result)){
         (dynamic_cast<ColoreRgb*>(result))->modificaColore(RGB[0],RGB[1],RGB[2]);
     }
-
+    if(typeid(*result) == typeid(ColoreRgba)){
+        (dynamic_cast<ColoreRgba*>(result))->setA(1);
+    }
 }
 void ColorController::ScalaColore(){
     result = *model1 * view->getFattoreScalaValue();
@@ -341,8 +288,7 @@ void ColorController::Rgb2HslColore(){
     double HSL[3];
     Colore::rgb2hsl(RGB,HSL);
 
-    if(dynamic_cast<ColoreHsl*>(model1)){
-        result = new ColoreHsl;
+    if(dynamic_cast<ColoreHsl*>(result)){
         (dynamic_cast<ColoreHsl*>(result))->modificaColore(HSL[0],HSL[1],HSL[2]);
     }
 }
@@ -352,6 +298,8 @@ void ColorController::ChangeColorType(){
         delete model1;
     if(model2)
         delete model2;
+    if(result)
+        delete result;
 
     if(typeid(*(view->getColorPicker()->getColor1())) == typeid(RgbPicker)){
 

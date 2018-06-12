@@ -7,23 +7,25 @@ SpinSlider::SpinSlider(QWidget* parent,QString desc,int min,int max,int value):Q
     f1.setBold(false);
     f.setBold(false);
     layout= new QHBoxLayout;
-    //layout = new QGridLayout;
     desc_lable = new QLabel;
     desc_lable->setFont(f);
     desc_lable->setText(desc);
     slider = new QSlider(Qt::Horizontal);
     slider->setRange(min,max);
 
-    if(value < min || value > max){
-        slider->setValue(min);
-    }else{
-        slider->setValue(value);
-    }
-
     spin_box = new QSpinBox();
     spin_box->setFont(f1);
     spin_box->setRange(min,max);
-    spin_box->setValue(min);
+
+    if(value < min || value > max){
+        slider->setValue(min);
+        spin_box->setValue(min);
+    }else{
+        slider->setValue(value);
+        spin_box->setValue(value);
+    }
+
+
 
     layout->addWidget(desc_lable);
     layout->addWidget(slider);

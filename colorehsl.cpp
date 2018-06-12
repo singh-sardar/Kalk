@@ -167,3 +167,7 @@ string ColoreHsl::ToHex()const{
 void ColoreHsl::updateLuminosita(){
     setLuminosita(l);
 }
+
+ColoreHsl* ColoreHsl::clone() const{
+    return new ColoreHsl(*this);
+}

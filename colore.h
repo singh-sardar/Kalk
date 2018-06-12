@@ -3,6 +3,9 @@
 #include <string>
 #include <math.h>
 
+#include <iomanip> // setprecision
+#include <sstream> // stringstream
+
 using std::string;
 using std::to_string;
 class Colore
@@ -38,6 +41,8 @@ public:
     virtual void ToLab(double [3])const=0;
     virtual string ToHex()const=0;
     virtual ~Colore(){}
+
+    virtual Colore* clone() const=0;
 
 
     //funzioni statiche di classe sui colori

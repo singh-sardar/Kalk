@@ -67,10 +67,6 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
     layout->addWidget(btnScala,5,0,1,2);
     layout->addWidget(fattoreScala,5,2,1,2);
 
-    //layout->addWidget(btnHsl2Rgb,6,0,1,2);
-
-    //layout->addWidget(btnRgb2Hsl,7,0,1,2);
-
     l = new QHBoxLayout;
     l->addWidget(btnHsl2Rgb);
     l->addWidget(H);
@@ -108,21 +104,9 @@ colorOperationButtons::~colorOperationButtons(){
     delete btnLab ;
     delete btnHsl ;
     delete btnHex ;
-    /*
-    delete btnHsl2Rgb;
-    delete btnRgb2Hsl;
-    */
     delete layout;
     delete fattoreScala;
-    /*
-    delete H;
-    delete S;
-    delete L;
 
-    delete R;
-    delete G;
-    delete B;
-    */
     delete lbl1;
     delete lbl2;
 }
@@ -145,7 +129,7 @@ void colorOperationButtons::removeSpinConversione(){
 }
 
 
-
+//Vengono creati i controlli necessari per la conversione dal tipo Hsl al tipo Rgb
 void colorOperationButtons::addHsl2Rgb(){
     removeSpinConversione();
 
@@ -182,6 +166,7 @@ void colorOperationButtons::addHsl2Rgb(){
 
 }
 
+//Vengono creati i controlli necessari per la conversione dal tipo Rgb al tipo Hsl
 void colorOperationButtons::addRgb2Hsl(){
     removeSpinConversione();
 

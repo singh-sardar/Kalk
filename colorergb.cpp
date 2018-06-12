@@ -204,3 +204,7 @@ void ColoreRgb::updateLuminosita(){
     int value=sqrt(r * r* 0.241 + g * g * 0.691 + b * b * 0.068);
     setLuminosita((100*value)/255);
 }
+
+ColoreRgb* ColoreRgb::clone() const{
+    return new ColoreRgb(*this);
+}

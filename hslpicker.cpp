@@ -9,9 +9,7 @@ HslPicker::HslPicker(QWidget* parent): ColorPicker(parent){
 }
 
 void HslPicker::changeColor(){
-    //c->setHsl(getP1value(),getP2value()*2.55,getP3value()*2.55);
     c->setHsl(getSliderValue(0),getSliderValue(1)*2.55,getSliderValue(2)*2.55);
-    //c->setAlpha(50*2.55);
     QPalette p= viewer->palette();
     p.setColor(QPalette::Window,*c);
     p.setBrush(QPalette::Base, Qt::transparent);

@@ -20,6 +20,7 @@ public:
     ColoreRgba* operator *(double)const;//scala le componenti del colore basandosi sul parametro
     string schemaColore()const;
 
+    ColoreRgba* clone() const;
 };
 
 #endif // COLORERGBA_H

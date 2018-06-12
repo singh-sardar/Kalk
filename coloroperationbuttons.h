@@ -21,10 +21,6 @@ public:
     QSpinBox* getGSpin()const;
     QSpinBox* getBSpin()const;
 
-    /*
-    void removeHsl2Rgb() const;
-    void removeRgb2Hsl()const;
-    */
     void removeSpinConversione();
     void addHsl2Rgb();
     void addRgb2Hsl();

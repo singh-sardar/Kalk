@@ -17,8 +17,6 @@ public:
 
     void changeColor();
 
-private:
-    //SpinSlider *alpha;
 };
 
 #endif // RGBAPICKER_H

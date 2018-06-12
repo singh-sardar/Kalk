@@ -17,7 +17,10 @@ float ColoreRgba::getA()const{
 
 
 string ColoreRgba::schemaColore()const{
-    string s= "rgba("+to_string(getR())+","+to_string(getG())+","+to_string(getB())+","+to_string(static_cast<int>(getA()))+")";
+    float a = getA();
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << a;
+    string s= "rgba("+to_string(getR())+","+to_string(getG())+","+to_string(getB())+","+stream.str()+")";
     return s;
 }
 
@@ -73,4 +76,8 @@ ColoreRgba* ColoreRgba::operator *(double s)const{//scala le componenti del colo
     aux->setA(a*s);
     return aux;
 
+}
+
+ColoreRgba* ColoreRgba::clone() const{
+    return new ColoreRgba(*this);
 }

@@ -16,7 +16,6 @@ public:
      ~ColorController();
 private:
     ColorGui* view;
-    //ColoreRgb* model1,* model2,*result;
     Colore* model1, *model2, *result;
     void showMessageBox(QString,QString)const;
     void updateOneOperandResult(QString);
