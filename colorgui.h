@@ -59,6 +59,7 @@ signals:
     void btnCaldoClicked(bool);
     void btnLabClicked(bool);
     void btnHslClicked(bool);
+    void btnRgbClicked(bool);
     void btnHexClicked(bool);
     void btnHsl2RgbClicked(bool);
     void btnSaveOperando1Clicked(bool);

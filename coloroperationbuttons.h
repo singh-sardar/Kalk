@@ -32,15 +32,17 @@ public:
 private:
 
     QPushButton *btnSomma,*btnDifferenza,*btnModulazione,*btnDeltaE,*btnScala,*btnComplementare,*btnLuminosita,*btnCaldo,*btnLab,*btnHsl,*btnHex,*btnHsl2Rgb;
-    QPushButton *btnRgb2Hsl;
+    QPushButton *btnRgb2Hsl, *btnRgb;
     QGridLayout* layout;
     QDoubleSpinBox *fattoreScala,*H,*S,*L;
     QSpinBox *R,*G,*B;
     QHBoxLayout* l;
     QLabel* lbl1,*lbl2;
+    QFont *f;
 
 
     void deleteChildWidgets(QLayoutItem*);
+    void remove(QLayout*);
 
 signals:
     void btnSommaClicked(bool);
@@ -53,6 +55,7 @@ signals:
     void btnCaldoClicked(bool);
     void btnLabClicked(bool);
     void btnHslClicked(bool);
+    void btnRgbClicked(bool);
     void btnHexClicked(bool);
     void btnHsl2RgbClicked(bool);
     void btnRgb2HslClicked(bool);

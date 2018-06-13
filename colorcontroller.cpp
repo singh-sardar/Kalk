@@ -18,6 +18,7 @@ ColorController::ColorController(ColorGui* v):view(v),model1(new ColoreRgb()),mo
     connect(view,SIGNAL(btnCaldoClicked(bool)),this,SLOT(CaldoColore()));
     connect(view,SIGNAL(btnLabClicked(bool)),this,SLOT(LabColore()));
     connect(view,SIGNAL(btnHslClicked(bool)),this,SLOT(HslColore()));
+    connect(view,SIGNAL(btnRgbClicked(bool)),this,SLOT(RgbColore()));
     connect(view,SIGNAL(btnHexClicked(bool)),this,SLOT(HexColore()));
     connect(view,SIGNAL(btnScalaClicked(bool)),this,SLOT(ScalaColore()));
     connect(view,SIGNAL(btnScalaClicked(bool)),this,SLOT(ChangeResultColor()));
@@ -246,10 +247,26 @@ void ColorController::HslColore(){
     showMessageBox("Rappresentazione HSL",s);
     result= model1;
     updateOneOperandResult(s);
-
-
-
 }
+
+void ColorController::RgbColore(){
+    int RGB[3];
+    if(dynamic_cast<ColoreHsl*>(model1)){
+        (dynamic_cast<ColoreHsl*>(model1))->ToRgb(RGB);
+    }
+    QString s= model1->schemaColore().c_str();
+    s+=" ==> RGB(";
+    s += QString::number(RGB[0]);
+    s+=",";
+    s+=QString::number(RGB[1]);
+    s+=",";
+    s+=QString::number(RGB[2]);
+    s+=")";
+    showMessageBox("Rappresentazione RGB",s);
+    result= model1;
+    updateOneOperandResult(s);
+}
+
 void ColorController::HexColore(){
     QString s= model1->schemaColore().c_str();
     s+=" ==> HEX(";
@@ -298,8 +315,6 @@ void ColorController::ChangeColorType(){
         delete model1;
     if(model2)
         delete model2;
-    if(result)
-        delete result;
 
     if(typeid(*(view->getColorPicker()->getColor1())) == typeid(RgbPicker)){
 

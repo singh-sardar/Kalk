@@ -36,6 +36,7 @@ private slots:
     void CaldoColore();
     void LabColore();
     void HslColore();
+    void RgbColore();
     void HexColore();
     void Hsl2RgbColore();
 

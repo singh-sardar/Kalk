@@ -4,12 +4,13 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
 {
     lbl1= new QLabel("Operazioni tra 2 Operandi");
     lbl2 = new QLabel("Operazioni su Operando 1");
-    QFont f("Verdana",12);
-    setFont(f);
+
+    f = new QFont("Verdana",12);
+    setFont(*f);
 
     fattoreScala = new QDoubleSpinBox;
     fattoreScala->setMinimum(0.1);
-    fattoreScala->setFont(f);
+    fattoreScala->setFont(*f);
 
     H = new QDoubleSpinBox;
     H->setRange(0.0,400.0);
@@ -46,9 +47,12 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
     btnLuminosita= new QPushButton(tr("Luminosita"));
     btnCaldo= new QPushButton(tr("Colore Caldo/Freddo"));
     btnLab= new QPushButton(tr("Rappresentazione Lab"));
-    btnHsl= new QPushButton(tr("Rappresentazione HSL "));
     btnHex= new QPushButton(tr("Rappresentazione HEX "));
     btnHsl2Rgb = new QPushButton(tr("HSL TO RGB"));
+    btnHsl= new QPushButton(tr("Rappresentazione HSL "));
+    btnHsl->setFont(*f);
+    btnRgb = new QPushButton(tr("Rappresentazione RGB "));
+    btnRgb->setFont(*f);
 
     btnRgb2Hsl = new QPushButton(tr("RGB To HSL"));
 
@@ -93,22 +97,35 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
     setLayout(layout);
 }
 colorOperationButtons::~colorOperationButtons(){
-    delete btnSomma;
+    /*delete btnSomma;
     delete btnDifferenza;
     delete btnModulazione;
     delete btnDeltaE;
     delete btnScala;
     delete btnComplementare;
-    delete btnLuminosita ;
+    delete btnLuminosita;
     delete btnCaldo;
-    delete btnLab ;
-    delete btnHsl ;
-    delete btnHex ;
-    delete layout;
+    delete btnLab;
+    if(NULL != btnHsl){ delete btnHsl; btnHsl = NULL;}
+    delete btnHex;
+    if(NULL != btnHsl2Rgb){ delete btnHsl2Rgb; btnHsl2Rgb = NULL;}
+    if(NULL != btnRgb2Hsl) delete btnRgb2Hsl;
+    delete btnRgb;
+    delete H;
+    delete S;
+    delete L;
+    delete R;
+    delete G;
+    delete B;
     delete fattoreScala;
-
     delete lbl1;
     delete lbl2;
+    delete layout;
+    */
+    remove(layout);
+
+
+    delete f;
 }
 QDoubleSpinBox* colorOperationButtons::getFattoreScalaSpin()const{return fattoreScala;}
 QDoubleSpinBox* colorOperationButtons::getHSpin()const{return H;}
@@ -119,6 +136,7 @@ QSpinBox* colorOperationButtons::getRSpin()const{return R;}
 QSpinBox* colorOperationButtons::getGSpin()const{return G;}
 QSpinBox* colorOperationButtons::getBSpin()const{return B;}
 
+//serve per rimpiazzare i controlli usati per la conversione da un tipo ad un altro
 void colorOperationButtons::removeSpinConversione(){
     layout->removeItem(layout->itemAtPosition(6,0));
 
@@ -132,30 +150,34 @@ void colorOperationButtons::removeSpinConversione(){
 //Vengono creati i controlli necessari per la conversione dal tipo Hsl al tipo Rgb
 void colorOperationButtons::addHsl2Rgb(){
     removeSpinConversione();
-
-    QFont f("Verdana",12);
-    setFont(f);
+    deleteChildWidgets(layout->itemAtPosition(4,1));
 
     l = new QHBoxLayout;
 
     btnHsl2Rgb = new QPushButton(tr("HSL TO RGB"));
-    btnHsl2Rgb->setFont(f);
+    btnHsl2Rgb->setFont(*f);
+
+    btnHsl= new QPushButton(tr("Rappresentazione HSL "));
+    btnHsl->setFont(*f);
+
 
     H = new QDoubleSpinBox;
     H->setRange(0.0,400.0);
     H->setSuffix(" H");
-    H->setFont(f);
+    H->setFont(*f);
 
     S= new QDoubleSpinBox;
     S->setRange(0.0,100.0);
     S->setSuffix(" S");
-    S->setFont(f);
+    S->setFont(*f);
 
     L= new QDoubleSpinBox;;
     L->setRange(0.0,100.0);
     L->setSuffix(" L");
-    L->setFont(f);
+    L->setFont(*f);
 
+    layout->removeItem(layout->itemAtPosition(4,1));
+    layout->addWidget(btnHsl,4,1,1,2);
     l->addWidget(btnHsl2Rgb);
     l->addWidget(H);
     l->addWidget(S);
@@ -163,35 +185,37 @@ void colorOperationButtons::addHsl2Rgb(){
     layout->addLayout(l,6,0,1,4);
 
     connect(btnHsl2Rgb,SIGNAL(clicked(bool)),this,SIGNAL(btnHsl2RgbClicked(bool)));
-
+    connect(btnHsl,SIGNAL(clicked(bool)),this,SIGNAL(btnHslClicked(bool)));
 }
 
 //Vengono creati i controlli necessari per la conversione dal tipo Rgb al tipo Hsl
 void colorOperationButtons::addRgb2Hsl(){
     removeSpinConversione();
-
-    QFont f("Verdana",12);
-    setFont(f);
+    deleteChildWidgets(layout->itemAtPosition(4,1));
 
     l = new QHBoxLayout;
     btnRgb2Hsl = new QPushButton(tr("RGB To HSL"));
-    btnRgb2Hsl->setFont(f);
+    btnRgb2Hsl->setFont(*f);
+    btnRgb = new QPushButton(tr("Rappresentazione RGB "));
+    btnRgb->setFont(*f);
 
     R = new QSpinBox;
     R->setRange(0,255);
     R->setSuffix(" R");
-    R->setFont(f);
+    R->setFont(*f);
 
     G = new QSpinBox;
     G->setRange(0,255);
     G->setSuffix(" G");
-    G->setFont(f);
+    G->setFont(*f);
 
     B=new QSpinBox;
     B->setRange(0,255);
     B->setSuffix(" B");
-    B->setFont(f);
+    B->setFont(*f);
 
+    layout->removeItem(layout->itemAtPosition(4,1));
+    layout->addWidget(btnRgb,4,1,1,2);
     l->addWidget(btnRgb2Hsl);
     l->addWidget(R);
     l->addWidget(G);
@@ -199,6 +223,25 @@ void colorOperationButtons::addRgb2Hsl(){
     layout->addLayout(l,6,0,1,4);
 
     connect(btnRgb2Hsl,SIGNAL(clicked(bool)),this,SIGNAL(btnRgb2HslClicked(bool)));
+    connect(btnRgb,SIGNAL(clicked(bool)),this,SIGNAL(btnRgbClicked(bool)));
+}
+
+void colorOperationButtons::remove(QLayout * layout){
+    QLayoutItem* child;
+    while(layout->count()!=0)
+    {
+        child = layout->takeAt(0);
+        if(child->layout() != 0)
+        {
+            remove(child->layout());
+        }
+        else if(child->widget() != 0)
+        {
+            delete child->widget();
+        }
+
+        delete child;
+    }
 }
 
 void colorOperationButtons::deleteChildWidgets(QLayoutItem *item) {

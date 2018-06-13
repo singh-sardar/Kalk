@@ -76,6 +76,7 @@ ColorGui::ColorGui(QWidget* parent):QWidget(parent),controller(new ColorControll
     connect(op,SIGNAL(btnCaldoClicked(bool)),this,SIGNAL(btnCaldoClicked(bool)));
     connect(op,SIGNAL(btnLabClicked(bool)),this,SIGNAL(btnLabClicked(bool)));
     connect(op,SIGNAL(btnHslClicked(bool)),this,SIGNAL(btnHslClicked(bool)));
+    connect(op,SIGNAL(btnRgbClicked(bool)),this,SIGNAL(btnRgbClicked(bool)));
     connect(op,SIGNAL(btnHexClicked(bool)),this,SIGNAL(btnHexClicked(bool)));
     connect(op,SIGNAL(btnHsl2RgbClicked(bool)),this,SIGNAL(btnHsl2RgbClicked(bool)));
 
