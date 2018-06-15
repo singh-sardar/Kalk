@@ -16,7 +16,6 @@ void  Colore::hsl2rgb(double HSL[3],int RGB[3]){
         double chroma = (1 - abs(2 * HSL[2] - 1)) * HSL[1];
         double x = chroma * (1 - (abs(fmod(HSL[0] / 60,2)-1) ));
         double m = HSL[2] - chroma/2;
-
         if(HSL[0]>=0.0&&HSL[0]<60.0){
             RGB1[0]=chroma;
             RGB1[1]=x;

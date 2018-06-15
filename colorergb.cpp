@@ -3,7 +3,7 @@ string ColoreRgb::schemaColore()const{
     string s= "rgb("+to_string(getR())+","+to_string(getG())+","+to_string(getB())/*+","+to_string(static_cast<int>(getA()))*/+")";
     return s;
 }
-ColoreRgb::ColoreRgb():r(0),g(0),b(0)/*,a(1.0)*/
+ColoreRgb::ColoreRgb():r(0),g(0),b(0)
 {
     updateLuminosita();
 }
@@ -16,8 +16,7 @@ ColoreRgb::ColoreRgb(int red, int green, int blue/*, float alpha*/):r(red),g(gre
         g=0;
     if(b<0 || b> 255)
         b=0;
-   /* if(a>0 || a > 1.0)
-        a=1.0;*/
+
     updateLuminosita();
 }
 
@@ -41,12 +40,7 @@ void ColoreRgb::setB(int blue){
         updateLuminosita();
 
     }
-}/*
-void ColoreRgb::setA(float alpha){
-    if(alpha>=0 && alpha <= 1.0)
-        a= alpha;
 }
-*/
 int ColoreRgb::getR()const{
     return r;
 }
@@ -55,27 +49,14 @@ int ColoreRgb::getG()const{
 }
 int ColoreRgb::getB()const{
     return b;
-}/*
-float ColoreRgb::getA()const{
-    return a;
 }
-*/
-
 void ColoreRgb::modificaColore(int red, int green, int blue/*, float alpha*/){
     setR(red);
     setG(green);
     setB(blue);
-  //  setA(alpha);
 
 }
-/*
-bool ColoreRgb::operator==(const Colore & c)const{
-    return (schemaColore().compare(c.schemaColore())==0);
-}
-bool ColoreRgb::operator !=(const Colore & c )const{
-    return !(*this== c);
-}
-*/
+
 ColoreRgb* ColoreRgb::operator +(const Colore& c)const{
     ColoreRgb* aux= new ColoreRgb();
 
@@ -146,9 +127,7 @@ double ColoreRgb::DeltaE(const Colore& c1)const{ // se la conversione fallisce r
         double deltaE;
         double Lab1[3], Lab2[3];
 
-        //rgb2lab(Lab1);
         ToLab(Lab1);
-       // crgb1->rgb2lab(Lab2);
         crgb1->ToLab(Lab2);
 
         deltaE= sqrt(pow(Lab2[0]-Lab1[0],2) + pow(Lab2[1]-Lab1[1],2) +pow(Lab2[2]-Lab1[2],2));
@@ -164,7 +143,6 @@ ColoreRgb* ColoreRgb::complementare()const{
     ColoreRgb* aux = new ColoreRgb();
     double HSL[3];
     int RGB[3];
-   // rgb2hsl(HSL);
     ToHsl(HSL);
     HSL[0]+=180;
     HSL[0]=fmod(HSL[0],360);

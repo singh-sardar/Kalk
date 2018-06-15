@@ -17,7 +17,6 @@ class TabWidgetGUI: public QWidget{
     Q_OBJECT
 private:
     QTabWidget* tabWidget;
-    //RgbColorGui* rgbGUI;
     ColorGui* colGUI;
     RicettaGui* ricettaGUI;
     MatriciGUI* matriciGUI;
