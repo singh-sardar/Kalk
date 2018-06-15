@@ -97,33 +97,8 @@ colorOperationButtons::colorOperationButtons(QWidget* parent):QWidget(parent)
     setLayout(layout);
 }
 colorOperationButtons::~colorOperationButtons(){
-    /*delete btnSomma;
-    delete btnDifferenza;
-    delete btnModulazione;
-    delete btnDeltaE;
-    delete btnScala;
-    delete btnComplementare;
-    delete btnLuminosita;
-    delete btnCaldo;
-    delete btnLab;
-    if(NULL != btnHsl){ delete btnHsl; btnHsl = NULL;}
-    delete btnHex;
-    if(NULL != btnHsl2Rgb){ delete btnHsl2Rgb; btnHsl2Rgb = NULL;}
-    if(NULL != btnRgb2Hsl) delete btnRgb2Hsl;
-    delete btnRgb;
-    delete H;
-    delete S;
-    delete L;
-    delete R;
-    delete G;
-    delete B;
-    delete fattoreScala;
-    delete lbl1;
-    delete lbl2;
-    delete layout;
-    */
     remove(layout);
-
+    delete layout;
 
     delete f;
 }
@@ -193,6 +168,7 @@ void colorOperationButtons::addRgb2Hsl(){
     removeSpinConversione();
     deleteChildWidgets(layout->itemAtPosition(4,1));
 
+
     l = new QHBoxLayout;
     btnRgb2Hsl = new QPushButton(tr("RGB To HSL"));
     btnRgb2Hsl->setFont(*f);
@@ -225,6 +201,7 @@ void colorOperationButtons::addRgb2Hsl(){
     connect(btnRgb2Hsl,SIGNAL(clicked(bool)),this,SIGNAL(btnRgb2HslClicked(bool)));
     connect(btnRgb,SIGNAL(clicked(bool)),this,SIGNAL(btnRgbClicked(bool)));
 }
+
 
 void colorOperationButtons::remove(QLayout * layout){
     QLayoutItem* child;
