@@ -14,17 +14,16 @@ private:
 
 public:
     ColoreRgb();// rappresenta il colore nero
-    ColoreRgb(int, int, int/*, float =1.0*/);
+    ColoreRgb(int, int, int);
 
 
     void setR(int);
     void setG(int);
     void setB(int);
-   // void setA(float);
     int getR()const;
     int getG()const;
     int getB()const;
-//    float getA()const;
+
     void modificaColore(int, int, int /*, float=1.0*/);
 
 /*
