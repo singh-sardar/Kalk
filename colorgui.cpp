@@ -25,15 +25,15 @@ ColorGui::ColorGui(QWidget* parent):QWidget(parent),controller(new ColorControll
     useResultAsOperando->setFont(f);
 
     operando1= new QWidget;
-    operando1->setMinimumSize(300,50);
+    operando1->setMinimumSize(300,35);
     operando1->setAutoFillBackground(true);
 
     operando2 = new QWidget;
-    operando2->setMinimumSize(300,50);
+    operando2->setMinimumSize(300,35);
     operando2->setAutoFillBackground(true);
 
     result= new QWidget;
-    result->setMinimumSize(600,75);
+    result->setMinimumSize(600,35);
     result->setAutoFillBackground(true);
 
     layout->addWidget(lblComboBox,0,0,1,1,Qt::AlignHCenter);

@@ -10,7 +10,7 @@ TabWidgetGUI::TabWidgetGUI(QWidget *parent):
     matriciGUI = new MatriciGUI;
     librettoGUI = new LibrettoEsamiGUI;
 
-    tabWidget->setStyleSheet("QTabBar::tab{height:40px; width:150px;font: 14pt}");
+    tabWidget->setStyleSheet("QTabBar::tab{height:30px; width:150px;font: 12pt}");
     //tabWidget->addTab(rgbGUI,"Colori RGB");
     tabWidget->addTab(colGUI, "Colori");
     tabWidget->addTab(ricettaGUI,"Ricette");
@@ -31,7 +31,7 @@ void TabWidgetGUI::impostaMinSize(){
     if(!(tabWidget->windowState() == Qt::WindowMaximized)){
         switch (tabWidget->currentIndex()) {
             case 0:
-                tabWidget->setMinimumSize(665,800);
+                tabWidget->setMinimumSize(665,700);
                 tabWidget->resize(760,820);
                 break;
             case 1:

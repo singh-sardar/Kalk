@@ -2,7 +2,7 @@
 
 TwoColorPicker::TwoColorPicker(QWidget* parent):QWidget(parent)
 {
-    QFont f("Verdana",16);
+    QFont f("Verdana",14);
     label1 = new QLabel("Colore 1");
     label2 = new QLabel("Colore 2");
     label1->setFont(f);
