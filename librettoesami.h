@@ -25,15 +25,15 @@ public:
     LibrettoEsami& operator +=(const Esame&);
     LibrettoEsami& operator-=(const VettoreGenerico<Esame>&);
     LibrettoEsami& operator -=(const Esame&);
-    virtual double percentualeCompletamento() const;//ritorna la percentuale di completamento degli studi
+    double percentualeCompletamento() const;//ritorna la percentuale di completamento degli studi
     unsigned int rimanentiCFU() const;
-    virtual double mediaAritmetica() const;
-    virtual double mediaPonderata() const;
-    virtual double previsioneVotoLaurea() const;
-    virtual Esame* esameMigliore() const; //ritorna l'esame col risultato migliore
-    virtual Esame* esamePeggiore() const; //ritorna l'esame col risultato peggiore
-    virtual Esame* esamePiuRecente() const;//ritorna l'esame che è stato svolto più recentemente
-    virtual Esame* esameMenoRecente() const;//ritorna l'esame che è stato svolto meno recentemente
+    double mediaAritmetica() const;
+    double mediaPonderata() const;
+    double previsioneVotoLaurea() const;
+    Esame* esameMigliore() const; //ritorna l'esame col risultato migliore
+    Esame* esamePeggiore() const; //ritorna l'esame col risultato peggiore
+    Esame* esamePiuRecente() const;//ritorna l'esame che è stato svolto più recentemente
+    Esame* esameMenoRecente() const;//ritorna l'esame che è stato svolto meno recentemente
     unsigned int getTargetCFU() const;
     unsigned int getTotaleCFU() const;
     unsigned int getMatricola() const;
