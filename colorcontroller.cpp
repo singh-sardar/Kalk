@@ -147,7 +147,9 @@ void ColorController::updateOneOperandResult(QString s){
     view->getResultLabel()->setText(s);
 }
 void ColorController::ResultAsOperando(){
-    delete model1;
+    if(model1 != result){
+        delete model1;
+    }
     model1 = result->clone();
     QColor c;
     QPalette p= view->getOperand1Viewer()->palette();
