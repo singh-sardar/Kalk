@@ -5,9 +5,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QPushButton>
-#include "tworgbpicker.h"
-#include "coloroperationbuttons.h"
-#include "rgbcolorgui.h"
+#include "colorgui.h"
 #include "ricettagui.h"
 #include "matricigui.h"
 #include "librettoesamigui.h"
